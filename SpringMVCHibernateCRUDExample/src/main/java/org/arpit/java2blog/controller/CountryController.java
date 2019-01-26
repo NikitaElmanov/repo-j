@@ -1,20 +1,18 @@
 package org.arpit.java2blog.controller;
 
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.arpit.java2blog.model.Country;
 import org.arpit.java2blog.model.Flag;
-import org.arpit.java2blog.model.StaticShape;
 import org.arpit.java2blog.service.CountryService;
 import org.arpit.java2blog.service.FlagService;
-import org.arpit.java2blog.service.StaticShapeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -25,14 +23,11 @@ public class CountryController {
 	CountryService countryService;
 	@Autowired
 	FlagService flagService;
-    @Autowired
-    StaticShapeService staticShapeService;
 	
 	@RequestMapping(value = "/getAllCountries", method = RequestMethod.GET, headers = "Accept=application/json")
 	public String getCountries(Model model) {
 		
 		List<Country> listOfCountries = countryService.getAllCountries();
-		List<StaticShape> listOfStaticShapes = staticShapeService.getAllStaticShapes();
 		List<Flag> listOfFlags = flagService.getAllFlags();
 
 		model.addAttribute("country", new Country());
@@ -52,6 +47,7 @@ public class CountryController {
 
 		if(country.getId()==0)
 		{
+			country.getFlag().setCountries(Arrays.asList(country));
 			countryService.addCountry(country);
 		}
 		else

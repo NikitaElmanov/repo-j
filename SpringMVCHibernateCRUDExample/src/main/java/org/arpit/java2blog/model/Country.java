@@ -14,13 +14,14 @@ public class Country{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int id;
 
-	@Column(name = "countryName")
+	@Column(name = "name")
 	String countryName;
 
 	@Column(name = "population")
 	int population;
 
-	@OneToOne(mappedBy = "country", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "f_id")
 	private Flag flag;
 
     public Country() { }

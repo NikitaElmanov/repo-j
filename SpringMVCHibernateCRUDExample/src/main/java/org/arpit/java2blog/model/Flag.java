@@ -1,6 +1,7 @@
 package org.arpit.java2blog.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "flag")
@@ -11,13 +12,11 @@ public class Flag {
     @GeneratedValue
     private int id;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "c_id")
-    private Country country;
+    @Column(name = "shape")
+    private String shape;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "ss_id")
-    private StaticShape staticShape;
+    @OneToMany(mappedBy = "flag", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    private List<Country> countries;
 
     public Flag() { }
 
@@ -25,23 +24,20 @@ public class Flag {
         return id;
     }
 
-    public Country getCountry() {
-        return country;
+    public List<Country> getCountries() {
+        return countries;
     }
 
-    public void setCountry(Country country) {
-        this.country = country;
+    public void setCountries(List<Country> countries) {
+        this.countries = countries;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public StaticShape getStaticShape() {
-        return staticShape;
-    }
-
-    public void setStaticShape(StaticShape staticShape) {
-        this.staticShape = staticShape;
+    @Override
+    public String toString() {
+        return shape;
     }
 }
