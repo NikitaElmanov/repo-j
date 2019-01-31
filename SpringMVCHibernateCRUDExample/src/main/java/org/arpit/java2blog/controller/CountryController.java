@@ -60,8 +60,11 @@ public class CountryController {
 
 	@RequestMapping(value = "/updateCountry/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
 	public String updateCountry(@PathVariable("id") int id,Model model) {
+        List<Flag> listOfFlags = flagService.getAllFlags();
+
 		model.addAttribute("country", this.countryService.getCountry(id));
 		model.addAttribute("listOfCountries", this.countryService.getAllCountries());
+		model.addAttribute("listOfFlags", listOfFlags);
 		return "countryDetails";
 	}
 
