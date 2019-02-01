@@ -2,11 +2,14 @@ package org.arpit.java2blog.dao;
 
 import org.arpit.java2blog.model.Country;
 import org.arpit.java2blog.model.Flag;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
 @Repository
@@ -21,9 +24,15 @@ public class FlagDao {
         return flagList;
     }
 
+    public List<String> getAllNames(){
+        Session session = this.sessionFactory.getCurrentSession();
+        List<String> flagList = session.createSQLQuery("select shape from flag").list();
+        return flagList;
+    }
+
     public Flag getFlag(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Flag flag = (Flag) session.get(Flag.class, new Integer(id));
+        Flag flag = (Flag) session.get(Flag.class, id);
         return flag;
     }
 
@@ -40,10 +49,19 @@ public class FlagDao {
 
     public void deleteFlag(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Flag p = (Flag) session.load(Flag.class, new Integer(id));
+        Flag p = (Flag) session.load(Flag.class, id);
         if (null != p) {
             session.delete(p);
         }
+    }
+
+    public void fillTableFlag() {
+        Session session = sessionFactory.getCurrentSession();
+
+        session.persist(new Flag("rectangle"));
+        session.persist(new Flag("square"));
+        session.persist(new Flag("circle"));
+        session.persist(new Flag("triangle"));
     }
 
 }

@@ -9,31 +9,32 @@ public class Flag {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @Column(name = "shape")
     private String shape;
 
-    @OneToMany(mappedBy = "flag", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-    private List<Country> countries;
-
     public Flag() { }
+
+    public Flag(String shape) {
+        this.shape = shape;
+    }
 
     public int getId() {
         return id;
     }
 
-    public List<Country> getCountries() {
-        return countries;
-    }
-
-    public void setCountries(List<Country> countries) {
-        this.countries = countries;
-    }
-
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getShape() {
+        return shape;
+    }
+
+    public void setShape(String shape) {
+        this.shape = shape;
     }
 
     @Override

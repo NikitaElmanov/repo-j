@@ -4,6 +4,8 @@ package org.arpit.java2blog.controller;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.arpit.java2blog.model.Country;
 import org.arpit.java2blog.model.Flag;
 import org.arpit.java2blog.service.CountryService;
@@ -11,13 +13,12 @@ import org.arpit.java2blog.service.FlagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class CountryController {
+
+    public static final Logger logger = LogManager.getLogger(CountryController.class);
 	
 	@Autowired
 	CountryService countryService;
@@ -30,6 +31,8 @@ public class CountryController {
 		List<Country> listOfCountries = countryService.getAllCountries();
 		List<Flag> listOfFlags = flagService.getAllFlags();
 
+		logger.info(listOfFlags.size());
+
 		model.addAttribute("country", new Country());
 		model.addAttribute("listOfCountries", listOfCountries);
 		model.addAttribute("listOfFlags", listOfFlags);
@@ -39,7 +42,13 @@ public class CountryController {
 
 	@RequestMapping(value = "/i", method = RequestMethod.GET, headers = "Accept=application/json")
 	public String getCountryById() {
-		return "index";
+	    boolean foo = true;
+	    if (foo){
+	        foo = !foo;
+            flagService.fillTableFlag();
+        }
+
+	    return "index";
 	}
 
 	@RequestMapping(value = "/addCountry", method = RequestMethod.POST, headers = "Accept=application/json")
@@ -47,7 +56,6 @@ public class CountryController {
 
 		if(country.getId()==0)
 		{
-			country.getFlag().setCountries(Arrays.asList(country));
 			countryService.addCountry(country);
 		}
 		else
@@ -59,7 +67,7 @@ public class CountryController {
 	}
 
 	@RequestMapping(value = "/updateCountry/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
-	public String updateCountry(@PathVariable("id") int id,Model model) {
+	public String updateCountry(@PathVariable("id") int id, Model model) {
         List<Flag> listOfFlags = flagService.getAllFlags();
 
 		model.addAttribute("country", this.countryService.getCountry(id));
@@ -73,5 +81,18 @@ public class CountryController {
 		countryService.deleteCountry(id);
 	 	return "redirect:/getAllCountries";
 
-	}	
+	}
+
+	private Flag getFlagByName(String name){
+        List<Flag> listOfFlags = flagService.getAllFlags();
+        Flag flag = new Flag();
+
+        for (Flag f : listOfFlags){
+            if (f.getShape() == name){
+                flag = f;
+            }
+        }
+
+        return flag;
+    }
 }

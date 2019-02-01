@@ -25,10 +25,14 @@ th {
   background: SteelBlue;
   color: white;
 }
- td,th{
+ .tg td,.tg th{
         border: 1px solid gray;
-        width: 25%;
+        text-align: center;
     }
+
+  td, th{
+      border: 1px solid gray;
+  }
 </style>
 </head>
 <body>
@@ -44,16 +48,16 @@ th {
         </tr>
 		<tr>
 			    <td><form:label path="population">Population:</form:label></td>
-          <td><form:input path="population" size="30" maxlength="30"></form:input></td>
+          <td><form:input path="population" size="30" maxlength="30" placeholder="145000000"></form:input></td>
 		</tr>
         <tr>
             <td>Flag:</td>
             <td>
                 <form:select path="flag">
-                    <c:forEach items="${listOfFlags}" var="f">
-					    <form:option value="${f}"/>
+                    <c:forEach items="${listOfFlags}" var="item">
+                        <form:option value="${item}"/>
                     </c:forEach>
-				</form:select>
+                </form:select>
             </td>
         </tr>
 		<tr>
@@ -75,16 +79,18 @@ th {
 	<table class="tg">
 	<tr>
 		<th width="80">Id</th>
-		<th width="120">Country Name</th>
-		<th width="120">Population</th>
-		<th width="60">Edit</th>
-		<th width="60">Delete</th>
+		<th width="100">Country Name</th>
+		<th width="100">Population</th>
+		<th width="50">Shape of flag</th>
+		<th width="100">Edit</th>
+		<th width="100">Delete</th>
 	</tr>
 	<c:forEach items="${listOfCountries}" var="country">
 		<tr>
 			<td>${country.id}</td>
 			<td>${country.countryName}</td>
 			<td>${country.population}</td>
+			<td>${country.flag.shape}</td>
 			<td><a href="<c:url value='/updateCountry/${country.id}' />" >Edit</a></td>
 			<td><a href="<c:url value='/deleteCountry/${country.id}' />" >Delete</a></td>
 		</tr>

@@ -7,6 +7,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SpringMVCHibernateCRUDExample Maven Webapp</name>
 	<url>http://maven.apache.org</url>
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -34,6 +35,11 @@
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 			<version>2.4.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.6.1</version>
 		</dependency>
 		<!-- Hibernate -->
 		<dependency>
@@ -70,6 +76,21 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>persistence-api</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${spring-data-jpa.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.194</version>
+        </dependency>
 	</dependencies>
 	<build>
 		<finalName>SpringMVCHibernateCRUDExample</finalName>
@@ -93,8 +114,9 @@
 	<properties>
 		<spring.version>4.2.1.RELEASE</spring.version>
 		<security.version>4.0.3.RELEASE</security.version>
-		<jdk.version>1.6</jdk.version>
+		<jdk.version>1.8</jdk.version>
 		<hibernate.version>4.3.5.Final</hibernate.version>
 		<org.aspectj-version>1.7.4</org.aspectj-version>
-	</properties>
+        <spring-data-jpa.version>1.11.4.RELEASE</spring-data-jpa.version>
+    </properties>
 </project>

@@ -28,7 +28,7 @@ public class CountryDAO {
 
 	public Country addCountry(Country country) {
 		Session session = this.sessionFactory.getCurrentSession();
-		session.persist(country);
+		session.merge(country);
 		return country;
 	}
 

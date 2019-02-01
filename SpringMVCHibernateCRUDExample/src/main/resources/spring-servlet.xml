@@ -53,5 +53,7 @@
 			ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
 
+    <tx:annotation-driven/>
+
 
 </beans:beans>

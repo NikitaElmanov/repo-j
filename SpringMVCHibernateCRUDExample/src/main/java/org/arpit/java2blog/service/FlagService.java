@@ -4,6 +4,7 @@ import org.arpit.java2blog.dao.CountryDAO;
 import org.arpit.java2blog.dao.FlagDao;
 import org.arpit.java2blog.model.Country;
 import org.arpit.java2blog.model.Flag;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,4 +42,13 @@ public class FlagService {
         flagDao.deleteFlag(id);
     }
 
+    @Transactional
+    public List<String> getAllNames(){
+        return flagDao.getAllNames();
+    }
+
+    @Transactional
+    public void fillTableFlag() {
+        flagDao.fillTableFlag();
+    }
 }

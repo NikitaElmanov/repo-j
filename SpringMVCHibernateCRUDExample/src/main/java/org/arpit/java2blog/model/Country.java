@@ -20,7 +20,7 @@ public class Country{
 	@Column(name = "population")
 	int population;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "f_id")
 	private Flag flag;
 
