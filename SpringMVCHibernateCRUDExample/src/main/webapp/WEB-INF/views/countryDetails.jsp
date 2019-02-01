@@ -53,11 +53,7 @@ th {
         <tr>
             <td>Flag:</td>
             <td>
-                <form:select path="flag">
-                    <c:forEach items="${listOfFlags}" var="item">
-                        <form:option value="${item}"/>
-                    </c:forEach>
-                </form:select>
+                <form:select path="flag" items="${listOfFlags}"></form:select>
             </td>
         </tr>
 		<tr>

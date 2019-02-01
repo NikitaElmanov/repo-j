@@ -31,8 +31,6 @@ public class CountryController {
 		List<Country> listOfCountries = countryService.getAllCountries();
 		List<Flag> listOfFlags = flagService.getAllFlags();
 
-		logger.info(listOfFlags.size());
-
 		model.addAttribute("country", new Country());
 		model.addAttribute("listOfCountries", listOfCountries);
 		model.addAttribute("listOfFlags", listOfFlags);
@@ -42,12 +40,12 @@ public class CountryController {
 
 	@RequestMapping(value = "/i", method = RequestMethod.GET, headers = "Accept=application/json")
 	public String getCountryById() {
-	    boolean foo = true;
-	    if (foo){
-	        foo = !foo;
-            flagService.fillTableFlag();
-        }
 
+//        boolean foo = true;
+//        if (foo){
+//            foo = !foo;
+//            flagService.fillTableFlag(); // starting filling of memorable table called 'flag'
+//        }
 	    return "index";
 	}
 
