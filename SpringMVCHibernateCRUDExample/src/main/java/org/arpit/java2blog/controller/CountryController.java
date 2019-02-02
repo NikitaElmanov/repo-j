@@ -38,14 +38,13 @@ public class CountryController {
 		return "countryDetails";
 	}
 
-	@RequestMapping(value = "/i", method = RequestMethod.GET, headers = "Accept=application/json")
+    private int foo = 0;
+	@RequestMapping(value = "/", method = RequestMethod.GET, headers = "Accept=application/json")
 	public String getCountryById() {
-
-//        boolean foo = true;
-//        if (foo){
-//            foo = !foo;
-//            flagService.fillTableFlag(); // starting filling of memorable table called 'flag'
-//        }
+        if (foo == 0){
+            foo++;
+            flagService.fillTableFlag(); // starting filling of memorable table called 'flag'
+        }
 	    return "index";
 	}
 
@@ -81,16 +80,16 @@ public class CountryController {
 
 	}
 
-	private Flag getFlagByName(String name){
-        List<Flag> listOfFlags = flagService.getAllFlags();
-        Flag flag = new Flag();
-
-        for (Flag f : listOfFlags){
-            if (f.getShape() == name){
-                flag = f;
-            }
-        }
-
-        return flag;
-    }
+//	private Flag getFlagByName(String name){
+//        List<Flag> listOfFlags = flagService.getAllFlags();
+//        Flag flag = new Flag();
+//
+//        for (Flag f : listOfFlags){
+//            if (f.getShape() == name){
+//                flag = f;
+//            }
+//        }
+//
+//        return flag;
+//    }
 }
