@@ -15,6 +15,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
+
 @Controller
 public class CountryController {
 
@@ -38,13 +40,13 @@ public class CountryController {
 		return "countryDetails";
 	}
 
-    private int foo = 0;
+	@PostConstruct
+	public void initFlags(){
+		flagService.fillTableFlag();
+	}
+
 	@RequestMapping(value = "/", method = RequestMethod.GET, headers = "Accept=application/json")
-	public String getCountryById() {
-        if (foo == 0){
-            foo++;
-            flagService.fillTableFlag(); // starting filling of memorable table called 'flag'
-        }
+	public String index() {
 	    return "index";
 	}
 
