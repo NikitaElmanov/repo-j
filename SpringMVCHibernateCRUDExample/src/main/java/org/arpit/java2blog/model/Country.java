@@ -1,6 +1,8 @@
 package org.arpit.java2blog.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 /*
  * This is our model class and it corresponds to Country table in database
@@ -12,13 +14,13 @@ public class Country{
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	int id;
+	private int id;
 
 	@Column(name = "name")
-	String countryName;
+	private String countryName;
 
 	@Column(name = "population")
-	int population;
+	private Integer population;
 
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "f_id")
@@ -26,7 +28,7 @@ public class Country{
 
     public Country() { }
 
-    public Country(String countryName, int population) {
+    public Country(String countryName, Integer population) {
         this.countryName = countryName;
         this.population = population;
     }
@@ -51,11 +53,11 @@ public class Country{
         this.countryName = countryName;
     }
 
-    public int getPopulation() {
+    public Integer getPopulation() {
         return population;
     }
 
-    public void setPopulation(int population) {
+    public void setPopulation(Integer population) {
         this.population = population;
     }
 

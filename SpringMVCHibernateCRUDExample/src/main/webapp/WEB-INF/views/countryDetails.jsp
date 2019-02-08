@@ -44,11 +44,13 @@ th {
 		<tr>
 		<form:hidden path="id" />
           <td><form:label path="countryName">Country Name:</form:label></td>
-          <td><form:input path="countryName" size="30" maxlength="30"></form:input></td>
+          <td><form:input path="countryName" size="30" maxlength="30"/>
+                <form:errors path="countryName" cssStyle="color: red"/></td>
         </tr>
 		<tr>
-			    <td><form:label path="population">Population:</form:label></td>
-          <td><form:input path="population" size="30" maxlength="30" placeholder="145000000"></form:input></td>
+			    <td>Population:</td>
+          <td><form:input path="population" size="30" maxlength="30"/>
+              <form:errors path="population" cssStyle="color: red"/></td>
 		</tr>
         <tr>
             <td>Flag:</td>

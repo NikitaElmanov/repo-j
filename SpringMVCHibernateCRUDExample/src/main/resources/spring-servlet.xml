@@ -23,10 +23,10 @@
 		<!--<beans:property name="username" value="root" />-->
 		<!--<beans:property name="password" value="lololo98" />-->
 
-		<beans:property name="driverClassName" value="org.h2.Driver" />
-		<beans:property name="url"             value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE" />
-		<beans:property name="username"        value="sa" />
-		<beans:property name="password"        value="" />
+		<beans:property name="driverClassName" value="#{driver}" />
+		<beans:property name="url"             value="#{url}" />
+		<beans:property name="username"        value="#{user}" />
+		<beans:property name="password"        value="#{password}" />
 	</beans:bean>
 
 	<!-- Hibernate 4 SessionFactory Bean definition -->

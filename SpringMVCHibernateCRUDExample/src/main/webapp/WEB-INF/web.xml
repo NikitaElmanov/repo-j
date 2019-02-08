@@ -9,6 +9,12 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>WEB-INF/spring-servlet.xml</param-value>
     </context-param>
+
+    <context-param>
+        <param-name>javax.faces.VALIDATE_EMPTY_FIELDS</param-name>
+        <param-value>false</param-value>
+    </context-param>
+
 	<listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 </listener>
@@ -24,6 +30,13 @@
  <servlet-name>spring</servlet-name>
  <url-pattern>/</url-pattern>
 </servlet-mapping>
+
+    <jsp-config>
+        <jsp-property-group>
+            <url-pattern>*.jsp</url-pattern>
+            <page-encoding>UTF-8</page-encoding>
+        </jsp-property-group>
+    </jsp-config>
 
 </web-app>
 
