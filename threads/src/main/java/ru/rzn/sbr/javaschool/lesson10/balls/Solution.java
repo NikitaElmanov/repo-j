@@ -76,7 +76,7 @@ public class Solution {
         listOfFuture.add(f3);
         listOfFuture.add(f4);
 
-        int time = (int) (Math.floor(Math.random() * (3000 + 1000 - 1)) + 1000);
+        int time = (int) (Math.floor(Math.random() * (10000 + 1000 - 1)) + 1000);
 
         Timer timer = new Timer(time, new ActionListener() {
             @Override
