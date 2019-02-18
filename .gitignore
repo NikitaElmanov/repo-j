@@ -4,4 +4,4 @@
 *.iml
 
 
-.gitignore
+*/.gitignore
