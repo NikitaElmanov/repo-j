@@ -13,8 +13,10 @@ public class Main {
         Person person2 = (Person)person.clone();
         person2.setName("Ann");
 
-        System.out.println(person);
-        System.out.println(person2);
+        person2.setListOfFlats(Arrays.asList("11", "22", "33", "66"));
+
+        System.out.println(person.getListOfFlats());
+        System.out.println(person2.getListOfFlats());
 
     }
 

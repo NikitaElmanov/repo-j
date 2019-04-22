@@ -1,5 +1,6 @@
 package patterns.prototype.classes;
 
+import jdk.nashorn.internal.objects.annotations.Constructor;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,45 +19,26 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class Person implements Copyable {
 
     private int id;
     private String name;
     private List<String> listOfFlats = new ArrayList<String>();
 
-    private Person() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<String> getListOfFlats() {
-        return listOfFlats;
-    }
-
-    public void setListOfFlats(List<String> listOfFlats) {
-        this.listOfFlats = listOfFlats;
-    }
-
     public Object clone() {
         Person person = new Person();
 
         person.setId(this.getId());
         person.setName(this.getName());
-        person.setListOfFlats(this.getListOfFlats());
+
+        List<String> temp = new ArrayList<>();
+
+        for(String str : listOfFlats){
+            temp.add(str);
+        }
+
+        person.setListOfFlats(temp);
 
         return person;
     }

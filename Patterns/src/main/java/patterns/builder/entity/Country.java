@@ -17,20 +17,6 @@ public class Country {
         this.area = countryBuilder.getArea();
     }
 
-    @Override
-    public String toString() {
-        return "Country{" +
-                "name='" + name + '\'' +
-                ", hymn='" + hymn + '\'' +
-                ", population=" + population +
-                ", area=" + area +
-                '}';
-    }
-
-    public String doSomething(){
-        return this.getClass().getSimpleName() + " is working...";
-    }
-
     public static class CountryBuilder {
 
         //important
@@ -75,5 +61,19 @@ public class Country {
         public Country build(){
             return new Country(this);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Country{" +
+                "name='" + name + '\'' +
+                ", hymn='" + hymn + '\'' +
+                ", population=" + population +
+                ", area=" + area +
+                '}';
+    }
+
+    public String doSomething(){
+        return this.name + " is working...";
     }
 }
