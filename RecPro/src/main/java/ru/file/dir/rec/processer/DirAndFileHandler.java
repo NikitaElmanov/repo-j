@@ -5,7 +5,7 @@ import java.io.*;
 public class DirAndFileHandler {
 
     private static BufferedWriter bw;
-    private static BufferedReader br;
+//    private static BufferedReader br;
 
     public DirAndFileHandler(File resFile) {
         initReaderAndWriter(resFile);
@@ -17,19 +17,9 @@ public class DirAndFileHandler {
                 resFile.createNewFile();
             }
             this.bw = new BufferedWriter(new FileWriter(resFile));
-            this.br = new BufferedReader(new FileReader(resFile));
+//            this.br = new BufferedReader(new FileReader(resFile));
         } catch (IOException e) {
             e.printStackTrace();
-        }
-    }
-
-    private static void writeIntoFile(File entry){
-        try {
-            bw.write(entry.getAbsolutePath());
-            bw.newLine();
-            bw.flush();
-        } catch (IOException e){
-            e.fillInStackTrace();
         }
     }
 
@@ -49,6 +39,16 @@ public class DirAndFileHandler {
                     writeIntoFile(entry);
                 }
             }
+        } catch (IOException e){
+            e.fillInStackTrace();
+        }
+    }
+
+    private static void writeIntoFile(File entry){
+        try {
+            bw.write(entry.getAbsolutePath());
+            bw.newLine();
+            bw.flush();
         } catch (IOException e){
             e.fillInStackTrace();
         }

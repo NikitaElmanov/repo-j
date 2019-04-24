@@ -8,9 +8,17 @@ public class Main {
 
     public static void main(String[] args) {
         new DirAndFileHandler(
-                new File("D:\\GitHub\\repository\\repo\\RecPro\\src\\main\\resources\\resFile.txt"))
-                .process("D:\\GitHub\\repository\\repo\\RecPro");
+                new File("D:\\GitHub\\repository\\repo\\RecPro\\src\\main\\resources\\resFile.txt"));
+
+        final long startTime = System.currentTimeMillis();
+
+        DirAndFileHandler.process("D:\\GitHub\\repository\\repo\\RecPro\\root\\");
 
         DirAndFileHandler.closeBW();
+
+        final long endTime = System.currentTimeMillis();
+
+        System.out.println("Total execution time: " + (endTime - startTime));
+
     }
 }
