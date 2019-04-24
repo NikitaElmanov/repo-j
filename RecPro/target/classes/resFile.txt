@@ -1,0 +1,6 @@
+D:\GitHub\repository\repo\RecPro\.idea
+D:\GitHub\repository\repo\RecPro\.idea\compiler.xml
+D:\GitHub\repository\repo\RecPro\.idea\misc.xml
+D:\GitHub\repository\repo\RecPro\.idea\uiDesigner.xml
+D:\GitHub\repository\repo\RecPro\.idea\vcs.xml
+D:\GitHub\repository\repo\RecPro\.idea\workspace.xml
