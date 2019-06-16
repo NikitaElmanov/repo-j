@@ -18,7 +18,6 @@ public class TestServlet extends HttpServlet {
         out.println("<h1>Hi <em>It's</em> me!</h1>");
         out.println("<h1>Servlet test at " + request.getContextPath() + "</h1>");
         out.println("<h2>bye!</h2>");
-        out.println("<h2>bye!</h2>");
 
         out.close();
     }
