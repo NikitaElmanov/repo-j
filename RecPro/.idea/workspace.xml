@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="25b1fadd-6af4-49fd-b63d-97c9dc8ceef7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/root/two/1_two/11/text2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/file/dir/rec/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/file/dir/rec/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/file/dir/rec/processer/DirAndFileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/file/dir/rec/processer/DirAndFileHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/resFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resFile.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/resFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/resFile.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/file/dir/rec/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/file/dir/rec/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/file/dir/rec/processer/DirAndFileHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/file/dir/rec/processer/DirAndFileHandler.class" afterDir="false" />
-    </list>
+    <list default="true" id="25b1fadd-6af4-49fd-b63d-97c9dc8ceef7" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,10 +14,11 @@
     <session id="974134365">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.40" value="1" />
+          <entry key="project.open.time.67" value="1" />
           <entry key="project.open.time.69" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -60,7 +52,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/file/dir/rec/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
+            <state relative-caret-position="120">
               <caret line="10" column="93" selection-start-line="10" selection-start-column="93" selection-end-line="10" selection-end-column="93" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -74,10 +66,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
               <caret line="9" column="41" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
-              <folding>
-                <element signature="e#283#284#0" expanded="true" />
-                <element signature="e#327#328#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -95,7 +83,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/resources/resFile2.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
-              <caret line="5" column="45" lean-forward="true" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
+              <caret line="5" column="45" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -156,7 +144,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -211,6 +198,7 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -273,16 +261,18 @@
       <updated>1556089743748</updated>
       <workItem from="1556089753938" duration="5732000" />
       <workItem from="1556129414003" duration="3465000" />
+      <workItem from="1558416227064" duration="29000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9197000" />
+    <option name="totallyTimeSpent" value="9226000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1376" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19072948" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.193769" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -330,15 +320,19 @@
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/file/dir/rec/processer/service/ServiceDirAndFileHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="49" selection-start-line="2" selection-start-column="49" selection-end-line="2" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/file/dir/rec/processer/service/ServiceDirAndFileHandler.java" />
     <entry file="file://$PROJECT_DIR$/root/two/1_two/11/text2.txt">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/file/dir/rec/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="10" column="93" selection-start-line="10" selection-start-column="93" selection-end-line="10" selection-end-column="93" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/file/dir/rec/processer/DirAndFileHandler.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -347,16 +341,6 @@
           <folding>
             <element signature="e#283#284#0" expanded="true" />
             <element signature="e#327#328#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/file/dir/rec/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="93" selection-start-line="10" selection-start-column="93" selection-end-line="10" selection-end-column="93" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -371,7 +355,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/resFile2.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
-          <caret line="5" column="45" lean-forward="true" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
+          <caret line="5" column="45" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
         </state>
       </provider>
     </entry>
