@@ -3,22 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-    <servlet>
-        <servlet-name>TestServlet</servlet-name>
-        <servlet-class>ru.pro.test.TestServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>TestServlet</servlet-name>
-        <url-pattern>/e</url-pattern>
-    </servlet-mapping>
 
     <servlet>
-        <servlet-name>TestServletTwo</servlet-name>
-        <servlet-class>ru.pro.test.TestServletTwo</servlet-class>
+        <servlet-name>TestServletMain</servlet-name>
+        <servlet-class>ru.pro.test.TestServletMain</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>TestServletTwo</servlet-name>
-        <url-pattern>/e2</url-pattern>
+        <servlet-name>TestServletMain</servlet-name>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
+
 </web-app>
