@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class TestServlet extends HttpServlet {
+public class TestServletTwo extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
@@ -15,11 +15,7 @@ public class TestServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();
 
-        out.println("<h1>Hi <em>It's</em> me!</h1>");
-        out.println("<h1>Servlet test at " + request.getContextPath() + "</h1>");
-        out.println("<a href='images/face.jpg'>Get image</a><br>");
-        out.println("<img alt='sddddddddff' style='width: 300px; border-radius: 20px;' src="+ request.getContextPath() +"'images/chroma.jpg'/>");
-        out.println("<h2>bye!</h2>");
+        out.write("<img src='images/face.jpg' alt='face' height='42' width='42'>");
 
         out.close();
     }
