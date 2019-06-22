@@ -5,12 +5,28 @@
          version="4.0">
 
     <servlet>
-        <servlet-name>TestServletMain</servlet-name>
-        <servlet-class>ru.pro.test.TestServletMain</servlet-class>
+        <servlet-name>CalcServlet</servlet-name>
+        <servlet-class>ru.pro.test.CalcServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
     </servlet>
+
     <servlet-mapping>
-        <servlet-name>TestServletMain</servlet-name>
+        <servlet-name>CalcServlet</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TestErrorServlet</servlet-name>
+        <servlet-class>ru.pro.test.TestErrorServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TestErrorServlet</servlet-name>
+        <url-pattern>/some</url-pattern>
+    </servlet-mapping>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/pages/error/404.jsp</location>
+    </error-page>
 
 </web-app>

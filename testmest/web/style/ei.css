@@ -2,3 +2,7 @@ h1{
     color: aquamarine;
     background-color: black;
 }
+
+#error-mes{
+    color: red;
+}
