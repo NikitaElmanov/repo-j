@@ -1,7 +1,7 @@
-package ru.sber.seq.graph;
+package ru.sber.seq.graph.unimportant;
 
 import ru.sber.seq.graph.convert.ConvertMapper;
-import ru.sber.seq.graph.tasks.impl.Step;
+import ru.sber.seq.graph.steps.impl.Step;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +14,8 @@ public class MainIntoFile {
         steps.add(new Step(1, true));
         steps.add(new Step(2, true, 3));
         steps.add(new Step(3, true, 2));
-        steps.add(new Step(4, true));
-        steps.add(new Step(5, true));
+        steps.add(new Step(4, false));
+        steps.add(new Step(5, false));
 
         ConvertMapper.convertInto(steps);
 

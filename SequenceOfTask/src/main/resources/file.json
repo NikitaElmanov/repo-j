@@ -1,21 +1,26 @@
 [ {
-  "numberOfStep" : 1,
-  "forward" : true,
-  "parallelWith" : null
+  "number" : 1,
+  "checkAtTheEnd" : true,
+  "parallelWith" : null,
+  "wellDone" : false
 }, {
-  "numberOfStep" : 2,
-  "forward" : true,
-  "parallelWith" : 3
+  "number" : 2,
+  "checkAtTheEnd" : true,
+  "parallelWith" : 3,
+  "wellDone" : false
 }, {
-  "numberOfStep" : 3,
-  "forward" : true,
-  "parallelWith" : 2
+  "number" : 3,
+  "checkAtTheEnd" : true,
+  "parallelWith" : 2,
+  "wellDone" : false
 }, {
-  "numberOfStep" : 4,
-  "forward" : true,
-  "parallelWith" : null
+  "number" : 4,
+  "checkAtTheEnd" : false,
+  "parallelWith" : null,
+  "wellDone" : false
 }, {
-  "numberOfStep" : 5,
-  "forward" : true,
-  "parallelWith" : null
+  "number" : 5,
+  "checkAtTheEnd" : false,
+  "parallelWith" : null,
+  "wellDone" : false
 } ]

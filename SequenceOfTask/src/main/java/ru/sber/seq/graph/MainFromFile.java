@@ -1,7 +1,7 @@
 package ru.sber.seq.graph;
 
 import ru.sber.seq.graph.convert.ConvertMapper;
-import ru.sber.seq.graph.tasks.impl.Step;
+import ru.sber.seq.graph.steps.impl.Step;
 
 import java.util.List;
 
@@ -11,14 +11,14 @@ public class MainFromFile {
 
         List<Step> steps = ConvertMapper.convertFrom("src\\main\\resources\\file.json");
 
-//        for (Step step : steps){
-//            System.out.println(step.getNumberOfStep() + " "
-//            + step.getForward() + " "
-//            + step.getParallelWith());
-//        }
+        runAllStep(steps);
+    }
 
+    private static void runAllStep(List<Step> steps) {
         for (Step step : steps){
-            step.doSome();
+            if (!step.doSome()){
+                continue;
+            }
         }
     }
 }

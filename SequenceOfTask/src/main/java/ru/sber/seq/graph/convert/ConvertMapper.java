@@ -4,7 +4,7 @@ import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
-import ru.sber.seq.graph.tasks.impl.Step;
+import ru.sber.seq.graph.steps.impl.Step;
 
 import java.io.File;
 import java.io.IOException;
