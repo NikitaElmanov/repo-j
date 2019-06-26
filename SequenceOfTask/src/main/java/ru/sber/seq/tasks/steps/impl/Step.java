@@ -78,9 +78,9 @@ public class Step implements СonsistentSteps, Serializable {
             e.printStackTrace();
         }
 
-        perform();
+        this.perform();
 
-        if (this.getNumber() == 3|| this.getNumber() == 5){
+        if (this.getNumber() == 4|| this.getNumber() == 5){
             this.setWellDone(false);                        //the var wellDone is false already for all steps but
         } else{                                             //i need to see number of steps which will be finished unsuccessfully
             this.setWellDone(true);
@@ -96,11 +96,11 @@ public class Step implements СonsistentSteps, Serializable {
                 parallelTask = this.getParallelWith();
             }
             if (this.getNumber() == parallelTask){
-                    System.out.println("Step " + this.getNumber() + " is parallel with " + this.getParallelWith() + " and they did something.");
+                    System.out.println("Step " + this.getNumber() + " is parallel with Step " + this.getParallelWith() + " and they did something.");
                     parallelTask = 0;
-                }
-            } else {
-                System.out.println("Step " + this.getNumber() + " did something.");
+            }
+        } else {
+            System.out.println("Step " + this.getNumber() + " did something.");
         }
     }
 
