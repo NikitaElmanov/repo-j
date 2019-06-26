@@ -1,11 +1,8 @@
-package ru.sber.seq.graph.steps.impl;
+package ru.sber.seq.tasks.steps.impl;
 
-import ru.sber.seq.graph.steps.СonsistentSteps;
+import ru.sber.seq.tasks.steps.СonsistentSteps;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -23,9 +20,9 @@ public class Step implements СonsistentSteps, Serializable {
     private Integer number;
     private Boolean checkAtTheEnd;
     private Integer parallelWith;
-    private Boolean wellDone;
+    private transient Boolean wellDone;
 
-    private static Integer num = 0;
+    private static Integer parallelTask = 0;
 
     public Step() {
     }
@@ -95,15 +92,15 @@ public class Step implements СonsistentSteps, Serializable {
     private void perform() {
 
         if (!Objects.isNull(this.getParallelWith())){
-            if (num == 0){
-                num = this.getParallelWith();
+            if (parallelTask == 0){
+                parallelTask = this.getParallelWith();
             }
-            if (this.getNumber() == num){
-                System.out.println("Step " + this.getNumber() + " is parallel with " + this.getParallelWith() + " and they did something.");
-                num = 0;
-            }
-        } else {
-            System.out.println("Step " + this.getNumber() + " did something.");
+            if (this.getNumber() == parallelTask){
+                    System.out.println("Step " + this.getNumber() + " is parallel with " + this.getParallelWith() + " and they did something.");
+                    parallelTask = 0;
+                }
+            } else {
+                System.out.println("Step " + this.getNumber() + " did something.");
         }
     }
 
@@ -116,7 +113,7 @@ public class Step implements СonsistentSteps, Serializable {
             return true;
         }
 
-        System.out.println("Step " + this.getNumber() + " have some problem");
+        System.out.println("Step " + this.getNumber() + " have done with error.");
         return false;
     }
 }

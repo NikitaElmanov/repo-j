@@ -1,7 +1,7 @@
-package ru.sber.seq.graph;
+package ru.sber.seq.tasks;
 
-import ru.sber.seq.graph.convert.ConvertMapper;
-import ru.sber.seq.graph.steps.impl.Step;
+import ru.sber.seq.tasks.convert.ConvertMapper;
+import ru.sber.seq.tasks.steps.impl.Step;
 
 import java.util.List;
 

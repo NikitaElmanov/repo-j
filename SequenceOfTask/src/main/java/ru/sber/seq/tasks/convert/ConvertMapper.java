@@ -1,10 +1,10 @@
-package ru.sber.seq.graph.convert;
+package ru.sber.seq.tasks.convert;
 
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
-import ru.sber.seq.graph.steps.impl.Step;
+import ru.sber.seq.tasks.steps.impl.Step;
 
 import java.io.File;
 import java.io.IOException;
@@ -36,7 +36,6 @@ public class ConvertMapper {
 
         try {
             File file = new File(path);
-
             steps = mapper.readValue(file, new TypeReference<List<Step>>(){});
 
         } catch (

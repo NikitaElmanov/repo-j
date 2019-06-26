@@ -2,25 +2,25 @@
   "number" : 1,
   "checkAtTheEnd" : true,
   "parallelWith" : null,
-  "wellDone" : false
+  "wellDone" : null
 }, {
   "number" : 2,
   "checkAtTheEnd" : true,
   "parallelWith" : 3,
-  "wellDone" : false
+  "wellDone" : null
 }, {
   "number" : 3,
   "checkAtTheEnd" : true,
   "parallelWith" : 2,
-  "wellDone" : false
+  "wellDone" : null
 }, {
   "number" : 4,
   "checkAtTheEnd" : false,
   "parallelWith" : null,
-  "wellDone" : false
+  "wellDone" : null
 }, {
   "number" : 5,
   "checkAtTheEnd" : false,
   "parallelWith" : null,
-  "wellDone" : false
+  "wellDone" : null
 } ]

@@ -1,4 +1,4 @@
-package ru.sber.seq.graph.steps;
+package ru.sber.seq.tasks.steps;
 
 public interface СonsistentSteps {
     Boolean doSome();
