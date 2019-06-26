@@ -1,0 +1,21 @@
+[ {
+  "numberOfStep" : 1,
+  "forward" : true,
+  "parallelWith" : null
+}, {
+  "numberOfStep" : 2,
+  "forward" : true,
+  "parallelWith" : 3
+}, {
+  "numberOfStep" : 3,
+  "forward" : true,
+  "parallelWith" : 2
+}, {
+  "numberOfStep" : 4,
+  "forward" : true,
+  "parallelWith" : null
+}, {
+  "numberOfStep" : 5,
+  "forward" : true,
+  "parallelWith" : null
+} ]

@@ -1,0 +1,38 @@
+h1{
+    color: aquamarine;
+    background-color: black;
+}
+
+#error-mes{
+    color: red;
+}
+
+.right{
+    margin-left: 400px;
+}
+
+ul{
+    font-family: Calibri;
+    font-style: oblique;
+    font-size: 20px;
+    color: orange;
+}
+
+li{
+    font-family: Calibri;
+    font-style: italic;
+    color: darkblue;
+}
+
+.container{
+    position: relative;
+}
+
+.r-b, .r-l{
+    position: absolute;
+}
+
+.r-b{
+    left: 300px;
+    top: 0px;
+}

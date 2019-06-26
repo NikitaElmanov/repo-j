@@ -2,8 +2,9 @@
 <html>
 <head>
     <title>404 Error</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/style/ei.css">
 </head>
 <body>
-    <h2 style="color: red;">You input invalid url page!</h2>
+    <h2>You input invalid url page!</h2>
 </body>
 </html>

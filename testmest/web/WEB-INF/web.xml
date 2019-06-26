@@ -9,12 +9,11 @@
         <servlet-class>ru.pro.test.CalcServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>CalcServlet</servlet-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/calc</url-pattern>
     </servlet-mapping>
-
+<!--////////////////////////////-->
     <servlet>
         <servlet-name>TestErrorServlet</servlet-name>
         <servlet-class>ru.pro.test.TestErrorServlet</servlet-class>
@@ -23,7 +22,25 @@
         <servlet-name>TestErrorServlet</servlet-name>
         <url-pattern>/some</url-pattern>
     </servlet-mapping>
-
+    <!--//////////////////////-->
+    <servlet>
+        <servlet-name>SetServlet</servlet-name>
+        <servlet-class>ru.pro.test.cookies.SetServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SetServlet</servlet-name>
+        <url-pattern>/set</url-pattern>
+    </servlet-mapping>
+<!--/////////////////////////////-->
+    <servlet>
+        <servlet-name>GetServlet</servlet-name>
+        <servlet-class>ru.pro.test.cookies.GetServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetServlet</servlet-name>
+        <url-pattern>/get</url-pattern>
+    </servlet-mapping>
+<!--/////////////////////////-->
     <error-page>
         <error-code>404</error-code>
         <location>/pages/error/404.jsp</location>
