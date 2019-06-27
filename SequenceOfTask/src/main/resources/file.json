@@ -30,7 +30,7 @@
   "command" : "This is Step 3",
   "checkPreviousStepRes" : false,
   "isDone" : false,
-  "hasError" : false,
+  "hasError" : true,
   "parallelWith" : [ 4 ],
   "goThen" : [ 5 ],
   "previousSteps" : [ 1, 6 ]
