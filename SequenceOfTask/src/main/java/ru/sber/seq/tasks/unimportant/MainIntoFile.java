@@ -11,20 +11,6 @@ public class MainIntoFile {
 
     public static void main(String[] args) {
 
-//        List<ArrayList<Integer>> matrix = new ArrayList();
-//        for(int i=0; i<7; i++){
-//            ArrayList <Integer> arr1=new ArrayList<>();
-//            matrix.add(arr1);
-//        }
-
-//        matrix.get(0).addAll(Arrays.asList(0,1,1,0,0,0,1));
-//        matrix.get(1).addAll(Arrays.asList(0,0,0,1,0,0,0));
-//        matrix.get(2).addAll(Arrays.asList(0,0,0,0,1,0,0));
-//        matrix.get(3).addAll(Arrays.asList(0,0,0,0,0,1,0));
-//        matrix.get(4).addAll(Arrays.asList(0,0,0,0,0,1,0));
-//        matrix.get(5).addAll(Arrays.asList(0,0,0,0,0,0,0));
-//        matrix.get(6).addAll(Arrays.asList(0,0,0,1,0,0,0));
-
         List<Step> steps = new ArrayList<>();
 
         steps.add(
