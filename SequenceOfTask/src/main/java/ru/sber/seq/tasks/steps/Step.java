@@ -20,7 +20,7 @@ public class Step implements Serializable {
 
     private List<Integer> parallelWith;
     private List<Integer> goThen;
-    private List<Integer> previousSteps;
+//    private List<Integer> previousSteps;
 
     private Step(StepBuilder builder){
         this.number = builder.number;
@@ -31,7 +31,7 @@ public class Step implements Serializable {
 
         this.parallelWith = builder.parallelWith;
         this.goThen = builder.goThen;
-        this.previousSteps = builder.previousSteps;
+//        this.previousSteps = builder.previousSteps;
     }
 
     public static class StepBuilder{
@@ -43,7 +43,7 @@ public class Step implements Serializable {
 
         private List<Integer> parallelWith;
         private List<Integer> goThen;
-        private List<Integer> previousSteps;
+//        private List<Integer> previousSteps;
 
         public StepBuilder(Integer number, String command, Boolean checkPreviousStepRes, Boolean hasError){
             this.number = number;
@@ -63,10 +63,10 @@ public class Step implements Serializable {
             return this;
         }
 
-        public StepBuilder setPreviousSteps(List<Integer> previousSteps) {
-            this.previousSteps = previousSteps;
-            return this;
-        }
+//        public StepBuilder setPreviousSteps(List<Integer> previousSteps) {
+//            this.previousSteps = previousSteps;
+//            return this;
+//        }
 
         public Step build(){
             return new Step(this);

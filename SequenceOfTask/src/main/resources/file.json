@@ -5,8 +5,7 @@
   "isDone" : false,
   "hasError" : true,
   "parallelWith" : null,
-  "goThen" : [ 1, 2, 6 ],
-  "previousSteps" : null
+  "goThen" : [ 1, 2, 6 ]
 }, {
   "number" : 1,
   "command" : "This is Step 1",
@@ -14,8 +13,7 @@
   "isDone" : false,
   "hasError" : false,
   "parallelWith" : [ 2, 6 ],
-  "goThen" : [ 3 ],
-  "previousSteps" : [ 0 ]
+  "goThen" : [ 3 ]
 }, {
   "number" : 2,
   "command" : "This is Step 2",
@@ -23,8 +21,7 @@
   "isDone" : false,
   "hasError" : false,
   "parallelWith" : [ 1, 6 ],
-  "goThen" : [ 4 ],
-  "previousSteps" : [ 0 ]
+  "goThen" : [ 4 ]
 }, {
   "number" : 3,
   "command" : "This is Step 3",
@@ -32,8 +29,7 @@
   "isDone" : false,
   "hasError" : true,
   "parallelWith" : [ 4 ],
-  "goThen" : [ 5 ],
-  "previousSteps" : [ 1, 6 ]
+  "goThen" : [ 5 ]
 }, {
   "number" : 4,
   "command" : "This is Step 4",
@@ -41,8 +37,7 @@
   "isDone" : false,
   "hasError" : false,
   "parallelWith" : [ 3 ],
-  "goThen" : [ 5 ],
-  "previousSteps" : [ 2 ]
+  "goThen" : [ 5 ]
 }, {
   "number" : 5,
   "command" : "This is Step 5",
@@ -50,8 +45,7 @@
   "isDone" : false,
   "hasError" : false,
   "parallelWith" : null,
-  "goThen" : null,
-  "previousSteps" : [ 3, 4 ]
+  "goThen" : null
 }, {
   "number" : 6,
   "command" : "This is Step 6",
@@ -59,6 +53,5 @@
   "isDone" : false,
   "hasError" : false,
   "parallelWith" : [ 1, 2 ],
-  "goThen" : [ 3 ],
-  "previousSteps" : [ 0 ]
+  "goThen" : [ 3 ]
 } ]
