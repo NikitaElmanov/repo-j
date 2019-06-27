@@ -1,26 +1,36 @@
 [ {
-  "number" : 1,
-  "checkAtTheEnd" : true,
+  "number" : 0,
+  "command" : "This is Step 0",
   "parallelWith" : null,
-  "wellDone" : null
+  "goThen" : [ 1, 2, 6 ]
+}, {
+  "number" : 1,
+  "command" : "This is Step 1",
+  "parallelWith" : [ 2, 6 ],
+  "goThen" : [ 3 ]
 }, {
   "number" : 2,
-  "checkAtTheEnd" : true,
-  "parallelWith" : 3,
-  "wellDone" : null
+  "command" : "This is Step 2",
+  "parallelWith" : [ 1, 6 ],
+  "goThen" : [ 4 ]
 }, {
   "number" : 3,
-  "checkAtTheEnd" : true,
-  "parallelWith" : 2,
-  "wellDone" : null
+  "command" : "This is Step 3",
+  "parallelWith" : [ 4 ],
+  "goThen" : [ 5 ]
 }, {
   "number" : 4,
-  "checkAtTheEnd" : false,
-  "parallelWith" : null,
-  "wellDone" : null
+  "command" : "This is Step 4",
+  "parallelWith" : [ 3 ],
+  "goThen" : [ 5 ]
 }, {
   "number" : 5,
-  "checkAtTheEnd" : false,
+  "command" : "This is Step 5",
   "parallelWith" : null,
-  "wellDone" : null
+  "goThen" : null
+}, {
+  "number" : 6,
+  "command" : "This is Step 6",
+  "parallelWith" : [ 1, 2 ],
+  "goThen" : [ 3 ]
 } ]
