@@ -14,6 +14,7 @@ import java.util.Objects;
 public class Step implements Serializable {
     private Integer number;
     private String command;
+    private Boolean isDone;
 
     private List<Integer> parallelWith;
     private List<Integer> goThen;
@@ -21,6 +22,7 @@ public class Step implements Serializable {
     private Step(StepBuilder builder){
         this.number = builder.number;
         this.command = builder.command;
+        this.isDone = builder.isDone;
 
         this.parallelWith = builder.parallelWith;
         this.goThen = builder.goThen;
@@ -29,13 +31,15 @@ public class Step implements Serializable {
     public static class StepBuilder{
         private Integer number;
         private String command;
+        private Boolean isDone;
 
         private List<Integer> parallelWith;
         private List<Integer> goThen;
 
-        public StepBuilder(Integer number, String command){
+        public StepBuilder(Integer number, String command, Boolean isDone){
             this.number = number;
             this.command = command;
+            this.isDone = isDone;
         }
 
         public StepBuilder setParallelWith(List<Integer> parallelWith) {
@@ -57,7 +61,30 @@ public class Step implements Serializable {
 
         for (Step step : steps){
 
-            System.out.println(step.getCommand());
+            if (!step.getIsDone()) {
+
+                System.out.println(step.getCommand());
+                step.setIsDone(true);
+
+                if (Objects.nonNull(step.getParallelWith())){
+                    for (Integer num : step.getParallelWith()){
+                        if (!steps.get(num).getIsDone()){
+                            System.out.println(steps.get(num).getCommand());
+                            steps.get(num).setIsDone(true);
+                        }
+                    }
+                }
+
+                if (Objects.nonNull(step.getGoThen())) {
+                    for (Integer num : step.getGoThen()) {
+                        if (!steps.get(num).getIsDone()) {
+
+                            System.out.println(steps.get(num).getCommand());
+                            steps.get(num).setIsDone(true);
+                        }
+                    }
+                }
+            }
         }
     }
 }
