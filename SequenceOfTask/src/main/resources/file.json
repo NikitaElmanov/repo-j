@@ -2,49 +2,49 @@
   "number" : 0,
   "command" : "This is Step 0",
   "checkPreviousStepRes" : false,
+  "goThen" : [ 1, 2, 6 ],
   "isDone" : false,
-  "hasError" : true,
-  "goThen" : [ 1, 2, 6 ]
+  "hasError" : true
 }, {
   "number" : 1,
   "command" : "This is Step 1",
   "checkPreviousStepRes" : true,
+  "goThen" : [ 3 ],
   "isDone" : false,
-  "hasError" : false,
-  "goThen" : [ 3 ]
+  "hasError" : false
 }, {
   "number" : 2,
   "command" : "This is Step 2",
   "checkPreviousStepRes" : false,
+  "goThen" : [ 4 ],
   "isDone" : false,
-  "hasError" : false,
-  "goThen" : [ 4 ]
+  "hasError" : false
 }, {
   "number" : 3,
   "command" : "This is Step 3",
   "checkPreviousStepRes" : false,
+  "goThen" : [ 5 ],
   "isDone" : false,
-  "hasError" : true,
-  "goThen" : [ 5 ]
+  "hasError" : false
 }, {
   "number" : 4,
   "command" : "This is Step 4",
   "checkPreviousStepRes" : false,
+  "goThen" : [ 5 ],
   "isDone" : false,
-  "hasError" : false,
-  "goThen" : [ 5 ]
+  "hasError" : false
 }, {
   "number" : 5,
   "command" : "This is Step 5",
   "checkPreviousStepRes" : true,
+  "goThen" : null,
   "isDone" : false,
-  "hasError" : false,
-  "goThen" : null
+  "hasError" : false
 }, {
   "number" : 6,
   "command" : "This is Step 6",
   "checkPreviousStepRes" : false,
+  "goThen" : [ 3 ],
   "isDone" : false,
-  "hasError" : false,
-  "goThen" : [ 3 ]
+  "hasError" : false
 } ]

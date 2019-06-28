@@ -13,44 +13,13 @@ public class MainIntoFile {
 
         List<Step> steps = new ArrayList<>();
 
-        steps.add(
-                new Step.StepBuilder(0, "This is Step 0", false, true)
-                        .setGoThen(Arrays.asList(1, 2, 6))
-                        .build());
-        steps.add(
-                new Step.StepBuilder(1, "This is Step 1", true, false)
-                        .setGoThen(Arrays.asList(3))
-//                        .setParallelWith(Arrays.asList(2, 6))
-//                        .setPreviousSteps(Arrays.asList(0))
-                        .build());
-        steps.add(
-                new Step.StepBuilder(2, "This is Step 2", false, false)
-                        .setGoThen(Arrays.asList(4))
-//                        .setParallelWith(Arrays.asList(1, 6))
-//                        .setPreviousSteps(Arrays.asList(0))
-                        .build());
-        steps.add(
-                new Step.StepBuilder(3, "This is Step 3", false, true)
-                        .setGoThen(Arrays.asList(5))
-//                        .setParallelWith(Arrays.asList(4))
-//                        .setPreviousSteps(Arrays.asList(1, 6))
-                        .build());
-        steps.add(
-                new Step.StepBuilder(4,"This is Step 4", false, false)
-                        .setGoThen(Arrays.asList(5))
-//                        .setParallelWith(Arrays.asList(3))
-//                        .setPreviousSteps(Arrays.asList(2))
-                        .build());
-        steps.add(
-                new Step.StepBuilder(5,"This is Step 5", true, false)
-//                        .setPreviousSteps(Arrays.asList(3, 4))
-                        .build());
-        steps.add(
-                new Step.StepBuilder(6, "This is Step 6", false, false)
-                        .setGoThen(Arrays.asList(3))
-//                        .setParallelWith(Arrays.asList(1, 2))
-//                        .setPreviousSteps(Arrays.asList(0))
-                        .build());
+        steps.add(new Step(0,"This is Step 0", false, true, Arrays.asList(1, 2, 6)));
+        steps.add(new Step(1,"This is Step 1", true, false, Arrays.asList(3)));
+        steps.add(new Step(2,"This is Step 2", false, false, Arrays.asList(4)));
+        steps.add(new Step(3,"This is Step 3", false, false, Arrays.asList(5)));
+        steps.add(new Step(4,"This is Step 4", false, false, Arrays.asList(5)));
+        steps.add(new Step(5,"This is Step 5", true, false));
+        steps.add(new Step(6,"This is Step 6", false, false, Arrays.asList(3)));
 
         ConvertMapper.convertInto(steps);
     }

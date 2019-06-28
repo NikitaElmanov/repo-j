@@ -4,75 +4,88 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.io.Serializable;
+import java.io.*;
 import java.util.List;
 import java.util.Objects;
 
-@Getter
 @Setter
+@Getter
 @NoArgsConstructor
-public class Step implements Serializable {
+public class Step implements Externalizable {
+
+    private static final long serialVersionUID = 1L;
+
     private Integer number;
     private String command;
     private Boolean checkPreviousStepRes;
-    private Boolean isDone;
-    private Boolean hasError;
-
     private List<Integer> goThen;
-//    private List<Integer> parallelWith;
-//    private List<Integer> previousSteps;
 
-    private Step(StepBuilder builder){
-        this.number = builder.number;
-        this.command = builder.command;
-        this.checkPreviousStepRes = builder.checkPreviousStepRes;
-        this.isDone = builder.isDone;
-        this.hasError = builder.hasError;
+    private transient Boolean isDone;
+    private transient Boolean hasError;
 
-        this.goThen = builder.goThen;
-//        this.parallelWith = builder.parallelWith;
-//        this.previousSteps = builder.previousSteps;
+    public Step(Integer number, String command, Boolean checkPreviousStepRes, Boolean hasError){
+        this.number = number;
+        this.command = command;
+        this.checkPreviousStepRes = checkPreviousStepRes;
+
+        this.hasError = hasError;
+
+        this.isDone = false;
     }
 
-    public static class StepBuilder{
-        private Integer number;
-        private String command;
-        private Boolean checkPreviousStepRes;
-        private Boolean isDone;
-        private Boolean hasError;
+    public Step(Integer number, String command, Boolean checkPreviousStepRes, Boolean hasError, List<Integer> goThen){
+        this.number = number;
+        this.command = command;
+        this.checkPreviousStepRes = checkPreviousStepRes;
 
-        private List<Integer> goThen;
-//        private List<Integer> parallelWith;
-//        private List<Integer> previousSteps;
+        this.hasError = hasError;
 
-        public StepBuilder(Integer number, String command, Boolean checkPreviousStepRes, Boolean hasError){
-            this.number = number;
-            this.command = command;
-            this.checkPreviousStepRes = checkPreviousStepRes;
-            this.hasError = hasError;
-            this.isDone = false;
-        }
+        this.goThen = goThen;
 
-        public StepBuilder setGoThen(List<Integer> goThen) {
-            this.goThen = goThen;
-            return this;
-        }
-
-//        public StepBuilder setParallelWith(List<Integer> parallelWith) {
-//            this.parallelWith = parallelWith;
-//            return this;
-//        }
-
-
-//        public StepBuilder setPreviousSteps(List<Integer> previousSteps) {
-//            this.previousSteps = previousSteps;
-//            return this;
-//        }
-
-        public Step build(){
-            return new Step(this);
-        }
+        this.isDone = false;
     }
+
+//    public static class StepBuilder{
+//        private Integer number;
+//        private String command;
+//        private Boolean checkPreviousStepRes;
+//
+//        private Boolean isDone;
+//        private Boolean hasError;
+//
+//        private List<Integer> goThen;
+////        private List<Integer> parallelWith;
+////        private List<Integer> previousSteps;
+//
+//        public StepBuilder(Integer number, String command, Boolean checkPreviousStepRes, Boolean hasError){
+//            this.number = number;
+//            this.command = command;
+//            this.checkPreviousStepRes = checkPreviousStepRes;
+//
+//            this.hasError = hasError;
+//            this.isDone = false;
+//        }
+//
+//        public StepBuilder setGoThen(List<Integer> goThen) {
+//            this.goThen = goThen;
+//            return this;
+//        }
+//
+////        public StepBuilder setParallelWith(List<Integer> parallelWith) {
+////            this.parallelWith = parallelWith;
+////            return this;
+////        }
+//
+//
+////        public StepBuilder setPreviousSteps(List<Integer> previousSteps) {
+////            this.previousSteps = previousSteps;
+////            return this;
+////        }
+//
+//        public Step build(){
+//            return new Step(this);
+//        }
+//    }
 
     public static void doSome(List<Step> steps) {
 
@@ -117,5 +130,21 @@ public class Step implements Serializable {
     private static void perform(List<Step> steps, Integer num){
         System.out.println(steps.get(num).getCommand());
         steps.get(num).setIsDone(true);
+    }
+
+    @Override
+    public void writeExternal(ObjectOutput out) throws IOException {
+        out.writeInt(number);
+        out.writeObject(command);
+        out.writeBoolean(checkPreviousStepRes);
+        out.writeObject(goThen);
+    }
+
+    @Override
+    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+        this.number = in.readInt();
+        this.command = (String) in.readObject();
+        this.checkPreviousStepRes = in.readBoolean();
+        this.goThen = (List<Integer>) in.readObject();
     }
 }

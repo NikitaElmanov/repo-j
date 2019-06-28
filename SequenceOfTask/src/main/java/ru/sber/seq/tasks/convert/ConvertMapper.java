@@ -6,13 +6,12 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
 import ru.sber.seq.tasks.steps.Step;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.List;
 
 public class ConvertMapper {
 
-    private static final ObjectMapper mapper = new ObjectMapper();;
+    private static final ObjectMapper mapper = new ObjectMapper();
 
     public static void convertInto(List<Step> steps){
         try {
