@@ -20,8 +20,8 @@ public class Step implements Externalizable {
     private Boolean checkPreviousStepRes;
     private List<Integer> goThen;
 
-    private transient Boolean isDone;
-    private transient Boolean hasError;
+    private Boolean isDone;
+    private Boolean hasError;
 
     public Step(Integer number, String command, Boolean checkPreviousStepRes, Boolean hasError){
         this.number = number;
