@@ -13,11 +13,11 @@ public class ConvertMapper {
 
     private static final ObjectMapper mapper = new ObjectMapper();
 
-    public static void convertInto(List<Step> steps){
+    public static void convertInto(List<Step> steps, String path){
         try {
             mapper.writerWithDefaultPrettyPrinter()
                     .writeValue(
-                            new File("src\\main\\resources\\file.json"), steps);
+                            new File(path), steps);
         } catch (
                 JsonGenerationException e) {
             e.printStackTrace();

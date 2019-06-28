@@ -1,5 +1,6 @@
 package ru.sber.seq.tasks.unimportant;
 
+import ru.sber.seq.tasks.convert.ConvertBasic;
 import ru.sber.seq.tasks.convert.ConvertMapper;
 import ru.sber.seq.tasks.steps.Step;
 
@@ -21,6 +22,7 @@ public class MainIntoFile {
         steps.add(new Step(5,"This is Step 5", true));
         steps.add(new Step(6,"This is Step 6", false, Arrays.asList(3)));
 
-        ConvertMapper.convertInto(steps);
+//        ConvertMapper.convertInto(steps, "..\\file.json");
+        ConvertBasic.convertWrite(steps, "..\\fileBasic.json");
     }
 }

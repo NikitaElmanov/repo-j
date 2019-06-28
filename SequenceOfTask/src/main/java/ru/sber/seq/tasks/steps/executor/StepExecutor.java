@@ -29,9 +29,9 @@ public class StepExecutor {
                 step.doSome();
                 isDoneList.set(i, true) ;
 
-//                if (step.getNumber() == 0){      //for testing in our json file step 1 has var checkPreviousStepRes as true
-//                    hasErrorList.set(0, true);   //and then in this part of the code we set flag error for step 0
-//                }
+                if (step.getNumber() == 0){      //for testing in our json file step 1 has var checkPreviousStepRes as true
+                    hasErrorList.set(0, true);   //and then in this part of the code we set flag error for step 0
+                }
 
                 if (Objects.nonNull(step.getGoThen())) {
                     for (Integer num : step.getGoThen()) {
