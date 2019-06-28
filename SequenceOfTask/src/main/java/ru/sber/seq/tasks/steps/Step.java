@@ -11,7 +11,7 @@ import java.util.Objects;
 @Setter
 @Getter
 @NoArgsConstructor
-public class Step implements Externalizable {
+public class Step implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -20,29 +20,18 @@ public class Step implements Externalizable {
     private Boolean checkPreviousStepRes;
     private List<Integer> goThen;
 
-    private Boolean isDone;
-    private Boolean hasError;
-
-    public Step(Integer number, String command, Boolean checkPreviousStepRes, Boolean hasError){
+    public Step(Integer number, String command, Boolean checkPreviousStepRes){
         this.number = number;
         this.command = command;
         this.checkPreviousStepRes = checkPreviousStepRes;
-
-        this.hasError = hasError;
-
-        this.isDone = false;
     }
 
-    public Step(Integer number, String command, Boolean checkPreviousStepRes, Boolean hasError, List<Integer> goThen){
+    public Step(Integer number, String command, Boolean checkPreviousStepRes,List<Integer> goThen){
         this.number = number;
         this.command = command;
         this.checkPreviousStepRes = checkPreviousStepRes;
 
-        this.hasError = hasError;
-
         this.goThen = goThen;
-
-        this.isDone = false;
     }
 
 //    public static class StepBuilder{
@@ -87,64 +76,7 @@ public class Step implements Externalizable {
 //        }
 //    }
 
-    public static void doSome(List<Step> steps) {
-
-        for (Step step : steps) {
-
-            if (!step.getIsDone()) {
-
-                if (Objects.nonNull(step.getGoThen())) {
-
-                    System.out.println(step.getCommand());
-                    step.setIsDone(true);
-//
-//                    if (Objects.nonNull(step.getParallelWith())) {
-//                        for (Integer num : step.getParallelWith()) {
-//                            if (!steps.get(num).getIsDone()) {
-//
-//                                System.out.println(steps.get(num).getCommand());
-//                                steps.get(num).setIsDone(true);
-//                            }
-//                        }
-//                    }
-
-                    for (Integer num : step.getGoThen()) {
-                        if (!steps.get(num).getIsDone()) {
-                            if (steps.get(num).getCheckPreviousStepRes()){
-                                if (!step.getHasError()) {
-                                    perform(steps, num);
-                                } else {
-                                    System.out.println(steps.get(num).getNumber() + " step can not be executed because step " + step.getNumber() + " fell down.");
-                                    steps.get(num).setIsDone(true);
-                                }
-                            } else {
-                                perform(steps, num);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private static void perform(List<Step> steps, Integer num){
-        System.out.println(steps.get(num).getCommand());
-        steps.get(num).setIsDone(true);
-    }
-
-    @Override
-    public void writeExternal(ObjectOutput out) throws IOException {
-        out.writeInt(number);
-        out.writeObject(command);
-        out.writeBoolean(checkPreviousStepRes);
-        out.writeObject(goThen);
-    }
-
-    @Override
-    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
-        this.number = in.readInt();
-        this.command = (String) in.readObject();
-        this.checkPreviousStepRes = in.readBoolean();
-        this.goThen = (List<Integer>) in.readObject();
+    public void doSome() {
+        System.out.println(this.getCommand());
     }
 }

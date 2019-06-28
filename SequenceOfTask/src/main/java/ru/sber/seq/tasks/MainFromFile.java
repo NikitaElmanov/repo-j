@@ -2,6 +2,7 @@ package ru.sber.seq.tasks;
 
 import ru.sber.seq.tasks.convert.ConvertMapper;
 import ru.sber.seq.tasks.steps.Step;
+import ru.sber.seq.tasks.steps.executor.StepExecutor;
 
 import java.util.List;
 
@@ -11,6 +12,6 @@ public class MainFromFile {
 
         List<Step> steps = ConvertMapper.convertFrom("src\\main\\resources\\file.json");
 
-        Step.doSome(steps);
+        StepExecutor.execute(steps);
     }
 }
