@@ -18,8 +18,8 @@ public class Step implements Serializable {
     private Boolean isDone;
     private Boolean hasError;
 
-    private List<Integer> parallelWith;
     private List<Integer> goThen;
+//    private List<Integer> parallelWith;
 //    private List<Integer> previousSteps;
 
     private Step(StepBuilder builder){
@@ -29,8 +29,8 @@ public class Step implements Serializable {
         this.isDone = builder.isDone;
         this.hasError = builder.hasError;
 
-        this.parallelWith = builder.parallelWith;
         this.goThen = builder.goThen;
+//        this.parallelWith = builder.parallelWith;
 //        this.previousSteps = builder.previousSteps;
     }
 
@@ -41,8 +41,8 @@ public class Step implements Serializable {
         private Boolean isDone;
         private Boolean hasError;
 
-        private List<Integer> parallelWith;
         private List<Integer> goThen;
+//        private List<Integer> parallelWith;
 //        private List<Integer> previousSteps;
 
         public StepBuilder(Integer number, String command, Boolean checkPreviousStepRes, Boolean hasError){
@@ -53,15 +53,16 @@ public class Step implements Serializable {
             this.isDone = false;
         }
 
-        public StepBuilder setParallelWith(List<Integer> parallelWith) {
-            this.parallelWith = parallelWith;
-            return this;
-        }
-
         public StepBuilder setGoThen(List<Integer> goThen) {
             this.goThen = goThen;
             return this;
         }
+
+//        public StepBuilder setParallelWith(List<Integer> parallelWith) {
+//            this.parallelWith = parallelWith;
+//            return this;
+//        }
+
 
 //        public StepBuilder setPreviousSteps(List<Integer> previousSteps) {
 //            this.previousSteps = previousSteps;
@@ -83,33 +84,38 @@ public class Step implements Serializable {
 
                     System.out.println(step.getCommand());
                     step.setIsDone(true);
-
-                    if (Objects.nonNull(step.getParallelWith())) {
-                        for (Integer num : step.getParallelWith()) {
-                            if (!steps.get(num).getIsDone()) {
-
-                                System.out.println(steps.get(num).getCommand());
-                                steps.get(num).setIsDone(true);
-                            }
-                        }
-                    }
+//
+//                    if (Objects.nonNull(step.getParallelWith())) {
+//                        for (Integer num : step.getParallelWith()) {
+//                            if (!steps.get(num).getIsDone()) {
+//
+//                                System.out.println(steps.get(num).getCommand());
+//                                steps.get(num).setIsDone(true);
+//                            }
+//                        }
+//                    }
 
                     for (Integer num : step.getGoThen()) {
-                        make(steps, num, step);
+                        if (!steps.get(num).getIsDone()) {
+                            if (steps.get(num).getCheckPreviousStepRes()){
+                                if (!step.getHasError()) {
+                                    perform(steps, num);
+                                } else {
+                                    System.out.println(steps.get(num).getNumber() + " step can not be executed because step " + step.getNumber() + " fell down.");
+                                    steps.get(num).setIsDone(true);
+                                }
+                            } else {
+                                perform(steps, num);
+                            }
+                        }
                     }
                 }
             }
         }
     }
 
-    private static void make(List<Step> steps, Integer num, Step step){
-        if (!steps.get(num).getIsDone() && !step.getHasError()) {
-
-            System.out.println(steps.get(num).getCommand());
-            steps.get(num).setIsDone(true);
-        } else {
-            System.out.println(steps.get(num).getNumber() + " step can not be executed because step " + step.getNumber() + " fell down.");
-            steps.get(num).setIsDone(true);
-        }
+    private static void perform(List<Step> steps, Integer num){
+        System.out.println(steps.get(num).getCommand());
+        steps.get(num).setIsDone(true);
     }
 }
