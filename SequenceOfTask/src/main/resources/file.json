@@ -26,7 +26,7 @@
 }, {
   "number" : 5,
   "command" : "This is Step 5",
-  "checkPreviousStepRes" : true,
+  "checkPreviousStepRes" : false,
   "goThen" : null
 }, {
   "number" : 6,
