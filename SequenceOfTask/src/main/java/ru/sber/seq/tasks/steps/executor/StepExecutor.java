@@ -18,40 +18,76 @@ public class StepExecutor {
 
     public static void execute(List<Step> steps){
 
-        for (int i = 0; i < steps.size(); i++){
-            hasErrorList.add(false);
-            isDoneList.add(false);
-        }
+        prepareArrays(steps);
 
         for (int i = 0 ; i < steps.size(); i++) {
             Step step = steps.get(i);
             if (!isDoneList.get(i)){
-                step.doSome();
-                isDoneList.set(i, true) ;
 
                 if (step.getNumber() == 0){      //for testing in our json file step 1 has var checkPreviousStepRes as true
-                    hasErrorList.set(0, true);   //and then in this part of the code we set flag error for step 0
+                    hasErrorList.set(1, true);   //and then in this part of the code we set flag error for step 0
+                }
+
+                if (!isDoneList.get(step.getNumber())){
+
+                    for (int g = 0 ; g < step.getNumber(); g++){
+                        if (Objects.nonNull(steps.get(g).getGoThen())){
+                            for (Integer num : steps.get(g).getGoThen()){
+                                if (step.getNumber() == num){
+                                    if (isDoneList.get(g)){
+                                        if (step.getCheckPreviousStepRes()){
+                                            if (!hasErrorList.get(g)){
+                                                performStep(steps, i, true);
+                                            } else {
+                                                System.out.println(steps.get(num).getNumber() + " step can not be executed because step " + steps.get(g).getNumber() + " fell down.");
+                                                isDoneList.set(num, true);
+                                                hasErrorList.set(num, true);
+                                            }
+                                        } else {
+                                            performStep(steps, i, true);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
 
                 if (Objects.nonNull(step.getGoThen())) {
+
+                    if (!isDoneList.get(i)){
+                        performStep(steps, i, true);
+                    }
+
                     for (Integer num : step.getGoThen()) {
                         if (!isDoneList.get(num)) {
                             if (steps.get(num).getCheckPreviousStepRes()) {
                                 if (!hasErrorList.get(i)) {
-                                    steps.get(num).doSome();
-                                    isDoneList.set(num, true);
+                                    performStep(steps, num, true);
                                 } else {
                                     System.out.println(steps.get(num).getNumber() + " step can not be executed because step " + step.getNumber() + " fell down.");
                                     isDoneList.set(num, true);
+                                    hasErrorList.set(num, true);
                                 }
                             } else {
-                                steps.get(num).doSome();
-                                isDoneList.set(num, true);
+                                performStep(steps, num, true);
                             }
                         }
                     }
                 }
             }
+        }
+    }
+
+    private static void performStep(List<Step> steps, int index, boolean b) {
+        steps.get(index).doSome();
+        isDoneList.set(index, true);
+    }
+
+    private static void prepareArrays(List<Step> steps) {
+        for (int i = 0; i < steps.size(); i++){
+            hasErrorList.add(false);
+            isDoneList.add(false);
         }
     }
 }

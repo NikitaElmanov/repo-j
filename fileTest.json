@@ -2,27 +2,27 @@
   "number" : 0,
   "command" : "This is Step 0",
   "checkPreviousStepRes" : false,
-  "goThen" : [ 1, 2, 6 ]
+  "goThen" : [ 1, 2 ]
 }, {
   "number" : 1,
   "command" : "This is Step 1",
   "checkPreviousStepRes" : true,
-  "goThen" : [ 3 ]
+  "goThen" : [ 3, 4 ]
 }, {
   "number" : 2,
   "command" : "This is Step 2",
   "checkPreviousStepRes" : false,
-  "goThen" : [ 4 ]
+  "goThen" : [ 5 ]
 }, {
   "number" : 3,
   "command" : "This is Step 3",
-  "checkPreviousStepRes" : true,
-  "goThen" : [ 5 ]
+  "checkPreviousStepRes" : false,
+  "goThen" : [ 6 ]
 }, {
   "number" : 4,
   "command" : "This is Step 4",
   "checkPreviousStepRes" : false,
-  "goThen" : [ 5 ]
+  "goThen" : [ 6 ]
 }, {
   "number" : 5,
   "command" : "This is Step 5",
@@ -32,5 +32,5 @@
   "number" : 6,
   "command" : "This is Step 6",
   "checkPreviousStepRes" : false,
-  "goThen" : [ 3 ]
+  "goThen" : null
 } ]

@@ -79,14 +79,4 @@ public class Step implements Serializable {
     public void doSome() {
         System.out.println(this.getCommand());
     }
-
-    @Override
-    public String toString() {
-        return "Step{" +
-                "number=" + number +
-                ", command='" + command + '\'' +
-                ", checkPreviousStepRes=" + checkPreviousStepRes +
-                ", goThen=" + goThen +
-                '}';
-    }
 }
