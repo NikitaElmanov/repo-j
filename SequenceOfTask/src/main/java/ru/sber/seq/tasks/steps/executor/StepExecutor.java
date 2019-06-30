@@ -25,7 +25,7 @@ public class StepExecutor {
             if (!isDoneList.get(i)){
 
                 if (step.getNumber() == 0){      //for testing in our json file step 1 has var checkPreviousStepRes as true
-                    hasErrorList.set(1, true);   //and then in this part of the code we set flag error for step 0
+                    hasErrorList.set(0, true);   //and then in this part of the code we set flag error for step 0
                 }
 
                 if (!isDoneList.get(step.getNumber())){
@@ -39,9 +39,7 @@ public class StepExecutor {
                                             if (!hasErrorList.get(g)){
                                                 performStep(steps, i, true);
                                             } else {
-                                                System.out.println(steps.get(num).getNumber() + " step can not be executed because step " + steps.get(g).getNumber() + " fell down.");
-                                                isDoneList.set(num, true);
-                                                hasErrorList.set(num, true);
+                                                notPerfromStep(steps, num, g, true);
                                             }
                                         } else {
                                             performStep(steps, i, true);
@@ -65,9 +63,7 @@ public class StepExecutor {
                                 if (!hasErrorList.get(i)) {
                                     performStep(steps, num, true);
                                 } else {
-                                    System.out.println(steps.get(num).getNumber() + " step can not be executed because step " + step.getNumber() + " fell down.");
-                                    isDoneList.set(num, true);
-                                    hasErrorList.set(num, true);
+                                    notPerfromStep(steps, num, i, true);
                                 }
                             } else {
                                 performStep(steps, num, true);
@@ -77,6 +73,12 @@ public class StepExecutor {
                 }
             }
         }
+    }
+
+    private static void notPerfromStep(List<Step> steps, Integer index, Integer currentIndex, boolean b) {
+        System.out.println(steps.get(index).getNumber() + " step can not be executed because step " + steps.get(currentIndex).getNumber() + " fell down.");
+        isDoneList.set(index, b);
+        hasErrorList.set(index, b);
     }
 
     private static void performStep(List<Step> steps, int index, boolean b) {

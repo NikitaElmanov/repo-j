@@ -34,48 +34,6 @@ public class Step implements Serializable {
         this.goThen = goThen;
     }
 
-//    public static class StepBuilder{
-//        private Integer number;
-//        private String command;
-//        private Boolean checkPreviousStepRes;
-//
-//        private Boolean isDone;
-//        private Boolean hasError;
-//
-//        private List<Integer> goThen;
-////        private List<Integer> parallelWith;
-////        private List<Integer> previousSteps;
-//
-//        public StepBuilder(Integer number, String command, Boolean checkPreviousStepRes, Boolean hasError){
-//            this.number = number;
-//            this.command = command;
-//            this.checkPreviousStepRes = checkPreviousStepRes;
-//
-//            this.hasError = hasError;
-//            this.isDone = false;
-//        }
-//
-//        public StepBuilder setGoThen(List<Integer> goThen) {
-//            this.goThen = goThen;
-//            return this;
-//        }
-//
-////        public StepBuilder setParallelWith(List<Integer> parallelWith) {
-////            this.parallelWith = parallelWith;
-////            return this;
-////        }
-//
-//
-////        public StepBuilder setPreviousSteps(List<Integer> previousSteps) {
-////            this.previousSteps = previousSteps;
-////            return this;
-////        }
-//
-//        public Step build(){
-//            return new Step(this);
-//        }
-//    }
-
     public void doSome() {
         System.out.println(this.getCommand());
     }
