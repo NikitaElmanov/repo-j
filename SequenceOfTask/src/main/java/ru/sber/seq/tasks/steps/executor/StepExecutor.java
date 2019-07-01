@@ -64,7 +64,7 @@ public class StepExecutor {
             for (int i = 0; i < nextStepsOfCurrent.size(); i++) {
                 if (nextStepsOfCurrent.get(steps.get(i).getNumber()) == 1) {
                     if (!isDoneList.get(steps.get(i).getNumber())) {
-                        performStep(steps, i, true);
+                        performStep(steps, steps.get(i).getNumber(), true);
                     }
                 }
             }
