@@ -19,11 +19,9 @@ public class StepExecutor {
     public void execute(List<Step> steps){
         prepareSupportArrays(steps);
 
-        isFallen.put(0, true);
-
         for (Step step : steps){
             if (!isFallen.get(step.getNumber()) && !isDoneList.get(step.getNumber())) {
-
+//                isFallen.put(0, true);
                 runCurrentStepAndPrevious(step, steps);
 
                 runNextStepsOfCurrent(step, steps);
@@ -73,6 +71,7 @@ public class StepExecutor {
         } else {
             killNextSteps(step, steps);
         }
+
     }
 
     private void notPerformStep(List<Step> steps, Integer index, Integer currentIndex, Boolean b) {

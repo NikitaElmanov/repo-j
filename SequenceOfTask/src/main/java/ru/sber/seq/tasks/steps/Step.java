@@ -8,9 +8,6 @@ import java.io.*;
 import java.util.List;
 import java.util.Objects;
 
-@Setter
-@Getter
-@NoArgsConstructor
 public class Step implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -31,6 +28,45 @@ public class Step implements Serializable {
         this.command = command;
         this.conditionTransition = conditionTransition;
 
+        this.relatedSteps = relatedSteps;
+    }
+
+    public Step() {
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
+
+    public String getCommand() {
+        return command;
+    }
+
+    public void setCommand(String command) {
+        this.command = command;
+    }
+
+    public Boolean getConditionTransition() {
+        return conditionTransition;
+    }
+
+    public void setConditionTransition(Boolean conditionTransition) {
+        this.conditionTransition = conditionTransition;
+    }
+
+    public List<Integer> getRelatedSteps() {
+        return relatedSteps;
+    }
+
+    public void setRelatedSteps(List<Integer> relatedSteps) {
         this.relatedSteps = relatedSteps;
     }
 
