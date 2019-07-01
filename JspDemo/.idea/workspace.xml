@@ -7,20 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ec25cfce-ae8e-4af2-9385-66b826980239" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/JspDemo.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/pages/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServletPro/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ServletPro/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServletPro/src/main/java/ru/pro/TestServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ServletPro/src/main/java/ru/pro/TestServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServletPro/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ServletPro/web/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServletPro/web/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/../ServletPro/web/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServletPro/web/jsp/error.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../ServletPro/web/jsp/error.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../testmest/src/main/java/ru/pro/test/CalcServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../testmest/src/main/java/ru/pro/test/CalcServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../testmest/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../testmest/web/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../testmest/web/pages/error/404.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../testmest/web/pages/error/404.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../testmest/web/style/ei.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SequenceOfTask/src/main/java/ru/sber/seq/tasks/steps/executor/StepExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SequenceOfTask/src/main/java/ru/sber/seq/tasks/steps/executor/StepExecutor.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -34,10 +22,12 @@
     <session id="1560840799">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.50" value="1" />
           <entry key="project.open.time.87" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -177,10 +167,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2" />
-    <option name="y" value="23" />
-    <option name="width" value="1380" />
-    <option name="height" value="788" />
+    <option name="x" value="-7" />
+    <option name="width" value="1056" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -344,16 +333,19 @@
       <updated>1561373191829</updated>
       <workItem from="1561373193336" duration="8976000" />
       <workItem from="1561541376962" duration="301000" />
+      <workItem from="1561898197415" duration="1116000" />
+      <workItem from="1561976070896" duration="71000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9277000" />
+    <option name="totallyTimeSpent" value="10464000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1376" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25379938" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26139817" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />

@@ -2,94 +2,93 @@ package ru.sber.seq.tasks.steps.executor;
 
 import ru.sber.seq.tasks.steps.Step;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
+import java.util.Map;
 
 public class StepExecutor {
 
-    private static List<Boolean> hasErrorList;
-    private static List<Boolean> isDoneList;
+    private Map<Integer, Boolean> isFallen;
+    private Map<Integer, Boolean> isDoneList;
 
-    static {
-        hasErrorList = new ArrayList<>();
-        isDoneList = new ArrayList<>();
+    public StepExecutor() {
+        this.isFallen = new HashMap<>();
+        this.isDoneList = new HashMap<>();
     }
 
-    public static void execute(List<Step> steps){
+    public void execute(List<Step> steps){
+        prepareSupportArrays(steps);
 
-        prepareArrays(steps);
+        isFallen.put(0, true);
 
-        for (int i = 0 ; i < steps.size(); i++) {
-            Step step = steps.get(i);
-            if (!isDoneList.get(i)){
+        for (Step step : steps){
+            if (!isFallen.get(step.getNumber()) && !isDoneList.get(step.getNumber())) {
 
-                if (step.getNumber() == 0){      //for testing in our json file step 1 has var checkPreviousStepRes as true
-                    hasErrorList.set(0, true);   //and then in this part of the code we set flag error for step 0
-                }
+                runCurrentStepAndPrevious(step, steps);
 
-                if (!isDoneList.get(step.getNumber())){
+                runNextStepsOfCurrent(step, steps);
+            }
+        }
 
-                    for (int g = 0 ; g < step.getNumber(); g++){
-                        if (Objects.nonNull(steps.get(g).getGoThen())){
-                            for (Integer num : steps.get(g).getGoThen()){
-                                if (step.getNumber() == num){
-                                    if (isDoneList.get(g)){
-                                        if (step.getCheckPreviousStepRes()){
-                                            if (!hasErrorList.get(g)){
-                                                performStep(steps, i, true);
-                                            } else {
-                                                notPerfromStep(steps, num, g, true);
-                                            }
-                                        } else {
-                                            performStep(steps, i, true);
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+    }
 
-                if (Objects.nonNull(step.getGoThen())) {
-
-                    if (!isDoneList.get(i)){
-                        performStep(steps, i, true);
-                    }
-
-                    for (Integer num : step.getGoThen()) {
-                        if (!isDoneList.get(num)) {
-                            if (steps.get(num).getCheckPreviousStepRes()) {
-                                if (!hasErrorList.get(i)) {
-                                    performStep(steps, num, true);
-                                } else {
-                                    notPerfromStep(steps, num, i, true);
-                                }
-                            } else {
-                                performStep(steps, num, true);
-                            }
-                        }
+    private void runCurrentStepAndPrevious(Step step, List<Step> steps) {
+        if (!step.getRelatedSteps().contains(-1)) {
+            performStep(steps, step.getNumber(), true);
+        } else {
+            for (int i = 0; i < step.getRelatedSteps().size(); i++) {
+                if (step.getRelatedSteps().get(i) == -1) {
+                    if (!isFallen.get(steps.get(i).getNumber())) {
+                        performStep(steps, step.getNumber(), true);
+                    } else {
+                        notPerformStep(steps, step.getNumber(), steps.get(i).getNumber(), true);
+                        break;
                     }
                 }
             }
         }
     }
 
-    private static void notPerfromStep(List<Step> steps, Integer index, Integer currentIndex, boolean b) {
+    private void killNextSteps(Step step, List<Step> steps) {
+        for (int i = 0; i < step.getRelatedSteps().size(); i++) {
+            if (step.getRelatedSteps().get(i) == 1) {
+                if (!isFallen.get(step.getNumber())) {
+                    notPerformStep(steps, i, step.getNumber(), true);
+                }
+            }
+        }
+    }
+
+    private void runNextStepsOfCurrent(Step step, List<Step> steps) {
+        List<Integer> nextStepsOfCurrent = step.getRelatedSteps();
+
+        if (!isFallen.get(step.getNumber())) {
+            for (int i = 0; i < nextStepsOfCurrent.size(); i++) {
+                if (nextStepsOfCurrent.get(steps.get(i).getNumber()) == 1) {
+                    if (!isDoneList.get(steps.get(i).getNumber())) {
+                        performStep(steps, i, true);
+                    }
+                }
+            }
+        } else {
+            killNextSteps(step, steps);
+        }
+    }
+
+    private void notPerformStep(List<Step> steps, Integer index, Integer currentIndex, Boolean b) {
         System.out.println(steps.get(index).getNumber() + " step can not be executed because step " + steps.get(currentIndex).getNumber() + " fell down.");
-        isDoneList.set(index, b);
-        hasErrorList.set(index, b);
+        isFallen.put(index, b);
     }
 
-    private static void performStep(List<Step> steps, int index, boolean b) {
+    private void performStep(List<Step> steps, int index, boolean b) {
         steps.get(index).doSome();
-        isDoneList.set(index, true);
+        isDoneList.put(index, b);
     }
 
-    private static void prepareArrays(List<Step> steps) {
+    private void prepareSupportArrays(List<Step> steps) {
         for (int i = 0; i < steps.size(); i++){
-            hasErrorList.add(false);
-            isDoneList.add(false);
+            isFallen.put(steps.get(i).getNumber(), false);
+            isDoneList.put(steps.get(i).getNumber(), false);
         }
     }
 }

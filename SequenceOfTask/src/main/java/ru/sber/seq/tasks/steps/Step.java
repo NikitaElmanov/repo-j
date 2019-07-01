@@ -17,21 +17,21 @@ public class Step implements Serializable {
 
     private Integer number;
     private String command;
-    private Boolean checkPreviousStepRes;
-    private List<Integer> goThen;
+    private Boolean conditionTransition;
+    private List<Integer> relatedSteps;
 
-    public Step(Integer number, String command, Boolean checkPreviousStepRes){
+    public Step(Integer number, String command, Boolean conditionTransition){
         this.number = number;
         this.command = command;
-        this.checkPreviousStepRes = checkPreviousStepRes;
+        this.conditionTransition = conditionTransition;
     }
 
-    public Step(Integer number, String command, Boolean checkPreviousStepRes,List<Integer> goThen){
+    public Step(Integer number, String command, Boolean conditionTransition,List<Integer> relatedSteps){
         this.number = number;
         this.command = command;
-        this.checkPreviousStepRes = checkPreviousStepRes;
+        this.conditionTransition = conditionTransition;
 
-        this.goThen = goThen;
+        this.relatedSteps = relatedSteps;
     }
 
     public void doSome() {

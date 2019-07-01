@@ -14,6 +14,7 @@ public class MainFromFile {
         List<Step> steps = ConvertMapper.convertFrom("src\\main\\resources\\file.json");
 //        List<Step> steps = ConvertBasic.convertRead("..\\fileBasic.json");
 
-        StepExecutor.execute(steps);
+        StepExecutor stepExecutor1 = new StepExecutor();
+        stepExecutor1.execute(steps);
     }
 }
