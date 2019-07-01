@@ -21,7 +21,7 @@ public class StepExecutor {
 
         for (Step step : steps){
             if (!isFallen.get(step.getNumber()) && !isDoneList.get(step.getNumber())) {
-//                isFallen.put(0, true);
+//                isFallen.put(2, true);
                 runCurrentStepAndPrevious(step, steps);
 
                 runNextStepsOfCurrent(step, steps);
