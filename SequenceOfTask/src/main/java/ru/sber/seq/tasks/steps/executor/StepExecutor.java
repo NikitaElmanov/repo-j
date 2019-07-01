@@ -51,7 +51,7 @@ public class StepExecutor {
         for (int i = 0; i < step.getRelatedSteps().size(); i++) {
             if (step.getRelatedSteps().get(i) == 1) {
                 if (!isFallen.get(step.getNumber())) {
-                    notPerformStep(steps, i, step.getNumber(), true);
+                    notPerformStep(steps, steps.get(i).getNumber(), step.getNumber(), true);
                 }
             }
         }
