@@ -14,13 +14,13 @@ public class MainIntoFile {
 
         List<Step> steps = new ArrayList<>();
 
-        steps.add(new Step(0,"This is Step 0", true, Arrays.asList(0,1,1,0,0,0,0)));
-        steps.add(new Step(1,"This is Step 1", true, Arrays.asList(-1,0,0,1,1,0,0)));
-        steps.add(new Step(2,"This is Step 2", true, Arrays.asList(-1,0,0,0,0,1,0)));
-        steps.add(new Step(3,"This is Step 3", true, Arrays.asList(0,-1,0,0,0,0,1)));
-        steps.add(new Step(4,"This is Step 4", true, Arrays.asList(0,-1,0,0,0,0,1)));
-        steps.add(new Step(5,"This is Step 5", true, Arrays.asList(0,0,-1,0,0,0,1)));
-        steps.add(new Step(6,"This is Step 6", true, Arrays.asList(0,0,0,-1,-1,-1,0)));
+        steps.add(new Step(3,"This is Step 3", true, Arrays.asList(0,1,1,0,0,0,0)));
+        steps.add(new Step(4,"This is Step 4", true, Arrays.asList(-1,0,0,1,1,0,0)));
+        steps.add(new Step(5,"This is Step 5", true, Arrays.asList(-1,0,0,0,0,1,0)));
+        steps.add(new Step(6,"This is Step 6", true, Arrays.asList(0,-1,0,0,0,0,1)));
+        steps.add(new Step(7,"This is Step 7", true, Arrays.asList(0,-1,0,0,0,0,1)));
+        steps.add(new Step(8,"This is Step 8", true, Arrays.asList(0,0,-1,0,0,0,1)));
+        steps.add(new Step(9,"This is Step 9", true, Arrays.asList(0,0,0,-1,-1,-1,0)));
 
 //        steps.add(new Step(0,"This is Step 0", true, Arrays.asList(1, 2)));
 //        steps.add(new Step(1,"This is Step 1", true, Arrays.asList(3, 4)));

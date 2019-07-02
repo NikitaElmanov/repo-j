@@ -21,10 +21,8 @@ public class StepExecutor {
 
         for (Step step : steps){
             if (!isFallen.get(step.getNumber()) && !isDoneList.get(step.getNumber())) {
-//                isFallen.put(2, true);
+//                isFallen.put(4, true);
                 runCurrentStepAndPrevious(step, steps);
-
-                runNextStepsOfCurrent(step, steps);
             }
         }
 
@@ -32,56 +30,68 @@ public class StepExecutor {
 
     private void runCurrentStepAndPrevious(Step step, List<Step> steps) {
         if (!step.getRelatedSteps().contains(-1)) {
-            performStep(steps, step.getNumber(), true);
+            performStep(steps, step, true);
         } else {
-            for (int i = 0; i < step.getRelatedSteps().size(); i++) {
+             for (int i = 0; i < step.getRelatedSteps().size(); i++) {
                 if (step.getRelatedSteps().get(i) == -1) {
-                    if (!isFallen.get(steps.get(i).getNumber())) {
-                        performStep(steps, step.getNumber(), true);
-                    } else {
-                        notPerformStep(steps, step.getNumber(), steps.get(i).getNumber(), true);
-                        break;
-                    }
+
+                    runStepsByTheirIndexes(steps, step, i);
+                    break;
                 }
             }
         }
     }
 
-    private void killNextSteps(Step step, List<Step> steps) {
-        for (int i = 0; i < step.getRelatedSteps().size(); i++) {
-            if (step.getRelatedSteps().get(i) == 1) {
-                if (!isFallen.get(step.getNumber())) {
-                    notPerformStep(steps, steps.get(i).getNumber(), step.getNumber(), true);
+    private void runStepsByTheirIndexes(List<Step> steps, Step step, int i) {
+        for (int j = 0; j < steps.size(); j++){
+            if (steps.get(i).getNumber() == steps.get(j).getNumber()) {
+                if (!isFallen.get(steps.get(i).getNumber()) && steps.get(i).getConditionTransition()) {
+                    performStep(steps, step, true);
+                    break;
+                } else {
+                    notPerformStep(steps, i, step, true);
+                    break;
                 }
             }
         }
     }
 
-    private void runNextStepsOfCurrent(Step step, List<Step> steps) {
-        List<Integer> nextStepsOfCurrent = step.getRelatedSteps();
+//    private void runNextStepsOfCurrent(Step step, List<Step> steps) {
+//        List<Integer> nextStepsOfCurrent = step.getRelatedSteps();
+//
+//        if (!isFallen.get(step.getNumber())) {
+//            for (int i = 0; i < nextStepsOfCurrent.size(); i++) {
+//                if (nextStepsOfCurrent.get(steps.get(i).getNumber()) == 1) {
+//                    if (!isDoneList.get(steps.get(i).getNumber())) {
+//                        performStep(steps, steps.get(i).getNumber(), true);
+//                    }
+//                }
+//            }
+//        } else {
+//            killNextSteps(step, steps);
+//        }
+//
+//    }
+//
+//    private void killNextSteps(Step step, List<Step> steps) {
+//        for (int i = 0; i < step.getRelatedSteps().size(); i++) {
+//            if (step.getRelatedSteps().get(i) == 1) {
+//                if (!isFallen.get(step.getNumber())) {
+//                    notPerformStep(steps, steps.get(i).getNumber(), step.getNumber(), true);
+//                }
+//            }
+//        }
+//    }
 
-        if (!isFallen.get(step.getNumber())) {
-            for (int i = 0; i < nextStepsOfCurrent.size(); i++) {
-                if (nextStepsOfCurrent.get(steps.get(i).getNumber()) == 1) {
-                    if (!isDoneList.get(steps.get(i).getNumber())) {
-                        performStep(steps, steps.get(i).getNumber(), true);
-                    }
-                }
-            }
-        } else {
-            killNextSteps(step, steps);
-        }
-
-    }
-
-    private void notPerformStep(List<Step> steps, Integer index, Integer currentIndex, Boolean b) {
-        System.out.println(steps.get(index).getNumber() + " step can not be executed because step " + steps.get(currentIndex).getNumber() + " fell down.");
+    private void notPerformStep(List<Step> steps, Integer index, Step step, Boolean b) {
+        System.out.println(step.getNumber() + " step can not be executed because step " + steps.get(index).getNumber() + " fell down.");
         isFallen.put(index, b);
     }
 
-    private void performStep(List<Step> steps, int index, boolean b) {
-        steps.get(index).doSome();
-        isDoneList.put(index, b);
+    private void performStep(List<Step> steps, Step step, boolean b) {
+        step.doSome();
+
+        isDoneList.put(steps.lastIndexOf(step), b);
     }
 
     private void prepareSupportArrays(List<Step> steps) {
