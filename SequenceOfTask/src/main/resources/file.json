@@ -11,26 +11,26 @@
 }, {
   "number" : 5,
   "command" : "This is Step 5",
-  "conditionTransition" : false,
+  "conditionTransition" : true,
   "relatedSteps" : [ -1, 0, 0, 0, 0, 1, 0 ]
 }, {
   "number" : 6,
   "command" : "This is Step 6",
-  "conditionTransition" : false,
+  "conditionTransition" : true,
   "relatedSteps" : [ 0, -1, 0, 0, 0, 0, 1 ]
 }, {
   "number" : 7,
   "command" : "This is Step 7",
-  "conditionTransition" : false,
+  "conditionTransition" : true,
   "relatedSteps" : [ 0, -1, 0, 0, 0, 0, 1 ]
 }, {
   "number" : 8,
   "command" : "This is Step 8",
-  "conditionTransition" : false,
+  "conditionTransition" : true,
   "relatedSteps" : [ 0, 0, -1, 0, 0, 0, 1 ]
 }, {
   "number" : 9,
   "command" : "This is Step 9",
-  "conditionTransition" : false,
+  "conditionTransition" : true,
   "relatedSteps" : [ 0, 0, 0, -1, -1, -1, 0 ]
 } ]
