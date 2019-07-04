@@ -83,10 +83,10 @@ class MyPanel extends JPanel implements Scrollable {
         List<GraphTop> tops = new ArrayList<>();
         List<List<Integer>> matrix = getMatrix(steps);  //method helps to get adjacency list from adjacency matrix
 
-        Integer X = 20;
+        Integer X = 50;
         Integer Y = 20;
 
-        Integer X_previous = 0; //vars help tob draw edge of graph
+        Integer X_previous = 0; //vars help to draw edge of graph
         Integer Y_previous = 0;
 
         for (int i = 0; i < steps.size(); i++){
@@ -94,31 +94,31 @@ class MyPanel extends JPanel implements Scrollable {
         }
 
         printFirst(g, tops, 0);
-        X_previous = tops.get(0).getX();
-        Y_previous = tops.get(0).getY();
 
         Y += 50;
 
-        for (int i = 0; i < tops.size()-1; i++){
+        for (int i = 0; i < tops.size(); i++){
             List<Integer> arr = tops.get(i).getMatrix();
 
+            X_previous = tops.get(i).getX();
+            Y_previous = tops.get(i).getY();
 
             for (int j = 0; j < arr.size(); j++) {
                 if (!tops.get(arr.get(j)).getPrinted()) {
-                    tops.get(arr.get(j)).setY(Y);
                     tops.get(arr.get(j)).setX(X);
-
-                    printTop(g, tops.get(arr.get(j)));
-                    X += 20 * ((j+1)*2);
+                    tops.get(arr.get(j)).setY(Y);
                 }
 
                 drawEdge(g, X_previous, Y_previous, tops.get(arr.get(j)).getX(), tops.get(arr.get(j)).getY());
 
                 if (!tops.get(arr.get(j)).getPrinted()) {
+                    printTop(g, tops.get(arr.get(j)));
                 }
+
+                X += 40 * 2;
             }
-            X_previous = tops.get(i).getX();
-            Y_previous = tops.get(i).getY();
+
+            X = (i+30)*30/(int)Math.pow((i+2),2);
 
             Y += 70;
         }
@@ -134,6 +134,7 @@ class MyPanel extends JPanel implements Scrollable {
 
         g2d.setColor(Color.YELLOW);
         g.fillOval(x_previous, y_previous, 7,7);
+        g.fillOval(x, y, 7,7);
     }
 
     private void printFirst(Graphics g, List<GraphTop> tops, int i) {
@@ -187,15 +188,15 @@ class MyPanel extends JPanel implements Scrollable {
         int r = 20 / c;
         if (r * c < 20)
             ++r;
-        return new Dimension(c * 100, r * 100);
+        return new Dimension(c * 200, r * 200);
     }
     public int getScrollableBlockIncrement(Rectangle visibleRect,
                                            int orientation, int direction) {
-        return 50;
+        return 100;
     }
     public int getScrollableUnitIncrement(Rectangle visibleRect, int orientation,
                                           int direction) {
-        return 10;
+        return 30;
     }
     public boolean getScrollableTracksViewportHeight() {
         return false;
