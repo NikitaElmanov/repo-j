@@ -1,36 +1,46 @@
 [ {
-  "number" : 0,
-  "command" : "This is Step 0",
-  "conditionTransition" : true,
-  "relatedSteps" : [ 0, 1, 1, 0, 0, 0, 1 ]
-}, {
-  "number" : 1,
-  "command" : "This is Step 1",
-  "conditionTransition" : true,
-  "relatedSteps" : [ -1, 0, 0, 1, 0, 0, 0 ]
-}, {
-  "number" : 2,
-  "command" : "This is Step 2",
-  "conditionTransition" : true,
-  "relatedSteps" : [ -1, 0, 0, 0, 1, 0, 0 ]
-}, {
   "number" : 3,
   "command" : "This is Step 3",
   "conditionTransition" : true,
-  "relatedSteps" : [ 0, -1, 0, 0, 0, 1, 0 ]
+  "parent" : null
 }, {
   "number" : 4,
   "command" : "This is Step 4",
   "conditionTransition" : true,
-  "relatedSteps" : [ 0, 0, -1, 0, 0, 1, 0 ]
+  "parent" : [ 3 ]
 }, {
   "number" : 5,
   "command" : "This is Step 5",
   "conditionTransition" : true,
-  "relatedSteps" : [ 0, 0, 0, -1, -1, 0, 0 ]
+  "parent" : [ 3 ]
 }, {
   "number" : 6,
   "command" : "This is Step 6",
   "conditionTransition" : true,
-  "relatedSteps" : [ -1, 0, 0, 1, 0, 0, 0 ]
+  "parent" : [ 4 ]
+}, {
+  "number" : 7,
+  "command" : "This is Step 7",
+  "conditionTransition" : true,
+  "parent" : [ 5 ]
+}, {
+  "number" : 8,
+  "command" : "This is Step 8",
+  "conditionTransition" : true,
+  "parent" : [ 6 ]
+}, {
+  "number" : 9,
+  "command" : "This is Step 9",
+  "conditionTransition" : true,
+  "parent" : [ 7 ]
+}, {
+  "number" : 10,
+  "command" : "This is Step 10",
+  "conditionTransition" : true,
+  "parent" : [ 3, 8, 9 ]
+}, {
+  "number" : 11,
+  "command" : "This is Step 11",
+  "conditionTransition" : true,
+  "parent" : [ 10 ]
 } ]

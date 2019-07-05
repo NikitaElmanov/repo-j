@@ -2,59 +2,67 @@ package ru.sber.seq.tasks.steps.executor;
 import ru.sber.seq.tasks.graphic.MainFrame;
 import ru.sber.seq.tasks.steps.Step;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class StepExecutor {
 
     private Map<Integer, Boolean> isFallen;
     private Map<Integer, Boolean> isDoneList;
 
+    private List<List<Integer>> relatedSteps;
+
     public StepExecutor() {
         this.isFallen = new HashMap<>();
         this.isDoneList = new HashMap<>();
+        this.relatedSteps = new ArrayList<>();
     }
 
     public void execute(List<Step> steps){
         prepareSupportArrays(steps);
 
-        for (Step step : steps){
+        for (int i = 0; i < steps.size(); i++){
+            List<Integer> subRelatedSteps = relatedSteps.get(i);
+            Step step = steps.get(i);
+
             if (!isFallen.get(step.getNumber()) && !isDoneList.get(step.getNumber())) {
-                isFallen.put(4, true);
-                isFallen.put(1, true);
-                runCurrentStepAndPrevious(step, steps);
+//                isFallen.put(4, true);
+                isFallen.put(9, true);
+                isFallen.put(7, true);
+
+                for (int j = 0; j < subRelatedSteps.size(); j++) {
+                    if (subRelatedSteps.get(j) == -1) {
+
+                        runStepsByTheirIndexes(steps, step, j);
+                        break;
+                    }
+                }
+            } else {
+                notPerformStep(steps, i, step, true);
             }
         }
 
-        new MainFrame(isFallen, steps);
+        new MainFrame(isFallen, steps, relatedSteps);
     }
 
-    private void runCurrentStepAndPrevious(Step step, List<Step> steps) {
-        if (!step.getRelatedSteps().contains(-1)) {
-            performStep(step, true);
-        } else {
-             for (int i = 0; i < step.getRelatedSteps().size(); i++) {
-                if (step.getRelatedSteps().get(i) == -1) {
+    private boolean checkParent(Step step) {
+        boolean tempCheck = false;
 
-                    runStepsByTheirIndexes(steps, step, i);
-                    break;
+        if (Objects.nonNull(step.getParent())) {
+            for (int i = 0; i < step.getParent().size(); i++) {
+                if (!isFallen.get(step.getParent().get(i))) {
+                    tempCheck = true;
                 }
             }
         }
+
+        return tempCheck;
     }
 
     private void runStepsByTheirIndexes(List<Step> steps, Step step, int i) {
-        for (int j = 0; j < steps.size(); j++){
-            if (steps.get(i).getNumber() == steps.get(j).getNumber()) {
-                if (!isFallen.get(steps.get(i).getNumber()) && steps.get(i).getConditionTransition()) {
-                    performStep(step, true);
-                    break;
-                } else {
-                    notPerformStep(steps, j, step, true);
-                    break;
-                }
-            }
+        if (steps.get(i).getConditionTransition() && checkParent(step)) {
+            performStep(step, true);
+        } else {
+            notPerformStep(steps, i, step, true);
         }
     }
 
@@ -73,6 +81,44 @@ public class StepExecutor {
         for (int i = 0; i < steps.size(); i++){
             isFallen.put(steps.get(i).getNumber(), false);
             isDoneList.put(steps.get(i).getNumber(), false);
+
+            fillRelatedStepsByZero(steps);
         }
+
+        getRelatedStepsFromUser(steps);
+    }
+
+    private void fillRelatedStepsByZero(List<Step> steps) {
+        List<Integer> row = new ArrayList<>();
+        for (int j = 0; j < steps.size(); j++){
+            row.add(j, 0);
+        }
+        relatedSteps.add(row);
+    }
+
+    private void getRelatedStepsFromUser(List<Step> steps) {
+
+        for (int i = 0; i < steps.size(); i++){
+            if (Objects.nonNull(steps.get(i).getParent())){
+
+                for (int j = 0; j < steps.get(i).getParent().size(); j++){
+
+                    relatedSteps.get(i).set(getStepIndex(steps, i, j), -1);
+                    relatedSteps.get(getStepIndex(steps, i, j)).set(i, 1);
+                }
+            }
+        }
+    }
+
+    private int getStepIndex(List<Step> steps, int i, int j) {
+        Step tempStep = null;
+
+        for (Step step : steps){
+            if (step.getNumber() == steps.get(i).getParent().get(j)){
+                tempStep = step;
+            }
+        }
+
+        return steps.indexOf(tempStep);
     }
 }

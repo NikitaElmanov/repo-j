@@ -4,19 +4,22 @@ import ru.sber.seq.tasks.steps.Step;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class MainFrame {
 
-    private static final int WIDTH = 600;
-    private static final int HEIGHT = 400;
+    private static final int WIDTH = 1000;
+    private static final int HEIGHT = 500;
 
     private MainPanel mainPanel;
     private MyPanel myPanel;
 
-    public MainFrame(Map<Integer, Boolean> isFallen, List<Step> steps) {
+    public MainFrame(Map<Integer, Boolean> isFallen, List<Step> steps, List<List<Integer>> relatedSteps) {
         JFrame jf = new JFrame();
         jf.setTitle("Graph of Steps");
         jf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -30,7 +33,7 @@ public class MainFrame {
         mainPanel.setLayout(new GridLayout());
 
         TextArea text = getText(isFallen);            //one from two entities contains some info
-        myPanel = new MyPanel(isFallen, steps);             //two from two elements consists of picture of graph
+        myPanel = new MyPanel(isFallen, steps, relatedSteps);             //two from two elements consists of picture of graph
 
         JScrollPane scroll = new JScrollPane(myPanel);
         scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -46,7 +49,9 @@ public class MainFrame {
 
     private TextArea getText(Map<Integer, Boolean> isFallen) {
         TextArea textArea = new TextArea();
+
         textArea.setFont(new Font("Calibri ", Font.BOLD, 12));
+        textArea.setEditable(false);
 
         for (Map.Entry elem : isFallen.entrySet()){
             if (elem.getValue().equals(false)){
@@ -60,15 +65,23 @@ public class MainFrame {
     }
 }
 
-class MyPanel extends JPanel implements Scrollable {
+class MyPanel extends JPanel implements Scrollable, ActionListener {
+
+    private Timer timer;
 
     private Map<Integer, Boolean> isFallen;
     private List<Step> steps;
+    private List<List<Integer>> relatedSteps;
 
-    public MyPanel(Map<Integer, Boolean> isFallen, List<Step> steps) {
+    public MyPanel(Map<Integer, Boolean> isFallen, List<Step> steps, List<List<Integer>> relatedSteps) {
         this.isFallen = isFallen;
         this.steps = steps;
+        this.relatedSteps = relatedSteps;
+
         setBackground(Color.BLACK);
+
+        timer = new Timer(50, this);
+        timer.start();
     }
 
     @Override
@@ -81,13 +94,13 @@ class MyPanel extends JPanel implements Scrollable {
     private void draw(Graphics g) {
 
         List<GraphTop> tops = new ArrayList<>();
-        List<List<Integer>> matrix = getMatrix(steps);  //method helps to get adjacency list from adjacency matrix
+        List<List<Integer>> matrix = getMatrix();  //method helps to get adjacency list from adjacency matrix
 
         Integer X = 50;
         Integer Y = 20;
 
-        Integer X_previous = 0; //vars help to draw edge of graph
-        Integer Y_previous = 0;
+        Integer X_previous; //vars help to draw edge of graph
+        Integer Y_previous;
 
         for (int i = 0; i < steps.size(); i++){
             tops.add(new GraphTop(steps.get(i).getNumber(), false, X, Y, matrix.get(i))); //getting adjacency list
@@ -95,7 +108,7 @@ class MyPanel extends JPanel implements Scrollable {
 
         printFirst(g, tops, 0);
 
-        Y += 50;
+        Y += 40;
 
         for (int i = 0; i < tops.size(); i++){
             List<Integer> arr = tops.get(i).getMatrix();
@@ -115,14 +128,17 @@ class MyPanel extends JPanel implements Scrollable {
                     printTop(g, tops.get(arr.get(j)));
                 }
 
-                X += 40 * 2;
+                X += 40*2;
             }
 
-            X = (i+30)*30/(int)Math.pow((i+2),2);
-
-            Y += 70;
+            X = 5*(i+20);
+            Y += 5*(i+5);
         }
 
+    }
+
+    private Integer getRandomX(Integer X) {
+        return new Random().nextInt(((400) - 10) + 1) + 10;
     }
 
     private void drawEdge(Graphics g, Integer x_previous, Integer y_previous, Integer x, Integer y) {
@@ -158,14 +174,14 @@ class MyPanel extends JPanel implements Scrollable {
         top.setPrinted(true);
     }
 
-    private List<List<Integer>> getMatrix(List<Step> steps) {
+    private List<List<Integer>> getMatrix() {
         List<List<Integer>> matrix = new ArrayList<>();
 
-        for (int i = 0; i < steps.size(); i++){
+        for (int i = 0; i < relatedSteps.size(); i++){
             matrix.add(new ArrayList<>());
 
-            for (int j = 0; j < steps.size(); j++){
-                if (steps.get(i).getRelatedSteps().get(j) == 1){
+            for (int j = 0; j < relatedSteps.size(); j++){
+                if (relatedSteps.get(i).get(j) == 1){
                     matrix.get(i).add(j);
                 }
             }
@@ -204,6 +220,11 @@ class MyPanel extends JPanel implements Scrollable {
     public boolean getScrollableTracksViewportWidth() {
         return getParent() != null ? getParent().getSize().width > getPreferredSize().width
                 : true;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        repaint();
     }
 }
 

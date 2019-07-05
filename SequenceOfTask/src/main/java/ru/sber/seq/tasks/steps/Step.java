@@ -1,12 +1,7 @@
 package ru.sber.seq.tasks.steps;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import java.io.*;
+import java.io.Serializable;
 import java.util.List;
-import java.util.Objects;
 
 public class Step implements Serializable {
 
@@ -15,7 +10,7 @@ public class Step implements Serializable {
     private Integer number;
     private String command;
     private Boolean conditionTransition;
-    private List<Integer> relatedSteps;
+    private List<Integer> parent;
 
     public Step(Integer number, String command, Boolean conditionTransition){
         this.number = number;
@@ -23,12 +18,12 @@ public class Step implements Serializable {
         this.conditionTransition = conditionTransition;
     }
 
-    public Step(Integer number, String command, Boolean conditionTransition,List<Integer> relatedSteps){
+    public Step(Integer number, String command, Boolean conditionTransition, List<Integer> parent){
         this.number = number;
         this.command = command;
         this.conditionTransition = conditionTransition;
 
-        this.relatedSteps = relatedSteps;
+        this.parent = parent;
     }
 
     public Step() {
@@ -62,12 +57,12 @@ public class Step implements Serializable {
         this.conditionTransition = conditionTransition;
     }
 
-    public List<Integer> getRelatedSteps() {
-        return relatedSteps;
+    public List<Integer> getParent() {
+        return parent;
     }
 
-    public void setRelatedSteps(List<Integer> relatedSteps) {
-        this.relatedSteps = relatedSteps;
+    public void setParent(List<Integer> parent) {
+        this.parent = parent;
     }
 
     public void doSome() {
