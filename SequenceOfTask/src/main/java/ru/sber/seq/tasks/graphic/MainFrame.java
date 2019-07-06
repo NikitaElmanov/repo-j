@@ -131,14 +131,10 @@ class MyPanel extends JPanel implements Scrollable, ActionListener {
                 X += 40*2;
             }
 
-            X = 5*(i+20);
-            Y += 5*(i+5);
+            X = 3*(i+20);
+            Y += 40;
         }
 
-    }
-
-    private Integer getRandomX(Integer X) {
-        return new Random().nextInt(((400) - 10) + 1) + 10;
     }
 
     private void drawEdge(Graphics g, Integer x_previous, Integer y_previous, Integer x, Integer y) {

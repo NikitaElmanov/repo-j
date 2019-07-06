@@ -26,7 +26,7 @@ public class StepExecutor {
 
             if (!isFallen.get(step.getNumber()) && !isDoneList.get(step.getNumber())) {
 //                isFallen.put(4, true);
-                isFallen.put(9, true);
+//                isFallen.put(9, true);
                 isFallen.put(7, true);
 
                 for (int j = 0; j < subRelatedSteps.size(); j++) {
