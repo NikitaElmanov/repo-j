@@ -18,6 +18,8 @@ public class StepExecutor {
     }
 
     public void execute(List<Step> steps){
+        checkInputGraph(steps);
+
         prepareSupportArrays(steps);
 
         for (int i = 0; i < steps.size(); i++){
@@ -42,6 +44,22 @@ public class StepExecutor {
         }
 
         new MainFrame(isFallen, steps, relatedSteps);
+    }
+
+    private void checkInputGraph(List<Step> steps) {
+        int counter = 0;
+        for (Step step : steps){
+            if (Objects.isNull(step.getParent())){
+                counter++;
+            }
+        }
+
+        if (counter == 1){
+            return;
+        }
+
+        System.out.println("Error input value, Only one step (top) must not have parent.");
+        System.exit(0);
     }
 
     private boolean checkParent(Step step) {
