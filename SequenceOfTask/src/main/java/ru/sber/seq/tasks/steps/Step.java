@@ -26,12 +26,7 @@ public class Step implements Serializable {
         this.parent = parent;
     }
 
-    public Step() {
-    }
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
+    public Step() {}
 
     public Integer getNumber() {
         return number;
