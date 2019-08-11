@@ -14,21 +14,29 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Main {
+
+    List<String> headerMass = new ArrayList<>();
+
+    List<String> tmpMaskName = new ArrayList<>();
+    List<String> tmpMaskType = new ArrayList<>();
+
+    List<Integer> tmpMassIndex = new ArrayList<>();
+
+    List<Mask> masks = new ArrayList<>();
+
+    int maskNameIndex= -1;
+    int maskTypeIndex= -1;
+
+    Workbook workbook = null;
+//    ---------------------------------------------
+
     public static void main(String[] args) {
 
-        List<String> headerMass = new ArrayList<>();
+        new Main().getUniqueMasks();
 
-        List<String> tmpMaskName = new ArrayList<>();
-        List<String> tmpMaskType = new ArrayList<>();
+    }
 
-        List<Integer> tmpMassIndex = new ArrayList<>();
-
-        List<Mask> masks = new ArrayList<>();
-
-        int maskNameIndex= -1;
-        int maskTypeIndex= -1;
-
-        Workbook workbook = null;
+    private void getUniqueMasks() {
         try {
             workbook = new XSSFWorkbook(new BufferedInputStream(Main.class.getClassLoader().getResourceAsStream("test.xlsx")));
         } catch (IOException e) {
@@ -95,7 +103,6 @@ public class Main {
 //        for (Mask mask : masks){
 //            System.out.println(mask);
 //        }
-
     }
 
     private static void handlerOfMassIndex(List<Integer> tmpMassIndex) {
