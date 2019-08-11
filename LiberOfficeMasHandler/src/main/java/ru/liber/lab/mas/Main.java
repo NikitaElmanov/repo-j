@@ -92,11 +92,9 @@ public class Main {
             masks.add(new Mask(tmpMaskName.get(i), tmpMaskType.get(i)));
         }
 
-//        System.out.println(masks);
-
-        for (Mask mask : masks){
-            System.out.println(mask);
-        }
+//        for (Mask mask : masks){
+//            System.out.println(mask);
+//        }
 
     }
 
@@ -107,16 +105,16 @@ public class Main {
         }
     }
 
-    private static void fill(Cell cell, List<String> tmpMaskName) {
+    private static void fill(Cell cell, List<String> tmpMaskNameOrType) {
         switch (cell.getCellType()) {
             case Cell.CELL_TYPE_STRING:
-                tmpMaskName.add(cell.getStringCellValue());
+                tmpMaskNameOrType.add(cell.getStringCellValue());
                 break;
             case Cell.CELL_TYPE_NUMERIC:
-                tmpMaskName.add(String.valueOf(cell.getNumericCellValue()));
+                tmpMaskNameOrType.add(String.valueOf(cell.getNumericCellValue()));
                 break;
             case Cell.CELL_TYPE_BOOLEAN:
-                tmpMaskName.add(String.valueOf(cell.getBooleanCellValue()));
+                tmpMaskNameOrType.add(String.valueOf(cell.getBooleanCellValue()));
                 break;
             default:
         }
