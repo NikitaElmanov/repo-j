@@ -8,7 +8,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
-import java.util.Map;
 import java.util.Objects;
 
 public class PageGenerator {
@@ -28,7 +27,7 @@ public class PageGenerator {
         return pageGenerator;
     }
 
-    public String getPage(String file, Map<String, Object> data){
+    public String getPage(String file, Object data){
         Writer stream = new StringWriter();
         try {
             Template template = cfg.getTemplate(DIR + File.separator + file);
