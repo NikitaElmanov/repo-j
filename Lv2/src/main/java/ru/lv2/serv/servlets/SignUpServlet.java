@@ -38,6 +38,7 @@ public class SignUpServlet extends HttpServlet {
         accountService.addNewUser(userProfile);
 
         accountService.addSession(req.getSession().getId(), userProfile);
+        accountService.addSession(login, userProfile);
 //        resp.setContentType("text/html;charset=utf-8");
 //        resp.getWriter().println("<a href='signIn.html'>To signIn page</a>");
 //        resp.setStatus(HttpServletResponse.SC_OK);
