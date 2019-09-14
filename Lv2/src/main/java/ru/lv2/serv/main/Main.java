@@ -8,8 +8,8 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import ru.lv2.serv.accounts.AccountService;
 import ru.lv2.serv.accounts.UserProfile;
-import ru.lv2.serv.servlets.SessionsServlet;
-import ru.lv2.serv.servlets.UsersServlet;
+import ru.lv2.serv.servlets.SignInServlet;
+import ru.lv2.serv.servlets.SignUpServlet;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -19,8 +19,11 @@ public class Main {
         accountService.addNewUser(new UserProfile("test"));
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
-        context.addServlet(new ServletHolder(new UsersServlet(accountService)), "/api/v1/users");
-        context.addServlet(new ServletHolder(new SessionsServlet(accountService)), "/api/v1/sessions");
+//        context.addServlet(new ServletHolder(new UsersServlet(accountService)), "/api/v1/users");
+//        context.addServlet(new ServletHolder(new SessionsServlet(accountService)), "/api/v1/sessions");
+
+        context.addServlet(new ServletHolder(new SignInServlet(accountService)), "/signin");
+        context.addServlet(new ServletHolder(new SignUpServlet(accountService)), "/signup");
 
         ResourceHandler resource_handler = new ResourceHandler();
         resource_handler.setResourceBase("public_html");
