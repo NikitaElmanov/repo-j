@@ -1,34 +1,36 @@
 package ru.lv2.serv.accounts;
 
+import wrap.jdbc.elem.User;
+import wrap.jdbc.service.DBService;
+
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
 public class AccountService {
-    private final Map<String, UserProfile> loginToProfile;
-    private final Map<String, UserProfile> sessionIdToProfile;
 
-    public AccountService() {
-        this.loginToProfile = new HashMap<>();
-        this.sessionIdToProfile = new HashMap<>();
+    private DBService service;
+
+    public AccountService(DBService service) {
+        this.service = service;
     }
 
-    public void addNewUser(UserProfile userProfile){
-        loginToProfile.put(userProfile.getLogin(), userProfile);
+    public void addNewUser(User user) {
+        try {
+            service.addUser(user.getLogin(), user.getPassword());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
-    public UserProfile getUserByLogin(String login){
-        return loginToProfile.get(login);
-    }
-
-    public void addSession(String sessionId, UserProfile userProfile){
-        sessionIdToProfile.put(sessionId, userProfile);
-    }
-
-    public UserProfile getUserBySessionId(String sessionId){
-        return sessionIdToProfile.get(sessionId);
-    }
-
-    public void deleteSession(String sessionId){
-        sessionIdToProfile.remove(sessionId);
+    public User getUserByLoginAndPass(String login, String password) {
+        User user = null;
+        try {
+            user =  service.getUser(login, password);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            return user;
+        }
     }
 }

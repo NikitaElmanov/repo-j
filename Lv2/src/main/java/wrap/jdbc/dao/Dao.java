@@ -66,8 +66,8 @@ public class Dao {
     }
 
     public User getUser(String login, String password) throws SQLException {
-        return executor.execQuery("select * from users where login = " + login + " and password = " + password
-                , rs -> {
+        return executor.execQuery("select * from users where login = '" + login + "' and password = '" + password + "'"
+                 , rs -> {
                     User user = null;
 
                     if (rs.next()){

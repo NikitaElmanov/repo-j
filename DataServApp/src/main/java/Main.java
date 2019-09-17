@@ -1,4 +1,4 @@
-import wrap.jdbc.elem.Man;
+import wrap.jdbc.elem.User;
 import wrap.jdbc.service.DBService;
 
 import java.sql.SQLException;
@@ -15,24 +15,18 @@ public class Main {
     public static void main(String[] args) throws SQLException {
         DBService service = new DBService();
 //        service.cleanUp("men");
-        service.printInfo();
-        service.createTable("" +
-                "create table if not exists Men (  \n" +
-                "id int auto_increment             \n" +
-                ", name varchar(256)               \n" +
-                ", married varchar(256)            \n" +
-                ", primary key (id),               \n" +
-                "check (married in ('p', 'a'))      )");
+//        service.printInfo();
+//        service.createUserTable();
 
-        service.addMan("insert into men (name, married) values ('tom', 'a'),('ann', 'p'),('lola', 'p')");
-        Man man = service.getMan(2);
-        System.out.println(man);
-        service.removeMan("delete from men where id = " + 80);
-
-        List<Man> men = service.getAll("select * from men");
-
-        men.stream().forEach(m -> {
-            System.out.println(m);
-        });
+//        service.addUser("insert into men (name, married) values ('tom', 'a'),('ann', 'p'),('lola', 'p')");
+//        User user = service.getUser(2);
+//        System.out.println(user);
+//        service.removeMan("delete from men where id = " + 80);
+//
+//        List<User> men = service.getAll("select * from men");
+//
+//        men.stream().forEach(m -> {
+//            System.out.println(m);
+//        });
     }
 }
