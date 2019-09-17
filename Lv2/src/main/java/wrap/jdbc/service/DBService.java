@@ -12,10 +12,13 @@ public class DBService {
     private Dao dao;
     private Connection connection;
 
+    {
+        createUserTable();
+    }
+
     public DBService() throws SQLException {
         dao = new Dao();
         connection = dao.getConnection();
-        createUserTable();
     }
 
     public User getUser(String login, String password) throws SQLException {
