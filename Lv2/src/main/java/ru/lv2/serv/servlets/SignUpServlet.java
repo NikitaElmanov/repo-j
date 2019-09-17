@@ -1,7 +1,7 @@
 package ru.lv2.serv.servlets;
 
 import ru.lv2.serv.accounts.AccountService;
-import ru.lv2.serv.accounts.UserProfile;
+import wrap.jdbc.elem.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +12,6 @@ import java.util.Objects;
 
 public class SignUpServlet extends HttpServlet {
 
-    private final String EMAIL = "@EMAIL";
     private final AccountService accountService;
 
     public SignUpServlet(AccountService accountService) {
@@ -33,12 +32,9 @@ public class SignUpServlet extends HttpServlet {
             return;
         }
 
-        UserProfile userProfile = new UserProfile(login, password, EMAIL);
+        User userProfile = new User(login, password);
 
         accountService.addNewUser(userProfile);
-
-        accountService.addSession(req.getSession().getId(), userProfile);
-        accountService.addSession(login, userProfile);
 //        resp.setContentType("text/html;charset=utf-8");
 //        resp.getWriter().println("<a href='signIn.html'>To signIn page</a>");
 //        resp.setStatus(HttpServletResponse.SC_OK);

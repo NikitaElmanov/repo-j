@@ -1,4 +1,4 @@
-package ru.lv2.serv.servlets;
+package ru.lv2.serv.servlets.unnecessanry;
 
 import ru.lv2.serv.accounts.AccountService;
 

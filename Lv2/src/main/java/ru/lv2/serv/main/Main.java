@@ -7,16 +7,13 @@ import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import ru.lv2.serv.accounts.AccountService;
-import ru.lv2.serv.accounts.UserProfile;
 import ru.lv2.serv.servlets.SignInServlet;
 import ru.lv2.serv.servlets.SignUpServlet;
+import wrap.jdbc.service.DBService;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        AccountService accountService = new AccountService();
-
-        accountService.addNewUser(new UserProfile("admin"));
-        accountService.addNewUser(new UserProfile("test"));
+        AccountService accountService = new AccountService(new DBService());
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
 //        context.addServlet(new ServletHolder(new UsersServlet(accountService)), "/api/v1/users");

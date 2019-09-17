@@ -1,7 +1,7 @@
 package ru.lv2.serv.servlets;
 
 import ru.lv2.serv.accounts.AccountService;
-import ru.lv2.serv.accounts.UserProfile;
+import wrap.jdbc.elem.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -23,10 +23,11 @@ public class SignInServlet extends HttpServlet {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
 
-        UserProfile userProfile = accountService.getUserBySessionId(login);
+        User userProfile = accountService.getUserByLoginAndPass(login, password);
 
         if (Objects.isNull(userProfile)
-                || !userProfile.getLogin().equalsIgnoreCase(login)){
+                || !userProfile.getLogin().equalsIgnoreCase(login)
+                || !userProfile.getPassword().equalsIgnoreCase(password)){
 
             resp.setContentType("text/html;charset=utf-8");
             resp.getWriter().println("Unauthorized");
