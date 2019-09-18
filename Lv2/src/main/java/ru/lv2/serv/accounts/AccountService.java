@@ -1,17 +1,16 @@
 package ru.lv2.serv.accounts;
 
 import wrap.jdbc.elem.User;
-import wrap.jdbc.service.DBService;
+import wrap.jdbc.service.DBServiceImpl;
+import wrap.jdbc.service.interf.DBService;
 
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
 
 public class AccountService {
 
     private DBService service;
 
-    public AccountService(DBService service) {
+    public AccountService(DBServiceImpl service) {
         this.service = service;
     }
 

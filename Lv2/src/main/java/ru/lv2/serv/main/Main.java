@@ -9,11 +9,11 @@ import org.eclipse.jetty.servlet.ServletHolder;
 import ru.lv2.serv.accounts.AccountService;
 import ru.lv2.serv.servlets.SignInServlet;
 import ru.lv2.serv.servlets.SignUpServlet;
-import wrap.jdbc.service.DBService;
+import wrap.jdbc.service.DBServiceImpl;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        AccountService accountService = new AccountService(new DBService());
+        AccountService accountService = new AccountService(new DBServiceImpl());
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
 //        context.addServlet(new ServletHolder(new UsersServlet(accountService)), "/api/v1/users");
