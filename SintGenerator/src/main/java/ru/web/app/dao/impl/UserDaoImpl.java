@@ -1,39 +1,57 @@
 package ru.web.app.dao.impl;
 
 import ru.web.app.dao.UserDao;
-import ru.web.app.dao.exception.ExceptionDao;
+import ru.web.app.dao.exception.DAOException;
 import ru.web.app.model.User;
 import ru.web.app.util.DBFactory;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoImpl implements UserDao {
+
+    private static UserDao instance;
+
+    private UserDaoImpl() {
+    }
+
+    public static UserDao getInstance(){
+        if (instance == null){
+            instance = new UserDaoImpl();
+        }
+
+        return instance;
+    }
+
     @Override
-    public Integer createUser(String login, String password) {
+    public Integer createUser(User user) throws DAOException {
 
         String insertStr = "insert into users (login, password) values (?,?)";
         ResultSet rs = null;
-        Integer generatedKey = null;
+        Integer generatedKey;
 
         try(Connection conn = DBFactory.getConnection();
             PreparedStatement ps = conn.prepareStatement(insertStr, Statement.RETURN_GENERATED_KEYS)){
 
-            ps.setString(1, login);
-            ps.setString(2, password);
+            ps.setString(1, user.getLogin());
+            ps.setString(2, user.getPassword());
 
             if (ps.executeUpdate() == 1){
                 rs = ps.getGeneratedKeys();
                 if (rs.next()) {
                     generatedKey = rs.getInt(1);
                 } else {
-                    throw new ExceptionDao("Error with getting user's generated key with login - " + login);
+                    throw new DAOException("Error with getting user's generated key with login - " + user.getLogin());
                 }
             } else {
-                throw new ExceptionDao("Error with creating new user with login - " + login);
+                throw new DAOException("Error with creating new user with login - " + user.getLogin());
             }
+
+            return generatedKey;
+
         } catch (SQLException ex){
-            ex.printStackTrace();
+            throw new DAOException("cannot create new user with login - " + user.getLogin(), ex);
         } finally {
             if (rs != null) {
                 try {
@@ -42,13 +60,11 @@ public class UserDaoImpl implements UserDao {
                     e.printStackTrace();
                 }
             }
-
-            return generatedKey;
         }
     }
 
     @Override
-    public User getUserById(Integer id) {
+    public User getUserById(Integer id) throws DAOException {
         String selectStr = "select * from users where id = ?";
         ResultSet rs = null;
         User user = null;
@@ -67,11 +83,13 @@ public class UserDaoImpl implements UserDao {
                 user.setLogin(rs.getString("login"));
                 user.setPassword(rs.getString("password"));
             } else {
-                throw new ExceptionDao("Error with getting user by id " + id);
+                throw new DAOException("Error with getting user by id " + id);
             }
 
-        } catch (SQLException | ExceptionDao ex){
-            ex.printStackTrace();
+            return user;
+
+        } catch (SQLException | DAOException ex){
+            throw new DAOException("cannot get user by id - " + id, ex);
         } finally {
             if (rs != null) {
                 try {
@@ -80,17 +98,15 @@ public class UserDaoImpl implements UserDao {
                     e.printStackTrace();
                 }
             }
-
-            return user;
         }
     }
 
     @Override
-    public List<User> getAllUsers() {
+    public List<User> getAllUsers() throws DAOException {
         String selectStr = "select * from users";
         ResultSet rs = null;
-        List<User> users = null;
-        User user = null;
+        List<User> users = new ArrayList<>();
+        User user;
 
         try(Connection conn = DBFactory.getConnection();
             Statement ps = conn.createStatement()){
@@ -107,8 +123,10 @@ public class UserDaoImpl implements UserDao {
                 users.add(user);
             }
 
+            return users;
+
         } catch (SQLException ex){
-            ex.printStackTrace();
+            throw new DAOException("cannot get all users", ex);
         } finally {
             if (rs != null) {
                 try {
@@ -117,8 +135,6 @@ public class UserDaoImpl implements UserDao {
                     e.printStackTrace();
                 }
             }
-
-            return users;
         }
     }
 }

@@ -1,37 +1,37 @@
 package ru.web.app.controller.filter;
 
+import ru.web.app.model.User;
+import ru.web.app.service.UserService;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Objects;
+import java.util.List;
 
-@WebFilter(urlPatterns = {"/registration", "/login"})
-public class UserFilter implements Filter {
-
+@WebFilter(urlPatterns = "/registration")
+public class RegFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
 
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
-        String username = request.getParameter("username");
+        String login = request.getParameter("username");
         String password = request.getParameter("password");
 
-        if (Objects.isNull(username) || Objects.isNull(password)
-            || username.equalsIgnoreCase("") || password.equalsIgnoreCase("")){
+        UserService service = UserService.getInstance();
+        List<User> users = service.getAllUsers();
 
-            request.setAttribute("message", "Invalid Name or Password");
-
-            if (request.getRequestURI().equalsIgnoreCase("/login")){
-                request.getRequestDispatcher("view/login.jsp").forward(request, response);
-            } else {
+        for (User user : users){
+            if (user.getLogin().equalsIgnoreCase(login) && user.getPassword().equalsIgnoreCase(password)){
+                request.setAttribute("message", "User with such login and password already exists");
                 request.getRequestDispatcher("view/registration.jsp").forward(request, response);
             }
-        } else {
-            filterChain.doFilter(servletRequest, servletResponse);
         }
+
+        filterChain.doFilter(servletRequest, servletResponse);
     }
 
     @Override

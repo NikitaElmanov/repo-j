@@ -63,3 +63,9 @@ html{
 .error-mes{
    color: red;
 }
+
+.right-top-conner-registration{
+    position: fixed;
+    top: 5%;
+    right: 5%;
+}

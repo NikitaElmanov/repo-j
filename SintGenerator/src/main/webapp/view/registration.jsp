@@ -19,11 +19,11 @@
             <form action="/registration" method="post">
 
                 <div class="login formRow">
-                    <input type="text" login="username" class="username" placeholder="Username"/>
+                    <input type="text" name="username" class="username" placeholder="Username"/>
                 </div>
 
                 <div class="password formRow">
-                    <input type="password" login="password" class="upassword" placeholder="Password"/>
+                    <input type="password" name="password" class="upassword" placeholder="Password"/>
                 </div>
 
                 <div class="submit formRow">

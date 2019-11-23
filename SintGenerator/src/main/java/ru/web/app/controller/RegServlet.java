@@ -1,6 +1,7 @@
 package ru.web.app.controller;
 
 import ru.web.app.model.User;
+import ru.web.app.service.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,7 +16,14 @@ public class RegServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         User user = new User();
-        user.setLogin(req.getParameter("name"));
+        user.setLogin(req.getParameter("username"));
         user.setPassword(req.getParameter("password"));
+
+        UserService service = UserService.getInstance();
+        service.createUser(user);
+
+        System.out.println("reg servlet");
+
+        resp.sendRedirect("view/login.jsp");
     }
 }

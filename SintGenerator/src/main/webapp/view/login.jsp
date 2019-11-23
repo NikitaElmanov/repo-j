@@ -7,6 +7,7 @@
 </head>
 <body>
 
+    <a href="view/registration.jsp" class="right-top-conner-registration">Registration</a>
     <div class="sample-class">
         <div class="modal-w">
             <div class="defaultLogin">
@@ -19,11 +20,11 @@
             <form action="/login" method="post">
 
                 <div class="login formRow">
-                    <input type="text" login="username" class="username" placeholder="Username"/>
+                    <input type="text" name="username" class="username" placeholder="Username"/>
                 </div>
 
                 <div class="password formRow">
-                    <input type="password" login="password" class="upassword" placeholder="Password"/>
+                    <input type="password" name="password" class="upassword" placeholder="Password"/>
                 </div>
 
                 <div class="submit formRow">
@@ -33,7 +34,5 @@
             </form>
         </div>
     </div>
-
-    <a href="view/registration.jsp">Registration</a>
 </body>
 </html>
