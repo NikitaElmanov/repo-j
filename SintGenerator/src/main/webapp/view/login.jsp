@@ -3,15 +3,36 @@
 <html>
 <head>
     <title>Login</title>
+    <link rel="stylesheet" href="<c:url value="/css/style-login-reg.css"/>"/>
 </head>
 <body>
 
-    <form method="post" action="login">
-        <input type="text" name="username"/><br/>
-        <input type="password" name="password"/><br/>
-        <input type="submit" value="Login"/>
-    </form>
+    <div class="sample-class">
+        <div class="modal-w">
+            <div class="defaultLogin">
+                <div class="logo"></div>
+                <h1>Welcome to SintGenerator!</h1>
+            </div>
+            <c:if test="${message != null}">
+                <h3 class="error-mes">${message}</h3>
+            </c:if>
+            <form action="/login" method="post">
 
+                <div class="login formRow">
+                    <input type="text" login="username" class="username" placeholder="Username"/>
+                </div>
+
+                <div class="password formRow">
+                    <input type="password" login="password" class="upassword" placeholder="Password"/>
+                </div>
+
+                <div class="submit formRow">
+                    <input type="submit" class="btnLogin" value="Login"/>
+                </div>
+
+            </form>
+        </div>
+    </div>
 
     <a href="view/registration.jsp">Registration</a>
 </body>

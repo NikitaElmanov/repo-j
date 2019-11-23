@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Objects;
 
-@WebFilter(urlPatterns = {"/view/registration", "/login"})
+@WebFilter(urlPatterns = {"/registration", "/login"})
 public class UserFilter implements Filter {
 
     @Override
@@ -20,20 +20,18 @@ public class UserFilter implements Filter {
         String password = request.getParameter("password");
 
 
-        if (Objects.nonNull(username) && Objects.nonNull(password)
-            && !username.equalsIgnoreCase("") && !password.equalsIgnoreCase("")){
-            filterChain.doFilter(servletRequest, servletResponse);
-        } else {
+        if (Objects.isNull(username) || Objects.isNull(password)
+            || username.equalsIgnoreCase("") || password.equalsIgnoreCase("")){
+
             request.setAttribute("message", "Invalid Name or Password");
 
-            String pageError;
-            if (request.getRequestURI().contains("view")){
-                pageError = "error.jsp";
+            if (request.getRequestURI().equalsIgnoreCase("/login")){
+                request.getRequestDispatcher("view/login.jsp").forward(request, response);
             } else {
-                pageError = "view/error.jsp";
+                request.getRequestDispatcher("view/registration.jsp").forward(request, response);
             }
-
-            request.getRequestDispatcher(pageError).forward(request, response);
+        } else {
+            filterChain.doFilter(servletRequest, servletResponse);
         }
     }
 

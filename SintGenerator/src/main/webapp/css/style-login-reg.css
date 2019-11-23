@@ -1,0 +1,65 @@
+html{
+    font-family: "LatoLatinWeb", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.sample-class{
+    align-items: center;
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+}
+
+.modal-w{
+    text-align: center;
+    width: 20vw;
+    height: 44vh;
+    min-width: 350px;
+    min-height: 350px;
+    /*background: aqua;*/
+}
+
+.logo{
+    background-image: url('file:///C:/Users/Elmanov-NR/Pictures/Saved%20Pictures/1.PNG');
+    background-size: 40vw;
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    height: 20vh;
+}
+
+.sample-class h1{
+    font-size: 24px;
+    line-height: normal;
+    font-weight: bold;
+    color: midnightblue;
+}
+
+.formRow{
+    margin-top: 3vh;
+}
+
+.sample-class input {
+    border: 1px solid lightslategrey;
+    border-radius: 3px;
+    font-size: 18px;
+    text-decoration: none;
+    text-align: left;
+    padding: 6px 8px;
+    cursor: text;
+    width: 100%;
+}
+
+
+.sample-class .btnLogin{
+    background: teal;
+    border-radius: 2px;
+    border: 1px solid steelblue;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+}
+
+.error-mes{
+   color: red;
+}

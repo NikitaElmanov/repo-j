@@ -9,19 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/view/registration")
+@WebServlet(urlPatterns = "/registration")
 public class RegServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         User user = new User();
-        user.setName(req.getParameter("name"));
+        user.setLogin(req.getParameter("name"));
         user.setPassword(req.getParameter("password"));
-
     }
-//
-//    @Override
-//    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        req.getRequestDispatcher("view/registration.jsp").forward(req, resp);
-//    }
 }
