@@ -1,13 +1,12 @@
 package ru.web.app.controller.filter;
 
 import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Objects;
 
-@WebFilter(urlPatterns = {"/registration", "/login"})
+//@WebFilter(urlPatterns = {"/registration", "/login"})
 public class UserFilter implements Filter {
 
     @Override
@@ -16,8 +15,8 @@ public class UserFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
+        String username = request.getParameter("username").trim();
+        String password= request.getParameter("password").trim();
 
         if (Objects.isNull(username) || Objects.isNull(password)
             || username.equalsIgnoreCase("") || password.equalsIgnoreCase("")){
@@ -25,9 +24,9 @@ public class UserFilter implements Filter {
             request.setAttribute("message", "Invalid Name or Password");
 
             if (request.getRequestURI().equalsIgnoreCase("/login")){
-                request.getRequestDispatcher("view/login.jsp").forward(request, response);
+                request.getRequestDispatcher("/view/login.jsp").include(request, response);
             } else {
-                request.getRequestDispatcher("view/registration.jsp").forward(request, response);
+                request.getRequestDispatcher("/view/registration.jsp").include(request, response);
             }
         } else {
             filterChain.doFilter(servletRequest, servletResponse);

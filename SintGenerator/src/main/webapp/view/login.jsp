@@ -3,19 +3,19 @@
 <html>
 <head>
     <title>Login</title>
-    <link rel="stylesheet" href="<c:url value="/css/style-login-reg.css"/>"/>
+    <link rel="stylesheet" href="<c:url value="../css/style-login-reg.css"/>"/>
 </head>
-<body>
+<body class="back-picture">
 
-    <a href="view/registration.jsp" class="right-top-conner-registration">Registration</a>
+    <div class="right-top-corner-reg-login"><a href="/view/registration.jsp">Registration</a></div>
+    <div class="welcome-shift right-top-corner-reg-login"><a href="/view/welcome.jsp">Welcome</a></div>
     <div class="sample-class">
         <div class="modal-w">
             <div class="defaultLogin">
-                <div class="logo"></div>
                 <h1>Welcome to SintGenerator!</h1>
             </div>
             <c:if test="${message != null}">
-                <h3 class="error-mes">${message}</h3>
+                <h5 class="error-mes">${message}</h5>
             </c:if>
             <form action="/login" method="post">
 

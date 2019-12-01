@@ -4,6 +4,10 @@ html{
     line-height: 18px;
 }
 
+body.back-picture{
+    background: url("/imgs/db.jpg") no-repeat;
+}
+
 .sample-class{
     align-items: center;
     min-height: 90vh;
@@ -14,18 +18,9 @@ html{
 .modal-w{
     text-align: center;
     width: 20vw;
-    height: 44vh;
+    height: 33vh;
     min-width: 350px;
-    min-height: 350px;
-    /*background: aqua;*/
-}
-
-.logo{
-    background-image: url('file:///C:/Users/Elmanov-NR/Pictures/Saved%20Pictures/1.PNG');
-    background-size: 40vw;
-    background-repeat: no-repeat;
-    background-position: 50% 0;
-    height: 20vh;
+    min-height: 200px;
 }
 
 .sample-class h1{
@@ -33,10 +28,16 @@ html{
     line-height: normal;
     font-weight: bold;
     color: midnightblue;
+    text-shadow: 2px 2px 2px whitesmoke;
 }
 
 .formRow{
     margin-top: 3vh;
+}
+
+.btnLogin:hover, .btnReg:hover{
+    box-shadow: 0px 10px 20px lightskyblue;
+    font-size: 20px;
 }
 
 .sample-class input {
@@ -51,21 +52,37 @@ html{
 }
 
 
-.sample-class .btnLogin{
+.sample-class .btnLogin, .sample-class .btnReg{
     background: teal;
     border-radius: 2px;
     border: 1px solid steelblue;
     color: white;
     cursor: pointer;
     text-align: center;
+    transition: all 0.3s ease 0s;
+}
+
+.right-top-corner-reg-login{
+    position: fixed;
+    top: 5%;
+    right: 3%;
+    width: 5vw;
+    min-width: 100px;
+}
+
+.right-top-corner-reg-login>a{
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: normal;
+    color: blue;
+    text-shadow: 1px 2px 3px darkblue;
+}
+
+/*important go after right-top-corner-reg-login class*/
+.welcome-shift{
+    left: 3%;
 }
 
 .error-mes{
    color: red;
-}
-
-.right-top-conner-registration{
-    position: fixed;
-    top: 5%;
-    right: 5%;
 }

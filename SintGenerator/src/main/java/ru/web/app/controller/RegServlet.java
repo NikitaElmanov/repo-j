@@ -16,13 +16,13 @@ public class RegServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         User user = new User();
-        user.setLogin(req.getParameter("username"));
-        user.setPassword(req.getParameter("password"));
+        user.setLogin(req.getParameter("username").trim());
+        user.setPassword(req.getParameter("password").trim());
 
         UserService service = UserService.getInstance();
         service.createUser(user);
 
-        System.out.println("reg servlet");
+        resp.setStatus(HttpServletResponse.SC_OK);
 
         resp.sendRedirect("view/login.jsp");
     }

@@ -4,9 +4,73 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-    <display-login>Archetype Created Web Application</display-login>
+    <display-name>Archetype Created Web Application</display-name>
 
     <welcome-file-list>
         <welcome-file>view/login.jsp</welcome-file>
+        <!--<welcome-file>view/welcome.jsp</welcome-file>-->
     </welcome-file-list>
+
+    <!--Filters-->
+    <filter>
+        <filter-name>UserFilter</filter-name>
+        <filter-class>ru.web.app.controller.filter.UserFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>UserFilter</filter-name>
+        <url-pattern>/registration</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>UserFilter</filter-name>
+        <url-pattern>/login</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>RegFilter</filter-name>
+        <filter-class>ru.web.app.controller.filter.RegFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>RegFilter</filter-name>
+        <url-pattern>/registration</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>ru.web.app.controller.filter.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/login</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>WelcomeFilter</filter-name>
+        <filter-class>ru.web.app.controller.filter.WelcomeFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>WelcomeFilter</filter-name>
+        <url-pattern>/view/welcome.jsp</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>HideLoginRegFilter</filter-name>
+        <filter-class>ru.web.app.controller.filter.HideLoginRegFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>HideLoginRegFilter</filter-name>
+        <url-pattern>/login</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>HideLoginRegFilter</filter-name>
+        <url-pattern>/registration</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>HideLoginRegFilter</filter-name>
+        <url-pattern>/view/login.jsp</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>HideLoginRegFilter</filter-name>
+        <url-pattern>/view/registration.jsp</url-pattern>
+    </filter-mapping>
+
 </web-app>
