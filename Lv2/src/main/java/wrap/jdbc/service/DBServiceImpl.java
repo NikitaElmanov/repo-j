@@ -2,20 +2,24 @@ package wrap.jdbc.service;
 
 import wrap.jdbc.dao.Dao;
 import wrap.jdbc.elem.User;
+import wrap.jdbc.service.interf.DBService;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-public class DBService {
+public class DBServiceImpl implements DBService {
 
     private Dao dao;
     private Connection connection;
 
-    public DBService() throws SQLException {
+    {
+        createUserTable();
+    }
+
+    public DBServiceImpl() throws SQLException {
         dao = new Dao();
         connection = dao.getConnection();
-        createUserTable();
     }
 
     public User getUser(String login, String password) throws SQLException {
