@@ -122,6 +122,6 @@
 		<jdk.version>1.8</jdk.version>
 		<hibernate.version>4.3.5.Final</hibernate.version>
 		<org.aspectj-version>1.7.4</org.aspectj-version>
-        <spring-data-jpa.version>1.11.4.RELEASE</spring-data-jpa.version>
+        <spring-data-jpa.version>1.11.23.RELEASE</spring-data-jpa.version>
     </properties>
 </project>
