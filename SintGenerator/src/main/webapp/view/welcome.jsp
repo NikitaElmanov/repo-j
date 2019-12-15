@@ -4,13 +4,15 @@
 <head>
     <title>Welcome</title>
     <link rel="stylesheet" href="<c:url value="/css/welcome.css"/>"/>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.js" type="text/javascript"></script>
     <script src="<c:url value="/js/welcome.js"/>" type="text/javascript"></script>
 </head>
 <body class="back-picture">
     <%
         response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
     %>
+
+    <div id="ajaxGetUserServletResponse"></div>
 
     <c:if test="${username != null}">
     <div id="username-container"><h1>${username}</h1></div>
@@ -50,7 +52,7 @@
                             </li>
                             <li class="table-td"><input type="text" class="precision"/></li>
                             <li class="table-td">
-                                <input type="radio" class="pk" name="pk" style="visibility:hidden"/>
+                                <input type="radio" class="pk" name="pk"/>
                             </li>
                             <li class="table-td">
                                 <input type="checkbox" class="del" name="del"/>
@@ -63,22 +65,22 @@
             </div>
             <div class="modal-w-row">
                 <div id="finish-attrs">
-                    <div name="insert-script" id="insert-script">
-                        <input id="insert" type="radio" name="script" checked/>
+                    <div name="insert-script" id="insert-script" for="insert">
+                        <input id="insert" type="checkbox" name="script"/>
                         <label for="insert">Insert script</label>
                     </div>
-                    <div name="update-script" id="update-script">
-                        <input id="update" type="radio" name="script"/>
-                        <label for="update">Update script</label>
-                    </div>
-                    <div name="add-create-script">
+                    <!--<div name="update-script" id="update-script">
+						<input id="update" type="radio" name="script"/>
+						<label for="update">Update script</label>
+					</div>	-->
+                    <div name="add-create-script" for="add-create-script">
                         <input type="checkbox" name="addCS" value="addCS" id="add-create-script"/>
                         <label for="add-create-script">Add creating script</label>
                     </div>
-                    <div name="addId">
-                        <input type="checkbox" name="addId" value="addId" id="addId"/>
-                        <label for="addId">Add id autoincrement</label>
-                    </div>
+                    <!--<div name="addId">
+						<input type="checkbox" name="addId" value="addId" id="addId"/>
+						<label for="addId">Add id autoincrement</label>
+					</div>-->
                 </div>
                 <!--<form action="" method="get" id="generate">-->
                 <button type="submit" value="Generate" id="generate">Generate</button>
