@@ -4,7 +4,8 @@
 <head>
     <title>Welcome</title>
     <link rel="stylesheet" href="<c:url value="/css/welcome.css"/>"/>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.js" type="text/javascript"></script>
+    <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.js" type="text/javascript"></script>-->
+    <script src="/js/jquery-3.0.0.min.js" type="text/javascript"></script>
     <script src="<c:url value="/js/welcome.js"/>" type="text/javascript"></script>
 </head>
 <body class="back-picture">
@@ -65,7 +66,10 @@
             </div>
             <div class="modal-w-row">
                 <div id="finish-attrs">
-                    <div name="insert-script" id="insert-script" for="insert">
+                    <div id="table-name-container">
+                        <span>Table name: </span><input id="table-name" type="text"/>
+                    </div>
+                    <div name="insert-script" id="insert-script">
                         <input id="insert" type="checkbox" name="script"/>
                         <label for="insert">Insert script</label>
                     </div>
@@ -73,7 +77,7 @@
 						<input id="update" type="radio" name="script"/>
 						<label for="update">Update script</label>
 					</div>	-->
-                    <div name="add-create-script" for="add-create-script">
+                    <div name="add-create-script">
                         <input type="checkbox" name="addCS" value="addCS" id="add-create-script"/>
                         <label for="add-create-script">Add creating script</label>
                     </div>

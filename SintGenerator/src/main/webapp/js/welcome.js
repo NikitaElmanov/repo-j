@@ -4,7 +4,7 @@ $(document).ready(function() {
     var stepOfExpandingMW = 30;
     var noPKTypes = ['VARCHAR','CHAR','BOOLEAN','DATE','DECIMAL'];
     var precTypes = ['CHAR','VARCHAR'];
-    var noPrecTypes = ['BOOLEAN','INT','UNSIGNED INT', 'DATE'];
+    var noPrecTypes = ['BOOLEAN','INT','UNSIGNED INT'/*, 'DATE'*/];
     var typesFields, precisionFields, pkFields;
 
     $('input#addRow').click(function(){//adding new row (column) for table
@@ -69,14 +69,20 @@ $(document).ready(function() {
             if (activeFlag == 1){
                 precisionFields[i].removeAttribute('placeholder');
                 precisionFields[i].style.background = 'white';
+                precisionFields[i].value = '';
                 precisionFields[i].setAttribute('disabled', 'true');
             } else {
                 precisionFields[i].removeAttribute('disabled');
             }
 
             if ('DECIMAL' == typesFields[i].value){
-                precisionFields[i].style.background = 'white';
+                //precisionFields[i].style.background = 'white';
                 precisionFields[i].setAttribute('placeholder', '5.2');
+            }
+
+            if ('DECIMAL' != typesFields[i].value){
+                //precisionFields[i].style.background = 'white';
+                precisionFields[i].removeAttribute('placeholder');
             }
         }
 
@@ -171,15 +177,18 @@ $(document).ready(function() {
             }
 
             if ('DECIMAL' == typesFields[j].value){//decimal
-                if (precisionFields[j].value.match('^\\d{1}$') || precisionFields[j].value.match('^\\d{1}((?=[.|,]\\d{0,1})|[.|,]\\d{0,1})$')){
+                if (precisionFields[j].value.match('^\\d{1}$') ||
+                    (precisionFields[j].value.match('^\\d{1}((?=[.|,]\\d{1})|[.|,]\\d{1})$')
+                        && (precisionFields[j].value.split(".")[0] > precisionFields[j].value.split(".")[1]
+                            || precisionFields[j].value.split(",")[0] > precisionFields[j].value.split(",")[1]))) {
+
                     precisionFields[j].removeAttribute('placeholder');
                     precisionFields[j].style.background = 'white';
                 } else {
                     precisionFields[j].value = "";
-                    precisionFields[j].setAttribute('placeholder','input figure');
+                    precisionFields[j].setAttribute('placeholder', 'input figure');
                     precisionFields[j].style.background = 'pink';
 
-                    //allGoodFlag = 0;
                     return;
                 }
             }
@@ -188,32 +197,71 @@ $(document).ready(function() {
 
         var fieldNames = $('input.field-name');
 
-        /*out:
+        //handling of field's names (checking on unique)
         for (var i = 0; i < fieldNames.length; i++){
             for (var j = 0; j < fieldNames.length; j++){
-                if (fieldNames[j].value == fieldNames[i].value){
-                    fieldNames[i].style.background = 'pink';
-                    alert('Field\'s names have to be unique!');
-                    allGoodFlag = 0;
-                    break out;
-                } else {
-                    fieldNames[i].style.background = 'white';
-                }
-            }
-        }*/
+                if (fieldNames[j].value == fieldNames[i].value && i != j){
+                    alert('Field\'s names have to be unique. Name is \"' + fieldNames[j].value + '\"');
 
-        typesFields = $('select.type');//checking PK's types (ONLY INT AND UNSIGNED INT)
-        pkFields = $('input.pk');
-        for (var i = 0; i < typesFields.length; i++){
-            for (var k = 0; k < noPKTypes.length; k++){
-                if (typesFields[i].value == noPKTypes[k] && pkFields[i].checked){
-                    alert('PK can has only INT or UNSIGNED INT types');
                     return;
                 }
             }
         }
 
-        /*if (allGoodFlag == 1){*/
+        fieldNames.each(function(){
+            if ($(this).val().match("^\\d{0,}$")){
+                alert('Error with field name!');
+                allGoodFlag = 0;
+            } else {
+                console.log('ok');
+            }
+        });
+
+        typesFields = $('select.type');//checking PK's types (ONLY INT AND UNSIGNED INT)
+        pkFields = $('input.pk');
+        precisionFields = $('input.precision');
+        for (var i = 0; i < typesFields.length; i++){
+            for (var k = 0; k < noPKTypes.length; k++){
+                if (typesFields[i].value == noPKTypes[k] && pkFields[i].checked){
+                    alert('PK can has only INT or UNSIGNED INT types');
+
+                    return;
+                }
+            }
+
+            if (typesFields[i].value == 'DATE'){
+                if (precisionFields[i].value.match('^[0-9]{4}(,|.)[0-9]{4}$')){
+                    var precisionString;
+
+                    if (precisionFields[i].value.includes(".")){
+                        precisionString = precisionFields[i].value;
+                        precisionString = precisionString.replace('.', ',');
+                    } else {
+                        precisionString = precisionFields[i].value;
+                    }
+
+                    var start = precisionString.substr(0, precisionString.indexOf(","));
+                    var end = precisionString.substr(precisionString.indexOf(",")+1);
+
+                    if (start >= end){
+                        alert('First number has to be less then second.');
+                        return;
+                    }
+
+                } else {
+                    alert('Precision for date has to look like \'**** (.) or (,) ****\' where * means figure.');
+                    return;
+                }
+            }
+        }
+
+        var tableName = $('input#table-name').val();
+
+        if (tableName == '' || tableName.match('^[0-9]{0,}$') || tableName.match('^\\s+$')){
+            alert('Table name should be edited.');
+            return;
+        }
+
         var insertScript = $("input#insert");
         //var updateScript = $("input#update");
         var addCreateScript = $("input#add-create-script");
@@ -260,17 +308,19 @@ $(document).ready(function() {
             }
         });
 
-        $.ajax({
-            url : '/generate',
-            type: 'get',
-            data : {
-                resParams : resParams,
-                fieldNames : JSON.stringify(fieldNames),
-                fieldTypes : JSON.stringify(fieldTypes),
-                fieldPrecisions : JSON.stringify(fieldPrecisions),
-                fieldPK : JSON.stringify(fieldPK)
-            }
-        });
-        //}
+        if (allGoodFlag == 1){
+            $.ajax({
+                url : '/generate',
+                type: 'get',
+                data : {
+                    resParams : resParams,
+                    fieldNames : JSON.stringify(fieldNames),
+                    fieldTypes : JSON.stringify(fieldTypes),
+                    fieldPrecisions : JSON.stringify(fieldPrecisions),
+                    fieldPK : JSON.stringify(fieldPK),
+                    tableName : tableName
+                }
+            });
+        }
     });
 });
