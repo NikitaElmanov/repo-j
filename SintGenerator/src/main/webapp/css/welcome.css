@@ -6,6 +6,7 @@ html{
 
 body.back-picture{
     /*background: url("https://pixfeeds.com/images/topic/4144/1200-4144-databases-photo3.jpg") no-repeat;
+    background: url("file:///C:/Users/NickMax/Downloads/db.jpg") no-repeat;
     background: url("file:///D:/GitHub/repository/repo-j/SintGenerator/src/main/webapp/imgs/db.jpg") no-repeat;*/
     background: url("/imgs/db.jpg") no-repeat;
 }
@@ -170,6 +171,10 @@ div#finish-attrs>div{
 }
 
 input#table-name{
+    margin-left: 12px;
+}
+
+input#table-name, input#amount-rows{
     border: 1px solid midnightblue;
     text-align: center;
 }
@@ -241,3 +246,5 @@ input#del:hover{
     color: #fff;
     transform: translateY(2px);
 }
+
+/*-------*/

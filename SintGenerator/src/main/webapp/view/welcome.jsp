@@ -73,6 +73,9 @@
                         <input id="insert" type="checkbox" name="script"/>
                         <label for="insert">Insert script</label>
                     </div>
+                    <div id="amount-rows-container">
+                        <span>Amount rows: </span><input id="amount-rows" type="text" disabled=true/>
+                    </div>
                     <!--<div name="update-script" id="update-script">
 						<input id="update" type="radio" name="script"/>
 						<label for="update">Update script</label>
@@ -92,5 +95,21 @@
             </div>
         </div>
     </div>
+    <!--<form action="/show-script" method="post" target="_blank" hidden>
+        <input type="text" id="data-script" name="data-script">
+        <input type="submit" id="btn-show-script">
+    </form>-->
+
+    <!--<script>
+        $('button#generate').click(function(){
+            $.ajax({
+                url : '/showScript',
+                method : 'get',
+                success : function(){
+                    window.open('/showScript', '_blank');
+                }
+            });
+        });
+    </script>-->
 </body>
 </html>

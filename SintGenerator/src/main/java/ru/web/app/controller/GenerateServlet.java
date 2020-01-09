@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -26,6 +27,7 @@ public class GenerateServlet extends HttpServlet {
         List<String> fieldPrecisions = null;
         List<String> fieldPK = null;
         String tableName = req.getParameter("tableName").trim();
+        String amountRows = req.getParameter("amountRows").trim();
 
         try {
             JSONArray tmpFieldNames = (JSONArray) parser.parse(req.getParameter("fieldNames").trim());
@@ -42,8 +44,15 @@ public class GenerateServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        System.out.println(tableName);
+        GenLogic logic = new GenLogic(resParams, fieldNames, fieldTypes, fieldPrecisions, fieldPK, tableName, amountRows);
 
-        GenLogic logic = new GenLogic(resParams, fieldNames, fieldTypes, fieldPrecisions, fieldPK, tableName);
+        String resScript = logic.generateScript();
+
+        //Before setting attribute in session performing deleting and invalidating old session attribute
+        HttpSession session = req.getSession();
+        //session.removeAttribute("res-script");
+        //session.invalidate();
+
+        session.setAttribute("resScript", resScript);
     }
 }

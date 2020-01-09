@@ -44,7 +44,7 @@ public class Provider {
         return sb.toString();
     }
 
-    public static Integer getRandomInteger(Integer max, Integer min) {
+    public static Integer getRandomInteger(Integer min, Integer max) {
         if (min >= max) {
             throw new IllegalArgumentException("max must be greater than min");
         }
@@ -74,8 +74,12 @@ public class Provider {
         Double generatedDouble = leftLimit + new Random().nextDouble() * (rightLimit - leftLimit);
 
         NumberFormat formatter = new DecimalFormat(format.toString());
-        String generatedDoubleStr = formatter.format(generatedDouble);
+        String generatedDoubleStr = formatter.format(generatedDouble).replace(",", ".");
 
         return generatedDoubleStr;
+    }
+
+    public static Boolean getRandomBoolean(){
+        return Math.random() < 0.5;
     }
 }

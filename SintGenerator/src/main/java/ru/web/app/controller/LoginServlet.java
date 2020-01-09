@@ -15,6 +15,5 @@ public class LoginServlet extends HttpServlet {
         req.getSession().setAttribute("username", req.getParameter("username").trim());
         resp.setStatus(HttpServletResponse.SC_OK);
         resp.sendRedirect("/view/welcome.jsp");
-
     }
 }

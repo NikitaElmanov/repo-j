@@ -12,7 +12,7 @@ public class ProviderTest {
     }
     @Test
     public void getRandomInteger(){
-        System.out.println(Provider.getRandomInteger(233,4));
+        System.out.println(Provider.getRandomInteger(-1000,1000));
     }
 
     @Test
@@ -22,6 +22,13 @@ public class ProviderTest {
 
     @Test
     public void getRandomDouble(){
-        System.out.println(Provider.getRandomDouble(5000D, 3));
+        System.out.println(Provider.getRandomDouble(1000D, 3));
+    }
+
+    @Test
+    public void getRandomBoolean(){
+        for (int i = 0 ; i < 10; i++) {
+            System.out.println(Provider.getRandomBoolean());
+        }
     }
 }

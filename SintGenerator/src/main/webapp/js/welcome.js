@@ -144,6 +144,14 @@ $(document).ready(function() {
         }
     });
 
+    $('input#insert').click(function(){
+        if ($(this).is(':checked')){
+            $('input#amount-rows').attr('disabled', false);
+        } else {
+            $('input#amount-rows').attr('disabled', true);
+        }
+    });
+
     var allGoodFlag = 1;
     var generateBtn = $('#generate');//running generate process
     generateBtn.click(function(){//handling of empty filed name error
@@ -171,7 +179,8 @@ $(document).ready(function() {
                         precisionFields[j].setAttribute('placeholder','input figure');
                         precisionFields[j].style.background = 'pink';
 
-                        allGoodFlag = 0;
+                        //allGoodFlag = 0;
+                        return;
                     }
                 }
             }
@@ -231,17 +240,13 @@ $(document).ready(function() {
 
             if (typesFields[i].value == 'DATE'){
                 if (precisionFields[i].value.match('^[0-9]{4}(,|.)[0-9]{4}$')){
-                    var precisionString;
 
                     if (precisionFields[i].value.includes(".")){
-                        precisionString = precisionFields[i].value;
-                        precisionString = precisionString.replace('.', ',');
-                    } else {
-                        precisionString = precisionFields[i].value;
+                        precisionFields[i].value = precisionFields[i].value.replace('.', ',');
                     }
 
-                    var start = precisionString.substr(0, precisionString.indexOf(","));
-                    var end = precisionString.substr(precisionString.indexOf(",")+1);
+                    var start = precisionFields[i].value.substr(0, precisionFields[i].value.indexOf(","));
+                    var end = precisionFields[i].value.substr(precisionFields[i].value.indexOf(",")+1);
 
                     if (start >= end){
                         alert('First number has to be less then second.');
@@ -253,6 +258,12 @@ $(document).ready(function() {
                     return;
                 }
             }
+
+            if (typesFields[i].value == 'DECIMAL'){
+                if (precisionFields[i].value.includes(".")){
+                    precisionFields[i].value = precisionFields[i].value.replace('.', ',');
+                }
+            }
         }
 
         var tableName = $('input#table-name').val();
@@ -260,6 +271,15 @@ $(document).ready(function() {
         if (tableName == '' || tableName.match('^[0-9]{0,}$') || tableName.match('^\\s+$')){
             alert('Table name should be edited.');
             return;
+        }
+
+        var amountRows = $('input#amount-rows').val();
+
+        if (!amountRows.match('^[0-9]+$') && $("input#insert").is(':checked')){
+            alert('Amount of rows should be edited.');
+            return;
+        } else if (amountRows == ''){
+            amountRows = 0;
         }
 
         var insertScript = $("input#insert");
@@ -318,7 +338,13 @@ $(document).ready(function() {
                     fieldTypes : JSON.stringify(fieldTypes),
                     fieldPrecisions : JSON.stringify(fieldPrecisions),
                     fieldPK : JSON.stringify(fieldPK),
-                    tableName : tableName
+                    tableName : tableName,
+                    amountRows : amountRows
+                },
+                success : function(){
+                    /*$('#data-script').val(data);
+                    $('#btn-show-script').click();*/
+                    window.open("/showScript", "_blank");
                 }
             });
         }
