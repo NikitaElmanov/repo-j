@@ -11,9 +11,9 @@ import java.awt.datatransfer.StringSelection;
 import java.io.IOException;
 
 @WebServlet("/WriteClipboard")
-public class SetValueInClipboardServlet extends HttpServlet {
+public class WriteInClipboardServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String script = req.getParameter("cb-text").trim();
 

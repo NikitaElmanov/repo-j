@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>Registration</title>
+    <link rel="icon" href="..\imgs\database-icon.png"/>
     <link rel="stylesheet" href="<c:url value='/css/style-login-reg.css'/>"/>
 </head>
 <body class="back-picture">

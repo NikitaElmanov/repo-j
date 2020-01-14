@@ -4,7 +4,7 @@ $(document).ready(function() {
     var stepOfExpandingMW = 30;
     var noPKTypes = ['VARCHAR','CHAR','BOOLEAN','DATE','DECIMAL'];
     var precTypes = ['CHAR','VARCHAR'];
-    var noPrecTypes = ['BOOLEAN','INT','UNSIGNED INT'/*, 'DATE'*/];
+    var noPrecTypes = ['BOOLEAN'/*,'INT',INT UNSIGNED', 'DATE'*/];
     var typesFields, precisionFields, pkFields;
 
     $('input#addRow').click(function(){//adding new row (column) for table
@@ -27,7 +27,7 @@ $(document).ready(function() {
                 '<option selected>VARCHAR</option>'+
                 '<option>CHAR</option>'+
                 '<option>INT</option>'+
-                '<option>UNSIGNED INT</option>'+
+                '<option>INT UNSIGNED</option>'+
                 '<option>DECIMAL</option>'+
                 '<option>DATE</option>'+
                 '<option>BOOLEAN</option>'+
@@ -55,12 +55,12 @@ $(document).ready(function() {
         pkFields = $('input.pk');
         var activeFlag = 0;
 
-        //handling types {if type = 'BOOLEAN','INT','UNSIGNED INT' then disable}
+        //handling types {if type = 'BOOLEAN','INT','INT UNSIGNED' then disable}
         for (var i = 0; i < typesFields.length; i++){
             var activeFlag = 0;
 
             for (var k = 0; k < noPrecTypes.length; k++){//!!!date is here temporarily, probably
-                //'BOOLEAN','INT','UNSIGNED INT', 'DATE'
+                //'BOOLEAN','INT','INT UNSIGNED', 'DATE'
                 if (noPrecTypes[k] == typesFields[i].value){
                     activeFlag = 1;
                 }
@@ -84,6 +84,15 @@ $(document).ready(function() {
                 //precisionFields[i].style.background = 'white';
                 precisionFields[i].removeAttribute('placeholder');
             }
+
+            if ('INT' == typesFields[i].value || 'INT UNSIGNED' == typesFields[i].value){
+                if (pkFields[i].checked){
+                    precisionFields[i].value = "";
+                    precisionFields[i].disabled = true;
+                } else {
+                    precisionFields[i].disabled = false;
+                }
+            }
         }
 
         $('input.pk').click(function(){//make unchecked action for PK radiobutton
@@ -93,6 +102,9 @@ $(document).ready(function() {
                 $(this).prop('checked', true);
             }
         });
+
+
+
 
         //-----------------------------------------------
         //handling difficult condition enough (PK visibility and checking) 89653185774
@@ -161,7 +173,9 @@ $(document).ready(function() {
                 $( this ).val('');
                 $( this ).attr('placeholder', 'input field name!');
 
-                allGoodFlag = 0;
+                //allGoodFlag = 0;
+
+                return;
             } else {
                 $( this ).css('border', '1px solid darkblue');
             }
@@ -180,6 +194,7 @@ $(document).ready(function() {
                         precisionFields[j].style.background = 'pink';
 
                         //allGoodFlag = 0;
+
                         return;
                     }
                 }
@@ -198,6 +213,40 @@ $(document).ready(function() {
                     precisionFields[j].setAttribute('placeholder', 'input figure');
                     precisionFields[j].style.background = 'pink';
 
+                    return;
+                }
+            }
+
+            if (typesFields[j].value == 'INT' || typesFields[j].value == 'INT UNSIGNED'){
+                if (precisionFields[j].value.includes(".")){
+                    precisionFields[j].value = precisionFields[j].value.replace('.', ',');
+                }
+            }
+
+            if ('INT' == typesFields[j].value && !pkFields[j].checked){
+                if (precisionFields[j].value.match('^(-\\d{1,4}|\\d{1,4})(.|,)(-\\d{1,4}|\\d{1,4})$')
+                    && parseInt(precisionFields[j].value.split(",")[0]) < parseInt(precisionFields[j].value.split(",")[1])){
+
+                    //console.log('INT firmat - ok');
+                } else {
+                    alert('INT format that you should use: (min number) "." or "," (max number)');
+
+                    //allGoodFlag = 0;
+                    return;
+                }
+            }
+
+            if ('INT UNSIGNED' == typesFields[j].value && !pkFields[j].checked){
+                if (precisionFields[j].value.match('^\\d{1,4}(.|,)\\d{1,4}$')
+                    && parseInt(precisionFields[j].value.split(",")[0]) > 0
+                    && parseInt(precisionFields[j].value.split(",")[1]) > 0
+                    && parseInt(precisionFields[j].value.split(",")[0]) < parseInt(precisionFields[j].value.split(",")[1])){
+
+                    //console.log('INT UNSIGNED firmat - ok');
+                } else {
+                    alert('INT UNSIGNED format that you should use: (min number).(max number), also every figures hava to be positive' + pkFields[j].checked);
+
+                    //allGoodFlag = 0;
                     return;
                 }
             }
@@ -220,9 +269,11 @@ $(document).ready(function() {
         fieldNames.each(function(){
             if ($(this).val().match("^\\d{0,}$")){
                 alert('Error with field name!');
-                allGoodFlag = 0;
+
+                return;
+                //allGoodFlag = 0;
             } else {
-                console.log('ok');
+                //console.log('ok');
             }
         });
 
@@ -232,7 +283,7 @@ $(document).ready(function() {
         for (var i = 0; i < typesFields.length; i++){
             for (var k = 0; k < noPKTypes.length; k++){
                 if (typesFields[i].value == noPKTypes[k] && pkFields[i].checked){
-                    alert('PK can has only INT or UNSIGNED INT types');
+                    alert('PK can has only INT or INT UNSIGNED types');
 
                     return;
                 }
@@ -328,25 +379,26 @@ $(document).ready(function() {
             }
         });
 
-        if (allGoodFlag == 1){
-            $.ajax({
-                url : '/generate',
-                type: 'get',
-                data : {
-                    resParams : resParams,
-                    fieldNames : JSON.stringify(fieldNames),
-                    fieldTypes : JSON.stringify(fieldTypes),
-                    fieldPrecisions : JSON.stringify(fieldPrecisions),
-                    fieldPK : JSON.stringify(fieldPK),
-                    tableName : tableName,
-                    amountRows : amountRows
-                },
-                success : function(){
-                    /*$('#data-script').val(data);
-                    $('#btn-show-script').click();*/
-                    window.open("/showScript", "_blank");
-                }
-            });
-        }
+        //if (allGoodFlag == 1){
+        $.ajax({
+            url : '/generate',
+            type: 'get',
+            data : {
+                resParams : resParams,
+                fieldNames : JSON.stringify(fieldNames),
+                fieldTypes : JSON.stringify(fieldTypes),
+                fieldPrecisions : JSON.stringify(fieldPrecisions),
+                fieldPK : JSON.stringify(fieldPK),
+                tableName : tableName,
+                amountRows : amountRows
+            },
+            success : function(){
+                window.open('/showScript', '_blank');
+            }
+        });
+        //} else {
+        //	console.log('dfs');
+        //	return;
+        //}
     });
 });

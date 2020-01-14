@@ -59,7 +59,7 @@ public class GenLogic {
 
                     stringBuilder.append(fieldNames.get(i) + " " + fieldTypes.get(i) + "( " + fieldPrecisions.get(i) + " ) " + notNullStr + ",\n");
                 } else if (fieldTypes.get(i).equalsIgnoreCase("INT")
-                        || fieldTypes.get(i).equalsIgnoreCase("UNSIGNED INT")) {
+                        || fieldTypes.get(i).equalsIgnoreCase("INT UNSIGNED")) {
 
                     if (fieldPK.get(i).equalsIgnoreCase("true")){
                         stringBuilder.append(fieldNames.get(i) + " " + fieldTypes.get(i) + " " + notNullStr + " " + PKStr + ",\n");
@@ -105,10 +105,16 @@ public class GenLogic {
                     } else {
                         if (fieldTypes.get(k).equalsIgnoreCase("INT")){
 
-                            stringBuilder.append(Provider.getRandomInteger(-1000, 1000) + ", ");
-                        } else if (fieldTypes.get(k).equalsIgnoreCase("UNSIGNED INT")){
+                            Integer firstNum = Integer.parseInt(fieldPrecisions.get(k).split(",")[0]);
+                            Integer secondNum = Integer.parseInt(fieldPrecisions.get(k).split(",")[1]);
 
-                            stringBuilder.append(Provider.getRandomInteger(1, 1000) + ", ");
+                            stringBuilder.append(Provider.getRandomInteger(firstNum, secondNum) + ", ");
+                        } else if (fieldTypes.get(k).equalsIgnoreCase("INT UNSIGNED")){
+
+                            Integer firstNum = Integer.parseInt(fieldPrecisions.get(k).split(",")[0]);
+                            Integer secondNum = Integer.parseInt(fieldPrecisions.get(k).split(",")[1]);
+
+                            stringBuilder.append(Provider.getRandomInteger(firstNum, secondNum) + ", ");
                         } else if (fieldTypes.get(k).equalsIgnoreCase("VARCHAR")
                             || fieldTypes.get(k).equalsIgnoreCase("CHAR")){
 
@@ -128,8 +134,8 @@ public class GenLogic {
                             stringBuilder.append(Provider.getRandomDouble(Double.parseDouble(maxFigureForDouble.toString()), amountAfterComma) + ", ");
                         } else if (fieldTypes.get(k).equalsIgnoreCase("DATE")){
 
-                            stringBuilder.append(Provider.getRandomDate(Integer.parseInt(fieldPrecisions.get(k).split(",")[0]),
-                                                                        Integer.parseInt(fieldPrecisions.get(k).split(",")[1])) + ", ");
+                            stringBuilder.append("\'" + Provider.getRandomDate(Integer.parseInt(fieldPrecisions.get(k).split(",")[0]),
+                                                                        Integer.parseInt(fieldPrecisions.get(k).split(",")[1])) + "\', ");
                         } else if (fieldTypes.get(k).equalsIgnoreCase("BOOLEAN")){
 
                             stringBuilder.append(Provider.getRandomBoolean() + ", ");

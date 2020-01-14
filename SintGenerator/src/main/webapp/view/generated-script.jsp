@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Generated Script</title>
+    <link rel="icon" href="..\imgs\database-icon.png"/>
     <link rel="stylesheet" href="<c:url value="../css/generated-script.css"/>"/>
     <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.js" type="text/javascript"></script>-->
     <script src="/js/jquery-3.0.0.min.js" type="text/javascript"></script>
@@ -12,7 +13,7 @@
 <body>
     <div id="container">
         <div id="center-cont">
-            <form action="/WriteClipboard" method="get">
+            <form action="/WriteClipboard" method="post">
                 <input type="text" name="cb-text" value="${resScript}" hidden>
                 <input type="submit" value="Copy to Clipboard" id="copy-btn">
             </form>
@@ -23,7 +24,7 @@
 
     <script>
         $('input#copy-btn').click(function(){
-            alert('Script in Clipboard!');
+            $(this).css("color", "red");
         });
     </script>
 </body>

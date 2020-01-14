@@ -12,7 +12,7 @@ public class ProviderTest {
     }
     @Test
     public void getRandomInteger(){
-        System.out.println(Provider.getRandomInteger(-1000,1000));
+        System.out.println(Provider.getRandomInteger(-1000,-500));
     }
 
     @Test

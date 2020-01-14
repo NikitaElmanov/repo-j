@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>Welcome</title>
+    <link rel="icon" href="..\imgs\database-icon.png"/>
     <link rel="stylesheet" href="<c:url value="/css/welcome.css"/>"/>
     <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.js" type="text/javascript"></script>-->
     <script src="/js/jquery-3.0.0.min.js" type="text/javascript"></script>
@@ -45,7 +46,7 @@
                                     <option selected>VARCHAR</option>
                                     <option>CHAR</option>
                                     <option>INT</option>
-                                    <option>UNSIGNED INT</option>
+                                    <option>INT UNSIGNED</option>
                                     <option>DECIMAL</option>
                                     <option>DATE</option>
                                     <option>BOOLEAN</option>
