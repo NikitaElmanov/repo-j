@@ -43,7 +43,8 @@ public class LoginFilter implements Filter {
         }
 
         if (flag == false){
-            request.setAttribute("message", "User with such login and password has no registered");
+            request.setAttribute("message", "Пользователь с введёнными логином и паролем должен зарегистрироваться");
+            response.setCharacterEncoding("utf-8");
             request.getRequestDispatcher("/view/login.jsp").include(request, response);
         }else {
             filterChain.doFilter(servletRequest, servletResponse);

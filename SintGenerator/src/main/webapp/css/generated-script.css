@@ -8,25 +8,41 @@ html, body{
 
 #container{
     background-color: white;
-    width: 100vw;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+//flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    align-items: baseline;
 }
 
-#center-cont{
-    min-width: 50vw;
+#script-container, #table-preview{
+    min-width: 20vw;
     background-color: aliceblue;
     line-height: 1.5em;
-    padding-left: 5vw;
     border-radius: 10px;
-    margin-right: 10px;
+    margin-right: 20px;
     margin-top: 5vh;
     margin-bottom: 5vh;
     padding-right: 20px;
+    padding-left: 20px;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+#table-preview > table{
+    border-collapse: collapse;
+    text-align: center;
+    background-color: #7DF1B5;
+    margin: auto;
+    margin-bottom: 3vh;
+}
+
+#table-preview table th {
+    background-color: cadetblue;
+    color: white;
+}
+
+#table-preview table td, #table-preview table th{
+    border: 2px solid darkcyan;
 }
 
 input#copy-btn{

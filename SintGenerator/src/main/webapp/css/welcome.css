@@ -213,7 +213,7 @@ input#table-name, input#amount-rows{
 /*------*/
 
 #addRow{
-    width: 10%;
+    width: 15%;
     padding: 10px;
     font-size: 12px;
 }

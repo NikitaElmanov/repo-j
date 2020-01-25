@@ -21,7 +21,8 @@ public class UserFilter implements Filter {
         if (Objects.isNull(username) || Objects.isNull(password)
             || username.equalsIgnoreCase("") || password.equalsIgnoreCase("")){
 
-            request.setAttribute("message", "Invalid Name or Password");
+            request.setAttribute("message", "Неверный(е) логин, пароль");
+            response.setCharacterEncoding("utf-8");
 
             if (request.getRequestURI().equalsIgnoreCase("/login")){
                 request.getRequestDispatcher("/view/login.jsp").include(request, response);

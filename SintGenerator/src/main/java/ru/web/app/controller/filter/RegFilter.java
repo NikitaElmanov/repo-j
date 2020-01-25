@@ -25,8 +25,10 @@ public class RegFilter implements Filter {
 
         for (User user : users){
             if (user.getLogin().equalsIgnoreCase(login) && user.getPassword().equalsIgnoreCase(password)){
-                request.setAttribute("message", "User already exists");
+                request.setAttribute("message", "Пользователь уже существует");
+                response.setCharacterEncoding("utf-8");
                 request.getRequestDispatcher("/view/registration.jsp").forward(request, response);
+                return;
             }
         }
 

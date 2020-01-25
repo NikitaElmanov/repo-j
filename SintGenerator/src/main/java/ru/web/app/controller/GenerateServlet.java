@@ -50,9 +50,15 @@ public class GenerateServlet extends HttpServlet {
 
         //Before setting attribute in session performing deleting and invalidating old session attribute
         HttpSession session = req.getSession();
-        //session.removeAttribute("res-script");
+        //session.removeAttribute("resScript");
         //session.invalidate();
 
         session.setAttribute("resScript", resScript);
+
+        session.setAttribute("fieldNames", logic.getFieldNamesWithoutPK());
+        session.setAttribute("seqNumPKField", logic.getFieldPKSeqNumber());
+        session.setAttribute("fieldPKName", logic.getFieldPKName());
+        session.setAttribute("listsOfValues", logic.getFieldValues());
+        session.setAttribute("tableName", logic.getTableName());
     }
 }

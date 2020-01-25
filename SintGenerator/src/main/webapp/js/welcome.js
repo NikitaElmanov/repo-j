@@ -45,7 +45,7 @@ $(document).ready(function() {
             counterOfRows++;
 
         } else {
-            alert('limited amount of column is 15');
+            alert('Ограничение на кол-во полей в одной таблице равно 15');
         }
     });
 
@@ -168,12 +168,12 @@ $(document).ready(function() {
     var generateBtn = $('#generate');//running generate process
     generateBtn.click(function(){//handling of empty filed name error
         $('li.table-td input.field-name').each(function(){
-            if ($.trim($( this ).val()).length == 0 || !$.trim($( this ).val()).match('[a-zA-Z][0-9]{0,}')){
+            if ($.trim($( this ).val()).length == 0 || $.trim($( this ).val()).match('^[0-9]{0,}$')){
                 $( this ).css('border', '2px solid red');
                 $( this ).val('');
-                $( this ).attr('placeholder', 'input field name!');
+                $( this ).attr('placeholder', 'введите имя поля!');
 
-                //allGoodFlag = 0;
+                allGoodFlag = 0;
 
                 return;
             } else {
@@ -190,7 +190,7 @@ $(document).ready(function() {
                         precisionFields[j].style.background = 'white';
                     } else {
                         precisionFields[j].value = "";
-                        precisionFields[j].setAttribute('placeholder','input figure');
+                        precisionFields[j].setAttribute('placeholder','введите цифру');
                         precisionFields[j].style.background = 'pink';
 
                         //allGoodFlag = 0;
@@ -210,7 +210,7 @@ $(document).ready(function() {
                     precisionFields[j].style.background = 'white';
                 } else {
                     precisionFields[j].value = "";
-                    precisionFields[j].setAttribute('placeholder', 'input figure');
+                    precisionFields[j].setAttribute('placeholder', 'введите цифру');
                     precisionFields[j].style.background = 'pink';
 
                     return;
@@ -229,7 +229,7 @@ $(document).ready(function() {
 
                     //console.log('INT firmat - ok');
                 } else {
-                    alert('INT format that you should use: (min number) "." or "," (max number)');
+                    alert('INT имеет следующий шаблон: (минимальная граница) "." or "," (максимальная граница)');
 
                     //allGoodFlag = 0;
                     return;
@@ -244,7 +244,7 @@ $(document).ready(function() {
 
                     //console.log('INT UNSIGNED firmat - ok');
                 } else {
-                    alert('INT UNSIGNED format that you should use: (min number).(max number), also every figures hava to be positive' + pkFields[j].checked);
+                    alert('INT UNSIGNED имеет следующий шаблон: (минимальная граница).(максимальная граница), также числа должны быть положительными ' + pkFields[j].checked);
 
                     //allGoodFlag = 0;
                     return;
@@ -259,23 +259,12 @@ $(document).ready(function() {
         for (var i = 0; i < fieldNames.length; i++){
             for (var j = 0; j < fieldNames.length; j++){
                 if (fieldNames[j].value == fieldNames[i].value && i != j){
-                    alert('Field\'s names have to be unique. Name is \"' + fieldNames[j].value + '\"');
+                    alert('Имена полей должны быть уникальными. Необходимо исправить - \"' + fieldNames[j].value + '\"');
 
                     return;
                 }
             }
         }
-
-        fieldNames.each(function(){
-            if ($(this).val().match("^\\d{0,}$")){
-                alert('Error with field name!');
-
-                return;
-                //allGoodFlag = 0;
-            } else {
-                //console.log('ok');
-            }
-        });
 
         typesFields = $('select.type');//checking PK's types (ONLY INT AND UNSIGNED INT)
         pkFields = $('input.pk');
@@ -283,7 +272,7 @@ $(document).ready(function() {
         for (var i = 0; i < typesFields.length; i++){
             for (var k = 0; k < noPKTypes.length; k++){
                 if (typesFields[i].value == noPKTypes[k] && pkFields[i].checked){
-                    alert('PK can has only INT or INT UNSIGNED types');
+                    alert('Первичным ключём может быть поле с типами INT or INT UNSIGNED');
 
                     return;
                 }
@@ -305,7 +294,7 @@ $(document).ready(function() {
                     }
 
                 } else {
-                    alert('Precision for date has to look like \'**** (.) or (,) ****\' where * means figure.');
+                    alert('Точность даты должна выглядеть как \'**** (.) or (,) ****\', где * означает цифру');
                     return;
                 }
             }
@@ -320,14 +309,14 @@ $(document).ready(function() {
         var tableName = $('input#table-name').val();
 
         if (tableName == '' || tableName.match('^[0-9]{0,}$') || tableName.match('^\\s+$')){
-            alert('Table name should be edited.');
+            alert('Имя таблицы необходимо исправить');
             return;
         }
 
         var amountRows = $('input#amount-rows').val();
 
         if (!amountRows.match('^[0-9]+$') && $("input#insert").is(':checked')){
-            alert('Amount of rows should be edited.');
+            alert('Кол-во строк необходимо исправить');
             return;
         } else if (amountRows == ''){
             amountRows = 0;
@@ -354,7 +343,7 @@ $(document).ready(function() {
         }*/
 
         if (resParams.length < 1){
-            alert('You should choose at least');
+            alert('Необходимо выбрать хотя бы одну установку для генерации (create или/и insert)');
             return;
         }
 
@@ -379,26 +368,25 @@ $(document).ready(function() {
             }
         });
 
-        //if (allGoodFlag == 1){
-        $.ajax({
-            url : '/generate',
-            type: 'get',
-            data : {
-                resParams : resParams,
-                fieldNames : JSON.stringify(fieldNames),
-                fieldTypes : JSON.stringify(fieldTypes),
-                fieldPrecisions : JSON.stringify(fieldPrecisions),
-                fieldPK : JSON.stringify(fieldPK),
-                tableName : tableName,
-                amountRows : amountRows
-            },
-            success : function(){
-                window.open('/showScript', '_blank');
-            }
-        });
-        //} else {
-        //	console.log('dfs');
-        //	return;
-        //}
+        if (allGoodFlag == 1){
+            $.ajax({
+                url : '/generate',
+                type: 'get',
+                data : {
+                    resParams : resParams,
+                    fieldNames : JSON.stringify(fieldNames),
+                    fieldTypes : JSON.stringify(fieldTypes),
+                    fieldPrecisions : JSON.stringify(fieldPrecisions),
+                    fieldPK : JSON.stringify(fieldPK),
+                    tableName : tableName,
+                    amountRows : amountRows
+                },
+                success : function(){
+                    window.open('/showScript', '_blank');
+                }
+            });
+        } else{
+            return;
+        }
     });
 });

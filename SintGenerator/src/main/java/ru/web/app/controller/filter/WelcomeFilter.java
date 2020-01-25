@@ -25,7 +25,8 @@ public class WelcomeFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         if (Objects.isNull(request.getSession().getAttribute("username"))){
-            request.setAttribute("message", "You have to login before visiting welcome page");
+            request.setAttribute("message", "Необходимо выполнить \'Логин\' прежде чем заходить на главную строницу");
+            response.setCharacterEncoding("utf-8");
             request.getRequestDispatcher("/view/login.jsp").forward(request, response);
         }
 

@@ -12,13 +12,42 @@
 </head>
 <body>
     <div id="container">
-        <div id="center-cont">
+        <div id="script-container">
             <form action="/WriteClipboard" method="post">
                 <input type="text" name="cb-text" value="${resScript}" hidden>
                 <input type="submit" value="Copy to Clipboard" id="copy-btn">
             </form>
 
             <pre>${resScript}</pre>
+        </div>
+
+        <c:set var = "amountColumns" scope = "session" value = "${fieldNames.size()}"/>
+        <div id="table-preview">
+            <table cellpadding="5">
+                <caption>Таблица <b>${tableName}</b> первых 10 записей</caption>
+                <tr>
+                    <c:choose>
+                        <c:when test="${seqNumPKField == -1}">
+                            <th>№</th>
+                        </c:when>
+                        <c:otherwise>
+                            <th><pre><em style="color: gold;">PK : ${fieldPKName}</em></pre></th>
+                        </c:otherwise>
+                    </c:choose>
+
+                    <c:forEach var="field" items="${fieldNames}">
+                        <th>${field}</th>
+                    </c:forEach>
+                </tr>
+                <c:forEach var="list" items="${listsOfValues}" varStatus="counter" begin="0" end="${9 * amountColumns}" step="${amountColumns}">
+                    <tr>
+                        <td>${counter.count}</td>
+                        <c:forEach var="value" items="${list}">
+                            <td><pre>${value}</pre></td>
+                        </c:forEach>
+                    </tr>
+                </c:forEach>
+            </table>
         </div>
     </div>
 
