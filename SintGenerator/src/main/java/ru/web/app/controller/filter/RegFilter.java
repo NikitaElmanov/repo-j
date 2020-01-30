@@ -2,11 +2,13 @@ package ru.web.app.controller.filter;
 
 import ru.web.app.model.User;
 import ru.web.app.service.UserService;
+import ru.web.app.util.CryptoUtil;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.StreamTokenizer;
 import java.util.List;
 
 //@WebFilter(urlPatterns = "/registration")
@@ -18,7 +20,13 @@ public class RegFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         String login = request.getParameter("username").trim();
-        String password= request.getParameter("password").trim();
+        String password = request.getParameter("password").trim();
+
+        try {
+            password = CryptoUtil.byteArrayToHexString(CryptoUtil.computeHash(password));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         UserService service = UserService.getInstance();
         List<User> users = service.getAllUsers();

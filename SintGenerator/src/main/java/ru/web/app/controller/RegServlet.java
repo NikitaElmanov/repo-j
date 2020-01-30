@@ -2,6 +2,7 @@ package ru.web.app.controller;
 
 import ru.web.app.model.User;
 import ru.web.app.service.UserService;
+import ru.web.app.util.CryptoUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,8 +17,17 @@ public class RegServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         User user = new User();
+
+        String password = req.getParameter("password").trim();
+
+        try {
+            password = CryptoUtil.byteArrayToHexString(CryptoUtil.computeHash(password));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         user.setLogin(req.getParameter("username").trim());
-        user.setPassword(req.getParameter("password").trim());
+        user.setPassword(password);
 
         UserService service = UserService.getInstance();
         service.createUser(user);
