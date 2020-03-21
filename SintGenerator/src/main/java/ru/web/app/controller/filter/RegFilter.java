@@ -2,6 +2,7 @@ package ru.web.app.controller.filter;
 
 import ru.web.app.model.User;
 import ru.web.app.service.UserService;
+import ru.web.app.util.CryptoUtil;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -12,24 +13,37 @@ import java.util.List;
 //@WebFilter(urlPatterns = "/registration")
 public class RegFilter implements Filter {
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+    public void doFilter(final ServletRequest servletRequest,
+                         final ServletResponse servletResponse,
+                         final FilterChain filterChain) throws IOException, ServletException {
 
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         String login = request.getParameter("username").trim();
-        String password= request.getParameter("password").trim();
+        String password = request.getParameter("password").trim();
+
+        try {
+            password = CryptoUtil
+                    .byteArrayToHexString(CryptoUtil.computeHash(password));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         UserService service = UserService.getInstance();
         List<User> users = service.getAllUsers();
 
-        for (User user : users){
-            if (user.getLogin().equalsIgnoreCase(login) && user.getPassword().equalsIgnoreCase(password)){
-                request.setAttribute("message", "User already exists");
-                request.getRequestDispatcher("/view/registration.jsp").include(request, response);
+        for (User user : users) {
+            if (user.getLogin().equalsIgnoreCase(login)
+                    && user.getPassword().equalsIgnoreCase(password)) {
+                request.setAttribute("message",
+                                     "Пользователь уже существует");
+                response.setCharacterEncoding("utf-8");
+                request.getRequestDispatcher("/view/registration.jsp")
+                        .forward(request, response);
+                return;
             }
         }
-
         filterChain.doFilter(servletRequest, servletResponse);
     }
 

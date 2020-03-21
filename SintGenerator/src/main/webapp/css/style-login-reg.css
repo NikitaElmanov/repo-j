@@ -64,7 +64,7 @@ body.back-picture{
     color: white;
     cursor: pointer;
     text-align: center;
-    transition: 1s;
+    transition: 0.5s;
 }
 
 .right-top-corner-reg-login{

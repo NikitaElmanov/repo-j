@@ -10,21 +10,18 @@ import java.util.Properties;
 public class DBFactory {
     private static Properties prop;
 
-    static
-    {
+    static {
         prop = new Properties();
         String path = File.separator + "db.properties";
-        InputStream in = DBFactory.class.getClassLoader().getResourceAsStream(path);
-        try
-        {
+        InputStream in = DBFactory.class
+                            .getClassLoader()
+                                    .getResourceAsStream(path);
+        try {
             prop.load(in);
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
     public static Connection getConnection() throws SQLException {
 //        Class.forName(prop.getProperty("classDriver"));
         DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());

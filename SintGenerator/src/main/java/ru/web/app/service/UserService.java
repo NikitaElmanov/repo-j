@@ -7,23 +7,23 @@ import ru.web.app.model.User;
 
 import java.util.List;
 
-public class UserService {
+final public class UserService {
 
     private static UserService instance = null;
 
-    private UserService(){
+    private UserService() {
 
     }
 
-    public static UserService getInstance(){
-        if (instance == null){
+    public static UserService getInstance() {
+        if (instance == null) {
             instance = new UserService();
         }
 
         return instance;
     }
 
-    public Integer createUser(User user){
+    public Integer createUser(final User user) {
         UserDao dao = UserDaoImpl.getInstance();
         Integer id = null;
 
@@ -36,7 +36,7 @@ public class UserService {
         return id;
     }
 
-    public User getUserById(Integer id){
+    public User getUserById(final Integer id) {
         UserDao dao = UserDaoImpl.getInstance();
         User user = null;
 
@@ -49,7 +49,7 @@ public class UserService {
         return user;
     }
 
-    public List<User> getAllUsers(){
+    public List<User> getAllUsers() {
         UserDao dao = UserDaoImpl.getInstance();
         List<User> users = null;
 
