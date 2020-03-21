@@ -5,10 +5,30 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.util.Random;
+import java.util.Stack;
 
 import static ru.web.app.logic.randomdata.RandomDates.createRandomDate;
 
 public class Provider {
+
+    private static final int DEFAULT_RANGE = 50;
+
+    public static Stack<String> getRandomStringAsPK(final int amountRows) {
+        Stack<String> genPKs = new Stack<>();
+        String genPK;
+
+        for (int i = 0; i < amountRows; i++) {
+            genPK = getRandomString(DEFAULT_RANGE);
+
+            while (genPKs.contains(genPK)) {
+                genPK = getRandomString(DEFAULT_RANGE);
+            }
+
+            genPKs.add(genPK);
+        }
+
+        return genPKs;
+    }
 
     // function to generate a random string of length n
     public static String getRandomString(final Integer n) {
@@ -16,7 +36,8 @@ public class Provider {
             throw new IllegalArgumentException();
         }
 
-        Integer max = n, min = 1;
+        Integer max = n,
+                min = 1;
 
         // chose a Character random from this String
         String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"

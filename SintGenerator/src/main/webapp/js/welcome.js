@@ -2,8 +2,8 @@ $(document).ready(function() {
     var counterOfRows = 0;
     var maxAmountOfColumns = 15;
     var stepOfExpandingMW = 30;
-    var noPKTypes = ['VARCHAR','CHAR','BOOLEAN','DATE','DECIMAL'];
-    var precTypes = ['CHAR','VARCHAR'];
+    var noPKTypes = [/*'VARCHAR'*/,'CHAR','BOOLEAN','DATE','DECIMAL'];
+    var precTypes = ['CHAR',/*'VARCHAR'*/];
     var noPrecTypes = ['BOOLEAN'/*,'INT',INT UNSIGNED', 'DATE'*/];
     var typesFields, precisionFields, pkFields;
 
@@ -60,7 +60,7 @@ $(document).ready(function() {
             var activeFlag = 0;
 
             for (var k = 0; k < noPrecTypes.length; k++){//!!!date is here temporarily, probably
-                //'BOOLEAN','INT','INT UNSIGNED', 'DATE'
+                //'BOOLEAN','INT','INT UNSIGNED', 'DATE', 'VARCHAR'
                 if (noPrecTypes[k] == typesFields[i].value){
                     activeFlag = 1;
                 }
@@ -85,7 +85,7 @@ $(document).ready(function() {
                 precisionFields[i].removeAttribute('placeholder');
             }
 
-            if ('INT' == typesFields[i].value || 'INT UNSIGNED' == typesFields[i].value){
+            if ('INT' == typesFields[i].value || 'INT UNSIGNED' == typesFields[i].value || 'VARCHAR' == typesFields[i].value){
                 if (pkFields[i].checked){
                     precisionFields[i].value = "";
                     precisionFields[i].disabled = true;
@@ -177,7 +177,8 @@ $(document).ready(function() {
 
                 //return;
             } else {
-                allGoodFlag = 1;//so important addition
+                allGoodFlag = 1;
+
                 $( this ).css('border', '1px solid darkblue');
             }
         });
@@ -185,7 +186,7 @@ $(document).ready(function() {
 
         for (var j = 0; j < typesFields.length; j++){
             for (var i = 0; i < precTypes.length; i++){
-                if (precTypes[i] == typesFields[j].value){//'CHAR','VARCHAR'
+                if (precTypes[i] == typesFields[j].value){//'CHAR',^!'VARCHAR'!
                     if (precisionFields[j].value.match('^\\d{1,3}$')){
                         precisionFields[j].removeAttribute('placeholder');
                         precisionFields[j].style.background = 'white';
@@ -245,7 +246,7 @@ $(document).ready(function() {
 
                     //console.log('INT UNSIGNED firmat - ok');
                 } else {
-                    alert('INT UNSIGNED имеет следующий шаблон: (минимальная граница).(максимальная граница), также числа должны быть положительными ' + pkFields[j].checked);
+                    alert('INT UNSIGNED имеет следующий шаблон: (минимальная граница).(максимальная граница), также числа должны быть положительными');
 
                     //allGoodFlag = 0;
                     return;
@@ -290,7 +291,7 @@ $(document).ready(function() {
                     var end = precisionFields[i].value.substr(precisionFields[i].value.indexOf(",")+1);
 
                     if (start >= end){
-                        alert('First number has to be less then second.');
+                        alert('First number has to be less then second (DATE Field).');
                         return;
                     }
 

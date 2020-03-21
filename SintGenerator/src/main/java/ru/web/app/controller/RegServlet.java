@@ -4,7 +4,6 @@ import ru.web.app.model.User;
 import ru.web.app.service.UserService;
 import ru.web.app.util.CryptoUtil;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

@@ -4,18 +4,22 @@ import ru.web.app.logic.randomdata.Provider;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class GenLogic {
-    private String insertStr;
-
     private List<String> resParams;
     private List<String> fieldNames;
     private List<String> fieldTypes;
     private List<String> fieldPrecisions;
     private List<String> fieldPK;
     private String tableName;
+    /**
+     * amount of rows to generate
+     */
     private Integer amountRows;
-
+    /**
+     * amount of come fields {@link fieldNames}
+     */
     private Integer commonLength;
 
     private static final String notNullStr = "not null";
@@ -49,6 +53,7 @@ public class GenLogic {
     public String generateScript() {
         StringBuilder stringBuilder;
         String finishedStr = "";
+        Stack<String> ganeratedStringPKs = Provider.getRandomStringAsPK(amountRows);
 
         //region create script generation
         if (resParams.contains("create")) {
@@ -60,13 +65,14 @@ public class GenLogic {
 
             for (int i = 0; i < commonLength; i++) {
 
-                if (fieldTypes.get(i).equalsIgnoreCase("VARCHAR")
-                        || fieldTypes.get(i).equalsIgnoreCase("CHAR")
+                if (/*fieldTypes.get(i).equalsIgnoreCase("VARCHAR")
+                        ||*/ fieldTypes.get(i).equalsIgnoreCase("CHAR")
                         || fieldTypes.get(i).equalsIgnoreCase("DECIMAL")) {
 
                     stringBuilder.append(fieldNames.get(i) + " " + fieldTypes.get(i) + "( " + fieldPrecisions.get(i) + " ) " + notNullStr + ",\n");
                 } else if (fieldTypes.get(i).equalsIgnoreCase("INT")
-                        || fieldTypes.get(i).equalsIgnoreCase("INT UNSIGNED")) {
+                        || fieldTypes.get(i).equalsIgnoreCase("INT UNSIGNED")
+                        || fieldTypes.get(i).equalsIgnoreCase("VARCHAR")) {
 
                     if (fieldPK.get(i).equalsIgnoreCase("true")) {
                         stringBuilder.append(fieldNames.get(i) + " " + fieldTypes.get(i) + " " + notNullStr + " " + PKStr + ",\n");
@@ -95,7 +101,9 @@ public class GenLogic {
                     stringBuilder.append(fieldNames.get(i) + ",");
 
                     fieldNamesWithoutPK.add(fieldNames.get(i));
-                } else {
+                } else if (fieldTypes.get(i).equalsIgnoreCase("VARCHAR")) {
+                    stringBuilder.append(fieldNames.get(i) + ",");
+
                     fieldPKName = fieldNames.get(i);
                 }
             }
@@ -118,7 +126,12 @@ public class GenLogic {
                 for (int k = 0; k < commonLength; k++) {
 
                     if (fieldPK.get(k).equalsIgnoreCase("true")) {
-                        continue;
+                        if (fieldTypes.get(k).equalsIgnoreCase("VARCHAR")) {
+
+                            stringBuilder.append("\'" + ganeratedStringPKs.pop() + "\', ");
+                        } else {
+                            continue;
+                        }
                     } else {
                         if (fieldTypes.get(k).equalsIgnoreCase("INT")) {
 
@@ -187,7 +200,8 @@ public class GenLogic {
                     fieldValues.add(tmpValuesList);
                 }
 
-                String tmpIncrementalRowData = String.valueOf(stringBuilder).replaceAll(", $", "");
+                String tmpIncrementalRowData = String.valueOf(stringBuilder)
+                                        .replaceAll(", $", "");
 
                 stringBuilder.delete(0, stringBuilder.length());
 

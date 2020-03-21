@@ -33,7 +33,7 @@ public class UserFilter implements Filter {
             request.setAttribute("message", "Неверный(е) логин, пароль");
             response.setCharacterEncoding("utf-8");
 
-            if (request.getRequestURI().equalsIgnoreCase("/login")){
+            if (request.getRequestURI().equalsIgnoreCase("/login")) {
                 request.getRequestDispatcher("/view/login.jsp").include(request, response);
             } else {
                 request.getRequestDispatcher("/view/registration.jsp").include(request, response);

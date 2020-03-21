@@ -31,4 +31,9 @@ public class ProviderTest {
             System.out.println(Provider.getRandomBoolean());
         }
     }
+
+    @Test
+    public void getRandomStringAsPK(){
+        Provider.getRandomStringAsPK(100);
+    }
 }

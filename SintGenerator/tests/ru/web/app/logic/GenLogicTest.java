@@ -17,9 +17,9 @@ public class GenLogicTest {
         logic = new GenLogic(Arrays.asList("create", "insert"),
                              Arrays.asList("fld1", "fld2", "fld3"),
                              Arrays.asList("INT", "VARCHAR", "DECIMAL"),
-                             Arrays.asList("", "255", "6,3"),
-                             Arrays.asList("true", "false", "flase"),
-                             "testdb", "100");
+                             Arrays.asList("", "25", "6,3"),
+                             Arrays.asList("true", "false", "false"),
+                             "testdb", "10");
     }
 
     @Test
