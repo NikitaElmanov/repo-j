@@ -175,8 +175,9 @@ $(document).ready(function() {
 
                 allGoodFlag = 0;
 
-                return;
+                //return;
             } else {
+                allGoodFlag = 1;//so important addition
                 $( this ).css('border', '1px solid darkblue');
             }
         });
