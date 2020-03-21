@@ -8,30 +8,30 @@ import java.util.List;
 public class GenLogic {
     private String insertStr;
 
-    List<String> resParams;
-    List<String> fieldNames;
-    List<String> fieldTypes;
-    List<String> fieldPrecisions;
-    List<String> fieldPK;
-    String tableName;
-    Integer amountRows;
+    private List<String> resParams;
+    private List<String> fieldNames;
+    private List<String> fieldTypes;
+    private List<String> fieldPrecisions;
+    private List<String> fieldPK;
+    private String tableName;
+    private Integer amountRows;
 
-    Integer commonLength;
+    private Integer commonLength;
 
-    String notNullStr = "not null";
-    String PKStr = "primary key auto_increment";
+    private static final String notNullStr = "not null";
+    private static final  String PKStr = "primary key auto_increment";
 
-    List<List<String>> fieldValues;
-    List<String> fieldNamesWithoutPK;
-    String fieldPKName;
+    private List<List<String>> fieldValues;
+    private List<String> fieldNamesWithoutPK;
+    private String fieldPKName;
 
-    public GenLogic(List<String> resParams,
-                    List<String> fieldNames,
-                    List<String> fieldTypes,
-                    List<String> fieldPrecisions,
-                    List<String> fieldPK,
-                    String tableName,
-                    String amountRows) {
+    public GenLogic(final List<String> resParams,
+                    final List<String> fieldNames,
+                    final List<String> fieldTypes,
+                    final List<String> fieldPrecisions,
+                    final List<String> fieldPK,
+                    final String tableName,
+                    final String amountRows) {
         this.resParams = resParams;
         this.fieldNames = fieldNames;
         this.fieldTypes = fieldTypes;
@@ -46,30 +46,29 @@ public class GenLogic {
         fieldNamesWithoutPK = new ArrayList<>();
     }
 
-    public String generateScript(){
-
+    public String generateScript() {
         StringBuilder stringBuilder;
         String finishedStr = "";
 
         //region create script generation
-        if (resParams.contains("create")){
+        if (resParams.contains("create")) {
 
             stringBuilder = new StringBuilder("create table ");
 
             stringBuilder.append(tableName);
             stringBuilder.append("\n(\n");
 
-            for (int i = 0; i < commonLength; i++){
+            for (int i = 0; i < commonLength; i++) {
 
                 if (fieldTypes.get(i).equalsIgnoreCase("VARCHAR")
                         || fieldTypes.get(i).equalsIgnoreCase("CHAR")
-                        || fieldTypes.get(i).equalsIgnoreCase("DECIMAL")){
+                        || fieldTypes.get(i).equalsIgnoreCase("DECIMAL")) {
 
                     stringBuilder.append(fieldNames.get(i) + " " + fieldTypes.get(i) + "( " + fieldPrecisions.get(i) + " ) " + notNullStr + ",\n");
                 } else if (fieldTypes.get(i).equalsIgnoreCase("INT")
                         || fieldTypes.get(i).equalsIgnoreCase("INT UNSIGNED")) {
 
-                    if (fieldPK.get(i).equalsIgnoreCase("true")){
+                    if (fieldPK.get(i).equalsIgnoreCase("true")) {
                         stringBuilder.append(fieldNames.get(i) + " " + fieldTypes.get(i) + " " + notNullStr + " " + PKStr + ",\n");
                     } else {
                         stringBuilder.append(fieldNames.get(i) + " " + fieldTypes.get(i) + " " + notNullStr + ",\n");
@@ -91,8 +90,8 @@ public class GenLogic {
 
             stringBuilder.append(tableName + "\n(");
 
-            for (int i = 0; i < commonLength; i++){
-                if (fieldPK.get(i).equalsIgnoreCase("false")){
+            for (int i = 0; i < commonLength; i++) {
+                if (fieldPK.get(i).equalsIgnoreCase("false")) {
                     stringBuilder.append(fieldNames.get(i) + ",");
 
                     fieldNamesWithoutPK.add(fieldNames.get(i));
@@ -101,7 +100,8 @@ public class GenLogic {
                 }
             }
 
-            String tmpString = String.valueOf(stringBuilder).replaceAll(",$", "");
+            String tmpString = String.valueOf(stringBuilder)
+                                        .replaceAll(",$", "");
             stringBuilder.delete(0, stringBuilder.length());
 
             stringBuilder.append(tmpString);
@@ -109,18 +109,18 @@ public class GenLogic {
 
             String randomRes;
 
-            for (int i = 0; i < amountRows; i++){
+            for (int i = 0; i < amountRows; i++) {
 
                 List<String> tmpValuesList = new ArrayList<>();
 
                 stringBuilder.append("(");
 
-                for (int k = 0; k < commonLength; k++){
+                for (int k = 0; k < commonLength; k++) {
 
-                    if (fieldPK.get(k).equalsIgnoreCase("true")){
+                    if (fieldPK.get(k).equalsIgnoreCase("true")) {
                         continue;
                     } else {
-                        if (fieldTypes.get(k).equalsIgnoreCase("INT")){
+                        if (fieldTypes.get(k).equalsIgnoreCase("INT")) {
 
                             Integer firstNum = Integer.parseInt(fieldPrecisions.get(k).split(",")[0]);
                             Integer secondNum = Integer.parseInt(fieldPrecisions.get(k).split(",")[1]);
@@ -130,7 +130,7 @@ public class GenLogic {
                             stringBuilder.append(randomRes + ", ");
 
                             tmpValuesList.add(randomRes);
-                        } else if (fieldTypes.get(k).equalsIgnoreCase("INT UNSIGNED")){
+                        } else if (fieldTypes.get(k).equalsIgnoreCase("INT UNSIGNED")) {
 
                             Integer firstNum = Integer.parseInt(fieldPrecisions.get(k).split(",")[0]);
                             Integer secondNum = Integer.parseInt(fieldPrecisions.get(k).split(",")[1]);
@@ -141,14 +141,14 @@ public class GenLogic {
 
                             tmpValuesList.add(randomRes);
                         } else if (fieldTypes.get(k).equalsIgnoreCase("VARCHAR")
-                            || fieldTypes.get(k).equalsIgnoreCase("CHAR")){
+                            || fieldTypes.get(k).equalsIgnoreCase("CHAR")) {
 
                             randomRes = Provider.getRandomString(Integer.parseInt(fieldPrecisions.get(k)));
 
                             stringBuilder.append("\'" + randomRes + "\', ");
 
                             tmpValuesList.add(randomRes);
-                        } else if (fieldTypes.get(k).equalsIgnoreCase("DECIMAL")){
+                        } else if (fieldTypes.get(k).equalsIgnoreCase("DECIMAL")) {
 
                             Integer commonAmount = Integer.parseInt(fieldPrecisions.get(k).split(",")[0]);
                             Integer amountAfterComma = Integer.parseInt(fieldPrecisions.get(k).split(",")[1]);
@@ -156,7 +156,7 @@ public class GenLogic {
 
                             StringBuilder maxFigureForDouble = new StringBuilder("1");
 
-                            for (int j = 0; j < amountOfZeros; j++){
+                            for (int j = 0; j < amountOfZeros; j++) {
                                 maxFigureForDouble.append("0");
                             }
 
@@ -165,15 +165,16 @@ public class GenLogic {
                             stringBuilder.append(randomRes + ", ");
 
                             tmpValuesList.add(randomRes);
-                        } else if (fieldTypes.get(k).equalsIgnoreCase("DATE")){
+                        } else if (fieldTypes.get(k).equalsIgnoreCase("DATE")) {
 
-                            randomRes = String.valueOf(Provider.getRandomDate(Integer.parseInt(fieldPrecisions.get(k).split(",")[0]),
+                            randomRes = String.valueOf(
+                                    Provider.getRandomDate(Integer.parseInt(fieldPrecisions.get(k).split(",")[0]),
                                                                Integer.parseInt(fieldPrecisions.get(k).split(",")[1])));
 
                             stringBuilder.append("\'" + randomRes + "\', ");
 
                             tmpValuesList.add(randomRes);
-                        } else if (fieldTypes.get(k).equalsIgnoreCase("BOOLEAN")){
+                        } else if (fieldTypes.get(k).equalsIgnoreCase("BOOLEAN")) {
 
                             randomRes = String.valueOf(Provider.getRandomBoolean());
 
@@ -210,7 +211,6 @@ public class GenLogic {
 
     public String getFieldPKSeqNumber() {
         Integer indexOfPK = fieldPK.indexOf("true");
-
         return String.valueOf(indexOfPK);
     }
 

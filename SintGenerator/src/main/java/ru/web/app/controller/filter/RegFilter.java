@@ -8,13 +8,14 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.StreamTokenizer;
 import java.util.List;
 
 //@WebFilter(urlPatterns = "/registration")
 public class RegFilter implements Filter {
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+    public void doFilter(final ServletRequest servletRequest,
+                         final ServletResponse servletResponse,
+                         final FilterChain filterChain) throws IOException, ServletException {
 
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
@@ -23,7 +24,8 @@ public class RegFilter implements Filter {
         String password = request.getParameter("password").trim();
 
         try {
-            password = CryptoUtil.byteArrayToHexString(CryptoUtil.computeHash(password));
+            password = CryptoUtil
+                    .byteArrayToHexString(CryptoUtil.computeHash(password));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -31,15 +33,17 @@ public class RegFilter implements Filter {
         UserService service = UserService.getInstance();
         List<User> users = service.getAllUsers();
 
-        for (User user : users){
-            if (user.getLogin().equalsIgnoreCase(login) && user.getPassword().equalsIgnoreCase(password)){
-                request.setAttribute("message", "Пользователь уже существует");
+        for (User user : users) {
+            if (user.getLogin().equalsIgnoreCase(login)
+                    && user.getPassword().equalsIgnoreCase(password)) {
+                request.setAttribute("message",
+                                     "Пользователь уже существует");
                 response.setCharacterEncoding("utf-8");
-                request.getRequestDispatcher("/view/registration.jsp").forward(request, response);
+                request.getRequestDispatcher("/view/registration.jsp")
+                        .forward(request, response);
                 return;
             }
         }
-
         filterChain.doFilter(servletRequest, servletResponse);
     }
 

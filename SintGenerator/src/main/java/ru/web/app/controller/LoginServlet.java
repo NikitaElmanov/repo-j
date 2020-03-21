@@ -1,6 +1,5 @@
 package ru.web.app.controller;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -10,9 +9,11 @@ import java.io.IOException;
 @WebServlet(urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(final HttpServletRequest req,
+                          final HttpServletResponse resp) throws IOException {
 
-        req.getSession().setAttribute("username", req.getParameter("username").trim());
+        req.getSession().setAttribute("username",
+                                      req.getParameter("username").trim());
         resp.setStatus(HttpServletResponse.SC_OK);
         resp.sendRedirect("/view/welcome.jsp");
     }

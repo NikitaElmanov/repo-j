@@ -14,14 +14,16 @@ import java.io.IOException;
 @WebServlet(urlPatterns = "/registration")
 public class RegServlet extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(final HttpServletRequest req,
+                          final HttpServletResponse resp) throws IOException {
 
         User user = new User();
 
         String password = req.getParameter("password").trim();
 
         try {
-            password = CryptoUtil.byteArrayToHexString(CryptoUtil.computeHash(password));
+            password = CryptoUtil
+                    .byteArrayToHexString(CryptoUtil.computeHash(password));
         } catch (Exception e) {
             e.printStackTrace();
         }
