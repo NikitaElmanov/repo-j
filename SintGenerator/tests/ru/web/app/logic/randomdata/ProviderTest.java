@@ -34,6 +34,6 @@ public class ProviderTest {
 
     @Test
     public void getRandomStringAsPK(){
-        Provider.getRandomStringAsPK(100);
+        Provider.getRandomStringAsPK(100, "10");
     }
 }

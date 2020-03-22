@@ -1,28 +1,28 @@
 html{
     font-family: "LatoLatinWeb", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 12px;
+    /*font-size: 12px;*/
     line-height: 14px;
 }
 
 body.back-picture{
-    /*background: url("https://pixfeeds.com/images/topic/4144/1200-4144-databases-photo3.jpg") no-repeat;
-    background: url("file:///C:/Users/NickMax/Downloads/db.jpg") no-repeat;
-    background: url("file:///D:/GitHub/repository/repo-j/SintGenerator/src/main/webapp/imgs/db.jpg") no-repeat;*/
-    background: url("/imgs/db.jpg") no-repeat;
+//background: url("https://pixfeeds.com/images/topic/4144/1200-4144-databases-photo3.jpg") no-repeat;
+//background: url("file:///C:/Users/NickMax/Downloads/db.jpg") no-repeat;
+    background: url("../imgs/db.jpg") no-repeat;
+    background-size: 100%;
 }
 
 input{
     font-weight: bold;
 }
 
-.sample-class{
+.sample-class, .sample-class2 {
     align-items: center;
     min-height: 80vh;
     display: flex;
     justify-content: center;
 }
 
-.modal-w{
+.modal-w, .modal-w2 {
     text-align: center;
     width: 80vw;
     height: 75vh;
@@ -39,6 +39,10 @@ input{
     transition: all 0.5s ease 0s;
 }
 
+.modal-w2 {
+    height: 30vh;
+}
+
 .title{
     width: 100%;
     height: 10%;
@@ -50,9 +54,9 @@ input{
     text-shadow: 3px 2px 3px darkblue, 0 0 1em lightblue;
 }
 
-.modal-w-row{
+.modal-w-row, .modal-w-row2{
     width: 100%;
-    height: 40%;
+    height: 35%;
     margin-bottom: 1%;
     /*background-color: lightblue;*/
     min-width: 500px;
@@ -60,12 +64,16 @@ input{
     display: table;
 }
 
-.welcome-shift{
+.modal-w-row2 {
+    height: 40%;
+}
+
+.welcome-shift, .welcome-shift2{
     margin-left: 3%;
     margin-top: 2%;
 }
 
-.welcome-shift>input{
+.welcome-shift>input, .welcome-shift2>input{
     display: inline-block;
     text-align: center;
     background: #a9f1c5;
@@ -83,7 +91,7 @@ input{
     border: none;
 }
 
-.welcome-shift>input:hover{
+.welcome-shift>input:hover, .welcome-shift2>input:hover{
     background-color: #2EE59D;
     box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
     color: #fff;
@@ -102,23 +110,27 @@ input{
 
 /*------*/
 
-.table {
+.table2 {
+    margin-top: 5vh;
+}
+
+.table, .table2 {
     display: table;
     width: 100%;
     border-collapse: collapse;
     border: 1px solid darkblue;
 }
-.table-thead {
+.table-thead, .table-thead2 {
     display: table-header-group;
 }
-.table-tbody {
+.table-tbody, .table-tbody2 {
     display: table-row-group;
 }
-.table-tr {
+.table-tr, .table-tr2 {
     display: table-row;
     width: 100%;
 }
-.table-th {
+.table-th, .table-th2 {
     display: table-cell;
     padding: 1px;
     border: 1px solid #555;
@@ -128,37 +140,40 @@ input{
     height: 3vw;
     vertical-align: middle;
 }
-.table-td {
+.table-td, .table-td2 {
     display: table-cell;
     padding: 1px;
     border: 1px solid #555;
 }
-.table-thead .table-th, .table-thead .table-td {
+.table-thead .table-th, .table-thead .table-td,
+.table-thead2 .table-th2, .table-thead2 .table-td2 {
     background: #f9f9f9;
 }
-.table-tbody .table-th, .table-tbody .table-td {
+.table-tbody .table-th, .table-tbody .table-td
+.table-tbody2 .table-th2, .table-tbody2 .table-td2 {
     background: #fff;
 }
-.table-tfoot .table-th, .table-tfoot .table-td {
+.table-tfoot .table-th, .table-tfoot .table-td
+.table-tfoot2 .table-th2, .table-tfoot2 .table-td2 {
     background: #f4f6ff;
 }
 
-.table-td > * {
+.table-td > *, .table-td2 > * {
     text-align: center;
 }
 
 /*---input[type="text"]---*/
 
-input.precision{
+input.precision, input.precision2{
     width: 10vw;
     min-width: 50px;
 }
 
-div#finish-attrs {
+div#finish-attrs, div#finish-attrs2 {
     float: left;
 }
 
-div#finish-attrs>div{
+div#finish-attrs>div, div#finish-attrs2>div{
     text-align: left;
     padding-left: 5vw;
     margin-top: 3vh;
@@ -170,11 +185,17 @@ div#finish-attrs>div{
     background: #0BE7FD;
 }
 
-input#table-name{
+input#table-name, input#table-name2, input#child-table-field, input#parent-table-field {
     margin-left: 12px;
+    float: right;
 }
 
-input#table-name, input#amount-rows{
+div#finish-attrs > div, div#finish-attrs2 > div {
+    height: 3vh;
+    min-height: 19px;
+}
+
+input#table-name, input#table-name2, input#amount-rows, input#amount-rows, input#child-table-field, input#parent-table-field {
     border: 1px solid midnightblue;
     text-align: center;
 }
@@ -212,19 +233,19 @@ input#table-name, input#amount-rows{
 
 /*------*/
 
-#addRow{
-    width: 15%;
+#addRow, #addRow2 {
+    width: 10%;
     padding: 10px;
     font-size: 12px;
 }
 
-#addRow:hover{
+#addRow:hover, #addRow2:hover {
     transform: translateY(3px);
 }
 
 /*-------*/
 
-input#del{
+input#del, input#del2 {
     text-align: center;
     background: #7DF1B5;
     cursor: pointer;
@@ -240,7 +261,7 @@ input#del{
     border: none;
 }
 
-input#del:hover{
+input#del:hover, input#del2:hover {
     background-color: #15e58c;
     box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
     color: #fff;

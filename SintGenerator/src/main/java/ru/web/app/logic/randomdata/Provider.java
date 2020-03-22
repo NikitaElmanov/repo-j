@@ -11,11 +11,36 @@ import static ru.web.app.logic.randomdata.RandomDates.createRandomDate;
 
 public class Provider {
 
-    private static final int DEFAULT_RANGE = 50;
+    private static int DEFAULT_RANGE = 50;
+    private static final int DEFAULT_RANGE_INTEGER_MIN = 1;
+    private static final int DEFAULT_RANGE_INTEGER_MAX = 100;
 
-    public static Stack<String> getRandomStringAsPK(final int amountRows) {
+    public static Stack<String> getRandomIntegerAsPK(final int amountRows) {
         Stack<String> genPKs = new Stack<>();
         String genPK;
+
+        for (int i = 0; i < amountRows; i++) {
+            genPK = String.valueOf(getRandomInteger(DEFAULT_RANGE_INTEGER_MIN, DEFAULT_RANGE_INTEGER_MAX));
+
+            while (genPKs.contains(genPK)) {
+                genPK = String.valueOf(getRandomInteger(DEFAULT_RANGE_INTEGER_MIN, DEFAULT_RANGE_INTEGER_MAX));
+            }
+
+            genPKs.add(genPK);
+        }
+
+        return genPKs;
+    }
+
+    public static Stack<String> getRandomStringAsPK(final int amountRows, final String range) {
+        Stack<String> genPKs = new Stack<>();
+        String genPK;
+
+        if (range != null
+            || !range.isEmpty()) {
+
+            DEFAULT_RANGE = Integer.parseInt(range);
+        }
 
         for (int i = 0; i < amountRows; i++) {
             genPK = getRandomString(DEFAULT_RANGE);

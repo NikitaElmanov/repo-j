@@ -18,21 +18,50 @@ public class GenerateServlet extends HttpServlet {
     private JSONParser parser = new JSONParser();
 
     @Override
-    protected void doGet(final HttpServletRequest req,
+    protected void doPost(final HttpServletRequest req,
                          final HttpServletResponse resp) {
         List<String> resParams = Arrays.asList(req.getParameter("resParams").trim().split(";"));
         List<String> fieldNames = null;
         List<String> fieldTypes = null;
         List<String> fieldPrecisions = null;
         List<String> fieldPK = null;
-        String tableName = req.getParameter("tableName").trim();
+        //
+        List<String> fieldNames2 = null;
+        List<String> fieldTypes2 = null;
+        List<String> fieldPrecisions2 = null;
+        List<String> fieldPK2 = null;
         String amountRows = req.getParameter("amountRows").trim();
+        String tableName = req.getParameter("tableName").trim();
+
+        String childTableField = null,
+                parentTableField = null,
+                tableName2 = null;
+
+        if (resParams.indexOf("secondTable") != -1) {
+
+            childTableField = req.getParameter("childTableField").trim();
+            parentTableField = req.getParameter("parentTableField").trim();
+            tableName2 = req.getParameter("tableName2").trim();
+        }
 
         try {
             JSONArray tmpFieldNames = (JSONArray) parser.parse(req.getParameter("fieldNames").trim());
             JSONArray tmpFieldTypes = (JSONArray) parser.parse(req.getParameter("fieldTypes").trim());
             JSONArray tmpFieldPrecisions = (JSONArray) parser.parse(req.getParameter("fieldPrecisions").trim());
             JSONArray tmpFieldPK = (JSONArray) parser.parse(req.getParameter("fieldPK").trim());
+
+            if (resParams.indexOf("secondTable") != -1) {
+
+                JSONArray tmpFieldNames2 = (JSONArray) parser.parse(req.getParameter("fieldNames2").trim());
+                JSONArray tmpFieldTypes2 = (JSONArray) parser.parse(req.getParameter("fieldTypes2").trim());
+                JSONArray tmpFieldPrecisions2 = (JSONArray) parser.parse(req.getParameter("fieldPrecisions2").trim());
+                JSONArray tmpFieldPK2 = (JSONArray) parser.parse(req.getParameter("fieldPK2").trim());
+
+                fieldNames2 = (List<String>) tmpFieldNames2.clone();
+                fieldTypes2 = (List<String>) tmpFieldTypes2.clone();
+                fieldPrecisions2 = (List<String>) tmpFieldPrecisions2.clone();
+                fieldPK2 = (List<String>) tmpFieldPK2.clone();
+            }
 
             fieldNames = (List<String>) tmpFieldNames.clone();
             fieldTypes = (List<String>) tmpFieldTypes.clone();
@@ -43,9 +72,15 @@ public class GenerateServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        GenLogic logic = new GenLogic(resParams, fieldNames, fieldTypes, fieldPrecisions, fieldPK, tableName, amountRows);
-
+        GenLogic logic = new GenLogic(resParams, fieldNames, fieldTypes, fieldPrecisions, fieldPK, tableName, amountRows,
+                                                 fieldNames2, fieldTypes2, fieldPrecisions2, fieldPK2, tableName2, childTableField, parentTableField);
         String resScript = logic.generateScript();
+
+        if (resParams.indexOf("secondTable") != -1) {
+            resScript += logic.generateScriptConnectTable();
+        }
+
+        System.out.println(resScript);
 
         //Before setting attribute in session performing deleting and invalidating old session attribute
         HttpSession session = req.getSession();
@@ -58,6 +93,7 @@ public class GenerateServlet extends HttpServlet {
         session.setAttribute("seqNumPKField", logic.getFieldPKSeqNumber());
         session.setAttribute("fieldPKName", logic.getFieldPKName());
         session.setAttribute("listsOfValues", logic.getFieldValues());
+        session.setAttribute("listsOfValuesPK", logic.getFieldValuesPK());
         session.setAttribute("tableName", logic.getTableName());
     }
 }

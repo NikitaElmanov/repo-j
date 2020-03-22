@@ -1,4 +1,4 @@
-html, body{
+html, body {
     margin: 0;
     padding: 0;
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Droid Sans,Helvetica Neue,sans-serif;
@@ -6,7 +6,7 @@ html, body{
     background-color: #fff;
 }
 
-#container{
+#container {
     background-color: white;
     display: flex;
     flex-direction: row;
@@ -15,8 +15,8 @@ html, body{
     align-items: baseline;
 }
 
-#script-container, #table-preview{
-    min-width: 20vw;
+#script-container, #table-preview {
+    min-width: 40vw;
     background-color: aliceblue;
     line-height: 1.5em;
     border-radius: 10px;
@@ -28,7 +28,7 @@ html, body{
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
-#table-preview > table{
+#table-preview > table {
     border-collapse: collapse;
     text-align: center;
     background-color: #7DF1B5;
@@ -41,11 +41,11 @@ html, body{
     color: white;
 }
 
-#table-preview table td, #table-preview table th{
+#table-preview table td, #table-preview table th {
     border: 2px solid darkcyan;
 }
 
-input#copy-btn{
+input#copy-btn {
     text-align: center;
     background: #7DF1B5;
     cursor: pointer;
@@ -64,9 +64,13 @@ input#copy-btn{
     float: right;
 }
 
-input#copy-btn:hover{
+input#copy-btn:hover {
     background-color: #15e58c;
     box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
     color: #fff;
     transform: translateY(2px);
+}
+
+pre#res-script, table#table-preview {
+    overflow: auto;
 }

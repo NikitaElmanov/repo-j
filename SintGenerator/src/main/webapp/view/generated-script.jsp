@@ -18,10 +18,11 @@
                 <input type="submit" value="Copy to Clipboard" id="copy-btn">
             </form>
 
-            <pre>${resScript}</pre>
+            <pre id="res-script">${resScript}</pre>
         </div>
 
         <c:set var = "amountColumns" scope = "session" value = "${fieldNames.size()}"/>
+        <c:set var = "maxAmountRows" scope = "session" value = "9"/>
         <div id="table-preview">
             <table cellpadding="5">
                 <caption>Таблица <b>${tableName}</b> первых 10 записей</caption>
@@ -39,12 +40,18 @@
                         <th>${field}</th>
                     </c:forEach>
                 </tr>
-                <c:forEach var="list" items="${listsOfValues}" varStatus="counter" begin="0" end="${9 * amountColumns}" step="${amountColumns}">
+                <c:forEach var="list" items="${listsOfValues}" varStatus="counter" begin="0" end="${maxAmountRows * amountColumns}" step="${amountColumns}">
                     <tr>
-                        <td>${counter.count}</td>
-                        <c:forEach var="value" items="${list}">
-                            <td><pre>${value}</pre></td>
-                        </c:forEach>
+                        <c:choose>
+                            <c:when test="${seqNumPKField == -1}">
+                                <td>${counter.count}</td>
+                            </c:when>
+                            <c:otherwise>
+                                <c:forEach var="value" items="${list}" varStatus="row">
+                                    <td><pre>${list.get(row.index)}</pre></td>
+                                </c:forEach>
+                            </c:otherwise>
+                        </c:choose>
                     </tr>
                 </c:forEach>
             </table>
