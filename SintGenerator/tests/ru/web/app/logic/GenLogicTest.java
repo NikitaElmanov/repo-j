@@ -21,12 +21,12 @@ public class GenLogicTest {
                              Arrays.asList("true", "false", "false", "false", "false"),
                              "testdb", "10",
                              Arrays.asList("fld12", "fld22", "fld32"),
-                             Arrays.asList("VARCHAR", "VARCHAR", "BOOLEAN"),
-                             Arrays.asList("30", "10", ""),
+                             Arrays.asList("INT", "VARCHAR", "BOOLEAN"),
+                             Arrays.asList("", "10", ""),
                              Arrays.asList("true", "false", "false"),
                              "testdb2", "fld22", "fld1");
 
-        /*logic = new GenLogic(Arrays.asList("create", "insert", "AIOne0"),
+        /*logic = new GenLogic(Arrays.asList("create", "insert", "AIOne"),
                              Arrays.asList("fld1", "fld2", "fld3"),
                              Arrays.asList("INT", "VARCHAR", "DECIMAL"),
                              Arrays.asList("", "25", "6,3"),

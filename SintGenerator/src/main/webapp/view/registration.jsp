@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="submit formRow">
-                    <input type="submit" class="btnReg" value="Зарегистрироваться"/>
+                    <input type="submit" class="btnReg" value="Зарегистрироваться" tabindex="-1"/>
                 </div>
 
             </form>

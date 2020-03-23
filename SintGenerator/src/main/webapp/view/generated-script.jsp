@@ -1,3 +1,4 @@
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -11,7 +12,16 @@
     <script src="/js/jquery-3.0.0.min.js" type="text/javascript"></script>
 </head>
 <body>
-    <div id="container">
+    <c:set var = "amountColumns" scope = "session" value = "${1}"/>
+    <c:set var = "maxAmountRows" scope = "session" value = "9"/>
+    <c:set var = "list" scope = "session" value = "9"/>
+    <%
+        int c = 0;
+        ArrayList<ArrayList<String>> ValuesPK = (ArrayList<ArrayList<String>>) request.getSession().getAttribute("listOfValuesPK");
+        ArrayList<ArrayList<String>> ValuesPK2 = (ArrayList<ArrayList<String>>) request.getSession().getAttribute("listOfValuesPK2");
+    %>
+
+    <div id="container-script">
         <div id="script-container">
             <form action="/WriteClipboard" method="post">
                 <input type="text" name="cb-text" value="${resScript}" hidden>
@@ -20,42 +30,99 @@
 
             <pre id="res-script">${resScript}</pre>
         </div>
+    </div>
 
-        <c:set var = "amountColumns" scope = "session" value = "${fieldNames.size()}"/>
-        <c:set var = "maxAmountRows" scope = "session" value = "9"/>
-        <div id="table-preview">
+    <div id="container-tables">
+        <div class="table-preview">
             <table cellpadding="5">
-                <caption>Таблица <b>${tableName}</b> первых 10 записей</caption>
+                <caption>Первые 10 записей<c:if test="${tableName2 != null}"> родительской</c:if> таблицы <b>${tableName}</b></caption>
                 <tr>
                     <c:choose>
-                        <c:when test="${seqNumPKField == -1}">
+                        <c:when test="${autoIncPKFlag == -1}">
                             <th>№</th>
                         </c:when>
                         <c:otherwise>
-                            <th><pre><em style="color: gold;">PK : ${fieldPKName}</em></pre></th>
+                            <th><em style="color: gold;">PK : ${fieldPKName}</em></th>
                         </c:otherwise>
                     </c:choose>
 
-                    <c:forEach var="field" items="${fieldNames}">
+                    <c:forEach var="field" items="${fieldsNames}">
                         <th>${field}</th>
                     </c:forEach>
                 </tr>
                 <c:forEach var="list" items="${listsOfValues}" varStatus="counter" begin="0" end="${maxAmountRows * amountColumns}" step="${amountColumns}">
                     <tr>
                         <c:choose>
-                            <c:when test="${seqNumPKField == -1}">
-                                <td>${counter.count}</td>
+                            <c:when test="${autoIncPKFlag == -1}">
+                                <th><em style="color: gold;">${counter.count}</em></th>
                             </c:when>
                             <c:otherwise>
-                                <c:forEach var="value" items="${list}" varStatus="row">
-                                    <td><pre>${list.get(row.index)}</pre></td>
-                                </c:forEach>
+                                <th><em style="color: gold;">
+                                    <%
+                                        for (int i = c; i < ValuesPK.size(); i++) {
+                                            out.print(ValuesPK.get(i).get(0));
+                                            break;
+                                        }
+                                        c++;
+                                    %>
+                                </em></th>
                             </c:otherwise>
                         </c:choose>
+                        <c:forEach var="value" items="${list}">
+                            <td><pre>${value}</pre></td>
+                        </c:forEach>
                     </tr>
                 </c:forEach>
             </table>
         </div>
+
+        <c:if test="${tableName2 != null}">
+            <%
+                int c2 = 0;
+            %>
+            <div class="table-preview">
+                <table cellpadding="5">
+                    <caption>10 первых записей дочерней таблицы <b>${tableName2}</b></caption>
+                    <tr>
+                        <c:choose>
+                            <c:when test="${autoIncPKFlag2 == -1}">
+                                <th>№</th>
+                            </c:when>
+                            <c:otherwise>
+                                <th><em style="color: gold;">PK : ${fieldPKName2}</em></th>
+                            </c:otherwise>
+                        </c:choose>
+
+                        <c:forEach var="field" items="${fieldsNames2}">
+                            <th>${field}</th>
+                        </c:forEach>
+                    </tr>
+                    <c:forEach var="list" items="${listsOfValues2}" varStatus="counter" begin="0" end="${maxAmountRows * amountColumns}" step="${amountColumns}">
+                        <tr>
+                            <c:choose>
+                                <c:when test="${autoIncPKFlag2 == -1}">
+                                    <th><em style="color: gold;">${counter.count}</em></th>
+                                </c:when>
+                                <c:otherwise>
+                                    <th><em style="color: gold;">
+                                        <%
+                                            for (int i = c2; i < ValuesPK2.size(); i++) {
+                                                out.print(ValuesPK2.get(i).get(0));
+                                                break;
+                                            }
+                                            c2++;
+                                        %>
+                                    </em></th>
+                                </c:otherwise>
+                            </c:choose>
+                            <c:forEach var="value" items="${list}">
+                                <td><pre>${value}</pre></td>
+                            </c:forEach>
+                        </tr>
+                    </c:forEach>
+                </table>
+            </div>
+        </c:if>
     </div>
 
     <script>

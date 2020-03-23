@@ -89,11 +89,21 @@ public class GenerateServlet extends HttpServlet {
 
         session.setAttribute("resScript", resScript);
 
-        session.setAttribute("fieldNames", logic.getFieldNamesWithoutPK());
-        session.setAttribute("seqNumPKField", logic.getFieldPKSeqNumber());
+        session.setAttribute("fieldsNames", logic.getFieldNamesWithoutPK());
+        session.setAttribute("autoIncPKFlag", logic.getAutoIncPKFlag());
         session.setAttribute("fieldPKName", logic.getFieldPKName());
         session.setAttribute("listsOfValues", logic.getFieldValues());
-        session.setAttribute("listsOfValuesPK", logic.getFieldValuesPK());
+        session.setAttribute("listOfValuesPK", logic.getFieldValuesPK());
         session.setAttribute("tableName", logic.getTableName());
+
+        if (resParams.indexOf("secondTable") != -1) {
+            session.setAttribute("fieldsNames2", logic.getFieldNamesWithoutPK2());
+            session.setAttribute("autoIncPKFlag2", logic.getAutoIncPKFlag2());
+            session.setAttribute("fieldPKName2", logic.getFieldPKName2());
+            session.setAttribute("listsOfValues2", logic.getFieldValues2());
+            session.setAttribute("listOfValuesPK2", logic.getFieldValuesPK2());
+            session.setAttribute("tableName2", logic.getTableName2());
+            session.setAttribute("FKFieldName", childTableField);
+        }
     }
 }

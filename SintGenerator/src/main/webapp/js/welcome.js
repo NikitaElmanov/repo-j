@@ -586,6 +586,12 @@ $(document).ready(function () {
                         precisionFields2[i].value = precisionFields2[i].value.replace('.', ',');
                     }
                 }
+
+                if (typesFields2[i].value == 'INT' || typesFields2[i].value == 'INT UNSIGNED') {
+                    if (precisionFields2[i].value.includes(".")) {
+                        precisionFields2[i].value = precisionFields2[i].value.replace('.', ',');
+                    }
+                }
             }
             //22222222222222222
         }
@@ -736,7 +742,7 @@ $(document).ready(function () {
             }
 
             if (checkFirstTableIndex == -1) {
-                alert('Указанное поле отсутствует в описанной таблице (Главная таблица)');
+                alert('Указанное поле отсутствует в описанной таблице (Главная таблица) либо ошибка с первичным ключём');
                 allGoodFlag = 0;
                 return;
             }
