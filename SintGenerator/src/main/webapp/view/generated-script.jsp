@@ -1,4 +1,5 @@
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -79,6 +80,8 @@
         <c:if test="${tableName2 != null}">
             <%
                 int c2 = 0;
+                List<String> fieldsNames2 = (List<String>) request.getSession().getAttribute("fieldsNames2");
+                String childTableFieldFK = (String) request.getSession().getAttribute("childTableFieldFK");
             %>
             <div class="table-preview">
                 <table cellpadding="5">
@@ -93,9 +96,15 @@
                             </c:otherwise>
                         </c:choose>
 
-                        <c:forEach var="field" items="${fieldsNames2}">
-                            <th>${field}</th>
-                        </c:forEach>
+                        <%
+                            for (String field : fieldsNames2) {
+                                if (field.equalsIgnoreCase(childTableFieldFK)) {
+                                    out.print("<th><em> FK : " + field + "</em></th>");
+                                } else {
+                                    out.print("<th><em>" + field + "</em></th>");
+                                }
+                            }
+                        %>
                     </tr>
                     <c:forEach var="list" items="${listsOfValues2}" varStatus="counter" begin="0" end="${maxAmountRows * amountColumns}" step="${amountColumns}">
                         <tr>

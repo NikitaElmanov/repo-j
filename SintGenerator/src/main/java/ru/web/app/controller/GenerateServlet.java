@@ -103,7 +103,7 @@ public class GenerateServlet extends HttpServlet {
             session.setAttribute("listsOfValues2", logic.getFieldValues2());
             session.setAttribute("listOfValuesPK2", logic.getFieldValuesPK2());
             session.setAttribute("tableName2", logic.getTableName2());
-            session.setAttribute("FKFieldName", childTableField);
+            session.setAttribute("childTableFieldFK", childTableField);
         }
     }
 }
