@@ -23,7 +23,7 @@ public class UserFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         String username = request.getParameter("username").trim();
-        String password= request.getParameter("password").trim();
+        String password = request.getParameter("password").trim();
 
         if (Objects.isNull(username)
             || Objects.isNull(password)

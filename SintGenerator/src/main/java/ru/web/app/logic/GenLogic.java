@@ -130,9 +130,8 @@ public class GenLogic {
             for (int i = 0; i < commonLength; i++) {
 
                 if (fieldTypes.get(i).equalsIgnoreCase("DATE")) {
-                    stringBuilder.append(fieldPKNames.get(i) + " " + fieldTypes.get(i) +",\n");
-                }
-                else if (/*fieldTypes.get(i).equalsIgnoreCase("VARCHAR")
+                    stringBuilder.append(fieldPKNames.get(i) + " " + fieldTypes.get(i) + ",\n");
+                } else if (/*fieldTypes.get(i).equalsIgnoreCase("VARCHAR")
                         ||*/ fieldTypes.get(i).equalsIgnoreCase("CHAR")
                         || fieldTypes.get(i).equalsIgnoreCase("DECIMAL")) {
 
@@ -190,7 +189,7 @@ public class GenLogic {
 
                     stringBuilder.append(fieldPKNames.get(i) + ",");
                 } else {
-                    //TODO so handling
+                    //TODO some handling
                     //stringBuilder.append(fieldPKNames.get(i) + ",");
                 }
             }
@@ -355,7 +354,8 @@ public class GenLogic {
             int FKPrecision = Integer.parseInt(fieldPrecisions2.get(fieldNames2.indexOf(childTableField)));
 
             if (PKPrecision > FKPrecision) {
-                fieldPrecisions2.set(fieldNames2.indexOf(childTableField), String.valueOf(PKPrecision));
+                fieldPrecisions2.set(fieldNames2.indexOf(childTableField),
+                                     String.valueOf(PKPrecision));
             }
         }
 
@@ -372,9 +372,8 @@ public class GenLogic {
             for (int i = 0; i < commonLength2; i++) {
 
                 if (fieldTypes2.get(i).equalsIgnoreCase("DATE")) {
-                    stringBuilder.append(fieldNames2.get(i) + " " + fieldTypes2.get(i) +",\n");
-                }
-                else if (/*fieldTypes.get(i).equalsIgnoreCase("VARCHAR")
+                    stringBuilder.append(fieldNames2.get(i) + " " + fieldTypes2.get(i) + ",\n");
+                } else if (/*fieldTypes.get(i).equalsIgnoreCase("VARCHAR")
                         ||*/ fieldTypes2.get(i).equalsIgnoreCase("CHAR")
                         || fieldTypes2.get(i).equalsIgnoreCase("DECIMAL")) {
 
@@ -457,7 +456,7 @@ public class GenLogic {
 
                     stringBuilder.append(fieldNames2.get(i) + ",");
                 } else {
-                    //TODO so handling
+                    //TODO some handling
                     //stringBuilder.append(fieldPKNames.get(i) + ",");
                 }
             }
@@ -624,10 +623,15 @@ public class GenLogic {
     }
 
     public String getAutoIncPKFlag() {
-        if (resParams.indexOf("AIOne") != -1) {
+        if (fieldPK.indexOf("true") == -1) {
             return String.valueOf(-1);
+        } else if (fieldPK.indexOf("true") != -1 && resParams.indexOf("AIOne") == -1) {
+            return String.valueOf(1);
+        } else if (fieldPK.indexOf("true") != -1 && resParams.indexOf("AIOne") != -1) {
+            return String.valueOf(2);
         }
-        return String.valueOf(1);
+
+        return String.valueOf(-1);
     }
 
     public String getAutoIncPKFlag2() {
@@ -635,6 +639,8 @@ public class GenLogic {
             return String.valueOf(-1);
         } else if (fieldPK2.indexOf("true") != -1 && resParams.indexOf("AITwo") == -1) {
             return String.valueOf(1);
+        } else if (fieldPK2.indexOf("true") != -1 && resParams.indexOf("AITwo") != -1) {
+            return String.valueOf(2);
         }
 
         return String.valueOf(-1);

@@ -366,39 +366,51 @@ $(document).ready(function () {
     var allGoodFlag = 1;
     var generateBtn = $('#generate');//running generate process
     generateBtn.click(function () {//handling of empty filed name error
+        var supportFlag = 1;
+
         $('li.table-td input.field-name').each(function () {
-            if ($.trim($(this).val()).length == 0 || $.trim($(this).val()).match('^[0-9]{0,}$')) {
+            if ($.trim($(this).val()).length == 0
+                || $.trim($(this).val()).match('^\\D+$') == null) {
                 $(this).css('border', '2px solid red');
                 $(this).val('');
                 $(this).attr('placeholder', 'введите имя поля!');
 
-                allGoodFlag = 0;
+                supportFlag = -1;
 
-                //return;
+                return;
             } else {
                 allGoodFlag = 1;
 
                 $(this).css('border', '1px solid darkblue');
             }
+
+            if (supportFlag == -1) {
+                allGoodFlag == 0;
+            }
         });
 
         if (secondTableFlag != 0) {
+            var supportFlag2 = 1;
             //2222222222222222222
             $('li.table-td2 input.field-name2').each(function () {
-                if ($.trim($(this).val()).length == 0 || $.trim($(this).val()).match('^[0-9]{0,}$')) {
+                if ($.trim($(this).val()).length == 0
+                    || $.trim($(this).val()).match('^(\\D)+$') == null) {
                     $(this).css('border', '2px solid red');
                     $(this).val('');
                     $(this).attr('placeholder', 'введите имя поля!');
 
-                    allGoodFlag = 0;
+                    supportFlag2 = -1;
 
-                    //return;
+                    return;
                 } else {
                     allGoodFlag = 1;
 
                     $(this).css('border', '1px solid darkblue');
                 }
             });
+            if (supportFlag2 == -1) {
+                allGoodFlag = 0;
+            }
             //22222222222222222222222
         }
         //-----------------------------
@@ -415,7 +427,7 @@ $(document).ready(function () {
                         precisionFields[j].style.background = 'pink';
                         alert('Задайте максимальный допустимый размер для поля');
 
-                        //allGoodFlag = 0;
+                        allGoodFlag = 0;
 
                         return;
                     }
@@ -477,32 +489,35 @@ $(document).ready(function () {
 
         var fieldNames = $('input.field-name');
 
-        //handling of field's names (checking on unique)
-        for (var i = 0; i < fieldNames.length; i++) {
-            for (var j = 0; j < fieldNames.length; j++) {
-                if (fieldNames[j].value == fieldNames[i].value && i != j) {
-                    alert('Имена полей должны быть уникальными. Необходимо исправить - \"' + fieldNames[j].value + '\"');
-
-                    return;
-                }
-            }
-        }
-
-        if (secondTableFlag != 0) {
-            //22222222222222222222222
-            var fieldNames2 = $('input.field-name2');
-
+        if (allGoodFlag != -1) {
             //handling of field's names (checking on unique)
-            for (var i = 0; i < fieldNames2.length; i++) {
-                for (var j = 0; j < fieldNames2.length; j++) {
-                    if (fieldNames2[j].value == fieldNames2[i].value && i != j) {
-                        alert('Имена полей должны быть уникальными. Необходимо исправить - \"' + fieldNames2[j].value + '\"');
+            for (var i = 0; i < fieldNames.length; i++) {
+                for (var j = 0; j < fieldNames.length; j++) {
+                    if (fieldNames[j].value == fieldNames[i].value && i != j) {
+                        alert('Имена полей должны быть уникальными. Необходимо исправить - \"' + fieldNames[j].value + '\"');
 
                         return;
                     }
                 }
             }
-            //2222222222222222222222
+
+            if (secondTableFlag != 0) {
+                //22222222222222222222222
+                var fieldNames2 = $('input.field-name2');
+
+                //handling of field's names (checking on unique)
+                for (var i = 0; i < fieldNames2.length; i++) {
+                    for (var j = 0; j < fieldNames2.length; j++) {
+                        if (fieldNames2[j].value == fieldNames2[i].value && i != j) {
+                            alert('Имена полей должны быть уникальными. Необходимо исправить - \"' + fieldNames2[j].value + '\"');
+
+                            return;
+                        }
+                    }
+                }
+                //2222222222222222222222
+            }
+
         }
 
         typesFields = $('select.type');//checking PK's types (ONLY INT AND UNSIGNED INT)
@@ -606,10 +621,17 @@ $(document).ready(function () {
         //2222222222222222
 
         if (secondTableFlag != 0) {
+            var tableName1 = $('input#table-name').val();
             var tableName2 = $('input#table-name2').val();
 
             if (tableName2 == '' || tableName2.match('^[0-9]{0,}$') || tableName2.match('^\\s+$')) {
                 alert('Имя таблицы необходимо исправить');
+                return;
+            }
+
+            if (tableName1 == tableName2) {
+                allGoodFlag = 0;
+                alert('Таблицы не могут иметь одинаковые имена');
                 return;
             }
         }

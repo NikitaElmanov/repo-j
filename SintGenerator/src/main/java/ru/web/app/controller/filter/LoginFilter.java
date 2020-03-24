@@ -26,7 +26,7 @@ public class LoginFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         String login = request.getParameter("username").trim();
-        String password= request.getParameter("password").trim();
+        String password = request.getParameter("password").trim();
 
         try {
             password = CryptoUtil

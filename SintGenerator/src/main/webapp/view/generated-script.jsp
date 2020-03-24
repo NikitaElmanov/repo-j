@@ -42,6 +42,9 @@
                         <c:when test="${autoIncPKFlag == -1}">
                             <th>№</th>
                         </c:when>
+                        <c:when test="${autoIncPKFlag == 2}">
+                            <th><em style="color: gold;">PK : ${fieldPKName}</em></th>
+                        </c:when>
                         <c:otherwise>
                             <th><em style="color: gold;">PK : ${fieldPKName}</em></th>
                         </c:otherwise>
@@ -54,7 +57,7 @@
                 <c:forEach var="list" items="${listsOfValues}" varStatus="counter" begin="0" end="${maxAmountRows * amountColumns}" step="${amountColumns}">
                     <tr>
                         <c:choose>
-                            <c:when test="${autoIncPKFlag == -1}">
+                            <c:when test="${autoIncPKFlag == -1 || autoIncPKFlag == 2}">
                                 <th><em style="color: gold;">${counter.count}</em></th>
                             </c:when>
                             <c:otherwise>
@@ -91,6 +94,9 @@
                             <c:when test="${autoIncPKFlag2 == -1}">
                                 <th>№</th>
                             </c:when>
+                            <c:when test="${autoIncPKFlag2 == 2}">
+                                <th><em style="color: gold;">PK : ${fieldPKName2}</em></th>
+                            </c:when>
                             <c:otherwise>
                                 <th><em style="color: gold;">PK : ${fieldPKName2}</em></th>
                             </c:otherwise>
@@ -109,7 +115,7 @@
                     <c:forEach var="list" items="${listsOfValues2}" varStatus="counter" begin="0" end="${maxAmountRows * amountColumns}" step="${amountColumns}">
                         <tr>
                             <c:choose>
-                                <c:when test="${autoIncPKFlag2 == -1}">
+                                <c:when test="${autoIncPKFlag2 == -1 || autoIncPKFlag2 == 2}">
                                     <th><em style="color: gold;">${counter.count}</em></th>
                                 </c:when>
                                 <c:otherwise>
