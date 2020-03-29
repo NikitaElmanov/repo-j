@@ -203,6 +203,14 @@ $(document).ready(function () {
         });
         //---------------------------
         //222222222222222222222222222222222222
+
+        if ($('input#add-connect-table').is(':checked')) {
+            $('div.sample-class2')[0].style.display = 'flex';
+            secondTableFlag = 1;
+        } else {
+            $('div.sample-class2')[0].style.display = 'none';
+            secondTableFlag = 0;
+        }
     }, 500);
 
     $('#del').click(function () {
@@ -345,7 +353,7 @@ $(document).ready(function () {
     });
     //2222222222222222222222222222222222222222222
 
-    $('input#add-connect-table').click(function () {
+    /*$('input#add-connect-table').click(function () {
         if ($(this).is(':checked')) {
             $('div.sample-class2')[0].style.display = 'flex';
             secondTableFlag = 1;
@@ -353,13 +361,16 @@ $(document).ready(function () {
             $('div.sample-class2')[0].style.display = 'none';
             secondTableFlag = 0;
         }
-    });
+    });*/
 
     $('input#insert').click(function () {
         if ($(this).is(':checked')) {
             $('input#amount-rows').attr('disabled', false);
+            $('input#add-connect-table').attr('disabled',false);
         } else {
             $('input#amount-rows').attr('disabled', true);
+            $('input#add-connect-table').attr('disabled', true);
+            $('input#add-connect-table').prop('checked', false);
         }
     });
 

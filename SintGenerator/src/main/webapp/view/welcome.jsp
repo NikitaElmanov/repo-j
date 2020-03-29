@@ -87,7 +87,7 @@
                         <label for="add-create-script">Add creating script</label>
                     </div>
                     <div name="add-connect-table">
-                        <input type="checkbox" name="addCT" value="addCT" id="add-connect-table"/>
+                        <input type="checkbox" name="addCT" value="addCT" id="add-connect-table" disabled/>
                         <label for="add-connect-table">Create connected table</label>
                     </div>
                     <!--<div name="addId">
