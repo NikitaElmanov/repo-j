@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 
 @WebServlet(urlPatterns = "/downloadSQL")
-public class DownloadSQLFile extends HttpServlet {
+public class DownloadSQLFileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
