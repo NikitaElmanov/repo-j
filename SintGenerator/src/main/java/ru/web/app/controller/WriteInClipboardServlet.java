@@ -10,7 +10,7 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.io.IOException;
 
-@WebServlet("/WriteClipboard")
+@WebServlet("/writeClipboard")
 public class WriteInClipboardServlet extends HttpServlet {
     @Override
     protected void doPost(final HttpServletRequest req,

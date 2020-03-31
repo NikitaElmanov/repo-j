@@ -23,13 +23,17 @@
     %>
 
     <div id="container-script">
-        <div id="script-container">
-            <form action="/WriteClipboard" method="post">
+        <pre id="res-script">${resScript}</pre>
+
+        <div id="form-container">
+            <form action="/writeClipboard" method="post">
                 <input type="text" name="cb-text" value="${resScript}" hidden>
                 <input type="submit" value="Copy to Clipboard" id="copy-btn">
             </form>
-
-            <pre id="res-script">${resScript}</pre>
+            <form action="/downloadSQL" method="get">
+                <input type="text" name="script" value="${resScript}" hidden/>
+                <input type="submit" value="Download" id="download-btn">
+            </form>
         </div>
     </div>
 
