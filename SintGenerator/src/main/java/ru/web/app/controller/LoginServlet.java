@@ -14,6 +14,8 @@ public class LoginServlet extends HttpServlet {
 
         req.getSession().setAttribute("username",
                                       req.getParameter("username").trim());
+        req.getSession().setAttribute("password",
+                                      req.getParameter("password").trim());
         resp.setStatus(HttpServletResponse.SC_OK);
         resp.sendRedirect("/view/welcome.jsp");
     }

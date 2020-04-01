@@ -72,7 +72,7 @@ final public class UserDaoImpl implements UserDao {
     public User getUserById(final Integer id) throws DAOException {
         String selectStr = "select * from users where id = ?";
         ResultSet rs = null;
-        User user = null;
+        User user;
 
         try (Connection conn = DBFactory.getConnection();
             PreparedStatement ps = conn.prepareStatement(selectStr)) {
@@ -141,5 +141,76 @@ final public class UserDaoImpl implements UserDao {
                 }
             }
         }
+    }
+
+    @Override
+    public void updateUserName(final String login,
+                               final String password,
+                               final String newLogin) throws DAOException {
+        try (Connection conn = DBFactory.getConnection();
+                PreparedStatement ps = conn.prepareStatement(""
+                            + "update users                     \n"
+                            + "set login = ?                    \n"
+                            + "where id = ?                     \n")) {
+
+            ps.setString(1, newLogin);
+            ps.setInt(2, getIdByLoginAndPassword(login, password));
+
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new DAOException("cannot update user login with login = " + login, e);
+        }
+    }
+
+    @Override
+    public void updateUserPassword(final String login,
+                                   final String password,
+                                   final String newPassword) throws DAOException {
+        try (Connection conn = DBFactory.getConnection();
+             PreparedStatement ps = conn.prepareStatement(""
+                              + "update users                     \n"
+                              + "set password = ?                 \n"
+                              + "where id = ?                     \n")) {
+
+            ps.setString(1, newPassword);
+            ps.setInt(2, getIdByLoginAndPassword(login, password));
+
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new DAOException("cannot update user password with login = " + login, e);
+        }
+    }
+
+    private static int getIdByLoginAndPassword(String login,
+                                               String password) throws DAOException {
+        ResultSet rs = null;
+        int resId;
+
+        try (Connection conn = DBFactory.getConnection();
+             PreparedStatement ps = conn.prepareStatement("select id from users where login = ? and password = ?")) {
+
+            ps.setString(1, login);
+            ps.setString(2, password);
+
+            rs = ps.executeQuery();
+            rs.next();
+
+            resId = rs.getInt(1);
+
+        } catch (SQLException e) {
+            throw new DAOException("cannot get user id by login and password", e);
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return resId;
     }
 }

@@ -1,0 +1,74 @@
+.modal-w-settings-param {
+    background-color: aliceblue;
+    line-height: 1.5em;
+    border-radius: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+
+    text-align: center;
+    width: 30vw;
+    height: 220px;
+    min-width: 350px;
+    min-height: 135px;
+    position: fixed;
+    top: 35%;
+    left: 35%;
+}
+
+#settings-title {
+    font-size: 10px;
+    line-height: normal;
+    font-weight: bold;
+    color: midnightblue;
+    text-shadow: 2px 2px 2px whitesmoke;
+}
+
+#close {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+}
+
+#close > img {
+    width: 25px;
+}
+
+#settings-param-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.settings-param {
+    margin-top: 1vh;
+}
+
+.settings-param > button {
+    width: 20vw;
+}
+
+#username-settings, #password-settings {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+/*--------------welcome*/
+#click-settings {
+    width: 3vw;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    transition: 0.5s;
+    border-radius: 10px;
+}
+
+#click-settings:hover {
+    width: 3.3vw;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+input[value="Изменить имя"], input[value="Изменить пароль"] {
+    min-width: 10vw;
+    border-radius: 3px;
+    width: 15%;
+}

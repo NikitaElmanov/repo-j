@@ -11,7 +11,8 @@ import java.io.*;
 @WebServlet(urlPatterns = "/downloadSQL")
 public class DownloadSQLFileServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    protected void doGet(final HttpServletRequest req,
+                         final HttpServletResponse resp) throws IOException {
 
         if (req.getSession().getAttribute("username") != null
             && req.getParameter("script") != null) {

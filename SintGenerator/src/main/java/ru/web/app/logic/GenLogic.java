@@ -94,7 +94,7 @@ public class GenLogic {
         fieldNamesWithoutPK2 = new ArrayList<>();
     }
 
-    public String generateScript () {
+    public String generateScript() {
         StringBuilder stringBuilder;
         String finishedStr = "";
         //may not to be used
@@ -318,7 +318,7 @@ public class GenLogic {
         return finishedStr;
     }
 
-    public String generateScriptConnectTable () {
+    public String generateScriptConnectTable() {
         if (resParams.indexOf("secondTable") == -1) {
             return null;
         }

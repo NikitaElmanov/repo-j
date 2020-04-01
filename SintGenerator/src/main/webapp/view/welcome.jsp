@@ -6,27 +6,30 @@
     <meta charset="utf-8">
     <link rel="icon" href="..\imgs\database-icon.png"/>
     <link rel="stylesheet" href="<c:url value="/css/welcome.css"/>"/>
+    <link rel="stylesheet" href="<c:url value="/css/user-settings.css"/>"/>
     <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.js" type="text/javascript"></script>-->
     <script src="/js/jquery-3.0.0.min.js" type="text/javascript"></script>
     <script src="<c:url value="/js/welcome.js"/>" type="text/javascript"></script>
+    <script src="<c:url value="/js/user-param-settings.js"/>" type="text/javascript"></script>
 </head>
 <body class="back-picture">
-    <%
-        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-    %>
-
-    <div id="ajaxGetUserServletResponse"></div>
-
-    <c:if test="${username != null}">
+<%
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+%>
+<c:if test="${username != null}">
     <div id="username-container"><h1>${username}</h1></div>
     <form action="/logout" method="post" class="welcome-shift">
         <input type="submit" value="Выйти"/>
     </form>
-    </c:if>
+</c:if>
 
+<div id="container">
     <div class="sample-class">
         <div class="modal-w">
-            <div class="title"><h1>Synthetic Generator</h1></div>
+            <div class="title">
+                <h1>Synthetic Generator</h1>
+                <img id="click-settings" src="/imgs/settings.png" alt="settings">
+            </div>
             <div class="modal-w-row">
 
                 <div class="table">
@@ -164,21 +167,47 @@
             </div>
         </div>
     </div>
-    <!--<form action="/show-script" method="post" target="_blank" hidden>
-        <input type="text" id="data-script" name="data-script">
-        <input type="submit" id="btn-show-script">
-    </form>-->
+</div>
 
-    <!--<script>
-        $('button#generate').click(function(){
-            $.ajax({
-                url : '/showScript',
-                method : 'get',
-                success : function(){
-                    window.open('/showScript', '_blank');
-                }
-            });
+
+<%--//-settings for user params--%>
+<div class="modal-w-settings-param" style="display: none;">
+    <div id="settings-title">
+        <h1>Пользовательские настройки</h1>
+    </div>
+
+    <div id="close">
+        <img src="/imgs/close.png" alt="close button">
+    </div>
+
+    <div id="settings-param-container">
+        <div id="username-settings" class="settings-param">
+            <form action="/changeUserParams" method="post">
+                <div><input type="text" name="newName" placeholder="новое имя" style="height: 35px; font-size: 14;"></div><br>
+                <div><input type="text" name="newPassword" placeholder="новое пароль" style="height: 35px; font-size: 14;"></div><br>
+                <div><input type="submit" value="Изменить" style="height: 35px; width: 100%;"></div>
+            </form>
+        </div>
+    </div>
+</div>
+<%--////settings params--%>
+
+<!--<form action="/show-script" method="post" target="_blank" hidden>
+    <input type="text" id="data-script" name="data-script">
+    <input type="submit" id="btn-show-script">
+</form>-->
+
+<!--<script>
+    $('button#generate').click(function(){
+        $.ajax({
+            url : '/showScript',
+            method : 'get',
+            success : function(){
+                window.open('/showScript', '_blank');
+            }
         });
-    </script>-->
+    });
+</script>-->
 </body>
+
 </html>

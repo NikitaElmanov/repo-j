@@ -61,4 +61,26 @@ final public class UserService {
 
         return users;
     }
+
+    public void updateUserName(final String login,
+                               final String password,
+                               final String newName) {
+        UserDao dao = UserDaoImpl.getInstance();
+
+        try {
+            dao.updateUserName(login, password, newName);
+        } catch (DAOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateUserPassword(final String login, final String password, final String newPassword) {
+        UserDao dao = UserDaoImpl.getInstance();
+
+        try {
+            dao.updateUserPassword(login, password, newPassword);
+        } catch (DAOException e) {
+            e.printStackTrace();
+        }
+    }
 }
