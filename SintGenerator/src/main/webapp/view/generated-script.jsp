@@ -144,6 +144,8 @@
         </c:if>
     </div>
 
+    <%@include file="bottom-top-btn.html"%>
+
     <script>
         $('input#copy-btn').click(function(){
             $(this).css("color", "red");

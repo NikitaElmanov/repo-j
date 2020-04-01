@@ -13,15 +13,22 @@ public class DownloadSQLFileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
-        resp.setContentType("text/html");
-        resp.setHeader("Content-Disposition",
+        if (req.getSession().getAttribute("username") != null
+            && req.getParameter("script") != null) {
+
+            resp.setContentType("text/html");
+            resp.setHeader("Content-Disposition",
                            "attachment;filename=script.sql");
 
-        String absPathTmp = FileUtils.createAndFillTMPFile(req.getParameter("script").trim());
+            String absPathTmp = FileUtils.createAndFillTMPFile(req.getParameter("script").trim());
 
-        InputStream is = new FileInputStream(absPathTmp);
-        OutputStream os = resp.getOutputStream();
+            InputStream is = new FileInputStream(absPathTmp);
+            OutputStream os = resp.getOutputStream();
 
-        FileUtils.write(is, os);
+            FileUtils.write(is, os);
+        } else {
+            //TODO maybe will be needed to be fix
+            resp.sendRedirect("/view/login.jsp");
+        }
     }
 }
