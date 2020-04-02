@@ -38,22 +38,24 @@ public class RegFilter implements Filter {
         UserService service = UserService.getInstance();
         List<User> users = service.getAllUsers();
 
-        for (User user : users) {
-            if (user.getLogin().equalsIgnoreCase(login)
-                    && user.getPassword().equalsIgnoreCase(password)) {
-                request.setAttribute("message",
-                                     "Пользователь уже существует");
-                response.setCharacterEncoding("utf-8");
-                request.getRequestDispatcher("/view/registration.jsp")
-                        .forward(request, response);
-                return;
+        if (users != null) {
+            for (User user : users) {
+                if (user.getLogin().equalsIgnoreCase(login)
+                        && user.getPassword().equalsIgnoreCase(password)) {
+                    request.setAttribute("message",
+                                         "Пользователь уже существует");
+                    response.setCharacterEncoding("utf-8");
+                    request.getRequestDispatcher("/view/registration.jsp")
+                            .forward(request, response);
+                    return;
+                }
             }
         }
         filterChain.doFilter(servletRequest, servletResponse);
     }
 
     @Override
-    public void init(final FilterConfig filterConfig) throws ServletException {
+    public void init(final FilterConfig filterConfig) {
 
     }
 

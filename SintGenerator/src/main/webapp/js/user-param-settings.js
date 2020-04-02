@@ -25,4 +25,14 @@ $(document).ready(function () {
         }
     });
 
+
+
+
+    $('img[alt="eye"]').mousedown(function() {
+        $('input[name="newPassword"]').prop("type", "text");
+    });
+    $('img[alt="eye"]').mouseup(function() {
+        $('input[name="newPassword"]').prop("type", "password");
+    });
+
 });

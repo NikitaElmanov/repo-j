@@ -183,8 +183,11 @@
     <div id="settings-param-container">
         <div id="username-settings" class="settings-param">
             <form action="/changeUserParams" method="post">
-                <div><input type="text" name="newName" placeholder="новое имя" style="height: 35px; font-size: 14;"></div><br>
-                <div><input type="text" name="newPassword" placeholder="новое пароль" style="height: 35px; font-size: 14;"></div><br>
+                <div><input type="text" name="newName" placeholder="новое имя" style="height: 35px; font-size: 18;"></div><br>
+                <div style="position:relative;">
+                    <input type="password" name="newPassword" placeholder="новое пароль" style="height: 35px; font-size: 18;">
+                    <img src="/imgs/eye.png" style="position: absolute; height: 100%; cursor: pointer;" alt="eye">
+                </div><br>
                 <div><input type="submit" value="Изменить" style="height: 35px; width: 100%;"></div>
             </form>
         </div>

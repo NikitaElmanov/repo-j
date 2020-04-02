@@ -27,6 +27,7 @@
     position: absolute;
     top: 1px;
     right: 1px;
+    cursor: pointer;
 }
 
 #close > img {
@@ -71,4 +72,9 @@ input[value="Изменить имя"], input[value="Изменить парол
     min-width: 10vw;
     border-radius: 3px;
     width: 15%;
+}
+
+/*------user-settings------*/
+img[alt="eye"]:active {
+    height: 105%;
 }

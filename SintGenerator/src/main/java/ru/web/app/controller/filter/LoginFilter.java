@@ -36,10 +36,13 @@ public class LoginFilter implements Filter {
 
         boolean flag = false;
 
-        for (User user : users) {
-            if (user.getLogin().equalsIgnoreCase(login)
-                && user.getPassword().equalsIgnoreCase(password)) {
-                flag = true;
+
+        if (users != null) {
+            for (User user : users) {
+                if (user.getLogin().equalsIgnoreCase(login)
+                        && user.getPassword().equalsIgnoreCase(password)) {
+                    flag = true;
+                }
             }
         }
 
