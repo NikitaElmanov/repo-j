@@ -99,7 +99,8 @@ public class GenLogic {
         String finishedStr = "";
         //may not to be used
 
-        Stack<String> generatedStringPKs = null, generatedIntegerPKs = null;
+        Stack<String> generatedStringPKs = null,
+                      generatedIntegerPKs = null;
 
         if (fieldPK.indexOf("true") != -1
             && fieldTypes.get(fieldPK.indexOf("true")).equalsIgnoreCase("VARCHAR")) {

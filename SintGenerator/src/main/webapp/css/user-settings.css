@@ -13,6 +13,8 @@
     position: fixed;
     top: 35%;
     left: 35%;
+
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
 #settings-title {
@@ -68,13 +70,32 @@
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
-input[value="Изменить имя"], input[value="Изменить пароль"] {
-    min-width: 10vw;
-    border-radius: 3px;
-    width: 15%;
-}
-
 /*------user-settings------*/
 img[alt="eye"]:active {
     height: 105%;
+}
+
+input[value="Изменить"] {
+    display: inline-block;
+    text-align: center;
+    background: #a9f1c5;
+    cursor: pointer;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    text-transform: uppercase;
+    width: 100%;
+    height: 7%;
+    min-width: 30px;
+    min-height: 20px;
+    font-size: 14px;
+    border: none;
+}
+
+input[value="Изменить"]:hover {
+    background-color: #2EE59D;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(5px);
 }

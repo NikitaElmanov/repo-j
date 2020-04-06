@@ -29,9 +29,11 @@ $(document).ready(function () {
 
 
     $('img[alt="eye"]').mousedown(function() {
+        $(this).css("background-color", "darkcyan");
         $('input[name="newPassword"]').prop("type", "text");
     });
     $('img[alt="eye"]').mouseup(function() {
+        $(this).css("background-color", "aliceblue");
         $('input[name="newPassword"]').prop("type", "password");
     });
 

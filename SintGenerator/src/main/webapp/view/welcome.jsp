@@ -186,7 +186,7 @@
                 <div><input type="text" name="newName" placeholder="новое имя" style="height: 35px; font-size: 18;"></div><br>
                 <div style="position:relative;">
                     <input type="password" name="newPassword" placeholder="новое пароль" style="height: 35px; font-size: 18;">
-                    <img src="/imgs/eye.png" style="position: absolute; height: 100%; cursor: pointer;" alt="eye">
+                    <img src="/imgs/eye.png" style="position: absolute; height: 100%; cursor: pointer; border-radius: 10px;" alt="eye">
                 </div><br>
                 <div><input type="submit" value="Изменить" style="height: 35px; width: 100%;"></div>
             </form>

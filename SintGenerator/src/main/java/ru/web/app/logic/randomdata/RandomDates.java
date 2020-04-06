@@ -3,7 +3,7 @@ package ru.web.app.logic.randomdata;
 import java.time.LocalDate;
 
 public class RandomDates {
-    public static int createRandomIntBetween(final int start, final int end) {
+    private static int createRandomIntBetween(final int start, final int end) {
         return start + (int) Math.round(Math.random() * (end - start));
     }
 

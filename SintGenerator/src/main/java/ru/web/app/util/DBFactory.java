@@ -32,6 +32,4 @@ public class DBFactory {
 
         return con;
     }
-
-
 }

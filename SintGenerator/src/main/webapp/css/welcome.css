@@ -73,7 +73,7 @@ input{
     margin-top: 2%;
 }
 
-.welcome-shift>input, .welcome-shift2>input, input[value="Изменить"] {
+.welcome-shift>input, .welcome-shift2>input {
     display: inline-block;
     text-align: center;
     background: #a9f1c5;
@@ -91,7 +91,7 @@ input{
     border: none;
 }
 
-.welcome-shift>input:hover, .welcome-shift2>input:hover, input[value="Изменить"]:hover {
+.welcome-shift>input:hover, .welcome-shift2>input:hover {
     background-color: #2EE59D;
     box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
     color: #fff;
