@@ -1,7 +1,6 @@
 package ru.web.app.controller;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,11 +9,12 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.io.IOException;
 
-@WebServlet("/writeClipboard")
+//@WebServlet("/writeClipboard")
 public class WriteInClipboardServlet extends HttpServlet {
     @Override
     protected void doPost(final HttpServletRequest req,
-                          final HttpServletResponse resp) throws ServletException, IOException {
+                          final HttpServletResponse resp)
+            throws ServletException, IOException {
 
         String script = req.getParameter("cb-text").trim();
 

@@ -7,14 +7,24 @@ import ru.web.app.model.User;
 
 import java.util.List;
 
-final public class UserService {
+public final class UserService {
 
-    private static UserService instance = null;
+    /**
+     * UserService class's instance.
+     */
+    private static UserService instance;
 
+    /**
+     * private constructor.
+     */
     private UserService() {
 
     }
 
+    /**
+     * getter UserService class's instance.
+     * @return
+     */
     public static UserService getInstance() {
         if (instance == null) {
             instance = new UserService();
@@ -23,6 +33,11 @@ final public class UserService {
         return instance;
     }
 
+    /**
+     * craete new user.
+     * @param user
+     * @return generated key
+     */
     public Integer createUser(final User user) {
         UserDao dao = UserDaoImpl.getInstance();
         Integer id = null;
@@ -36,6 +51,10 @@ final public class UserService {
         return id;
     }
 
+    /**
+     * @param id
+     * @return user by unding id
+     */
     public User getUserById(final Integer id) {
         UserDao dao = UserDaoImpl.getInstance();
         User user = null;
@@ -49,6 +68,9 @@ final public class UserService {
         return user;
     }
 
+    /**
+     * @return all users from db.
+     */
     public List<User> getAllUsers() {
         UserDao dao = UserDaoImpl.getInstance();
         List<User> users = null;
@@ -62,6 +84,12 @@ final public class UserService {
         return users;
     }
 
+    /**
+     * changes user's name.
+     * @param login
+     * @param password
+     * @param newName
+     */
     public void updateUserName(final String login,
                                final String password,
                                final String newName) {
@@ -74,7 +102,15 @@ final public class UserService {
         }
     }
 
-    public void updateUserPassword(final String login, final String password, final String newPassword) {
+    /**
+     * changes user's password.
+     * @param login
+     * @param password
+     * @param newPassword
+     */
+    public void updateUserPassword(final String login,
+                                   final String password,
+                                   final String newPassword) {
         UserDao dao = UserDaoImpl.getInstance();
 
         try {

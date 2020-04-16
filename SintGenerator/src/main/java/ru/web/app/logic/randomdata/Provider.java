@@ -9,21 +9,35 @@ import java.util.Stack;
 
 import static ru.web.app.logic.randomdata.RandomDates.createRandomDate;
 
-public class Provider {
+public final class Provider {
 
+    /**
+     * default constant (range) to generate
+     * string PK {@link getRandomStringAsPK}.
+     */
     private static int DEFAULT_RANGE = 50;
+    /**
+     * default constants (min and max range)
+     * to generate integer PK {@link getRandomIntegerAsPK}.
+     */
     private static final int DEFAULT_RANGE_INTEGER_MIN = 1;
     private static final int DEFAULT_RANGE_INTEGER_MAX = 100;
 
+    /**
+     * @param amountRows
+     * @return stack of generated integer PKs.
+     */
     public static Stack<String> getRandomIntegerAsPK(final int amountRows) {
         Stack<String> genPKs = new Stack<>();
         String genPK;
 
         for (int i = 0; i < amountRows; i++) {
-            genPK = String.valueOf(getRandomInteger(DEFAULT_RANGE_INTEGER_MIN, DEFAULT_RANGE_INTEGER_MAX));
+            genPK = String.valueOf(getRandomInteger(DEFAULT_RANGE_INTEGER_MIN,
+                                                    DEFAULT_RANGE_INTEGER_MAX));
 
             while (genPKs.contains(genPK)) {
-                genPK = String.valueOf(getRandomInteger(DEFAULT_RANGE_INTEGER_MIN, DEFAULT_RANGE_INTEGER_MAX));
+                genPK = String.valueOf(getRandomInteger(DEFAULT_RANGE_INTEGER_MIN,
+                                                        DEFAULT_RANGE_INTEGER_MAX));
             }
 
             genPKs.add(genPK);
@@ -32,7 +46,12 @@ public class Provider {
         return genPKs;
     }
 
-    public static Stack<String> getRandomStringAsPK(final int amountRows, final String range) {
+    /**
+     * @param amountRows
+     * @return stack of generated string PKs.
+     */
+    public static Stack<String> getRandomStringAsPK(final int amountRows,
+                                                    final String range) {
         Stack<String> genPKs = new Stack<>();
         String genPK;
 
@@ -55,14 +74,16 @@ public class Provider {
         return genPKs;
     }
 
-    // function to generate a random string of length n
+    /**
+     * function to generate a random string of length n.
+     */
     public static String getRandomString(final Integer n) {
         if (n < 1) {
             throw new IllegalArgumentException();
         }
 
-        Integer max = n,
-                min = 1;
+        Integer max = n;
+        Integer min = 1;
 
         // chose a Character random from this String
         String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -92,6 +113,11 @@ public class Provider {
         return sb.toString();
     }
 
+    /**
+     * @param min
+     * @param max
+     * @return random figure from inputting range.
+     */
     public static Integer getRandomInteger(final Integer min,
                                            final Integer max) {
         if (min >= max) {
@@ -102,6 +128,11 @@ public class Provider {
         return r.nextInt((max - min) + 1) + min;
     }
 
+    /**
+     * @param start
+     * @param end
+     * @return random date from inputting range.
+     */
     public static Date getRandomDate(final Integer start,
                                      final Integer end) {
         if (start >= end) {
@@ -111,6 +142,11 @@ public class Provider {
         return Date.valueOf(randomDate);
     }
 
+    /**
+     * @param rightLimit
+     * @param afterComma
+     * @return random double figure with inputting settings.
+     */
     public static String getRandomDouble(final Double rightLimit,
                                          final Integer afterComma) {
 
@@ -133,5 +169,10 @@ public class Provider {
         return generatedDoubleStr;
     }
 
+    /**
+     * @return true or false.
+     */
     public static Boolean getRandomBoolean() { return Math.random() < 0.5; }
+
+    private Provider(){}
 }

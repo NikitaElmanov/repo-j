@@ -13,13 +13,24 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-final public class UserDaoImpl implements UserDao {
-
+    /**
+     * Using singleton.
+     */
+public final class UserDaoImpl implements UserDao {
+    /**
+     * instance of USerDao class.
+     */
     private static UserDao instance;
 
+    /**
+     *  private constructor.
+     */
     private UserDaoImpl() {
     }
 
+    /**
+     * @return instance.
+     */
     public static UserDao getInstance() {
         if (instance == null) {
             instance = new UserDaoImpl();
@@ -29,7 +40,8 @@ final public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public Integer createUser(final User user) throws DAOException {
+    public Integer createUser(final User user)
+            throws DAOException {
 
         String insertStr = "insert into users (login, password) values (?,?)";
         ResultSet rs = null;
@@ -183,13 +195,15 @@ final public class UserDaoImpl implements UserDao {
         }
     }
 
-    private static int getIdByLoginAndPassword(String login,
-                                               String password) throws DAOException {
+    private static int getIdByLoginAndPassword(final String login,
+                                               final String password)
+                                               throws DAOException {
         ResultSet rs = null;
         int resId;
 
         try (Connection conn = DBFactory.getConnection();
-             PreparedStatement ps = conn.prepareStatement("select id from users where login = ? and password = ?")) {
+             PreparedStatement ps = conn.prepareStatement("" +
+                      "select id from users where login = ? and password = ?")) {
 
             ps.setString(1, login);
             ps.setString(2, password);

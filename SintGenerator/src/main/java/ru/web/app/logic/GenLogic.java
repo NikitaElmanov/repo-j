@@ -6,9 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-public class GenLogic {
+public final class GenLogic {
+    /**
+     * Default precision for receiving random string.
+     */
     private static final String DEFAULT_PRECISION = "30";
 
+    /**
+     * variables contain values taking from web side.
+     */
     private List<String> resParams;
     private List<String> fieldPKNames;
     private List<String> fieldTypes;
@@ -24,19 +30,6 @@ public class GenLogic {
 
     private String parentTableField;
     private String childTableField;
-    /**
-     * amount of rows to generate
-     */
-    private Integer amountRows;
-    /**
-     * amount of come fields {@link fieldPKNames}
-     */
-    private Integer commonLength;
-    private Integer commonLength2;
-
-    private static final String notNullStr = "NOT NULL";
-    private static final  String PKstr = "PRIMARY KEY";
-    private static final  String AIstr = "AUTO_INCREMENT";
 
     private List<List<String>> fieldValues;
     private List<List<String>> fieldValues2;
@@ -46,9 +39,49 @@ public class GenLogic {
     private List<String> fieldNamesWithoutPK2;
     private String fieldPKName;
     private String fieldPKName2;
+    /**
+     * amount of rows to generate.
+     */
+    private Integer amountRows;
+    /**
+     * amount of come fields {@link fieldPKNames}.
+     */
+    private Integer commonLength;
+    /**
+     * amount of come fields {@link fieldPKNames2}.
+     */
+    private Integer commonLength2;
 
+    /**
+     * constants for building SQL script.
+     */
+    private static final String notNullStr = "NOT NULL";
+    private static final  String PKstr = "PRIMARY KEY";
+    private static final  String AIstr = "AUTO_INCREMENT";
+
+    /**
+     * variable contains generated PK from second table
+     * course in a second table this PK will be FK.
+     */
     private Stack<String> generatedStringFKsForSecondTable;
 
+    /**
+     * Constructor which take all needed variables for generating SQL script.
+     * @param resParams
+     * @param fieldPKNames
+     * @param fieldTypes
+     * @param fieldPrecisions
+     * @param fieldPK
+     * @param tableName
+     * @param amountRows
+     * @param fieldNames2
+     * @param fieldTypes2
+     * @param fieldPrecisions2
+     * @param fieldPK2
+     * @param tableName2
+     * @param childTableField
+     * @param parentTableField
+     */
     public GenLogic(final List<String> resParams,
                     final List<String> fieldPKNames,
                     final List<String> fieldTypes,
@@ -94,25 +127,33 @@ public class GenLogic {
         fieldNamesWithoutPK2 = new ArrayList<>();
     }
 
+    /**
+     * generate SQL script for first table.
+     * @return SQL script
+     */
     public String generateScript() {
         StringBuilder stringBuilder;
         String finishedStr = "";
         //may not to be used
 
-        Stack<String> generatedStringPKs = null,
-                      generatedIntegerPKs = null;
+        Stack<String> generatedStringPKs = null;
+        Stack<String> generatedIntegerPKs = null;
 
         if (fieldPK.indexOf("true") != -1
-            && fieldTypes.get(fieldPK.indexOf("true")).equalsIgnoreCase("VARCHAR")) {
+            && fieldTypes.get(fieldPK.indexOf("true"))
+                .equalsIgnoreCase("VARCHAR")) {
 
             fieldPKName = fieldPKNames.get(fieldPK.indexOf("true"));
 
-            generatedStringPKs = Provider.getRandomStringAsPK(amountRows, fieldPrecisions.get(fieldPK.indexOf("true")));
+            generatedStringPKs = Provider.getRandomStringAsPK(amountRows,
+                                                              fieldPrecisions.get(fieldPK.indexOf("true")));
             generatedStringFKsForSecondTable = (Stack<String>) generatedStringPKs.clone();
 
         } else if (fieldPK.indexOf("true") != -1
-                    && (fieldTypes.get(fieldPK.indexOf("true")).equalsIgnoreCase("INT")
-                    || fieldTypes.get(fieldPK.indexOf("true")).equalsIgnoreCase("INT UNSIGNED"))) {
+                    && (fieldTypes.get(fieldPK.indexOf("true"))
+                                        .equalsIgnoreCase("INT")
+                    || fieldTypes.get(fieldPK.indexOf("true"))
+                                        .equalsIgnoreCase("INT UNSIGNED"))) {
 
             fieldPKName = fieldPKNames.get(fieldPK.indexOf("true"));
 
@@ -315,31 +356,38 @@ public class GenLogic {
             finishedStr += String.valueOf(stringBuilder).replaceAll(",$", ";");
         }
         //endregion
-
         return finishedStr;
     }
 
+    /**
+     * generate SQL script for second table
+     * @return SQL script
+     */
     public String generateScriptConnectTable() {
         if (resParams.indexOf("secondTable") == -1) {
             return null;
         }
 
-        StringBuilder stringBuilder,
-                tmpStringBuilderFK = new StringBuilder();
+        StringBuilder stringBuilder;
+        StringBuilder tmpStringBuilderFK = new StringBuilder();
         String finishedStr = "";
 
         Stack<String> generatedStringPKs2 = null, generatedIntegerPKs2 = null;
 
         if (fieldPK2.indexOf("true") != -1
-                && fieldTypes2.get(fieldPK2.indexOf("true")).equalsIgnoreCase("VARCHAR")) {
+                && fieldTypes2.get(fieldPK2.indexOf("true"))
+                                    .equalsIgnoreCase("VARCHAR")) {
 
             fieldPKName2 = fieldNames2.get(fieldPK2.indexOf("true"));
 
-            generatedStringPKs2 = Provider.getRandomStringAsPK(amountRows, fieldPrecisions2.get(fieldPK.indexOf("true")));
+            generatedStringPKs2 = Provider.getRandomStringAsPK(amountRows,
+                                                               fieldPrecisions2.get(fieldPK.indexOf("true")));
 
         } else if (fieldPK2.indexOf("true") != -1
-                && (fieldTypes2.get(fieldPK2.indexOf("true")).equalsIgnoreCase("INT")
-                || fieldTypes2.get(fieldPK2.indexOf("true")).equalsIgnoreCase("INT UNSIGNED"))) {
+                && (fieldTypes2.get(fieldPK2.indexOf("true"))
+                                            .equalsIgnoreCase("INT")
+                || fieldTypes2.get(fieldPK2.indexOf("true"))
+                                            .equalsIgnoreCase("INT UNSIGNED"))) {
 
             fieldPKName2 = fieldNames2.get(fieldPK2.indexOf("true"));
 
@@ -607,22 +655,38 @@ public class GenLogic {
         return finishedStr;
     }
 
+    /**
+     * @return all fields without PK field for first table.
+     */
     public List<String> getFieldNamesWithoutPK() {
         return fieldNamesWithoutPK;
     }
 
+    /**
+     * @return all fields without PK field for second table.
+     */
     public List<String> getFieldNamesWithoutPK2() {
         return fieldNamesWithoutPK2;
     }
 
+    /**
+     * @return first table's name.
+     */
     public String getTableName() {
         return tableName;
     }
 
+    /**
+     * @return second table's name.
+     */
     public String getTableName2() {
         return tableName2;
     }
 
+    /**
+     * getter PK flag.
+     * @return flag that means first table has PK at all
+     */
     public String getAutoIncPKFlag() {
         if (fieldPK.indexOf("true") == -1) {
             return String.valueOf(-1);
@@ -635,6 +699,10 @@ public class GenLogic {
         return String.valueOf(-1);
     }
 
+    /**
+     * getter PK flag.
+     * @return flag that means second table has PK at all
+     */
     public String getAutoIncPKFlag2() {
         if (fieldPK2.indexOf("true") == -1) {
             return String.valueOf(-1);
@@ -647,26 +715,48 @@ public class GenLogic {
         return String.valueOf(-1);
     }
 
+    /**
+     * @return all generated results except PK's values
+     * for first table.
+     */
     public List<List<String>> getFieldValues() {
         return fieldValues;
     }
 
+    /**
+     * @return all generated results except PK's values
+     * for second table.
+     */
     public List<List<String>> getFieldValues2() {
         return fieldValues2;
     }
 
+    /**
+     * @return PK field's name for first table.
+     */
     public String getFieldPKName() {
         return fieldPKName;
     }
 
+    /**
+     * @return PK field's name for second table.
+     */
     public String getFieldPKName2() {
         return fieldPKName2;
     }
 
+    /**
+     * @return PK's generated values
+     * for first table.
+     */
     public List<List<String>> getFieldValuesPK() {
         return fieldValuesPK;
     }
 
+    /**
+     * @return PK's generated values
+     * for second table.
+     */
     public List<List<String>> getFieldValuesPK2() {
         return fieldValuesPK2;
     }

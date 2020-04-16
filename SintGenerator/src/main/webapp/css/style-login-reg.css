@@ -5,7 +5,7 @@ html{
 }
 
 body.back-picture{
-    background: url("/imgs/db.jpg") no-repeat;
+    background: url("../imgs/db.jpg") no-repeat;
 }
 
 .sample-class{

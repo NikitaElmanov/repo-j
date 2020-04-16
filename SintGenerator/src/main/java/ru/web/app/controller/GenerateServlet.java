@@ -5,7 +5,6 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import ru.web.app.logic.GenLogic;
 
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,14 +12,18 @@ import javax.servlet.http.HttpSession;
 import java.util.Arrays;
 import java.util.List;
 
-@WebServlet("/generate")
+//@WebServlet("/generate")
 public class GenerateServlet extends HttpServlet {
+    /**
+     * specific variable object to parse json coming from JavaScript
+     */
     private JSONParser parser = new JSONParser();
 
     @Override
     protected void doPost(final HttpServletRequest req,
                          final HttpServletResponse resp) {
-        List<String> resParams = Arrays.asList(req.getParameter("resParams").trim().split(";"));
+        List<String> resParams = Arrays.asList(req.getParameter("resParams")
+                                                       .trim().split(";"));
         List<String> fieldNames = null;
         List<String> fieldTypes = null;
         List<String> fieldPrecisions = null;
@@ -33,9 +36,9 @@ public class GenerateServlet extends HttpServlet {
         String amountRows = req.getParameter("amountRows").trim();
         String tableName = req.getParameter("tableName").trim();
 
-        String childTableField = null,
-                parentTableField = null,
-                tableName2 = null;
+        String childTableField = null;
+        String parentTableField = null;
+        String tableName2 = null;
 
         if (resParams.indexOf("secondTable") != -1) {
 

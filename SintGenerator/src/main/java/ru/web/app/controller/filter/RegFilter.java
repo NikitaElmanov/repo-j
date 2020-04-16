@@ -20,7 +20,8 @@ public class RegFilter implements Filter {
     @Override
     public void doFilter(final ServletRequest servletRequest,
                          final ServletResponse servletResponse,
-                         final FilterChain filterChain) throws IOException, ServletException {
+                         final FilterChain filterChain)
+            throws IOException, ServletException {
 
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
@@ -40,8 +41,7 @@ public class RegFilter implements Filter {
 
         if (users != null) {
             for (User user : users) {
-                if (user.getLogin().equalsIgnoreCase(login)
-                        && user.getPassword().equalsIgnoreCase(password)) {
+                if (user.getLogin().equalsIgnoreCase(login)) {
                     request.setAttribute("message",
                                          "Пользователь уже существует");
                     response.setCharacterEncoding("utf-8");

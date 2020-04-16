@@ -3,13 +3,12 @@ package ru.web.app.controller;
 import ru.web.app.service.UserService;
 import ru.web.app.util.CryptoUtil;
 
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/changeUserParams")
+//@WebServlet(urlPatterns = "/changeUserParams")
 public class ChangeUserParamsServlet extends HttpServlet {
     @Override
     protected void doPost(final HttpServletRequest req,

@@ -1,11 +1,25 @@
 package ru.web.app.util.file.system;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 
-public class FileUtils {
+public final class FileUtils {
+    /**
+     * Initial size for bytes array.
+     */
     private static final int BYTES_DOWNLOAD = 1024;
 
-    public static String createAndFillTMPFile(final String script) throws IOException {
+    /**
+     * take String param and fill itself temp file.
+     * @param script
+     * @returns absolute path to tmp file.
+     * @throws IOException
+     */
+    public static String createAndFillTMPFile(final String script)
+                                                throws IOException {
 
         File tempFile = File.createTempFile("tmp", null);
         FileOutputStream fos = new FileOutputStream(tempFile);
@@ -15,7 +29,15 @@ public class FileUtils {
         return tempFile.getAbsoluteFile().toString();
     }
 
-    public static void write(final InputStream is, final OutputStream os) throws IOException {
+    /**
+     * take 2 params (InputStream and OutputStream)
+     * and write first of them into second.
+     * @param is
+     * @param os
+     * @throws IOException
+     */
+    public static void write(final InputStream is, final OutputStream os)
+                                                      throws IOException {
         int read;
         byte[] bytes = new byte[BYTES_DOWNLOAD];
 
@@ -25,4 +47,6 @@ public class FileUtils {
         os.flush();
         os.close();
     }
+
+    private FileUtils(){}
 }

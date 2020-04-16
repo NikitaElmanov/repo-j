@@ -1,5 +1,10 @@
 package ru.web.app.model;
 
+/**
+ * POJO class with params: id, login and password.
+ * Course this class has only setters and getters
+ * for presented upper fields.
+ */
 public class User {
     private Integer id;
     private String login;

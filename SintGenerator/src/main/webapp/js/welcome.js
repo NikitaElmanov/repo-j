@@ -226,7 +226,8 @@ $(document).ready(function () {
         });
 
         if ($('input.del').length == amountOfChecked) {
-            alert('one column (filed) has to retain');
+            // alert('one column (filed) has to retain');
+            alert('Осталась одна колонка (поле), её нельзя удалять');
         } else {
             originalHeight -= stepOfExpandingMW * amountOfChecked;
             $('.modal-w').css("height", originalHeight);

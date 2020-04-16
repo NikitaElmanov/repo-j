@@ -10,6 +10,79 @@
         <welcome-file>view/login.jsp</welcome-file>
         <!--<welcome-file>view/welcome.jsp</welcome-file>-->
     </welcome-file-list>
+    
+    <!--Servlets-->
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>ru.web.app.controller.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RegServlet</servlet-name>
+        <servlet-class>ru.web.app.controller.RegServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegServlet</servlet-name>
+        <url-pattern>/registration</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>ru.web.app.controller.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ShowScriptServlet</servlet-name>
+        <servlet-class>ru.web.app.controller.ShowScriptServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShowScriptServlet</servlet-name>
+        <url-pattern>/showScript</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>WriteInClipboardServlet</servlet-name>
+        <servlet-class>ru.web.app.controller.WriteInClipboardServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>WriteInClipboardServlet</servlet-name>
+        <url-pattern>/writeClipboard</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GenerateServlet</servlet-name>
+        <servlet-class>ru.web.app.controller.GenerateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GenerateServlet</servlet-name>
+        <url-pattern>/generate</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DownloadSQLFileServlet</servlet-name>
+        <servlet-class>ru.web.app.controller.DownloadSQLFileServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DownloadSQLFileServlet</servlet-name>
+        <url-pattern>/downloadSQL</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ChangeUserParamsServlet</servlet-name>
+        <servlet-class>ru.web.app.controller.ChangeUserParamsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ChangeUserParamsServlet</servlet-name>
+        <url-pattern>/changeUserParams</url-pattern>
+    </servlet-mapping>
 
     <!--Filters-->
     <filter>
@@ -72,5 +145,4 @@
         <filter-name>HideLoginRegFilter</filter-name>
         <url-pattern>/view/registration.jsp</url-pattern>
     </filter-mapping>
-
 </web-app>

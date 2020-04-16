@@ -7,7 +7,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class DBFactory {
+public final class DBFactory {
+    /**
+     * property variable contains DB parameters.
+     */
     private static Properties prop;
 
     static {
@@ -22,6 +25,11 @@ public class DBFactory {
             e.printStackTrace();
         }
     }
+
+    /**
+     * returns DB connection.
+     * @throws SQLException
+     */
     public static Connection getConnection() throws SQLException {
 //        Class.forName(prop.getProperty("classDriver"));
         DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
@@ -32,4 +40,6 @@ public class DBFactory {
 
         return con;
     }
+
+    private DBFactory(){}
 }
