@@ -1,4 +1,4 @@
-package ru.web.app.dao.exception;
+package ru.web.app.model.dao.exception;
 
 public class DAOException extends Exception {
     /**

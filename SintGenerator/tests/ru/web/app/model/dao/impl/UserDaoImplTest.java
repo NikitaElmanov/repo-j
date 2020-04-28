@@ -1,8 +1,8 @@
-package ru.web.app.dao.impl;
+package ru.web.app.model.dao.impl;
 
 import org.junit.Assert;
 import org.junit.Test;
-import ru.web.app.dao.exception.DAOException;
+import ru.web.app.model.dao.exception.DAOException;
 
 public class UserDaoImplTest {
 

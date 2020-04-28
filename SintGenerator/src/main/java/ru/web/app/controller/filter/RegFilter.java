@@ -1,7 +1,7 @@
 package ru.web.app.controller.filter;
 
-import ru.web.app.model.User;
-import ru.web.app.service.UserService;
+import ru.web.app.model.pojo.User;
+import ru.web.app.model.service.UserService;
 import ru.web.app.util.CryptoUtil;
 
 import javax.servlet.ServletRequest;

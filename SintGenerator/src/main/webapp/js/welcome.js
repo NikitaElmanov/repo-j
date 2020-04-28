@@ -46,7 +46,8 @@ $(document).ready(function () {
                 precisionFields[i].setAttribute('placeholder', '5.2');
             }
 
-            if ('DECIMAL' != typesFields[i].value) {
+            if ('DECIMAL' != typesFields[i].value
+                && precisionFields[i].getAttribute("placeholder") == "") {
                 //precisionFields[i].style.background = 'white';
                 precisionFields[i].removeAttribute('placeholder');
             }
@@ -143,7 +144,8 @@ $(document).ready(function () {
                 precisionFields2[i].setAttribute('placeholder', '5.2');
             }
 
-            if ('DECIMAL' != typesFields2[i].value) {
+            if ('DECIMAL' != typesFields2[i].value
+                && precisionFields2[i].getAttribute("placeholder") == "") {
                 //precisionFields[i].style.background = 'white';
                 precisionFields2[i].removeAttribute('placeholder');
             }
@@ -389,7 +391,7 @@ $(document).ready(function () {
 
                 supportFlag = -1;
 
-                return;
+                //return;
             } else {
                 allGoodFlag = 1;
 
@@ -427,6 +429,7 @@ $(document).ready(function () {
         }
         //-----------------------------
 
+        var alertFlag = 0;
         for (var j = 0; j < typesFields.length; j++) {
             for (var i = 0; i < precTypes.length; i++) {
                 if (precTypes[i] == typesFields[j].value) {//'CHAR',VARCHAR
@@ -437,14 +440,17 @@ $(document).ready(function () {
                         precisionFields[j].value = "";
                         precisionFields[j].setAttribute('placeholder', 'введите цифру');
                         precisionFields[j].style.background = 'pink';
-                        alert('Задайте максимальный допустимый размер для поля');
+
+                        //alert('Задайте максимальный допустимый размер для поля');
 
                         allGoodFlag = 0;
 
-                        return;
+                        //return;
                     }
                 }
             }
+
+            alertFlag = 0;
 
             if ('DECIMAL' == typesFields[j].value) {//decimal
                 if (precisionFields[j].value.match('^\\d{1}$') ||
@@ -459,6 +465,8 @@ $(document).ready(function () {
                     precisionFields[j].setAttribute('placeholder', 'введите цифру');
                     precisionFields[j].style.background = 'pink';
                     alert('Задайте пареметр для типа DECIMAL по шаблону *,*');
+
+                    allGoodFlag = 0;
 
                     return;
                 }
@@ -505,7 +513,9 @@ $(document).ready(function () {
             //handling of field's names (checking on unique)
             for (var i = 0; i < fieldNames.length; i++) {
                 for (var j = 0; j < fieldNames.length; j++) {
-                    if (fieldNames[j].value == fieldNames[i].value && i != j) {
+                    if (fieldNames[j].value == fieldNames[i].value && i != j
+                        && fieldNames[j].value != ""
+                        && fieldNames[i].value != "") {
                         alert('Имена полей должны быть уникальными. Необходимо исправить - \"' + fieldNames[j].value + '\"');
 
                         return;
@@ -520,7 +530,9 @@ $(document).ready(function () {
                 //handling of field's names (checking on unique)
                 for (var i = 0; i < fieldNames2.length; i++) {
                     for (var j = 0; j < fieldNames2.length; j++) {
-                        if (fieldNames2[j].value == fieldNames2[i].value && i != j) {
+                        if (fieldNames2[j].value == fieldNames2[i].value && i != j
+                            && fieldNames2[j].value != ""
+                            && fieldNames2[i].value != "") {
                             alert('Имена полей должны быть уникальными. Необходимо исправить - \"' + fieldNames2[j].value + '\"');
 
                             return;

@@ -154,10 +154,10 @@
                         <span>Table name: </span><input id="table-name2" type="text"/>
                     </div>
                     <div name="child-table-field">
-                        <span>Child Field: </span><input id="child-table-field" type="text"/>
+                        <span>Child field: </span><input id="child-table-field" type="text"/>
                     </div>
                     <div name="parent-table-field">
-                        <span>Parent Field: </span><input id="parent-table-field" type="text"/>
+                        <span>Parent field: </span><input id="parent-table-field" type="text"/>
                     </div>
                     <div name="add-create-script2">
                         <input type="checkbox" name="addCS" value="addCS" id="add-create-script2"/>

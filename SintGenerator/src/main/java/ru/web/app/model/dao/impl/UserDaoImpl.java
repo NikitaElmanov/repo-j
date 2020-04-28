@@ -1,8 +1,8 @@
-package ru.web.app.dao.impl;
+package ru.web.app.model.dao.impl;
 
-import ru.web.app.dao.UserDao;
-import ru.web.app.dao.exception.DAOException;
-import ru.web.app.model.User;
+import ru.web.app.model.dao.UserDao;
+import ru.web.app.model.dao.exception.DAOException;
+import ru.web.app.model.pojo.User;
 import ru.web.app.util.DBFactory;
 
 import java.sql.ResultSet;

@@ -1,4 +1,4 @@
-package ru.web.app.model;
+package ru.web.app.model.pojo;
 
 /**
  * POJO class with params: id, login and password.

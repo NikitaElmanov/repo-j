@@ -1,6 +1,6 @@
 package ru.web.app.controller;
 
-import ru.web.app.service.UserService;
+import ru.web.app.model.service.UserService;
 import ru.web.app.util.CryptoUtil;
 
 import javax.servlet.http.HttpServlet;

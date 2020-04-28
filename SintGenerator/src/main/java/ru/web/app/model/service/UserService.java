@@ -1,9 +1,9 @@
-package ru.web.app.service;
+package ru.web.app.model.service;
 
-import ru.web.app.dao.UserDao;
-import ru.web.app.dao.exception.DAOException;
-import ru.web.app.dao.impl.UserDaoImpl;
-import ru.web.app.model.User;
+import ru.web.app.model.dao.UserDao;
+import ru.web.app.model.dao.exception.DAOException;
+import ru.web.app.model.dao.impl.UserDaoImpl;
+import ru.web.app.model.pojo.User;
 
 import java.util.List;
 
