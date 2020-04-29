@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration debug="true">
+
+    <property scope="context" name="logpath" value="./logs"/>
+    <timestamp key="currentTimestamp" datePattern="yyyy-MM-dd_HH-mm-ss.SSS"/>
+
+    <appender name="FILESYS" class="ch.qos.logback.core.FileAppender">
+        <file>${logpath}/${currentTimestamp}.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <maxFileSize>7MB</maxFileSize>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d %-5level - %msg%n%ex{full}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{dd.MM.yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{20} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="ru.web.app" level="ALL" additivity="false">
+        <appender-ref ref="FILESYS"/>
+    </logger>
+
+    <root level="ALL">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>

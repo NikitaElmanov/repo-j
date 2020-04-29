@@ -3,6 +3,8 @@ package ru.web.app.controller;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.web.app.logic.GenLogic;
 
 import javax.servlet.http.HttpServlet;
@@ -14,6 +16,7 @@ import java.util.List;
 
 //@WebServlet("/generate")
 public class GenerateServlet extends HttpServlet {
+    private static final Logger logger = LoggerFactory.getLogger(GenerateServlet.class);
     /**
      * specific variable object to parse json coming from JavaScript
      */
@@ -72,11 +75,12 @@ public class GenerateServlet extends HttpServlet {
             fieldPK = (List<String>) tmpFieldPK.clone();
 
         } catch (ParseException e) {
-            e.printStackTrace();
+            logger.error("Error with parsing come values from JS", e);
         }
 
         GenLogic logic = new GenLogic(resParams, fieldNames, fieldTypes, fieldPrecisions, fieldPK, tableName, amountRows,
                                                  fieldNames2, fieldTypes2, fieldPrecisions2, fieldPK2, tableName2, childTableField, parentTableField);
+        logger.info("script generation is starting");
         String resScript = logic.generateScript();
 
         if (resParams.indexOf("secondTable") != -1) {
@@ -108,5 +112,7 @@ public class GenerateServlet extends HttpServlet {
             session.setAttribute("tableName2", logic.getTableName2());
             session.setAttribute("childTableFieldFK", childTableField);
         }
+
+        logger.info("generation finished successful");
     }
 }

@@ -1,5 +1,7 @@
 package ru.web.app.model.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.web.app.model.dao.UserDao;
 import ru.web.app.model.dao.exception.DAOException;
 import ru.web.app.model.dao.impl.UserDaoImpl;
@@ -8,7 +10,7 @@ import ru.web.app.model.pojo.User;
 import java.util.List;
 
 public final class UserService {
-
+    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
     /**
      * UserService class's instance.
      */
@@ -45,7 +47,7 @@ public final class UserService {
         try {
             id = dao.createUser(user);
         } catch (DAOException e) {
-            e.printStackTrace();
+            logger.error("Error with creating user {}", user.getLogin(), e);
         }
 
         return id;
@@ -62,7 +64,7 @@ public final class UserService {
         try {
             user = dao.getUserById(id);
         } catch (DAOException e) {
-            e.printStackTrace();
+            logger.error("Error with getting user with id = {}", id, e);
         }
 
         return user;
@@ -78,7 +80,7 @@ public final class UserService {
         try {
             users = dao.getAllUsers();
         } catch (DAOException e) {
-            e.printStackTrace();
+            logger.error("Error with getting all users", e);
         }
 
         return users;
@@ -98,7 +100,7 @@ public final class UserService {
         try {
             dao.updateUserName(login, password, newName);
         } catch (DAOException e) {
-            e.printStackTrace();
+            logger.error("Error with updating user's name with login = {}", login, e);
         }
     }
 
@@ -116,7 +118,7 @@ public final class UserService {
         try {
             dao.updateUserPassword(login, password, newPassword);
         } catch (DAOException e) {
-            e.printStackTrace();
+            logger.error("Error with updating user's password with login = {}", login, e);
         }
     }
 }

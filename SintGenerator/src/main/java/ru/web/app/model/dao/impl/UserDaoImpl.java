@@ -1,5 +1,7 @@
 package ru.web.app.model.dao.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.web.app.model.dao.UserDao;
 import ru.web.app.model.dao.exception.DAOException;
 import ru.web.app.model.pojo.User;
@@ -17,17 +19,17 @@ import java.util.List;
      * Using singleton.
      */
 public final class UserDaoImpl implements UserDao {
+    private static final Logger logger = LoggerFactory.getLogger(UserDaoImpl.class);
+
     /**
      * instance of USerDao class.
      */
     private static UserDao instance;
-
     /**
      *  private constructor.
      */
     private UserDaoImpl() {
     }
-
     /**
      * @return instance.
      */
@@ -74,7 +76,7 @@ public final class UserDaoImpl implements UserDao {
                 try {
                     rs.close();
                 } catch (SQLException e) {
-                    e.printStackTrace();
+                    logger.error("Error with ResultSet object", e);
                 }
             }
         }
@@ -112,7 +114,7 @@ public final class UserDaoImpl implements UserDao {
                 try {
                     rs.close();
                 } catch (SQLException e) {
-                    e.printStackTrace();
+                    logger.error("Error with ResultSet object", e);
                 }
             }
         }
@@ -149,7 +151,7 @@ public final class UserDaoImpl implements UserDao {
                 try {
                     rs.close();
                 } catch (SQLException e) {
-                    e.printStackTrace();
+                    logger.error("Error with ResultSet object", e);
                 }
             }
         }
@@ -220,7 +222,7 @@ public final class UserDaoImpl implements UserDao {
                 try {
                     rs.close();
                 } catch (SQLException e) {
-                    e.printStackTrace();
+                    logger.error("Error with ResultSet object", e);
                 }
             }
         }

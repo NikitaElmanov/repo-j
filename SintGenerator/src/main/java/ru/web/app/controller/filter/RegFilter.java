@@ -1,5 +1,7 @@
 package ru.web.app.controller.filter;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.web.app.model.pojo.User;
 import ru.web.app.model.service.UserService;
 import ru.web.app.util.CryptoUtil;
@@ -17,6 +19,7 @@ import java.util.List;
 
 //@WebFilter(urlPatterns = "/registration")
 public class RegFilter implements Filter {
+    private static final Logger logger = LoggerFactory.getLogger(RegFilter.class);
     @Override
     public void doFilter(final ServletRequest servletRequest,
                          final ServletResponse servletResponse,
@@ -33,7 +36,7 @@ public class RegFilter implements Filter {
             password = CryptoUtil
                     .byteArrayToHexString(CryptoUtil.computeHash(password));
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Error with getting bytes array from password string", e);
         }
 
         UserService service = UserService.getInstance();

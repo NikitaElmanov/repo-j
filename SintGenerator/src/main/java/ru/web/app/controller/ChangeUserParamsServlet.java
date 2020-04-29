@@ -1,5 +1,7 @@
 package ru.web.app.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.web.app.model.service.UserService;
 import ru.web.app.util.CryptoUtil;
 
@@ -10,6 +12,8 @@ import java.io.IOException;
 
 //@WebServlet(urlPatterns = "/changeUserParams")
 public class ChangeUserParamsServlet extends HttpServlet {
+    private static final Logger logger = LoggerFactory.getLogger(ChangeUserParamsServlet.class);
+
     @Override
     protected void doPost(final HttpServletRequest req,
                           final HttpServletResponse resp) throws IOException {
@@ -41,11 +45,12 @@ public class ChangeUserParamsServlet extends HttpServlet {
                 password = CryptoUtil
                         .byteArrayToHexString(CryptoUtil.computeHash(password));
             } catch (Exception e) {
-                e.printStackTrace();
+                logger.error("Error with getting bytes array from password string", e);
             }
 
             if (!newName.equalsIgnoreCase("")) {
                 service.updateUserName(userName, password, newName);
+                logger.info("User's name has been changed");
 
                 userName = newName;
                 req.getSession().removeAttribute("username");
@@ -59,10 +64,11 @@ public class ChangeUserParamsServlet extends HttpServlet {
                     newPassword = CryptoUtil
                             .byteArrayToHexString(CryptoUtil.computeHash(newPassword));
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    logger.error("Error with getting bytes array from password string", e);
                 }
 
                 service.updateUserPassword(userName, password, newPassword);
+                logger.info("User's password has been changed");
             }
         }
 

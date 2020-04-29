@@ -1,5 +1,8 @@
 package ru.web.app.util;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.File;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -8,6 +11,8 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public final class DBFactory {
+    private static final Logger logger = LoggerFactory.getLogger(DBFactory.class);
+
     /**
      * property variable contains DB parameters.
      */
@@ -22,7 +27,7 @@ public final class DBFactory {
         try {
             prop.load(in);
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Error with loading database properties", e);
         }
     }
 
