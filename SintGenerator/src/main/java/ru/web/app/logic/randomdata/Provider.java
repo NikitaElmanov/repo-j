@@ -33,11 +33,13 @@ public final class Provider {
 
         for (int i = 0; i < amountRows; i++) {
             genPK = String.valueOf(getRandomInteger(DEFAULT_RANGE_INTEGER_MIN,
-                                                    DEFAULT_RANGE_INTEGER_MAX));
+                                                    DEFAULT_RANGE_INTEGER_MAX,
+                                                    false));
 
             while (genPKs.contains(genPK)) {
                 genPK = String.valueOf(getRandomInteger(DEFAULT_RANGE_INTEGER_MIN,
-                                                        DEFAULT_RANGE_INTEGER_MAX));
+                                                        DEFAULT_RANGE_INTEGER_MAX,
+                                                        false));
             }
 
             genPKs.add(genPK);
@@ -55,17 +57,16 @@ public final class Provider {
         Stack<String> genPKs = new Stack<>();
         String genPK;
 
-        if (range != null
-            || !range.isEmpty()) {
+        if (range != null || !range.isEmpty()) {
 
             DEFAULT_RANGE = Integer.parseInt(range);
         }
 
         for (int i = 0; i < amountRows; i++) {
-            genPK = getRandomString(DEFAULT_RANGE);
+            genPK = getRandomString(DEFAULT_RANGE, false);
 
             while (genPKs.contains(genPK)) {
-                genPK = getRandomString(DEFAULT_RANGE);
+                genPK = getRandomString(DEFAULT_RANGE, false);
             }
 
             genPKs.add(genPK);
@@ -77,7 +78,7 @@ public final class Provider {
     /**
      * function to generate a random string of length n.
      */
-    public static String getRandomString(final Integer n) {
+    public static String getRandomString(final Integer n, final boolean nullFlag) {
         if (n < 1) {
             throw new IllegalArgumentException();
         }
@@ -95,6 +96,11 @@ public final class Provider {
 
         Random rand = new Random();
 
+        //null values handler
+        if (nullFlag && rand.nextInt() > 0.5) {
+            return null;
+        }
+
         // nextInt is normally exclusive of the top value,
         // so add 1 to make it inclusive
         int randomNum = rand.nextInt((max - min) + 1) + min;
@@ -111,6 +117,7 @@ public final class Provider {
         }
 
         return sb.toString();
+
     }
 
     /**
@@ -119,12 +126,18 @@ public final class Provider {
      * @return random figure from inputting range.
      */
     public static Integer getRandomInteger(final Integer min,
-                                           final Integer max) {
+                                           final Integer max,
+                                           final boolean nullFlag) {
         if (min >= max) {
             throw new IllegalArgumentException("max must be greater than min");
         }
 
         Random r = new Random();
+        int randomNum = r.nextInt();
+        if (nullFlag && randomNum > 0.5) {
+            return null;
+        }
+
         return r.nextInt((max - min) + 1) + min;
     }
 
@@ -134,9 +147,14 @@ public final class Provider {
      * @return random date from inputting range.
      */
     public static Date getRandomDate(final Integer start,
-                                     final Integer end) {
+                                     final Integer end,
+                                     final boolean nullFlag) {
         if (start >= end) {
             throw new IllegalArgumentException("end must be greater than start");
+        }
+
+        if (nullFlag && Math.random() > 0.5){
+            return null;
         }
         LocalDate randomDate = createRandomDate(start, end);
         return Date.valueOf(randomDate);
@@ -148,7 +166,12 @@ public final class Provider {
      * @return random double figure with inputting settings.
      */
     public static String getRandomDouble(final Double rightLimit,
-                                         final Integer afterComma) {
+                                         final Integer afterComma,
+                                         final boolean nullFlag) {
+
+        if (nullFlag && Math.random() > 0.5) {
+            return null;
+        }
 
         Double leftLimit = 1D;
 
@@ -159,12 +182,12 @@ public final class Provider {
         }
 
         Double generatedDouble = leftLimit
-                            + new Random().nextDouble()
-                            * (rightLimit - leftLimit);
+                + new Random().nextDouble()
+                * (rightLimit - leftLimit);
 
         NumberFormat formatter = new DecimalFormat(format.toString());
         String generatedDoubleStr = formatter.format(generatedDouble)
-                                    .replace(",", ".");
+                .replace(",", ".");
 
         return generatedDoubleStr;
     }
@@ -172,7 +195,13 @@ public final class Provider {
     /**
      * @return true or false.
      */
-    public static Boolean getRandomBoolean() { return Math.random() < 0.5; }
+    public static Boolean getRandomBoolean(final boolean nullFlag) {
+        if (nullFlag && Math.random() < 0.5) {
+            return null;
+        }
+
+        return Math.random() < 0.5;
+    }
 
     private Provider(){}
 }

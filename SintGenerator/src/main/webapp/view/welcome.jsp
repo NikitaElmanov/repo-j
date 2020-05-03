@@ -38,6 +38,7 @@
                             <li class="table-th">Filed Name</li>
                             <li class="table-th">Type</li>
                             <li class="table-th">Precision</li>
+                            <li class="table-th">Null</li>
                             <li class="table-th">Primary Key</li>
                             <li class="table-th"><input id="del" type="button" value="Del"/></li>
                         </ul>
@@ -57,12 +58,9 @@
                                 </select>
                             </li>
                             <li class="table-td"><input type="text" class="precision"/></li>
-                            <li class="table-td">
-                                <input type="radio" class="pk" name="pk"/>
-                            </li>
-                            <li class="table-td">
-                                <input type="checkbox" class="del" name="del"/>
-                            </li>
+                            <li class="table-td"><input type="checkbox" class="null"/></li>
+                            <li class="table-td"><input type="radio" class="pk" name="pk"/></li>
+                            <li class="table-td"><input type="checkbox" class="del" name="del"/></li>
                         </ul>
                     </div>
                 </div>
@@ -82,9 +80,9 @@
                         <span>Amount rows: </span><input id="amount-rows" type="text" disabled=true/>
                     </div>
                     <!--<div name="update-script" id="update-script">
-						<input id="update" type="radio" name="script"/>
-						<label for="update">Update script</label>
-					</div>	-->
+                        <input id="update" type="radio" name="script"/>
+                        <label for="update">Update script</label>
+                    </div>	-->
                     <div name="add-create-script">
                         <input type="checkbox" name="addCS" value="addCS" id="add-create-script"/>
                         <label for="add-create-script">Add creating script</label>
@@ -94,9 +92,9 @@
                         <label for="add-connect-table">Create connected table</label>
                     </div>
                     <!--<div name="addId">
-						<input type="checkbox" name="addId" value="addId" id="addId"/>
-						<label for="addId">Add id autoincrement</label>
-					</div>-->
+                        <input type="checkbox" name="addId" value="addId" id="addId"/>
+                        <label for="addId">Add id autoincrement</label>
+                    </div>-->
                 </div>
                 <!--<form action="" method="get" id="generate">-->
                 <button type="submit" value="Generate" id="generate">Generate</button>
@@ -117,6 +115,7 @@
                             <li class="table-th2">Filed Name</li>
                             <li class="table-th2">Type</li>
                             <li class="table-th2">Precision</li>
+                            <li class="table-th">Null</li>
                             <li class="table-th2">Primary Key</li>
                             <li class="table-th2"><input id="del2" type="button" value="Del"/></li>
                         </ul>
@@ -136,12 +135,9 @@
                                 </select>
                             </li>
                             <li class="table-td2"><input type="text" class="precision2"/></li>
-                            <li class="table-td2">
-                                <input type="radio" class="pk2" name="pk2"/>
-                            </li>
-                            <li class="table-td2">
-                                <input type="checkbox" class="del2" name="del2"/>
-                            </li>
+                            <li class="table-td2"><input type="checkbox" class="null2"/></li>
+                            <li class="table-td2"><input type="radio" class="pk2" name="pk2"/></li>
+                            <li class="table-td2"><input type="checkbox" class="del2" name="del2"/></li>
                         </ul>
                     </div>
                 </div>

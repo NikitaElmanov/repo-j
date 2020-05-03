@@ -18,8 +18,8 @@
     <c:set var = "list" scope = "session" value = "9"/>
     <%
         int c = 0;
-        ArrayList<ArrayList<String>> ValuesPK = (ArrayList<ArrayList<String>>) request.getSession().getAttribute("listOfValuesPK");
-        ArrayList<ArrayList<String>> ValuesPK2 = (ArrayList<ArrayList<String>>) request.getSession().getAttribute("listOfValuesPK2");
+        ArrayList<ArrayList<String>> valuesPK = (ArrayList<ArrayList<String>>) request.getSession().getAttribute("listOfValuesPK");
+        ArrayList<ArrayList<String>> valuesPK2 = (ArrayList<ArrayList<String>>) request.getSession().getAttribute("listOfValuesPK2");
     %>
 
     <div id="container-script">
@@ -67,8 +67,8 @@
                             <c:otherwise>
                                 <th><em style="color: gold;">
                                     <%
-                                        for (int i = c; i < ValuesPK.size(); i++) {
-                                            out.print(ValuesPK.get(i).get(0));
+                                        for (int i = c; i < valuesPK.size(); i++) {
+                                            out.print(valuesPK.get(i).get(0));
                                             break;
                                         }
                                         c++;
@@ -77,7 +77,14 @@
                             </c:otherwise>
                         </c:choose>
                         <c:forEach var="value" items="${list}">
-                            <td><pre>${value}</pre></td>
+                            <c:choose>
+                                <c:when test="${value == null}">
+                                    <td style="color: brown;"><pre>NULL</pre></td>
+                                </c:when>
+                                <c:otherwise>
+                                    <td><pre>${value}</pre></td>
+                                </c:otherwise>
+                            </c:choose>
                         </c:forEach>
                     </tr>
                 </c:forEach>
@@ -125,8 +132,8 @@
                                 <c:otherwise>
                                     <th><em style="color: gold;">
                                         <%
-                                            for (int i = c2; i < ValuesPK2.size(); i++) {
-                                                out.print(ValuesPK2.get(i).get(0));
+                                            for (int i = c2; i < valuesPK2.size(); i++) {
+                                                out.print(valuesPK2.get(i).get(0));
                                                 break;
                                             }
                                             c2++;
@@ -135,7 +142,14 @@
                                 </c:otherwise>
                             </c:choose>
                             <c:forEach var="value" items="${list}">
-                                <td><pre>${value}</pre></td>
+                                <c:choose>
+                                    <c:when test="${value == null}">
+                                        <td style="color: brown;"><pre>NULL</pre></td>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <td><pre>${value}</pre></td>
+                                    </c:otherwise>
+                                </c:choose>
                             </c:forEach>
                         </tr>
                     </c:forEach>

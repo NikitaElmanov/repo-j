@@ -13,11 +13,12 @@ $(document).ready(function () {
     var noPKTypes = [/*'VARCHAR'*/, 'CHAR', 'BOOLEAN', 'DATE', 'DECIMAL'];
     var precTypes = ['CHAR', 'VARCHAR'];
     var noPrecTypes = ['BOOLEAN'/*,'INT',INT UNSIGNED', 'DATE'*/];
-    var typesFields, precisionFields, pkFields, secondTableFlag = 0;
+    var typesFields, precisionFields, pkFields, nullFields, secondTableFlag = 0;
 
     window.setInterval(function () {
-        precisionFields = $('input.precision');
         typesFields = $('select.type');
+        precisionFields = $('input.precision');
+        nullFields = $('input.null');
         pkFields = $('input.pk');
         var activeFlag = 0;
 
@@ -59,6 +60,11 @@ $(document).ready(function () {
                 } else {
                     precisionFields[i].disabled = false;
                 }
+            }
+
+            //making unchecked NULL checkbox when current field is PK for first table
+            if (pkFields[i].checked) {
+                nullFields[i].checked = false;
             }
         }
 
@@ -114,8 +120,9 @@ $(document).ready(function () {
         //-----------------------------------------------
 
         //---------------------------------------------------222222222222222222222222222222222222222
-        precisionFields2 = $('input.precision2');
         typesFields2 = $('select.type2');
+        precisionFields2 = $('input.precision2');
+        nullFields2 = $('input.null2');
         pkFields2 = $('input.pk2');
         var activeFlag2 = 0;
 
@@ -157,6 +164,11 @@ $(document).ready(function () {
                 } else {
                     precisionFields2[i].disabled = false;
                 }
+            }
+
+            //making unchecked NULL checkbox when current field is PK for second table
+            if (pkFields2[i].checked) {
+                nullFields2[i].checked = false;
             }
         }
 
@@ -270,6 +282,7 @@ $(document).ready(function () {
                 '</select>' +
                 '</li>' +
                 '<li class="table-td"><input type="text" class="precision"/></li>' +
+                '<li class="table-td"><input type="checkbox" class="null"/></li>' +
                 '<li class="table-td">' +
                 '<input type="radio" class="pk" name="pk"/>' +
                 '</li>' +
@@ -313,6 +326,7 @@ $(document).ready(function () {
                 '</select>' +
                 '</li>' +
                 '<li class="table-td2"><input type="text" class="precision2"/></li>' +
+                '<li class="table-td2"><input type="checkbox" class="null2"/></li>' +
                 '<li class="table-td2">' +
                 '<input type="radio" class="pk2" name="pk2"/>' +
                 '</li>' +
@@ -723,6 +737,14 @@ $(document).ready(function () {
         $('input.precision').each(function () {
             fieldPrecisions.push($(this).val());
         });
+        var fieldNulls = [];
+        $('input.null').each(function() {
+            if ($(this).is(':checked')) {
+                fieldNulls.push('true');
+            } else {
+                fieldNulls.push('false');
+            }
+        });
         var fieldPK = [];
         $('input.pk').each(function () {
             if ($(this).is(':checked')) {
@@ -753,6 +775,14 @@ $(document).ready(function () {
                 if ($(this).val() == '') {
                     fieldPrecisions2.pop();
                     fieldPrecisions2.push('1,100');
+                }
+            });
+            var fieldNulls2 = [];
+            $('input.null2').each(function() {
+                if ($(this).is(':checked')) {
+                    fieldNulls2.push('true');
+                } else {
+                    fieldNulls2.push('false');
                 }
             });
             $('input.pk2').each(function () {
@@ -904,12 +934,14 @@ $(document).ready(function () {
                     fieldNames: JSON.stringify(fieldNames),
                     fieldTypes: JSON.stringify(fieldTypes),
                     fieldPrecisions: JSON.stringify(fieldPrecisions),
+                    fieldNulls: JSON.stringify(fieldNulls),
                     fieldPK: JSON.stringify(fieldPK),
                     tableName: tableName,
 
                     fieldNames2: JSON.stringify(fieldNames2),
                     fieldTypes2: JSON.stringify(fieldTypes2),
                     fieldPrecisions2: JSON.stringify(fieldPrecisions2),
+                    fieldNulls2: JSON.stringify(fieldNulls2),
                     fieldPK2: JSON.stringify(fieldPK2),
                     tableName2: tableName2,
 

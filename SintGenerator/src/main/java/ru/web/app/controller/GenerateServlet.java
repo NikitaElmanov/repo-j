@@ -17,6 +17,7 @@ import java.util.List;
 //@WebServlet("/generate")
 public class GenerateServlet extends HttpServlet {
     private static final Logger logger = LoggerFactory.getLogger(GenerateServlet.class);
+
     /**
      * specific variable object to parse json coming from JavaScript
      */
@@ -30,11 +31,13 @@ public class GenerateServlet extends HttpServlet {
         List<String> fieldNames = null;
         List<String> fieldTypes = null;
         List<String> fieldPrecisions = null;
+        List<String> fieldNulls = null;
         List<String> fieldPK = null;
         //
         List<String> fieldNames2 = null;
         List<String> fieldTypes2 = null;
         List<String> fieldPrecisions2 = null;
+        List<String> fieldNulls2 = null;
         List<String> fieldPK2 = null;
         String amountRows = req.getParameter("amountRows").trim();
         String tableName = req.getParameter("tableName").trim();
@@ -54,6 +57,7 @@ public class GenerateServlet extends HttpServlet {
             JSONArray tmpFieldNames = (JSONArray) parser.parse(req.getParameter("fieldNames").trim());
             JSONArray tmpFieldTypes = (JSONArray) parser.parse(req.getParameter("fieldTypes").trim());
             JSONArray tmpFieldPrecisions = (JSONArray) parser.parse(req.getParameter("fieldPrecisions").trim());
+            JSONArray tmpFieldNulls = (JSONArray) parser.parse(req.getParameter("fieldNulls").trim());
             JSONArray tmpFieldPK = (JSONArray) parser.parse(req.getParameter("fieldPK").trim());
 
             if (resParams.indexOf("secondTable") != -1) {
@@ -61,25 +65,28 @@ public class GenerateServlet extends HttpServlet {
                 JSONArray tmpFieldNames2 = (JSONArray) parser.parse(req.getParameter("fieldNames2").trim());
                 JSONArray tmpFieldTypes2 = (JSONArray) parser.parse(req.getParameter("fieldTypes2").trim());
                 JSONArray tmpFieldPrecisions2 = (JSONArray) parser.parse(req.getParameter("fieldPrecisions2").trim());
+                JSONArray tmpFieldNulls2 = (JSONArray) parser.parse(req.getParameter("fieldNulls2").trim());
                 JSONArray tmpFieldPK2 = (JSONArray) parser.parse(req.getParameter("fieldPK2").trim());
 
                 fieldNames2 = (List<String>) tmpFieldNames2.clone();
                 fieldTypes2 = (List<String>) tmpFieldTypes2.clone();
                 fieldPrecisions2 = (List<String>) tmpFieldPrecisions2.clone();
+                fieldNulls2 = (List<String>) tmpFieldNulls2.clone();
                 fieldPK2 = (List<String>) tmpFieldPK2.clone();
             }
 
             fieldNames = (List<String>) tmpFieldNames.clone();
             fieldTypes = (List<String>) tmpFieldTypes.clone();
             fieldPrecisions = (List<String>) tmpFieldPrecisions.clone();
+            fieldNulls = (List<String>) tmpFieldNulls.clone();
             fieldPK = (List<String>) tmpFieldPK.clone();
 
         } catch (ParseException e) {
             logger.error("Error with parsing come values from JS", e);
         }
 
-        GenLogic logic = new GenLogic(resParams, fieldNames, fieldTypes, fieldPrecisions, fieldPK, tableName, amountRows,
-                                                 fieldNames2, fieldTypes2, fieldPrecisions2, fieldPK2, tableName2, childTableField, parentTableField);
+        GenLogic logic = new GenLogic(resParams, fieldNames, fieldTypes, fieldPrecisions, fieldNulls, fieldPK, tableName, amountRows,
+                                                 fieldNames2, fieldTypes2, fieldPrecisions2, fieldNulls2, fieldPK2, tableName2, childTableField, parentTableField);
         logger.info("script generation is starting");
         String resScript = logic.generateScript();
 
