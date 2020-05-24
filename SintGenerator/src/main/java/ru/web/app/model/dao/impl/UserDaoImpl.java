@@ -18,7 +18,7 @@ import java.util.List;
     /**
      * Using singleton.
      */
-public final class UserDaoImpl implements UserDao {
+public final class UserDaoImpl implements UserDao <User> {
     private static final Logger logger = LoggerFactory.getLogger(UserDaoImpl.class);
 
     /**
@@ -70,6 +70,7 @@ public final class UserDaoImpl implements UserDao {
             return generatedKey;
 
         } catch (SQLException ex) {
+            logger.error("cannot create new user with login - " + user.getLogin(), ex);
             throw new DAOException("cannot create new user with login - " + user.getLogin(), ex);
         } finally {
             if (rs != null) {
@@ -108,6 +109,7 @@ public final class UserDaoImpl implements UserDao {
             return user;
 
         } catch (SQLException | DAOException ex) {
+            logger.error("cannot get user by id - " + id, ex);
             throw new DAOException("cannot get user by id - " + id, ex);
         } finally {
             if (rs != null) {
@@ -145,6 +147,7 @@ public final class UserDaoImpl implements UserDao {
             return users;
 
         } catch (SQLException ex) {
+            logger.error("cannot get all users", ex);
             throw new DAOException("cannot get all users", ex);
         } finally {
             if (rs != null) {
@@ -173,6 +176,7 @@ public final class UserDaoImpl implements UserDao {
             ps.executeUpdate();
 
         } catch (SQLException e) {
+            logger.error("cannot update user login with login = {}", login, e);
             throw new DAOException("cannot update user login with login = " + login, e);
         }
     }
@@ -193,6 +197,7 @@ public final class UserDaoImpl implements UserDao {
             ps.executeUpdate();
 
         } catch (SQLException e) {
+            logger.error("cannot update user password with login = {}", login, e);
             throw new DAOException("cannot update user password with login = " + login, e);
         }
     }
@@ -216,6 +221,7 @@ public final class UserDaoImpl implements UserDao {
             resId = rs.getInt(1);
 
         } catch (SQLException e) {
+            logger.error("cannot get user id by login and password", e);
             throw new DAOException("cannot get user id by login and password", e);
         } finally {
             if (rs != null) {

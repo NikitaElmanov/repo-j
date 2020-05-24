@@ -1,31 +1,32 @@
 package ru.web.app.model.dao;
 
 import ru.web.app.model.dao.exception.DAOException;
+import ru.web.app.model.pojo.Entity;
 import ru.web.app.model.pojo.User;
 
 import java.util.List;
 
-public interface UserDao {
+public interface UserDao <T extends Entity> {
     /**
      * create new row with user's params in DB.
      * @param user
      * @return generated key
      * @throws DAOException
      */
-    Integer createUser(User user) throws DAOException;
+    Integer createUser(T user) throws DAOException;
 
     /**
      * @param id
      * @return user by inputting id
      * @throws DAOException
      */
-    User getUserById(Integer id) throws DAOException;
+    T getUserById(Integer id) throws DAOException;
 
     /**
      * @return just all existing users
      * @throws DAOException
      */
-    List<User> getAllUsers() throws DAOException;
+    List<T> getAllUsers() throws DAOException;
 
     /**
      * changes user's param (login).

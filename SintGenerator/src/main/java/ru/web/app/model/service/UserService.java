@@ -62,7 +62,7 @@ public final class UserService {
         User user = null;
 
         try {
-            user = dao.getUserById(id);
+            user = (User) dao.getUserById(id);
         } catch (DAOException e) {
             logger.error("Error with getting user with id = {}", id, e);
         }

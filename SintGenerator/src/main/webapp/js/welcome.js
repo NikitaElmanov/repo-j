@@ -924,6 +924,8 @@ $(document).ready(function () {
         }
 
         if (allGoodFlag == 1) {
+
+
             $.ajax({
                 url: '/generate',
                 type: 'post',
@@ -952,6 +954,8 @@ $(document).ready(function () {
                     window.open('/showScript', '_blank');
                 }
             });
+
+
         } else {
             return;
         }

@@ -5,8 +5,7 @@ package ru.web.app.model.pojo;
  * Course this class has only setters and getters
  * for presented upper fields.
  */
-public class User {
-    private Integer id;
+public class User extends Entity{
     private String login;
     private String password;
 
