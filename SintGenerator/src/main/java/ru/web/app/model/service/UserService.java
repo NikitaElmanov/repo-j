@@ -9,7 +9,7 @@ import ru.web.app.model.pojo.User;
 
 import java.util.List;
 
-public final class UserService {
+public class UserService {
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
     /**
      * UserService class's instance.

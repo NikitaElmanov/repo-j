@@ -2,7 +2,6 @@ package ru.web.app.model.dao;
 
 import ru.web.app.model.dao.exception.DAOException;
 import ru.web.app.model.pojo.Entity;
-import ru.web.app.model.pojo.User;
 
 import java.util.List;
 

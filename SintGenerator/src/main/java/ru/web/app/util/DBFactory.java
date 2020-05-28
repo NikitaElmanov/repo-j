@@ -36,7 +36,6 @@ public final class DBFactory {
      * @throws SQLException
      */
     public static Connection getConnection() throws SQLException {
-//        Class.forName(prop.getProperty("classDriver"));
         DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
         Connection con = DriverManager.getConnection(
                 prop.getProperty("url"),

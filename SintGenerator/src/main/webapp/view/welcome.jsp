@@ -35,7 +35,7 @@
                 <div class="table">
                     <div class="table-thead">
                         <ul class="table-tr">
-                            <li class="table-th">Filed Name</li>
+                            <li class="table-th">Field Name</li>
                             <li class="table-th">Type</li>
                             <li class="table-th">Precision</li>
                             <li class="table-th">Null</li>
@@ -112,7 +112,7 @@
                 <div class="table2">
                     <div class="table-thead2">
                         <ul class="table-tr2">
-                            <li class="table-th2">Filed Name</li>
+                            <li class="table-th2">Field Name</li>
                             <li class="table-th2">Type</li>
                             <li class="table-th2">Precision</li>
                             <li class="table-th">Null</li>
