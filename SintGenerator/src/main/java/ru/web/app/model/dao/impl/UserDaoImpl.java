@@ -18,7 +18,7 @@ import java.util.List;
     /**
      * Using singleton.
      */
-public final class UserDaoImpl implements UserDao <User> {
+public class UserDaoImpl implements UserDao <User> {
     private static final Logger logger = LoggerFactory.getLogger(UserDaoImpl.class);
 
     /**
@@ -42,7 +42,7 @@ public final class UserDaoImpl implements UserDao <User> {
     }
 
     @Override
-    public Integer createUser(final User user)
+    public Integer createUser(User user)
             throws DAOException {
 
         String insertStr = "insert into users (login, password) values (?,?)";
