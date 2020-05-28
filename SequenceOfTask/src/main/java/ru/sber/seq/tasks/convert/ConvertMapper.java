@@ -1,12 +1,11 @@
 package ru.sber.seq.tasks.convert;
 
-import org.codehaus.jackson.JsonGenerationException;
-import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
 import ru.sber.seq.tasks.steps.Step;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 public class ConvertMapper {
@@ -18,14 +17,7 @@ public class ConvertMapper {
             mapper.writerWithDefaultPrettyPrinter()
                     .writeValue(
                             new File(path), steps);
-        } catch (
-                JsonGenerationException e) {
-            e.printStackTrace();
-        } catch (
-                JsonMappingException e) {
-            e.printStackTrace();
-        } catch (
-                IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -37,14 +29,7 @@ public class ConvertMapper {
             File file = new File(path);
             steps = mapper.readValue(file, new TypeReference<List<Step>>(){});
 
-        } catch (
-                JsonGenerationException e) {
-            e.printStackTrace();
-        } catch (
-                JsonMappingException e) {
-            e.printStackTrace();
-        } catch (
-                IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 

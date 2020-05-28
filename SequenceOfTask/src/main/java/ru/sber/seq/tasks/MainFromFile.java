@@ -10,7 +10,8 @@ public class MainFromFile{
 
     public static void main(String[] args) {
 
-        List<Step> steps = ConvertMapper.convertFrom("src\\main\\resources\\file.json");
+        String pathToJson = MainFromFile.class.getClassLoader().getResource("file.json").getPath();
+        List<Step> steps = ConvertMapper.convertFrom(pathToJson);
 //        List<Step> steps = ConvertBasic.convertRead("..\\fileBasic.json");
 
         StepExecutor stepExecutor1 = new StepExecutor();
