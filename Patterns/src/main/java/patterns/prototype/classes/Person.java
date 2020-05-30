@@ -1,14 +1,7 @@
 package patterns.prototype.classes;
 
-import jdk.nashorn.internal.objects.annotations.Constructor;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import patterns.prototype.interfaces.Copyable;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * class Person implements Copyable and it is just test of prototype pattern
@@ -16,39 +9,28 @@ import java.util.List;
  * @author Nikita Elmanov
  */
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Person implements Copyable {
 
     private int id;
     private String name;
-    private List<String> listOfFlats = new ArrayList<String>();
 
     public Object clone() {
         Person person = new Person();
 
-        person.setId(this.getId());
-        person.setName(this.getName());
-
-        List<String> temp = new ArrayList<>();
-
-        for(String str : listOfFlats){
-            temp.add(str);
-        }
-
-        person.setListOfFlats(temp);
+        person.id = this.id;
+        person.name = this.name;
 
         return person;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Person{" +
-//                "id=" + id +
-//                ", name='" + name + '\'' +
-//                ", listOfFlats=" + listOfFlats +
-//                '}';
-//    }
+    public static void main(String[] args) {
+        Person p1 = new Person(1, "Tom");
+        Person p2 = (Person) p1.clone();
+        System.out.println(p1);
+        System.out.println(p2);
+        System.out.println(p2.equals(p1));
+    }
 }
