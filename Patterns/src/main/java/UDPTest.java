@@ -15,5 +15,8 @@ public class UDPTest {
                 new File("C:\\Users\\NickMax\\Desktop\\Lesson 1.mp3")));
 
         client.close();
+
+        //TODO some code...
+
     }
 }
