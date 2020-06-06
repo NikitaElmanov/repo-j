@@ -1,4 +1,4 @@
-package ru.xml.common.entity;
+package ru.xml.common.res.entity;
 
 import lombok.Data;
 

@@ -4,7 +4,7 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
-import ru.xml.common.entity.Gender;
+import ru.xml.common.res.entity.Gender;
 
 import java.io.FileWriter;
 import java.io.IOException;

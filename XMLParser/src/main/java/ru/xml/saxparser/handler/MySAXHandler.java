@@ -3,8 +3,8 @@ package ru.xml.saxparser.handler;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
-import ru.xml.common.entity.Gender;
-import ru.xml.common.entity.User;
+import ru.xml.common.res.entity.Gender;
+import ru.xml.common.res.entity.User;
 
 import java.util.ArrayList;
 import java.util.List;

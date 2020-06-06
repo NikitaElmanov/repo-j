@@ -5,8 +5,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-import ru.xml.common.entity.Gender;
-import ru.xml.common.entity.User;
+import ru.xml.common.res.entity.Gender;
+import ru.xml.common.res.entity.User;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;

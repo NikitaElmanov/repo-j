@@ -4,8 +4,8 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
-import ru.xml.common.entity.Gender;
-import ru.xml.common.entity.User;
+import ru.xml.common.res.entity.Gender;
+import ru.xml.common.res.entity.User;
 
 import java.io.File;
 import java.io.IOException;

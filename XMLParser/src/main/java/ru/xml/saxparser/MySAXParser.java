@@ -1,7 +1,7 @@
 package ru.xml.saxparser;
 
 import org.xml.sax.SAXException;
-import ru.xml.common.entity.User;
+import ru.xml.common.res.entity.User;
 import ru.xml.saxparser.handler.MySAXHandler;
 
 import javax.xml.parsers.ParserConfigurationException;
