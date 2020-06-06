@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bookStore>
+    <name>Ozon</name>
+    <bookList>
+        <author>Lora</author>
+        <name>Bobobob</name>
+        <publisher>Publisher1-ONe</publisher>
+    </bookList>
+    <bookList>
+        <author>Dan</author>
+        <name>Catch myself</name>
+        <publisher>Publisher2-Two</publisher>
+    </bookList>
+    <bookList>
+        <author>Tolstoy</author>
+        <name>War and piece</name>
+        <publisher>Conceptual</publisher>
+    </bookList>
+    <location>Ryazan</location>
+</bookStore>
