@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<users>
+    <user id="1">
+        <firstName>Nikita</firstName>
+        <lastName>Elmanov</lastName>
+        <age>22</age>
+        <gender>Male</gender>
+    </user>
+    <user id="2">
+        <firstName>Maxim</firstName>
+        <lastName>Elmanov</lastName>
+        <age>12</age>
+        <gender>Male</gender>
+    </user>
+    <user id="3">
+        <firstName>Masha</firstName>
+        <lastName>&#x20;</lastName>
+        <age>15</age>
+        <gender>Female</gender>
+    </user>
+</users>
