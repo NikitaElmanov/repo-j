@@ -1,0 +1,9 @@
+spring:
+  data:
+    mongodb:
+      database: local_db
+      userName: ${MONGODB_ROOT_USER:#{null}}
+      password: ${MONGODB_ROOT_PASSWORD:#{null}}
+      port: ${MONGODB_PORT:27017}
+      host: ${MONGODB_HOST:localhost}
+      authentication-database: ${AUTH_MONGO_DB:local_db}
