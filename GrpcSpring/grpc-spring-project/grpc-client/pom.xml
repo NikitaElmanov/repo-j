@@ -43,7 +43,6 @@
         <dependency>
             <groupId>ru.spring.grpc</groupId>
             <artifactId>proto</artifactId>
-            <version>${project.version}</version>
         </dependency>
 
         <dependency>
