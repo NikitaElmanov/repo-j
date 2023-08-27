@@ -32,6 +32,26 @@
         <mapstruct.version>1.4.2.Final</mapstruct.version>
     </properties>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>ru.spring.grpc</groupId>
+                <artifactId>proto</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ru.spring.grpc</groupId>
+                <artifactId>grpc-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ru.spring.grpc</groupId>
+                <artifactId>grpc-server</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <build>
         <pluginManagement>
             <plugins>
