@@ -1,11 +1,20 @@
 package ru.grpc.simple.client.grpcclient;
 
+import io.grpc.CallOptions;
+import io.grpc.Channel;
+import io.grpc.ClientCall;
+import io.grpc.ClientInterceptor;
+import io.grpc.ForwardingClientCall;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import io.grpc.Metadata;
+import io.grpc.MethodDescriptor;
 import ru.grpc.simple.proto.CommonResponse;
 import ru.grpc.simple.proto.LoginRequest;
 import ru.grpc.simple.proto.LogoutRequest;
 import ru.grpc.simple.proto.UserGrpc;
+
+import static io.grpc.Metadata.ASCII_STRING_MARSHALLER;
 
 public class GrpcClientApplication {
 
@@ -13,6 +22,7 @@ public class GrpcClientApplication {
 
         ManagedChannel channel = ManagedChannelBuilder.forAddress("0.0.0.0", 9091)
                 .usePlaintext()
+                .intercept(new TestClientInterceptor())
                 .build();
 
         UserGrpc.UserBlockingStub stub = UserGrpc.newBlockingStub(channel);
@@ -37,4 +47,21 @@ public class GrpcClientApplication {
         System.out.println(String.format("Logout -> All fields: %s", response.getAllFields()));
     }
 
+    static class TestClientInterceptor implements ClientInterceptor {
+        @Override
+        public <ReqT, RespT> ClientCall<ReqT, RespT> interceptCall(
+                MethodDescriptor<ReqT, RespT> method,
+                CallOptions callOptions,
+                Channel next) {
+
+            return new ForwardingClientCall.SimpleForwardingClientCall<ReqT, RespT>(next.newCall(method, callOptions)) {
+                        @Override
+                        public void start(Listener<RespT> responseListener, Metadata headers) {
+                            System.out.println("Added metadata");
+                            headers.put(Metadata.Key.of("CLIENT-HEADER", ASCII_STRING_MARSHALLER), "HELLO_I'M_HEADER");
+                            super.start(responseListener, headers);
+                        }
+                    };
+        }
+    }
 }
