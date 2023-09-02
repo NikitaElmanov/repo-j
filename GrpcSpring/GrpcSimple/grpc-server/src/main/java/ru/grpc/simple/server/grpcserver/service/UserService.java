@@ -48,7 +48,7 @@ public class UserService extends UserGrpc.UserImplBase {
                 || DataUtil.getUsersMap().get(username).equals(OFFLINE)) {
 
             commonResponseBuilder
-                    .setResponseCode(Status.Code.OK.value())
+                    .setResponseCode(Status.Code.INVALID_ARGUMENT.value())
                     .setResponseMessage(String.format("Logout FAILED, request is empty or user \"%s\" has been OFFLINE yet",
                                                       username));
         } else {

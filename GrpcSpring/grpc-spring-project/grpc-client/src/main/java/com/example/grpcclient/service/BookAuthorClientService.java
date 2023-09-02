@@ -28,7 +28,7 @@ public class BookAuthorClientService {
     @GrpcClient("my-grpc-blocking-client")
     BookAuthorServiceGrpc.BookAuthorServiceBlockingStub syncStub;
 
-    @GrpcClient("my-grpc-blocking-client")
+    @GrpcClient("my-grpc-async-client")
     BookAuthorServiceGrpc.BookAuthorServiceStub asyncStub;
 
     public Author getAuthorById(String authorId) {
@@ -129,7 +129,7 @@ public class BookAuthorClientService {
         CountDownLatch countDownLatch = new CountDownLatch(1);
         final List<Book> books = Lists.newArrayList();
 
-        StreamObserver<Book> bookByGenderObserver = asyncStub.getBookByGender(new StreamObserver<Book>() {
+        StreamObserver<AuthorId> bookByGenderObserver = asyncStub.getBookByGender(new StreamObserver<Book>() {
             @Override
             public void onNext(Book book) {
                 books.add(book);
@@ -148,7 +148,7 @@ public class BookAuthorClientService {
 
         TempDB.getAuthor().stream()
                 .filter(author -> author.getGender().equals(Gender.valueOf(gender)))
-                .forEach(author -> bookByGenderObserver.onNext(Book.newBuilder().setAuthorId(author.getAuthorId()).build()));
+                .forEach(author -> bookByGenderObserver.onNext(AuthorId.newBuilder().setAuthorId(author.getAuthorId()).build()));
         bookByGenderObserver.onCompleted();
 
         boolean await = countDownLatch.await(1, TimeUnit.MINUTES);

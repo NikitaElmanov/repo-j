@@ -11,10 +11,11 @@ service BookAuthorService {
   rpc getBooksByAuthor(AuthorId) returns (stream Book);
   // client send book stream and receive the most expansive book
   rpc getMostExpansiveBook(stream Book) returns (Book);
+  // client send author stream and get book stream (bi-directional streaming)
+  rpc getBookByGender(stream AuthorId) returns (stream Book);
+
   // client send empty request and get book stream
   rpc getAllBooks(Empty) returns (stream Book);
-  // client send author stream and get book stream (bi-directional streaming)
-  rpc getBookByGender(stream Book) returns (stream Book);
 }
 
 message Book {

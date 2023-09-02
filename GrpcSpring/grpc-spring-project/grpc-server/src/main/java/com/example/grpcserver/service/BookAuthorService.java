@@ -68,13 +68,13 @@ public class BookAuthorService extends BookAuthorServiceGrpc.BookAuthorServiceIm
     }
 
     @Override
-    public StreamObserver<Book> getBookByGender(StreamObserver<Book> responseObserver) {
+    public StreamObserver<AuthorId> getBookByGender(StreamObserver<Book> responseObserver) {
         List<Book> books = Lists.newArrayList();
-        return new StreamObserver<Book>() {
+        return new StreamObserver<AuthorId>() {
             @Override
-            public void onNext(Book book) {
+            public void onNext(AuthorId authorId) {
                 TempDB.getBook().stream()
-                        .filter(b -> b.getAuthorId() == book.getAuthorId())
+                        .filter(b -> b.getAuthorId() == authorId.getAuthorId())
                         .forEach(books::add);
             }
 
