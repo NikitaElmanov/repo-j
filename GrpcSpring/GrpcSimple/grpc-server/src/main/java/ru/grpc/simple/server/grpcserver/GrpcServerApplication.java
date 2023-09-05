@@ -31,10 +31,10 @@ public class GrpcServerApplication {
         public <ReqT, RespT> ServerCall.Listener<ReqT> interceptCall(
                 ServerCall<ReqT, RespT> call,
                 Metadata headers,
-                ServerCallHandler<ReqT, RespT> next) {
+                ServerCallHandler<ReqT, RespT> serverCallHandler) {
 
             System.out.println("Recieved following metadata: " + headers);
-            return next.startCall(call, headers);
+            return serverCallHandler.startCall(call, headers);
         }
     }
 }

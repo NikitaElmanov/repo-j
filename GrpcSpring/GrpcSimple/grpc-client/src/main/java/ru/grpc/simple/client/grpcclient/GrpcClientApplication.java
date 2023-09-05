@@ -49,19 +49,17 @@ public class GrpcClientApplication {
 
     static class TestClientInterceptor implements ClientInterceptor {
         @Override
-        public <ReqT, RespT> ClientCall<ReqT, RespT> interceptCall(
-                MethodDescriptor<ReqT, RespT> method,
-                CallOptions callOptions,
-                Channel next) {
-
-            return new ForwardingClientCall.SimpleForwardingClientCall<ReqT, RespT>(next.newCall(method, callOptions)) {
-                        @Override
-                        public void start(Listener<RespT> responseListener, Metadata headers) {
-                            System.out.println("Added metadata");
-                            headers.put(Metadata.Key.of("CLIENT-HEADER", ASCII_STRING_MARSHALLER), "HELLO_I'M_HEADER");
-                            super.start(responseListener, headers);
-                        }
-                    };
+        public <ReqT, RespT> ClientCall<ReqT, RespT> interceptCall(MethodDescriptor<ReqT, RespT> methodDescriptor,
+                                                                   CallOptions callOptions,
+                                                                   Channel channel) {
+            return new ForwardingClientCall.SimpleForwardingClientCall<ReqT, RespT>(channel.newCall(methodDescriptor, callOptions)) {
+                @Override
+                public void start(Listener<RespT> responseListener, Metadata headers) {
+                    System.out.println("Added metadata");
+                    headers.put(Metadata.Key.of("CLIENT-HEADER", ASCII_STRING_MARSHALLER), "HELLO_I'M_HEADER");
+                    super.start(responseListener, headers);
+                }
+            };
         }
     }
 }
