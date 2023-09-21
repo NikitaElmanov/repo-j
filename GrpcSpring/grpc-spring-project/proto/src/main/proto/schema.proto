@@ -5,12 +5,16 @@ package ru.spring.grpc;
 option java_multiple_files = true;
 
 service BookAuthorService {
+
   // sync client request - sync server response
   rpc getAuthor(AuthorId) returns (Author);
+
   // client send authorId and get books list by stream
   rpc getBooksByAuthor(AuthorId) returns (stream Book);
+
   // client send book stream and receive the most expansive book
   rpc getMostExpansiveBook(stream Book) returns (Book);
+
   // client send author stream and get book stream (bi-directional streaming)
   rpc getBookByGender(stream AuthorId) returns (stream Book);
 

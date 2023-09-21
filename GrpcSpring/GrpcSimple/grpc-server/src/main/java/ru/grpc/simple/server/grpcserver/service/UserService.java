@@ -1,9 +1,5 @@
 package ru.grpc.simple.server.grpcserver.service;
 
-import io.grpc.Metadata;
-import io.grpc.ServerCall;
-import io.grpc.ServerCallHandler;
-import io.grpc.ServerInterceptor;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 import org.apache.commons.lang3.StringUtils;
@@ -25,12 +21,15 @@ public class UserService extends UserGrpc.UserImplBase {
         CommonResponse.Builder commonResponseBuilder = CommonResponse.newBuilder();
         if (password.equals(String.valueOf(DataUtil.getCorrectPassword()))) {
             System.out.println(String.format("\"%s\"'s login attempt has succeed", username));
+
             DataUtil.getUsersMap().put(username, ONLINE);
+
             commonResponseBuilder
                     .setResponseCode(Status.Code.OK.value())
                     .setResponseMessage("Login SUCCESS");
         } else {
             System.out.println(String.format("\"%s\"'s login attempt has failed", username));
+
             DataUtil.getUsersMap().remove(username);
 
             commonResponseBuilder.setResponseCode(Status.Code.UNAUTHENTICATED.value())
