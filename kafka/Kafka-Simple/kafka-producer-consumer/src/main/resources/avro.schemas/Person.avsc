@@ -1,0 +1,45 @@
+{
+  "type": "record",
+  "name": "Person",
+  "namespace": "ru.kafka.simple.model",
+  "fields": [
+    {
+      "name": "id",
+      "type": "string",
+      "logicalType": "UUID"
+    },
+    {
+      "name": "age",
+      "type": {
+        "type": "int",
+        "java-class": "java.lang.Integer"
+      }
+    },
+    {
+      "name": "gender",
+      "type": {
+        "type": "enum",
+        "name": "Gender",
+        "symbols": ["MALE", "FEMALE"]
+      },
+      "default": "MALE"
+    },
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "lastName",
+      "type": ["null", "string"],
+      "default": null
+    },
+    {
+      "name": "plans",
+      "type": {
+        "type": "array",
+        "items": "string",
+        "java-class": "java.util.List"
+      }
+    }
+  ]
+}

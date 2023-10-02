@@ -29,7 +29,7 @@ public class MineKafkaProducer {
 
     public void sendMessage(Person person) {
         List<CompletableFuture<SendResult<String, Person>>> completableFutures = topics.stream()
-                .map(topic -> kafkaTemplate.send(topic, person))
+                .map(topic -> kafkaTemplate.send(topic, person.getId(), person))
                 .toList();
 
         completableFutures.forEach(completableFuture ->
