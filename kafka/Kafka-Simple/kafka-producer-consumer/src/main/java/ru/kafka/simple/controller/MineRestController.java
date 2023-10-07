@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import ru.kafka.simple.model.Gender;
+import ru.kafka.simple.model.Movie;
+import ru.kafka.simple.model.MovieDto;
 import ru.kafka.simple.model.Person;
 import ru.kafka.simple.model.PersonDto;
 import ru.kafka.simple.producer.MineKafkaProducer;
@@ -22,8 +24,8 @@ public class MineRestController {
 
     MineKafkaProducer kafkaProducer;
 
-    @PostMapping("/send")
-    public ResponseEntity sendJson(@RequestBody PersonDto personDto) {
+    @PostMapping("/send/person")
+    public ResponseEntity sendPersonJson(@RequestBody PersonDto personDto) {
 
         Person person = Person.newBuilder()
                 .setId(UUID.randomUUID().toString())
@@ -35,6 +37,20 @@ public class MineRestController {
                 .build();
 
         kafkaProducer.sendMessage(person);
+
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/send/movie")
+    public ResponseEntity sendMovieJson(@RequestBody MovieDto movieDto) {
+
+        Movie movie = Movie.newBuilder()
+                .setId(UUID.randomUUID().toString())
+                .setMovieName(movieDto.movieName())
+                .setGenre(movieDto.genre())
+                .build();
+
+        kafkaProducer.sendMessage(movie);
 
         return ResponseEntity.ok().build();
     }

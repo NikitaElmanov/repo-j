@@ -9,6 +9,7 @@ spring:
       value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
       properties:
         schema.registry.url: "http://localhost:8081"
+        value.subject.name.strategy: io.confluent.kafka.serializers.subject.TopicRecordNameStrategy
 
     consumer:
       group-id: test-group-id
@@ -18,6 +19,7 @@ spring:
       properties:
         spring.json.trusted.packages: ru.kafka.simple.model
         schema.registry.url: "http://localhost:8081"
-        specific.avro.reader: "true"
+        value.subject.name.strategy: io.confluent.kafka.serializers.subject.TopicRecordNameStrategy
+#        specific.avro.reader: "true"
 
 topics: test-topic

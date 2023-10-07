@@ -1,0 +1,23 @@
+{
+  "type": "record",
+  "namespace": "ru.kafka.simple.model",
+  "name": "Movie",
+  "version": "1",
+  "fields": [
+    {
+      "name": "id",
+      "type": "string",
+      "logicalType": "UUID"
+    },
+    {
+      "name": "movieName",
+      "type": "string",
+      "doc": "Name of Movie"
+    },
+    {
+      "name": "genre",
+      "type": "string",
+      "doc": "Genre of Movie"
+    }
+  ]
+}

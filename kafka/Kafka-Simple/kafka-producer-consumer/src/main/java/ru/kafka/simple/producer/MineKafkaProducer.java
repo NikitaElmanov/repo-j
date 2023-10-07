@@ -4,10 +4,12 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.NonFinal;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.avro.specific.SpecificRecord;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Service;
+import ru.kafka.simple.model.Movie;
 import ru.kafka.simple.model.Person;
 
 import java.util.List;
@@ -25,11 +27,21 @@ public class MineKafkaProducer {
     @Value("${topics}")
     List<String> topics;
 
-    KafkaTemplate<String, Person> kafkaTemplate;
+    KafkaTemplate<String, SpecificRecord> kafkaTemplate;
 
-    public void sendMessage(Person person) {
-        List<CompletableFuture<SendResult<String, Person>>> completableFutures = topics.stream()
-                .map(topic -> kafkaTemplate.send(topic, person.getId(), person))
+    public void sendMessage(SpecificRecord record) {
+        var ref = new Object() {
+            String id = null;
+        };
+
+        if (record instanceof Person person) {
+            ref.id = person.getId();
+        } else if (record instanceof Movie movie) {
+            ref.id = movie.getId();
+        }
+
+        List<CompletableFuture<SendResult<String, SpecificRecord>>> completableFutures = topics.stream()
+                .map(topic -> kafkaTemplate.send(topic, ref.id, record))
                 .toList();
 
         completableFutures.forEach(completableFuture ->
@@ -47,5 +59,4 @@ public class MineKafkaProducer {
                                                         result.getRecordMetadata().offset());
                                            }));
     }
-
 }

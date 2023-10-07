@@ -2,6 +2,7 @@ package ru.kafka.simple.config;
 
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.apache.avro.specific.SpecificRecord;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,7 +12,6 @@ import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
-import ru.kafka.simple.model.Person;
 
 import static lombok.AccessLevel.PRIVATE;
 
@@ -31,9 +31,9 @@ public class KafkaConfig {
 //    }
 
     @Bean
-    public KafkaTemplate<String, Person> kafkaTemplate() {
+    public KafkaTemplate<String, SpecificRecord> kafkaTemplate() {
         return new KafkaTemplate(
-                new DefaultKafkaProducerFactory<String, Person>(
+                new DefaultKafkaProducerFactory<String, SpecificRecord>(
                         kafkaProperties.buildProducerProperties()));
     }
 
@@ -47,8 +47,8 @@ public class KafkaConfig {
 //    }
 
     @Bean
-    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, Person>> kafkaListenerContainerFactory() {
-        var kafkaListenerContainerFactory = new ConcurrentKafkaListenerContainerFactory<String, Person>();
+    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, SpecificRecord>> kafkaListenerContainerFactory() {
+        var kafkaListenerContainerFactory = new ConcurrentKafkaListenerContainerFactory<String, SpecificRecord>();
         kafkaListenerContainerFactory.setConsumerFactory(
                 new DefaultKafkaConsumerFactory<>(
                         kafkaProperties.buildConsumerProperties()));
