@@ -8,6 +8,7 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.security.Key;
 import java.security.KeyStore;
 
 @Slf4j
@@ -18,20 +19,37 @@ public class KeyStoreManager {
     public static final String KEY_ALIAS = "keyAliasTest";
     public static final String KEYSTORE_PASS = "somepass";
     public static final String KEYSTORE_FILE_NAME = "keystore.p12";
+    public static final String KEYSTORE_TYPE = "PKCS12";
 
     public void showContent(String password) {
         try {
-            KeyStore keyStore = KeyStore.getInstance("PKCS12");
+            KeyStore keyStore = KeyStore.getInstance(KEYSTORE_TYPE);
 
             try(InputStream keyStoreData = getClass().getClassLoader().getResourceAsStream(KEYSTORE_FILE_NAME)){
                 keyStore.load(keyStoreData, KEYSTORE_PASS.toCharArray());
             }
 
             KeyStore.ProtectionParameter entryPassword = new KeyStore.PasswordProtection(password.toCharArray());
-            keyStore.getEntry(KEY_ALIAS, entryPassword);
+            KeyStore.Entry entry = keyStore.getEntry(KEY_ALIAS, entryPassword);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
         }
+    }
+
+    public Key getPKFromKS(String password) {
+        try {
+            KeyStore keyStore = KeyStore.getInstance(KEYSTORE_TYPE);
+
+            try(InputStream keyStoreData = getClass().getClassLoader().getResourceAsStream(KEYSTORE_FILE_NAME)){
+                keyStore.load(keyStoreData, KEYSTORE_PASS.toCharArray());
+            }
+
+            return keyStore.getKey(KEY_ALIAS, password.toCharArray());
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+
+        return null;
     }
 
     public void store(String entryPasswordStr) {
@@ -44,7 +62,7 @@ public class KeyStoreManager {
         KeyStore.SecretKeyEntry secretKeyEntry = new KeyStore.SecretKeyEntry(secretKey);
 
         try {
-            KeyStore keyStore = KeyStore.getInstance("PKCS12");
+            KeyStore keyStore = KeyStore.getInstance(KEYSTORE_TYPE);
 
             try(InputStream keyStoreData = getClass().getClassLoader().getResourceAsStream(KEYSTORE_FILE_NAME)){
                 keyStore.load(keyStoreData, KEYSTORE_PASS.toCharArray());

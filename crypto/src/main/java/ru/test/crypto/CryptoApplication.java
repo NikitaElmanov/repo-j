@@ -5,7 +5,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
@@ -15,17 +20,18 @@ public class CryptoApplication {
 
 //    private final CryptoTest cryptoTest;
     private final KeyStoreManager keyStoreManager;
+    private final PictureCipher pictureCipher;
 
     public static void main(String[] args) {
         SpringApplication.run(CryptoApplication.class, args);
     }
 
-    @PostConstruct
+//    @PostConstruct
     private void init() {
-        String entryPasswordStr = "123qwe";
-        keyStoreManager.showContent(entryPasswordStr);
-        keyStoreManager.store(entryPasswordStr);
-        keyStoreManager.showContent(entryPasswordStr);
+//        String entryPasswordStr = "123qwe";
+//        keyStoreManager.showContent(entryPasswordStr);
+//        keyStoreManager.store(entryPasswordStr);
+//        keyStoreManager.showContent(entryPasswordStr);
 
 //        // 1
 //        String initStr = "asfddsgfkdfjs123123fsdfsdf";
@@ -61,4 +67,18 @@ public class CryptoApplication {
 //        System.out.println(bytes1);
     }
 
+//    @PostConstruct
+//    private void cipherPicture() throws IOException {
+//        InputStream is = getClass().getClassLoader().getResourceAsStream("test.jpg");
+//
+//        byte[] encryptedBytes = pictureCipher.encrypt(is);
+//
+//        Files.write(new File("C:\\Users\\Nikita.Elmanov\\IdeaProjects\\repo-j\\crypto\\src\\main\\resources\\testEncrypted.jpg").toPath(), encryptedBytes);
+//
+//        is = getClass().getClassLoader().getResourceAsStream("testEncrypted.jpg");
+//        byte[] data2 = is.readAllBytes();
+//        byte[] result = pictureCipher.decrypt(data2);
+//
+//        Files.write(new File("C:\\Users\\Nikita.Elmanov\\IdeaProjects\\repo-j\\crypto\\src\\main\\resources\\test3.jpg").toPath(), result);
+//    }
 }
