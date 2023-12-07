@@ -12,6 +12,9 @@ import java.security.*;
 @Component
 public class CryptoTest {
 
+    public static final String SIGN_TYPE = "SHA256WithDSA";
+    public static final String KEY_TYPE = "AES";
+
     public boolean signAndVerifyData(byte[] data) {
         SecureRandom secureRandom = new SecureRandom();
         try {
@@ -19,14 +22,14 @@ public class CryptoTest {
             keyPairGenerator.initialize(2048);
             KeyPair keyPair = keyPairGenerator.genKeyPair();
 
-            Signature signature = Signature.getInstance("SHA256WithDSA");
+            Signature signature = Signature.getInstance(SIGN_TYPE);
             signature.initSign(keyPair.getPrivate(), secureRandom);
 
             signature.update(data);
 
             byte[] sign = signature.sign();
 
-            Signature signature2 = Signature.getInstance("SHA256WithDSA");
+            Signature signature2 = Signature.getInstance(SIGN_TYPE);
             signature2.initVerify(keyPair.getPublic());
 
             signature2.update(data);
@@ -41,14 +44,14 @@ public class CryptoTest {
 
     public byte[] encryptAndDecryptData(byte[] data) {
         try {
-            KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
+            KeyGenerator keyGenerator = KeyGenerator.getInstance(KEY_TYPE);
             SecureRandom secureRandom = new SecureRandom();
             int keyBitSize = 256;
             keyGenerator.init(keyBitSize, secureRandom);
 
             SecretKey secretKey = keyGenerator.generateKey();
 
-            Cipher cipher = Cipher.getInstance("AES");
+            Cipher cipher = Cipher.getInstance(KEY_TYPE);
 
             cipher.init(Cipher.ENCRYPT_MODE, secretKey);
             byte[] bytes = cipher.doFinal(data);
@@ -66,14 +69,14 @@ public class CryptoTest {
 
     public byte[] encryptAndDecryptData2(byte[] data, byte[] data2) {
         try {
-            KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
+            KeyGenerator keyGenerator = KeyGenerator.getInstance(KEY_TYPE);
             SecureRandom secureRandom = new SecureRandom();
             int keyBitSize = 256;
             keyGenerator.init(keyBitSize, secureRandom);
 
             SecretKey secretKey = keyGenerator.generateKey();
 
-            Cipher cipher = Cipher.getInstance("AES");
+            Cipher cipher = Cipher.getInstance(KEY_TYPE);
 
             cipher.init(Cipher.ENCRYPT_MODE, secretKey);
             byte[] bytes = cipher.update(data);
@@ -120,7 +123,7 @@ public class CryptoTest {
             SecureRandom secureRandom = new SecureRandom();
             int keyBitSize = 256;
 
-            KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
+            KeyGenerator keyGenerator = KeyGenerator.getInstance(KEY_TYPE);
             keyGenerator.init(keyBitSize, secureRandom);
 
             SecretKey secretKey = keyGenerator.generateKey();
