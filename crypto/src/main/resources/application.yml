@@ -1,7 +1,9 @@
 server:
-  port: 8888
+  port: 443
   ssl:
     enabled: true
     key-store-type: PKCS12
-    key-store: classpath:ssl/ssl_test.pfx
-    key-store-password: qwe123
+#    key-store: classpath:ssl/ssl_test.pfx # 1st approach
+#    key-store-password: qwe123
+    key-store: classpath:ssl-2/local-ssl.p12 # 2st approach
+    key-store-password: 123456
