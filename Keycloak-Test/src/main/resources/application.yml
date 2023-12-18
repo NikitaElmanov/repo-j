@@ -1,0 +1,23 @@
+server:
+  port: 8085
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8083/realms/test-realm
+      client:
+        provider:
+          keycloak:
+            issuer-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}
+            user-name-attribute: preferred_username
+        registration:
+          keycloak:
+            client-id: test-rest-api
+            client-secret: 4rfLw7wH3vnKnmaGPci29wZkMghJp20p
+            scope: openid
+
+#logging:
+#  level:
+#    org.springframework.security: TRACE
