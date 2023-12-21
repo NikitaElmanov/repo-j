@@ -15,7 +15,7 @@ spring:
         registration:
           keycloak:
             client-id: test-rest-api
-            client-secret: 4rfLw7wH3vnKnmaGPci29wZkMghJp20p
+            client-secret: wCFIVaCdqV8QJLqDs3P9b3g6IiZorjsh
             scope: openid
 
 #logging:
