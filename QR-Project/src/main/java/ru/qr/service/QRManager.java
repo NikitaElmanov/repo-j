@@ -1,9 +1,11 @@
 package ru.qr.service;
 
+import java.io.InputStream;
+
 public interface QRManager {
 
-    String encodeQR(byte[] data);
+    byte[] encodeQR(byte[] data);
 
-    byte[] decodeQR(String nameQRFile);
+    byte[] decodeQR(InputStream inputStream);
 
 }

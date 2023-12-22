@@ -8,56 +8,46 @@ import com.google.zxing.common.HybridBinarizer;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import ru.qr.service.QRManager;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileInputStream;
-import java.nio.file.Paths;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.UUID;
 
 import static com.google.zxing.BarcodeFormat.QR_CODE;
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static lombok.AccessLevel.PRIVATE;
+import static ru.qr.utils.Constants.QR_CODE_EXTENSION;
 
 @Slf4j
 @Service
 @FieldDefaults(level = PRIVATE)
 public class QRManagerImpl implements QRManager {
 
-    @Value("${dir.path:}")
-    String dirPath;
-
     @Override
-    public String encodeQR(byte[] data) {
-
-        String qrFileName = makeQRFileName();
-        String pathQRFile = makeFullPathQRFileToSave(qrFileName);
-
+    public byte[] encodeQR(byte[] data) {
         try {
-
             BitMatrix matrix = new MultiFormatWriter()
                     .encode(new String(data, UTF_8), QR_CODE, 500, 500);
-            MatrixToImageWriter.writeToPath(matrix, "png", Paths.get(pathQRFile));
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            MatrixToImageWriter.writeToStream(matrix, QR_CODE_EXTENSION, outputStream);
+            return outputStream.toByteArray();
 
         } catch (Exception e) {
             log.error(e.getMessage(), e);
         }
 
-        return qrFileName;
+        return new byte[0];
     }
 
     @Override
-    public byte[] decodeQR(String qrFileName) {
-
-        String pathQRFile = makeFullPathQRFileToSave(qrFileName);
-
+    public byte[] decodeQR(InputStream inputStream) {
         try {
-            BufferedImage bufferedImage = ImageIO.read(new FileInputStream(pathQRFile));
+            BufferedImage bufferedImage = ImageIO.read(inputStream);
 
             BinaryBitmap bitmap = new BinaryBitmap(
                     new HybridBinarizer(
@@ -76,13 +66,5 @@ public class QRManagerImpl implements QRManager {
         }
 
         return new byte[0];
-    }
-
-    private String makeFullPathQRFileToSave(String qrFileName) {
-        return String.format("%s%s%s", dirPath, File.separator, qrFileName);
-    }
-
-    private String makeQRFileName() {
-        return String.format("%s.%s", UUID.randomUUID(), "png");
     }
 }

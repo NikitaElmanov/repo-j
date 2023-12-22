@@ -1,0 +1,24 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="create_qr_code_table" author="Nikita Elmanov">
+        <preConditions onFail="MARK_RAN" onFailMessage="Table 'qr_code' already exists">
+            <not>
+                <tableExists tableName="qr_code"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="qr_code">
+            <column name="id" type="uuid">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="size" type="bigint"/>
+        </createTable>
+        <comment>Создание таблицы qr_code</comment>
+
+        <rollback>
+            <dropTable tableName="qr_code"/>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

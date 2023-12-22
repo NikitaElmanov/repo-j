@@ -1,5 +1,29 @@
 server:
   port: 8087
 
+spring:
+  jpa:
+    properties:
+      hibernate:
+        default_schema: ${PG_SCHEMA}
+  config:
+    import: optional:file:.env[.properties]
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/mydb?currentSchema=${PG_SCHEMA}
+    username: user
+    password: password
+  liquibase:
+    default-schema: ${PG_SCHEMA}
+    enabled: true
+    change-log: classpath:liquibase/db.changelog.yaml
+
+minio:
+  bucket: ${MINIO_BUCKET}
+  url: ${MINIO_URL}
+  accessKey: ${MINIO_ACCESS_KEY}
+  secretKey: ${MINIO_SECRET_KEY}
+
+
 dir:
   path: src\main\resources\QRDir
