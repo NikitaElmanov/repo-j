@@ -5,6 +5,7 @@ import lombok.experimental.FieldDefaults;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.compress.utils.Lists;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import ru.qr.model.QRCode;
 import ru.qr.model.QRCodeContent;
 import ru.qr.repository.QRCodeRepository;
@@ -13,9 +14,11 @@ import ru.qr.service.QRCodeService;
 import ru.qr.service.QRManager;
 import ru.qr.web.api.CommonInfoDto;
 import ru.qr.web.exception.QRCodeNotFoundException;
+import ru.qr.web.exception.QRCodePictureDecodeException;
 import ru.qr.web.mapper.QRCodeMapper;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Collections;
@@ -95,6 +98,16 @@ public class QRCodeServiceImpl implements QRCodeService {
     @Override
     public InputStream getPicture(UUID id) {
         return getInputStreamFromStorage(id);
+    }
+
+    @Override
+    public String getContentByPicture(MultipartFile picture) {
+        try {
+            byte[] bytes = qrManager.decodeQR(picture.getInputStream());
+            return new String(bytes, StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            throw new QRCodePictureDecodeException(e);
+        }
     }
 
     private byte[] getAndDecodeData(UUID id) {

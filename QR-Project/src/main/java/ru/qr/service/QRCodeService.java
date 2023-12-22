@@ -1,5 +1,6 @@
 package ru.qr.service;
 
+import org.springframework.web.multipart.MultipartFile;
 import ru.qr.model.QRCodeContent;
 import ru.qr.web.api.CommonInfoDto;
 
@@ -16,4 +17,6 @@ public interface QRCodeService {
     List<CommonInfoDto> getAll();
 
     InputStream getPicture(UUID id);
+
+    String getContentByPicture(MultipartFile picture);
 }
