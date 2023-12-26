@@ -1,0 +1,18 @@
+secret:
+  login: ENC(aCVI9vmI15dfP+OvBYnkspxx/M3Cj31vdC41JXNaBHLpGkvS7HNuHwt6xQRq7Uiy)
+  password: ENC(7dk9riquZ6ibFUYUHfQNJ0FJ+bVVjE+dCff2JHT3o1CUu2iJqHJZxYqZz3pirKdc)
+
+spring:
+  config:
+    import: optional:file:.env[.properties]
+
+#jasypt:
+#  encryptor:
+#    password: ${JASYPT_PASSWORD}  # pass as environment variable
+#    algorithm: "PBEWITHHMACSHA512ANDAES_256"
+#    salt-generator-classname: "org.jasypt.salt.RandomSaltGenerator"
+#    iv-generator-classname: "org.jasypt.iv.RandomIvGenerator"
+#    provider-name: "SunJCE"
+#    string-output-type: "base64"
+#    pool-size: 1
+#    key-obtention-iterations: 1000

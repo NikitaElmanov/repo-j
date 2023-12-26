@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @EnableEncryptableProperties
-public class JasyptTestMavenApplication {
+public class JasyptTestGradleApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(JasyptTestMavenApplication.class, args);
+        SpringApplication.run(JasyptTestGradleApplication.class, args);
     }
 
 }
