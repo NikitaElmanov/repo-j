@@ -1,6 +1,3 @@
-server:
-  port: 8089
-
 secret:
   login: ENC(uyFilvisy+XTA68XXLQRGuLTato16EF/2Qb7JFzIq8Ee6pf4rAPhvrHbpIKFqYlx)
   password: ENC(krecap4FNd4p18Vdcxfr+N4km/NlgdklH3xJwRwIhjikzA+ackQBjUzonQBMV5we)
