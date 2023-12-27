@@ -1,13 +1,13 @@
-package ru.ssl;
+package ru.ssl.client;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TwoSidesSslProjectApplication {
+public class ClientApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(TwoSidesSslProjectApplication.class, args);
+        SpringApplication.run(ClientApplication.class, args);
     }
 
 }
