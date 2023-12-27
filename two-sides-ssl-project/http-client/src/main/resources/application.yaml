@@ -1,0 +1,11 @@
+server:
+  port: 8080
+
+ssl:
+  one-way-authentication-enabled: false
+  two-way-authentication-enabled: true
+  key-store: ssl/client-keystore.p12
+  key-password: qwe123
+  key-store-password: qwe123
+  trust-store: ssl/server-truststore.p12
+  trust-store-password: qwe123

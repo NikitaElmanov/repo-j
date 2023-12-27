@@ -9,17 +9,19 @@
     <name>two-sides-ssl-project</name>
     <description>two-sides-ssl-project</description>
 
+    <modules>
+        <module>http-client</module>
+        <module>http-server</module>
+    </modules>
+
+    <packaging>pom</packaging>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.2.1</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
-
-    <modules>
-        <module>client</module>
-        <module>server</module>
-    </modules>
 
     <properties>
         <java.version>17</java.version>

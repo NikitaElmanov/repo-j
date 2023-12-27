@@ -1,0 +1,10 @@
+server:
+  port: 8443
+  ssl:
+    enabled: true
+    key-store: classpath:ssl\server-keystore.p12
+    key-store-password: qwe123
+    key-password: qwe123
+    trust-store: classpath:ssl\client-truststore.p12
+    trust-store-password: qwe123
+    client-auth: need
