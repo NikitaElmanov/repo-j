@@ -12,7 +12,7 @@ public class DataMapper {
 
     public Context setData(List<Person> persons) {
 
-        Context context = new Context();
+        var context = new Context();
 
         Map<String, Object> personMap = Map.of("persons", persons);
 

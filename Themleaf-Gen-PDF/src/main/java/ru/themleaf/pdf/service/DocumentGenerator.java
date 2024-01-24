@@ -15,7 +15,7 @@ public class DocumentGenerator {
 
     public StreamingResponseBody html2Pdf(String html) {
 
-        try (ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();) {
+        try (var byteArrayOutputStream = new ByteArrayOutputStream()) {
 
             var pdfWriter = new PdfWriter(byteArrayOutputStream);
 
@@ -25,7 +25,7 @@ public class DocumentGenerator {
                     false
             );
 
-            ConverterProperties converterProperties = new ConverterProperties();
+            var converterProperties = new ConverterProperties();
             converterProperties.setFontProvider(defaultFontProvider);
 
             HtmlConverter.convertToPdf(html, pdfWriter, converterProperties);
