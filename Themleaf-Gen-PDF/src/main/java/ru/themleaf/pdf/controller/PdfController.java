@@ -1,5 +1,6 @@
 package ru.themleaf.pdf.controller;
 
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.http.ResponseEntity;
@@ -11,8 +12,6 @@ import org.thymeleaf.spring6.SpringTemplateEngine;
 import ru.themleaf.pdf.model.Person;
 import ru.themleaf.pdf.service.DataMapper;
 import ru.themleaf.pdf.service.DocumentGenerator;
-
-import java.util.List;
 
 import static lombok.AccessLevel.PRIVATE;
 
