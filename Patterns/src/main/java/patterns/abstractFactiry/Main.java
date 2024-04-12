@@ -3,31 +3,36 @@ package patterns.abstractFactiry;
 public class Main {
     public static void main(String[] args) {
 //        make(new AudioFactory(), UDPMediaContent.class);
-        ((UDPVideoContent) createVideo(UDPVideoContent.class)).transform();
-        createAudio(UDPAudioContent.class).play();
+        ((UDPVideoContent) MediaMaker.createVideo(UDPVideoContent.class)).transform();
+        MediaMaker.createAudio(UDPAudioContent.class).play();
     }
 
     static void make(AbstractMediaFactory<UDPMediaContent, TCPMediaContent> abstractMediaFactory, Class<?> clazz) {
         System.out.println(clazz.getSimpleName());
     }
+}
+
+class MediaMaker {
 
     static MediaContent createVideo(Class<?> clazz) {
         switch (clazz.getSimpleName()) {
-            case "UDPVideoContent" :
+            case "UDPVideoContent":
                 return new UDPVideoContent();
-            case "TCPVideoContent" :
+            case "TCPVideoContent":
                 return new TCPVideoContent();
-            default: throw new RuntimeException(clazz.getSimpleName() + " is not supported");
+            default:
+                throw new RuntimeException(clazz.getSimpleName() + " is not supported");
         }
     }
 
     static MediaContent createAudio(Class<?> clazz) {
         switch (clazz.getSimpleName()) {
-            case "UDPAudioContent" :
+            case "UDPAudioContent":
                 return new UDPAudioContent();
-            case "TCPAudioContent" :
+            case "TCPAudioContent":
                 return new TCPAudioContent();
-            default: throw new RuntimeException(clazz.getSimpleName() + " is not supported");
+            default:
+                throw new RuntimeException(clazz.getSimpleName() + " is not supported");
         }
     }
 }

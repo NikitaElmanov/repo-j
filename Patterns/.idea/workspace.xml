@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b0945b4b-1221-4d09-b787-f009e246f7a1" name="Default Changelist" comment="Add another example of builder pattern (House)">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="b0945b4b-1221-4d09-b787-f009e246f7a1" name="Default Changelist" comment="fixed builder">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/patterns/builder/entity/House.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/patterns/builder/entity/House.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/patterns/builder/vers2/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/patterns/builder/vers2/Car.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,6 +151,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "WebServerToolWindowFactoryState": "false",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
@@ -167,26 +164,13 @@
       <recent name="test" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.patterns.builder.Main">
+  <component name="RunManager" selected="Application.patterns.factoryMethod.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="patterns.builder.vers2.Main" />
       <module name="Patterns" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="patterns.builder.vers2.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UDPClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="test.UDPClient" />
-      <module name="Patterns" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -227,20 +211,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="patterns.factoryMethod.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="patterns.factoryMethod.Main" />
+      <module name="Patterns" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="patterns.factoryMethod.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.patterns.builder.Main" />
       <item itemvalue="Application.patterns.chain.of.responsibility.Main" />
-      <item itemvalue="Application.UDPClient" />
+      <item itemvalue="Application.patterns.factoryMethod.Main" />
       <item itemvalue="Application.UDPTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.patterns.factoryMethod.Main" />
         <item itemvalue="Application.patterns.builder.Main" />
         <item itemvalue="Application.patterns.chain.of.responsibility.Main" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.UDPTest" />
-        <item itemvalue="Application.UDPClient" />
       </list>
     </recent_temporary>
   </component>
@@ -264,7 +261,7 @@
       <workItem from="1590589067339" duration="1404000" />
       <workItem from="1590590537955" duration="4584000" />
       <workItem from="1590603956902" duration="1189000" />
-      <workItem from="1712910133087" duration="174000" />
+      <workItem from="1712910133087" duration="491000" />
     </task>
     <task id="LOCAL-00001" summary="Add another example of builder pattern (House)">
       <created>1555947956544</created>
@@ -273,7 +270,14 @@
       <option name="project" value="LOCAL" />
       <updated>1555947956544</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="fixed builder">
+      <created>1712910355224</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1712910355224</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -330,7 +334,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add another example of builder pattern (House)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add another example of builder pattern (House)" />
+    <MESSAGE value="fixed builder" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed builder" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/patterns/prototype/interfaces/Copyable.java">
