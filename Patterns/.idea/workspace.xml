@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b0945b4b-1221-4d09-b787-f009e246f7a1" name="Default Changelist" comment="changed abstractFactory">
-      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/prototype/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/patterns/prototype/classes/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/patterns/prototype/classes/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/patterns/prototype/interfaces/Copyable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/patterns/prototype/interfaces/Copiable.java" afterDir="false" />
-    </list>
+    <list default="true" id="b0945b4b-1221-4d09-b787-f009e246f7a1" name="Default Changelist" comment="changed prototype" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -166,26 +162,13 @@
       <recent name="test" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.patterns.prototype.Main">
+  <component name="RunManager" selected="Application.patterns.generative.prototype.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="patterns.builder.vers2.Main" />
+      <option name="MAIN_CLASS_NAME" value="patterns.generative.builder.Main" />
       <module name="Patterns" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="patterns.builder.vers2.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="patterns.builder.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="patterns.builder.Main" />
-      <module name="Patterns" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="patterns.builder.*" />
+          <option name="PATTERN" value="patterns.generative.builder.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -206,12 +189,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="patterns.factoryMethod.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="patterns.factoryMethod.Main" />
+    <configuration name="patterns.generative.builder.vers2.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="patterns.generative.builder.vers2.Main" />
       <module name="Patterns" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="patterns.factoryMethod.*" />
+          <option name="PATTERN" value="patterns.generative.builder.vers2.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -219,12 +202,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="patterns.prototype.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="patterns.prototype.Main" />
+    <configuration name="patterns.generative.factoryMethod.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="patterns.generative.factoryMethod.Main" />
       <module name="Patterns" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="patterns.prototype.*" />
+          <option name="PATTERN" value="patterns.generative.factoryMethod.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="patterns.generative.prototype.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="patterns.generative.prototype.Main" />
+      <module name="Patterns" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="patterns.generative.prototype.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -233,19 +229,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Main" />
       <item itemvalue="Application.patterns.builder.Main" />
       <item itemvalue="Application.patterns.chain.of.responsibility.Main" />
-      <item itemvalue="Application.patterns.factoryMethod.Main" />
-      <item itemvalue="Application.patterns.prototype.Main" />
+      <item itemvalue="Application.patterns.generative.builder.vers2.Main" />
+      <item itemvalue="Application.patterns.generative.factoryMethod.Main" />
+      <item itemvalue="Application.patterns.generative.prototype.Main" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.patterns.prototype.Main" />
-        <item itemvalue="Application.patterns.factoryMethod.Main" />
+        <item itemvalue="Application.patterns.generative.prototype.Main" />
+        <item itemvalue="Application.patterns.generative.factoryMethod.Main" />
         <item itemvalue="Application.patterns.builder.Main" />
         <item itemvalue="Application.patterns.chain.of.responsibility.Main" />
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.patterns.generative.builder.vers2.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -269,7 +265,7 @@
       <workItem from="1590589067339" duration="1404000" />
       <workItem from="1590590537955" duration="4584000" />
       <workItem from="1590603956902" duration="1189000" />
-      <workItem from="1712910133087" duration="889000" />
+      <workItem from="1712910133087" duration="1266000" />
     </task>
     <task id="LOCAL-00001" summary="Add another example of builder pattern (House)">
       <created>1555947956544</created>
@@ -292,7 +288,14 @@
       <option name="project" value="LOCAL" />
       <updated>1712910814545</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="changed prototype">
+      <created>1712911100567</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1712911100567</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -351,7 +354,8 @@
     <MESSAGE value="Add another example of builder pattern (House)" />
     <MESSAGE value="fixed builder" />
     <MESSAGE value="changed abstractFactory" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed abstractFactory" />
+    <MESSAGE value="changed prototype" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed prototype" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/patterns/prototype/interfaces/Copyable.java">
