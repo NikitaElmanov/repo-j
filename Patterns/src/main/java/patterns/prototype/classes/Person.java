@@ -1,7 +1,11 @@
 package patterns.prototype.classes;
 
-import lombok.*;
-import patterns.prototype.interfaces.Copyable;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import patterns.prototype.interfaces.Copiable;
+
+import static lombok.AccessLevel.PRIVATE;
 
 /**
  * class Person implements Copyable and it is just test of prototype pattern
@@ -10,27 +14,20 @@ import patterns.prototype.interfaces.Copyable;
  */
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class Person implements Copyable {
+@AllArgsConstructor()
+@NoArgsConstructor(access = PRIVATE)
+public class Person implements Copiable {
 
     private int id;
     private String name;
 
+    @Override
     public Object clone() {
-        Person person = new Person();
+        final var person = new Person();
 
         person.id = this.id;
         person.name = this.name;
 
         return person;
-    }
-
-    public static void main(String[] args) {
-        Person p1 = new Person(1, "Tom");
-        Person p2 = (Person) p1.clone();
-        System.out.println(p1);
-        System.out.println(p2);
-        System.out.println(p2.equals(p1));
     }
 }

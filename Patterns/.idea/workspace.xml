@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b0945b4b-1221-4d09-b787-f009e246f7a1" name="Default Changelist" comment="fixed builder">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="b0945b4b-1221-4d09-b787-f009e246f7a1" name="Default Changelist" comment="changed abstractFactory">
+      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/prototype/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/patterns/prototype/classes/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/patterns/prototype/classes/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/patterns/prototype/interfaces/Copyable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/patterns/prototype/interfaces/Copiable.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +166,7 @@
       <recent name="test" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.patterns.factoryMethod.Main">
+  <component name="RunManager" selected="Application.patterns.prototype.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="patterns.builder.vers2.Main" />
       <module name="Patterns" />
@@ -174,13 +176,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UDPTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="UDPTest" />
-      <module name="Patterns" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -224,20 +219,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="patterns.prototype.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="patterns.prototype.Main" />
+      <module name="Patterns" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="patterns.prototype.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.patterns.builder.Main" />
       <item itemvalue="Application.patterns.chain.of.responsibility.Main" />
       <item itemvalue="Application.patterns.factoryMethod.Main" />
-      <item itemvalue="Application.UDPTest" />
+      <item itemvalue="Application.patterns.prototype.Main" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.patterns.prototype.Main" />
         <item itemvalue="Application.patterns.factoryMethod.Main" />
         <item itemvalue="Application.patterns.builder.Main" />
         <item itemvalue="Application.patterns.chain.of.responsibility.Main" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.UDPTest" />
       </list>
     </recent_temporary>
   </component>
@@ -261,7 +269,7 @@
       <workItem from="1590589067339" duration="1404000" />
       <workItem from="1590590537955" duration="4584000" />
       <workItem from="1590603956902" duration="1189000" />
-      <workItem from="1712910133087" duration="491000" />
+      <workItem from="1712910133087" duration="889000" />
     </task>
     <task id="LOCAL-00001" summary="Add another example of builder pattern (House)">
       <created>1555947956544</created>
@@ -277,7 +285,14 @@
       <option name="project" value="LOCAL" />
       <updated>1712910355224</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="changed abstractFactory">
+      <created>1712910814545</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1712910814545</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -335,7 +350,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add another example of builder pattern (House)" />
     <MESSAGE value="fixed builder" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed builder" />
+    <MESSAGE value="changed abstractFactory" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed abstractFactory" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/patterns/prototype/interfaces/Copyable.java">
