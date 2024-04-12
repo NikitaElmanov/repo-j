@@ -10,7 +10,7 @@ public class Car {
     private String color;
     private int amountDoors;
 
-    public Car(CarBuilder carBuilder) {
+    private Car(CarBuilder carBuilder) {
         this.name = carBuilder.name;
         this.horsePower = carBuilder.horsePower;
         this.color = carBuilder.color;

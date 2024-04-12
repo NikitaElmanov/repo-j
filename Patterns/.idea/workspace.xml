@@ -1,112 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="b0945b4b-1221-4d09-b787-f009e246f7a1" name="Default Changelist" comment="Add another example of builder pattern (House)">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/UDPTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/patterns/builder/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/patterns/builder/entity/Country$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/patterns/builder/entity/Country$CountryBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/patterns/builder/entity/Country.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/patterns/builder/entity/House$HouseBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/patterns/builder/entity/House.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/patterns/factoryMethod/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/patterns/factoryMethod/entities/CppDeveloper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/patterns/factoryMethod/entities/JavaDeveloper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/patterns/factoryMethod/entities/interfaces/Developer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/patterns/factoryMethod/factory/DeveloperFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/patterns/prototype/classes/Person.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/patterns/prototype/interfaces/Copyable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/test/Auction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/test/Bid.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/test/Broker.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/test/EchoClient.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/test/EchoServer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/test/Market.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/test/TestBarrier.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/test/ThreadMain.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/patterns/builder/entity/House.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/patterns/builder/entity/House.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/patterns/builder/vers2/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/patterns/builder/vers2/Car.java" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/target/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="-14052439">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="1" />
-          <entry key="project.open.time.4" value="1" />
-          <entry key="project.opened" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="java" value="11" />
-          <entry key="xml" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="JAVA" value="11" />
-          <entry key="XML" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="java" value="480" />
-          <entry key="txt" value="53" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JAVA" value="480" />
-          <entry key="PLAIN_TEXT" value="53" />
-        </counts>
-      </usages-collector>
-    </session>
-    <session id="-1866312046">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="8" />
-          <entry key="project.open.time.1" value="2" />
-          <entry key="project.open.time.20" value="1" />
-          <entry key="project.open.time.25" value="2" />
-          <entry key="project.open.time.6" value="2" />
-          <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="8" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="java" value="3964" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JAVA" value="3964" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="gitignore" value="1" />
-          <entry key="java" value="19" />
-          <entry key="xml" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="JAVA" value="19" />
-          <entry key="PLAIN_TEXT" value="1" />
-          <entry key="XML" value="1" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
-  <component name="FileEditorManager">
-    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -122,6 +30,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
   </component>
   <component name="GradleLocalSettings">
     <option name="projectSyncType">
@@ -160,12 +71,8 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
-    </option>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="2" />
@@ -173,6 +80,7 @@
     <option name="width" value="1380" />
     <option name="height" value="788" />
   </component>
+  <component name="ProjectId" id="2ezb0aQ4AooC0DE2AwVv3JRZfxP" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -239,55 +147,33 @@
       <pane id="PackagesPane" />
     </panes>
   </component>
-  <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1590830912690" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Artifacts" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="test" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Application.UDPTest">
-    <configuration name="FFF" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="test.FFF" />
+  <component name="RunManager" selected="Application.patterns.builder.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="patterns.builder.vers2.Main" />
       <module name="Patterns" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestBarrier" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="test.TestBarrier" />
-      <module name="Patterns" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.*" />
+          <option name="PATTERN" value="patterns.builder.vers2.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -308,19 +194,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UDPSender" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="test.UDPSender" />
-      <module name="Patterns" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="UDPTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="UDPTest" />
       <module name="Patterns" />
@@ -328,23 +201,50 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="patterns.builder.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="patterns.builder.Main" />
+      <module name="Patterns" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="patterns.builder.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="patterns.chain.of.responsibility.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="patterns.chain.of.responsibility.Main" />
+      <module name="Patterns" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="patterns.chain.of.responsibility.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
-      <item itemvalue="Application.TestBarrier" />
-      <item itemvalue="Application.UDPSender" />
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.patterns.builder.Main" />
+      <item itemvalue="Application.patterns.chain.of.responsibility.Main" />
       <item itemvalue="Application.UDPClient" />
-      <item itemvalue="Application.FFF" />
       <item itemvalue="Application.UDPTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.patterns.builder.Main" />
+        <item itemvalue="Application.patterns.chain.of.responsibility.Main" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.UDPTest" />
         <item itemvalue="Application.UDPClient" />
-        <item itemvalue="Application.FFF" />
-        <item itemvalue="Application.UDPSender" />
-        <item itemvalue="Application.TestBarrier" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -364,6 +264,7 @@
       <workItem from="1590589067339" duration="1404000" />
       <workItem from="1590590537955" duration="4584000" />
       <workItem from="1590603956902" duration="1189000" />
+      <workItem from="1712910133087" duration="174000" />
     </task>
     <task id="LOCAL-00001" summary="Add another example of builder pattern (House)">
       <created>1555947956544</created>
@@ -414,10 +315,18 @@
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add another example of builder pattern (House)" />
@@ -503,7 +412,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/test/Main.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/test/Bid.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/Comparator.java">
+    <entry file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk1.8.0_191/src.zip!/java/util/Comparator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="149" column="8" selection-start-line="149" selection-start-column="8" selection-end-line="149" selection-end-column="8" />
@@ -517,14 +426,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/Random.java">
+    <entry file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk1.8.0_191/src.zip!/java/util/Random.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="199" selection-start-line="199" selection-end-line="199" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/lang/Math.java">
+    <entry file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk1.8.0_191/src.zip!/java/lang/Math.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="9660">
           <caret line="772" column="72" selection-start-line="772" selection-start-column="72" selection-end-line="772" selection-end-column="72" />
@@ -538,7 +447,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/lang/Thread.java">
+    <entry file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk1.8.0_191/src.zip!/java/lang/Thread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="698" column="29" selection-start-line="698" selection-start-column="29" selection-end-line="698" selection-end-column="29" />

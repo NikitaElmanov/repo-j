@@ -6,7 +6,7 @@ public class House {
     private String street;
     private Integer amountOfFloors;
 
-    public House(HouseBuilder houseBuilder) {
+    private House(HouseBuilder houseBuilder) {
         this.number = houseBuilder.getNumber();
         this.street = houseBuilder.getStreet();
         this.amountOfFloors = houseBuilder.getAmountOfFloors();
