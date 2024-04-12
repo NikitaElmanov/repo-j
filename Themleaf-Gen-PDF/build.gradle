@@ -23,6 +23,10 @@ dependencies {
 
     compileOnly 'org.projectlombok:lombok:1.18.30'
     annotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+    implementation 'org.bouncycastle:bcmail-jdk15:1.46'
+//    implementation 'org.apache.xml:serializer:2.7.1'
+//    implementation 'xerces:xercesImpl:2.9.0'
 }
 
 tasks.named('test') {
