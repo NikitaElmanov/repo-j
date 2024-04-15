@@ -1,4 +1,4 @@
-package patterns.chain.of.responsibility;
+package patterns.behavioral.chain.of.responsibility;
 
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;

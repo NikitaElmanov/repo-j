@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b0945b4b-1221-4d09-b787-f009e246f7a1" name="Default Changelist" comment="changed prototype" />
+    <list default="true" id="b0945b4b-1221-4d09-b787-f009e246f7a1" name="Default Changelist" comment="changed prototype">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/patterns/chain/of/responsibility/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/chain/of/responsibility/Main.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -145,18 +148,18 @@
     <option name="autoscrollFromSource" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="test" />
@@ -176,12 +179,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="patterns.chain.of.responsibility.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="patterns.chain.of.responsibility.Main" />
+    <configuration name="patterns.behavioral.chain.of.responsibility.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="patterns.behavioral.chain.of.responsibility.Main" />
       <module name="Patterns" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="patterns.chain.of.responsibility.*" />
+          <option name="PATTERN" value="patterns.behavioral.chain.of.responsibility.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -229,8 +232,8 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.patterns.builder.Main" />
-      <item itemvalue="Application.patterns.chain.of.responsibility.Main" />
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.patterns.behavioral.chain.of.responsibility.Main" />
       <item itemvalue="Application.patterns.generative.builder.vers2.Main" />
       <item itemvalue="Application.patterns.generative.factoryMethod.Main" />
       <item itemvalue="Application.patterns.generative.prototype.Main" />
@@ -239,8 +242,7 @@
       <list>
         <item itemvalue="Application.patterns.generative.prototype.Main" />
         <item itemvalue="Application.patterns.generative.factoryMethod.Main" />
-        <item itemvalue="Application.patterns.builder.Main" />
-        <item itemvalue="Application.patterns.chain.of.responsibility.Main" />
+        <item itemvalue="Application.patterns.behavioral.chain.of.responsibility.Main" />
         <item itemvalue="Application.patterns.generative.builder.vers2.Main" />
       </list>
     </recent_temporary>
@@ -266,6 +268,8 @@
       <workItem from="1590590537955" duration="4584000" />
       <workItem from="1590603956902" duration="1189000" />
       <workItem from="1712910133087" duration="1266000" />
+      <workItem from="1713079510972" duration="593000" />
+      <workItem from="1713159438702" duration="592000" />
     </task>
     <task id="LOCAL-00001" summary="Add another example of builder pattern (House)">
       <created>1555947956544</created>
