@@ -1,11 +1,10 @@
 package ru.themleaf.pdf.service;
 
+import java.util.List;
+import java.util.Map;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.context.Context;
 import ru.themleaf.pdf.model.Person;
-
-import java.util.List;
-import java.util.Map;
 
 @Service
 public class DataMapper {
@@ -14,7 +13,8 @@ public class DataMapper {
 
         var context = new Context();
 
-        Map<String, Object> personMap = Map.of("persons", persons);
+        Map<String, Object> personMap =
+                Map.of("persons", persons);
 
         context.setVariables(personMap);
 

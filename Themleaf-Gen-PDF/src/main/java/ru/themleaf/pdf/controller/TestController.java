@@ -2,10 +2,16 @@ package ru.themleaf.pdf.controller;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.security.Security;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
+import java.util.HashMap;
+import java.util.Map;
+import javax.naming.InvalidNameException;
+import javax.naming.ldap.LdapName;
+import javax.naming.ldap.Rdn;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -39,18 +45,33 @@ public class TestController {
     }
 
     @PostMapping(value = "/cert")
-    public ResponseEntity<?> getCert(@RequestPart("cert") MultipartFile cert) throws IOException, CertificateException {
+    public ResponseEntity<?> getCert(@RequestPart("cert") MultipartFile cert) throws IOException, CertificateException,
+                                                                                     InvalidNameException {
 
         X509Certificate certX509 =
                 (X509Certificate) CertificateFactory.getInstance("X.509")
                         .generateCertificate(cert.getInputStream());
 
         X509CertificateHolder holder = new JcaX509CertificateHolder(certX509);
-        X509Certificate certificate = new JcaX509CertificateConverter()
-                .setProvider(PROVIDER)
-                .getCertificate(holder);
+//        X509Certificate certificate = new JcaX509CertificateConverter()
+//                .setProvider(PROVIDER)
+//                .getCertificate(holder);
+        var dn = certX509.getSubjectX500Principal().getName();
+        var ldapDN = new LdapName(dn);
 
-        return ResponseEntity.ok(certX509.toString());
+        Map<String, String> res = new HashMap<>();
+        for(var rdn: ldapDN.getRdns()) {
+            var obj = rdn.getValue();
+            var value = obj.toString();
+            if (obj instanceof byte[] arr) {
+                value = new String(arr, Charset.defaultCharset()).trim().strip();
+            }
+            System.out.println(rdn.getType() + " -> " + value);
+            res.put(rdn.getType(), value);
+        }
+
+//        return ResponseEntity.ok(certX509.toString());
+        return ResponseEntity.ok(res);
     }
 
     public static void main(String[] args) throws TransformerException, ParserConfigurationException, IOException,
