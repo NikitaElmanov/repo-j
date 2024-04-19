@@ -4,21 +4,9 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b0945b4b-1221-4d09-b787-f009e246f7a1" name="Default Changelist" comment="changed prototype">
-      <change afterPath="$PROJECT_DIR$/src/main/java/xml/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/user.xsd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_11.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_0_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_2_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_2_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_1_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_16_20.xml" beforeDir="false" />
+    <list default="true" id="b0945b4b-1221-4d09-b787-f009e246f7a1" name="Default Changelist" comment="xml">
+      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/structure/adapter/AdapterMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patterns.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Patterns.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Themleaf-Gen-PDF/src/main/java/ru/themleaf/pdf/controller/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Themleaf-Gen-PDF/src/main/java/ru/themleaf/pdf/controller/TestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Themleaf-Gen-PDF/src/main/java/ru/themleaf/pdf/service/DataMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Themleaf-Gen-PDF/src/main/java/ru/themleaf/pdf/service/DataMapper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,32 +148,32 @@
     <option name="autoscrollFromSource" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="xml.dto" />
       <recent name="test" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.xml.Main">
-    <configuration name="patterns.behavioral.chain.of.responsibility.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="patterns.behavioral.chain.of.responsibility.Main" />
+  <component name="RunManager" selected="Application.AdapterMain">
+    <configuration name="AdapterMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="patterns.structure.adapter.AdapterMain" />
       <module name="Patterns" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="patterns.behavioral.chain.of.responsibility.*" />
+          <option name="PATTERN" value="patterns.structure.adapter.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -193,12 +181,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="patterns.generative.builder.vers2.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="patterns.generative.builder.vers2.Main" />
+    <configuration name="patterns.behavioral.chain.of.responsibility.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="patterns.behavioral.chain.of.responsibility.Main" />
       <module name="Patterns" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="patterns.generative.builder.vers2.*" />
+          <option name="PATTERN" value="patterns.behavioral.chain.of.responsibility.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -246,19 +234,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.AdapterMain" />
       <item itemvalue="Application.xml.Main" />
       <item itemvalue="Application.patterns.behavioral.chain.of.responsibility.Main" />
-      <item itemvalue="Application.patterns.generative.builder.vers2.Main" />
       <item itemvalue="Application.patterns.generative.factoryMethod.Main" />
       <item itemvalue="Application.patterns.generative.prototype.Main" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.AdapterMain" />
         <item itemvalue="Application.xml.Main" />
         <item itemvalue="Application.patterns.generative.prototype.Main" />
         <item itemvalue="Application.patterns.generative.factoryMethod.Main" />
         <item itemvalue="Application.patterns.behavioral.chain.of.responsibility.Main" />
-        <item itemvalue="Application.patterns.generative.builder.vers2.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -287,7 +275,10 @@
       <workItem from="1713159438702" duration="1229000" />
       <workItem from="1713245759470" duration="1194000" />
       <workItem from="1713332163502" duration="593000" />
-      <workItem from="1713418726281" duration="3605000" />
+      <workItem from="1713418726281" duration="4812000" />
+      <workItem from="1713431935815" duration="1934000" />
+      <workItem from="1713438692294" duration="594000" />
+      <workItem from="1713505091230" duration="1774000" />
     </task>
     <task id="LOCAL-00001" summary="Add another example of builder pattern (House)">
       <created>1555947956544</created>
@@ -317,7 +308,14 @@
       <option name="project" value="LOCAL" />
       <updated>1712911100567</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="xml">
+      <created>1713427942908</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1713427942908</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -377,7 +375,8 @@
     <MESSAGE value="fixed builder" />
     <MESSAGE value="changed abstractFactory" />
     <MESSAGE value="changed prototype" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed prototype" />
+    <MESSAGE value="xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="xml" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
