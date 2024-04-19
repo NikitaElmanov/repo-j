@@ -1,15 +1,17 @@
 package patterns.structure.proxy;
 
+import java.util.concurrent.TimeUnit;
 import lombok.AllArgsConstructor;
+import lombok.SneakyThrows;
 
 public class MainRunner {
     public static void main(String[] args) {
-        Video video = new YouTubeVideoProxy(new YouTubeVideo(1000));
-        Video video2 = new YouTubeVideo(10);
+        Video videoWithProxy = new YouTubeVideoProxy(new YouTubeVideo(1000));
+        Video videoSimple = new YouTubeVideo(10);
 
-        video.play();
+        videoWithProxy.play();
         System.out.println("----------------------------------------");
-        video2.play();
+        videoSimple.play();
     }
 }
 
@@ -35,8 +37,10 @@ class YouTubeVideoProxy implements Video {
     private Video video;
 
     @Override
+    @SneakyThrows
     public void play() {
         System.out.println("Showing an advertisement...");
+        TimeUnit.SECONDS.sleep(1);
         video.play();
     }
 }

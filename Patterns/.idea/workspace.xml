@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b0945b4b-1221-4d09-b787-f009e246f7a1" name="Default Changelist" comment="added decorator pattern">
-      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/structure/facade/FacadeMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="b0945b4b-1221-4d09-b787-f009e246f7a1" name="Default Changelist" comment="added facade pattern">
+      <change beforePath="$PROJECT_DIR$/src/main/java/patterns/structure/proxy/MainRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/patterns/structure/proxy/MainRunner.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,7 +166,7 @@
       <recent name="test" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.FacadeMain">
+  <component name="RunManager" selected="Application.MainRunner">
     <configuration name="AdapterMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="patterns.structure.adapter.AdapterMain" />
       <module name="Patterns" />
@@ -220,12 +219,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="xml.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="xml.Main" />
+    <configuration name="MainRunner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="patterns.structure.proxy.MainRunner" />
       <module name="Patterns" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="xml.*" />
+          <option name="PATTERN" value="patterns.structure.proxy.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -238,15 +237,15 @@
       <item itemvalue="Application.BridgeMain" />
       <item itemvalue="Application.DecoratorMain" />
       <item itemvalue="Application.FacadeMain" />
-      <item itemvalue="Application.xml.Main" />
+      <item itemvalue="Application.MainRunner" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MainRunner" />
         <item itemvalue="Application.FacadeMain" />
         <item itemvalue="Application.DecoratorMain" />
         <item itemvalue="Application.BridgeMain" />
         <item itemvalue="Application.AdapterMain" />
-        <item itemvalue="Application.xml.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -278,7 +277,7 @@
       <workItem from="1713418726281" duration="4812000" />
       <workItem from="1713431935815" duration="1934000" />
       <workItem from="1713438692294" duration="594000" />
-      <workItem from="1713505091230" duration="4770000" />
+      <workItem from="1713505091230" duration="5195000" />
     </task>
     <task id="LOCAL-00001" summary="Add another example of builder pattern (House)">
       <created>1555947956544</created>
@@ -336,7 +335,14 @@
       <option name="project" value="LOCAL" />
       <updated>1713514513380</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="added facade pattern">
+      <created>1713515718850</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1713515718850</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -400,7 +406,8 @@
     <MESSAGE value="added adapter pattern" />
     <MESSAGE value="added bridge pattern" />
     <MESSAGE value="added decorator pattern" />
-    <option name="LAST_COMMIT_MESSAGE" value="added decorator pattern" />
+    <MESSAGE value="added facade pattern" />
+    <option name="LAST_COMMIT_MESSAGE" value="added facade pattern" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
