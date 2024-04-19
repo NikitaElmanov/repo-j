@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b0945b4b-1221-4d09-b787-f009e246f7a1" name="Default Changelist" comment="xml">
-      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/structure/adapter/AdapterMain.java" afterDir="false" />
+    <list default="true" id="b0945b4b-1221-4d09-b787-f009e246f7a1" name="Default Changelist" comment="added adapter pattern">
+      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/structure/bridge/BridgeMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -167,7 +167,7 @@
       <recent name="test" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.AdapterMain">
+  <component name="RunManager" selected="Application.BridgeMain">
     <configuration name="AdapterMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="patterns.structure.adapter.AdapterMain" />
       <module name="Patterns" />
@@ -181,12 +181,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="patterns.behavioral.chain.of.responsibility.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="patterns.behavioral.chain.of.responsibility.Main" />
+    <configuration name="BridgeMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="patterns.structure.bridge.BridgeMain" />
       <module name="Patterns" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="patterns.behavioral.chain.of.responsibility.*" />
+          <option name="PATTERN" value="patterns.structure.bridge.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -235,18 +235,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.AdapterMain" />
+      <item itemvalue="Application.BridgeMain" />
       <item itemvalue="Application.xml.Main" />
-      <item itemvalue="Application.patterns.behavioral.chain.of.responsibility.Main" />
       <item itemvalue="Application.patterns.generative.factoryMethod.Main" />
       <item itemvalue="Application.patterns.generative.prototype.Main" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.BridgeMain" />
         <item itemvalue="Application.AdapterMain" />
         <item itemvalue="Application.xml.Main" />
         <item itemvalue="Application.patterns.generative.prototype.Main" />
         <item itemvalue="Application.patterns.generative.factoryMethod.Main" />
-        <item itemvalue="Application.patterns.behavioral.chain.of.responsibility.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -278,7 +278,7 @@
       <workItem from="1713418726281" duration="4812000" />
       <workItem from="1713431935815" duration="1934000" />
       <workItem from="1713438692294" duration="594000" />
-      <workItem from="1713505091230" duration="1774000" />
+      <workItem from="1713505091230" duration="2887000" />
     </task>
     <task id="LOCAL-00001" summary="Add another example of builder pattern (House)">
       <created>1555947956544</created>
@@ -315,7 +315,14 @@
       <option name="project" value="LOCAL" />
       <updated>1713427942908</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="added adapter pattern">
+      <created>1713512597484</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1713512597484</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -376,7 +383,8 @@
     <MESSAGE value="changed abstractFactory" />
     <MESSAGE value="changed prototype" />
     <MESSAGE value="xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="xml" />
+    <MESSAGE value="added adapter pattern" />
+    <option name="LAST_COMMIT_MESSAGE" value="added adapter pattern" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
