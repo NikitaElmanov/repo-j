@@ -4,8 +4,15 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b0945b4b-1221-4d09-b787-f009e246f7a1" name="Default Changelist" comment="added facade pattern">
-      <change beforePath="$PROJECT_DIR$/src/main/java/patterns/structure/proxy/MainRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/patterns/structure/proxy/MainRunner.java" afterDir="false" />
+    <list default="true" id="b0945b4b-1221-4d09-b787-f009e246f7a1" name="Default Changelist" comment="fixed proxy pattern">
+      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/command/Character.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/command/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/command/core/Command.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/command/core/GoAhead.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/command/core/GoBack.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/command/core/GoLeft.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/command/core/GoRight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +22,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -162,24 +170,12 @@
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="patterns.behavioral.command" />
       <recent name="xml.dto" />
       <recent name="test" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainRunner">
-    <configuration name="AdapterMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="patterns.structure.adapter.AdapterMain" />
-      <module name="Patterns" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="patterns.structure.adapter.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.Main">
     <configuration name="BridgeMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="patterns.structure.bridge.BridgeMain" />
       <module name="Patterns" />
@@ -219,6 +215,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="patterns.behavioral.command.Main" />
+      <module name="Patterns" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="patterns.behavioral.command.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MainRunner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="patterns.structure.proxy.MainRunner" />
       <module name="Patterns" />
@@ -233,7 +242,7 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.AdapterMain" />
+      <item itemvalue="Application.Main" />
       <item itemvalue="Application.BridgeMain" />
       <item itemvalue="Application.DecoratorMain" />
       <item itemvalue="Application.FacadeMain" />
@@ -241,11 +250,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.MainRunner" />
         <item itemvalue="Application.FacadeMain" />
         <item itemvalue="Application.DecoratorMain" />
         <item itemvalue="Application.BridgeMain" />
-        <item itemvalue="Application.AdapterMain" />
       </list>
     </recent_temporary>
   </component>
@@ -277,7 +286,8 @@
       <workItem from="1713418726281" duration="4812000" />
       <workItem from="1713431935815" duration="1934000" />
       <workItem from="1713438692294" duration="594000" />
-      <workItem from="1713505091230" duration="5195000" />
+      <workItem from="1713505091230" duration="6424000" />
+      <workItem from="1714628443989" duration="1219000" />
     </task>
     <task id="LOCAL-00001" summary="Add another example of builder pattern (House)">
       <created>1555947956544</created>
@@ -342,7 +352,14 @@
       <option name="project" value="LOCAL" />
       <updated>1713515718850</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="fixed proxy pattern">
+      <created>1713515886685</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1713515886685</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -407,7 +424,8 @@
     <MESSAGE value="added bridge pattern" />
     <MESSAGE value="added decorator pattern" />
     <MESSAGE value="added facade pattern" />
-    <option name="LAST_COMMIT_MESSAGE" value="added facade pattern" />
+    <MESSAGE value="fixed proxy pattern" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed proxy pattern" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
