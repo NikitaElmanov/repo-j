@@ -11,7 +11,6 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.naming.InvalidNameException;
 import javax.naming.ldap.LdapName;
-import javax.naming.ldap.Rdn;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -21,7 +20,6 @@ import javax.xml.transform.stream.StreamResult;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.bouncycastle.cert.X509CertificateHolder;
-import org.bouncycastle.cert.jcajce.JcaX509CertificateConverter;
 import org.bouncycastle.cert.jcajce.JcaX509CertificateHolder;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.springframework.http.ResponseEntity;
@@ -60,7 +58,7 @@ public class TestController {
         var ldapDN = new LdapName(dn);
 
         Map<String, String> res = new HashMap<>();
-        for(var rdn: ldapDN.getRdns()) {
+        for (var rdn : ldapDN.getRdns()) {
             var obj = rdn.getValue();
             var value = obj.toString();
             if (obj instanceof byte[] arr) {
@@ -76,7 +74,7 @@ public class TestController {
 
     public static void main(String[] args) throws TransformerException, ParserConfigurationException, IOException,
                                                   SAXException {
-        String unformattedXml = """
+        var unformattedXml = """
                 <tns:booking>
                     <tns:bookingID>115</tns:bookingID>
                     <tns:type>double</tns:type>
