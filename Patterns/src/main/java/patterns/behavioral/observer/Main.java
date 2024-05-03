@@ -8,8 +8,8 @@ public class Main {
 
     public static void main(String[] args) {
         VideoHostingSite videoHostingSite = new VideoHostingSite();
-        final String video2 = "video 2";
 
+        final String video2 = "video 2";
         videoHostingSite.addVideo("video 1");
         videoHostingSite.addVideo(video2);
 
