@@ -4,16 +4,12 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b0945b4b-1221-4d09-b787-f009e246f7a1" name="Default Changelist" comment="fixed command pattern">
-      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/strategy/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/strategy/core/Action.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/strategy/core/Eating.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/strategy/core/Rabbit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/strategy/core/Running.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/strategy/core/Sitting.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/strategy/core/Sleeping.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Themleaf-Gen-PDF/src/main/java/ru/themleaf/pdf/controller/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Themleaf-Gen-PDF/src/main/java/ru/themleaf/pdf/controller/TestController.java" afterDir="false" />
+    <list default="true" id="b0945b4b-1221-4d09-b787-f009e246f7a1" name="Default Changelist" comment="added strategy pattern">
+      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/observer/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/observer/core/Observable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/observer/core/Observer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/observer/core/Subscriber.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/observer/core/VideoHostingSite.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,32 +167,20 @@
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="patterns.behavioral.observer.core" />
       <recent name="patterns.behavioral.strategy.core" />
       <recent name="patterns.behavioral.command" />
       <recent name="xml.dto" />
       <recent name="test" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.patterns.behavioral.strategy.Main">
+  <component name="RunManager" selected="Application.patterns.behavioral.observer.Main">
     <configuration name="BridgeMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="patterns.structure.bridge.BridgeMain" />
       <module name="Patterns" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="patterns.structure.bridge.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FacadeMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="patterns.structure.facade.FacadeMain" />
-      <module name="Patterns" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="patterns.structure.facade.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -230,6 +214,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="patterns.behavioral.observer.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="patterns.behavioral.observer.Main" />
+      <module name="Patterns" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="patterns.behavioral.observer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="patterns.behavioral.strategy.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="patterns.behavioral.strategy.Main" />
       <module name="Patterns" />
@@ -244,19 +241,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.patterns.behavioral.observer.Main" />
       <item itemvalue="Application.patterns.behavioral.strategy.Main" />
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.BridgeMain" />
-      <item itemvalue="Application.FacadeMain" />
       <item itemvalue="Application.MainRunner" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.patterns.behavioral.observer.Main" />
         <item itemvalue="Application.patterns.behavioral.strategy.Main" />
         <item itemvalue="Application.BridgeMain" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.MainRunner" />
-        <item itemvalue="Application.FacadeMain" />
       </list>
     </recent_temporary>
   </component>
@@ -291,7 +288,7 @@
       <workItem from="1713505091230" duration="6424000" />
       <workItem from="1714628443989" duration="3354000" />
       <workItem from="1714638016374" duration="1189000" />
-      <workItem from="1714710231866" duration="1600000" />
+      <workItem from="1714710231866" duration="2152000" />
     </task>
     <task id="LOCAL-00001" summary="Add another example of builder pattern (House)">
       <created>1555947956544</created>
@@ -370,7 +367,14 @@
       <option name="project" value="LOCAL" />
       <updated>1714634301137</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="added strategy pattern">
+      <created>1714713623374</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1714713623374</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -437,7 +441,8 @@
     <MESSAGE value="added facade pattern" />
     <MESSAGE value="fixed proxy pattern" />
     <MESSAGE value="fixed command pattern" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed command pattern" />
+    <MESSAGE value="added strategy pattern" />
+    <option name="LAST_COMMIT_MESSAGE" value="added strategy pattern" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
