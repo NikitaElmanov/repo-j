@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b0945b4b-1221-4d09-b787-f009e246f7a1" name="Default Changelist" comment="added observer pattern">
-      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/iterator/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/iterator/core/Collection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/iterator/core/GameCharacter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/iterator/core/Iterator.java" afterDir="false" />
+    <list default="true" id="b0945b4b-1221-4d09-b787-f009e246f7a1" name="Default Changelist" comment="added iterator pattern">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/patterns/behavioral/chain/of/responsibility/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/chain/of/responsibility/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,13 +171,13 @@
       <recent name="patterns.behavioral.observer.core" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.patterns.behavioral.iterator.Main">
-    <configuration name="BridgeMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="patterns.structure.bridge.BridgeMain" />
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="patterns.behavioral.chain.of.responsibility.Main" />
       <module name="Patterns" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="patterns.structure.bridge.*" />
+          <option name="PATTERN" value="patterns.behavioral.chain.of.responsibility.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -245,15 +242,15 @@
       <item itemvalue="Application.patterns.behavioral.observer.Main" />
       <item itemvalue="Application.patterns.behavioral.strategy.Main" />
       <item itemvalue="Application.patterns.behavioral.visitor.Main" />
-      <item itemvalue="Application.BridgeMain" />
+      <item itemvalue="Application.Main" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.patterns.behavioral.iterator.Main" />
         <item itemvalue="Application.patterns.behavioral.visitor.Main" />
         <item itemvalue="Application.patterns.behavioral.observer.Main" />
         <item itemvalue="Application.patterns.behavioral.strategy.Main" />
-        <item itemvalue="Application.BridgeMain" />
       </list>
     </recent_temporary>
   </component>
@@ -289,7 +286,7 @@
       <workItem from="1714628443989" duration="3354000" />
       <workItem from="1714638016374" duration="1189000" />
       <workItem from="1714710231866" duration="4700000" />
-      <workItem from="1714812023532" duration="1119000" />
+      <workItem from="1714812023532" duration="2306000" />
     </task>
     <task id="LOCAL-00001" summary="Add another example of builder pattern (House)">
       <created>1555947956544</created>
@@ -389,7 +386,14 @@
       <option name="project" value="LOCAL" />
       <updated>1714714449510</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="added iterator pattern">
+      <created>1714813295550</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1714813295550</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -458,7 +462,8 @@
     <MESSAGE value="fixed command pattern" />
     <MESSAGE value="added strategy pattern" />
     <MESSAGE value="added observer pattern" />
-    <option name="LAST_COMMIT_MESSAGE" value="added observer pattern" />
+    <MESSAGE value="added iterator pattern" />
+    <option name="LAST_COMMIT_MESSAGE" value="added iterator pattern" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

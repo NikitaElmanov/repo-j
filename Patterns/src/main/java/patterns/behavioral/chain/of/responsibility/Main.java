@@ -1,25 +1,26 @@
 package patterns.behavioral.chain.of.responsibility;
 
+import java.util.Objects;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
-
-import java.util.Objects;
 
 import static lombok.AccessLevel.PRIVATE;
 
 public class Main {
+
     public static void main(String[] args) {
         OrderAttendant orderFinalizer = new OrderFinalizer(null);
         OrderAttendant orderDelivery = new OrderDelivery(orderFinalizer);
         OrderAttendant orderMaker = new OrderMaker(orderDelivery);
 
-        Order order = new Order(1L, "title-1", "default description");
+        Order order = new Order(1L, "Crasburger 2 pcs", "default description");
 
         orderMaker.launchServing(order);
     }
 }
 
 record Order(Long id, String title, String description) {
+
 }
 
 @AllArgsConstructor
@@ -47,7 +48,7 @@ class OrderMaker extends OrderAttendant {
 
     @Override
     protected void serve(Order order) {
-        System.out.println("Made order. It will be done soon), " + order.id());
+        System.out.println("Made order. It will be done soon), title: " + order.title());
     }
 }
 
@@ -59,7 +60,7 @@ class OrderDelivery extends OrderAttendant {
 
     @Override
     protected void serve(Order order) {
-        System.out.println("Delivering order. It will be in pickPoint so soon), " + order.title());
+        System.out.println("Delivering order. It will be in pickPoint so soon), title: " + order.title());
     }
 }
 
@@ -71,7 +72,7 @@ class OrderFinalizer extends OrderAttendant {
 
     @Override
     protected void serve(Order order) {
-        System.out.println("Order was finished. How do you like it?), " + order.description());
+        System.out.println("Order was finished. How do you like it?), title: " + order.title());
     }
 }
 
