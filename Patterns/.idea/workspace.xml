@@ -5,16 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b0945b4b-1221-4d09-b787-f009e246f7a1" name="Default Changelist" comment="added observer pattern">
-      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/visitor/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/visitor/core/Workshop.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/visitor/core/visited/Car.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/visitor/core/visited/Motobike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/visitor/core/visited/Ship.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/visitor/core/visited/Vehicle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/visitor/core/visited/VehicleInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/visitor/core/visiting/Beginner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/visitor/core/visiting/Mechanic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/visitor/core/visiting/Skilled.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/iterator/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/iterator/core/Collection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/iterator/core/GameCharacter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/iterator/core/Iterator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -173,14 +167,14 @@
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="patterns.behavioral.iterator.core" />
       <recent name="patterns.behavioral.visitor.core.visiting" />
       <recent name="patterns.behavioral.visitor.core.visited" />
       <recent name="patterns.behavioral.visitor.core" />
       <recent name="patterns.behavioral.observer.core" />
-      <recent name="patterns.behavioral.strategy.core" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.patterns.behavioral.visitor.Main">
+  <component name="RunManager" selected="Application.patterns.behavioral.iterator.Main">
     <configuration name="BridgeMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="patterns.structure.bridge.BridgeMain" />
       <module name="Patterns" />
@@ -194,12 +188,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="patterns.behavioral.command.Main" />
+    <configuration name="patterns.behavioral.iterator.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="patterns.behavioral.iterator.Main" />
       <module name="Patterns" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="patterns.behavioral.command.*" />
+          <option name="PATTERN" value="patterns.behavioral.iterator.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -247,19 +241,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.patterns.behavioral.iterator.Main" />
       <item itemvalue="Application.patterns.behavioral.observer.Main" />
       <item itemvalue="Application.patterns.behavioral.strategy.Main" />
       <item itemvalue="Application.patterns.behavioral.visitor.Main" />
-      <item itemvalue="Application.Main" />
       <item itemvalue="Application.BridgeMain" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.patterns.behavioral.iterator.Main" />
         <item itemvalue="Application.patterns.behavioral.visitor.Main" />
         <item itemvalue="Application.patterns.behavioral.observer.Main" />
         <item itemvalue="Application.patterns.behavioral.strategy.Main" />
         <item itemvalue="Application.BridgeMain" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -295,6 +289,7 @@
       <workItem from="1714628443989" duration="3354000" />
       <workItem from="1714638016374" duration="1189000" />
       <workItem from="1714710231866" duration="4700000" />
+      <workItem from="1714812023532" duration="1119000" />
     </task>
     <task id="LOCAL-00001" summary="Add another example of builder pattern (House)">
       <created>1555947956544</created>
