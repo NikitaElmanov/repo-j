@@ -74,5 +74,25 @@ class OrderFinalizer extends OrderAttendant {
     protected void serve(Order order) {
         System.out.println("Order was finished. How do you like it?), title: " + order.title());
     }
+
+    public static int maxProfit(int[] prices) {
+        int sold = Integer.MIN_VALUE, held = Integer.MIN_VALUE, reset = 0;
+
+        for (int price : prices) {
+            int preSold = sold;
+
+            sold = held + price;
+            held = Math.max(held, reset - price);
+            reset = Math.max(reset, preSold);
+        }
+
+        return Math.max(sold, reset);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(maxProfit(new int[] {1, 2, 3, 0, 2}));
+        System.out.println(maxProfit(new int[] {1}));
+    }
+
 }
 
