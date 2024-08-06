@@ -23,6 +23,7 @@ import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cert.jcajce.JcaX509CertificateHolder;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,6 +41,11 @@ public class TestController {
 
     static {
         Security.addProvider(PROVIDER);
+    }
+
+    @GetMapping("/test")
+    public String test() {
+        return "ok";
     }
 
     @PostMapping(value = "/cert")
@@ -72,40 +78,40 @@ public class TestController {
         return ResponseEntity.ok(res);
     }
 
-    public static void main(String[] args) throws TransformerException, ParserConfigurationException, IOException,
-                                                  SAXException {
-        var unformattedXml = """
-                <tns:booking>
-                    <tns:bookingID>115</tns:bookingID>
-                    <tns:type>double</tns:type>
-                    <tns:amount>1</tns:amount>
-                    <tns:stayPeriod>
-                        <tns:checkin>
-                            <tns:year>2013</tns:year>
-                            <tns:month>11</tns:month>
-                            <tns:date>14</tns:date>
-                        </tns:checkin>
-                        <tns:checkout>
-                            <tns:year>2013</tns:year>
-                            <tns:month>11</tns:month>
-                            <tns:date>16</tns:date>
-                        </tns:checkout>
-                    </tns:stayPeriod>
-                </tns:booking>""";
-
-        final var xml = DocumentBuilderFactory
-                .newInstance()
-                .newDocumentBuilder()
-                .parse(new ByteArrayInputStream(unformattedXml.getBytes()))
-                .getDocumentElement();
-
-        final var transformerFactory = TransformerFactory.newInstance();
-        var transformer = transformerFactory.newTransformer();
-        transformer.setOutputProperty("indent", "yes");
-        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
-        var source = new DOMSource(xml);
-        var result = new StreamResult(System.out);
-        transformer.transform(source, result);
-    }
+//    public static void main(String[] args) throws TransformerException, ParserConfigurationException, IOException,
+//                                                  SAXException {
+//        var unformattedXml = """
+//                <tns:booking>
+//                    <tns:bookingID>115</tns:bookingID>
+//                    <tns:type>double</tns:type>
+//                    <tns:amount>1</tns:amount>
+//                    <tns:stayPeriod>
+//                        <tns:checkin>
+//                            <tns:year>2013</tns:year>
+//                            <tns:month>11</tns:month>
+//                            <tns:date>14</tns:date>
+//                        </tns:checkin>
+//                        <tns:checkout>
+//                            <tns:year>2013</tns:year>
+//                            <tns:month>11</tns:month>
+//                            <tns:date>16</tns:date>
+//                        </tns:checkout>
+//                    </tns:stayPeriod>
+//                </tns:booking>""";
+//
+//        final var xml = DocumentBuilderFactory
+//                .newInstance()
+//                .newDocumentBuilder()
+//                .parse(new ByteArrayInputStream(unformattedXml.getBytes()))
+//                .getDocumentElement();
+//
+//        final var transformerFactory = TransformerFactory.newInstance();
+//        var transformer = transformerFactory.newTransformer();
+//        transformer.setOutputProperty("indent", "yes");
+//        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+//        var source = new DOMSource(xml);
+//        var result = new StreamResult(System.out);
+//        transformer.transform(source, result);
+//    }
 
 }
