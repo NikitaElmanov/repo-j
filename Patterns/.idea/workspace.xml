@@ -177,7 +177,7 @@
       <recent name="patterns.behavioral.observer.core" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.DecoratorMain">
+  <component name="RunManager" selected="Application.MainRunner">
     <configuration name="BridgeMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="patterns.structure.bridge.BridgeMain" />
       <module name="Patterns" />
@@ -217,6 +217,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MainRunner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="patterns.structure.proxy.MainRunner" />
+      <module name="Patterns" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="patterns.structure.proxy.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="OrderFinalizer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="patterns.behavioral.chain.of.responsibility.OrderFinalizer" />
       <module name="Patterns" />
@@ -230,33 +243,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="patterns.behavioral.iterator.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="patterns.behavioral.iterator.Main" />
-      <module name="Patterns" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="patterns.behavioral.iterator.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Application.BridgeMain" />
       <item itemvalue="Application.DecoratorMain" />
+      <item itemvalue="Application.MainRunner" />
       <item itemvalue="Application.OrderFinalizer" />
-      <item itemvalue="Application.patterns.behavioral.iterator.Main" />
       <item itemvalue="Application.Main" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MainRunner" />
         <item itemvalue="Application.DecoratorMain" />
         <item itemvalue="Application.BridgeMain" />
         <item itemvalue="Application.OrderFinalizer" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.patterns.behavioral.iterator.Main" />
       </list>
     </recent_temporary>
   </component>

@@ -6,12 +6,12 @@ import lombok.SneakyThrows;
 
 public class MainRunner {
     public static void main(String[] args) {
-        Video videoWithProxy = new YouTubeVideoProxy(new YouTubeVideo(1000));
         Video videoSimple = new YouTubeVideo(10);
+        Video videoWithProxy = new YouTubeVideoProxy(videoSimple);
 
-        videoWithProxy.play();
-        System.out.println("----------------------------------------");
         videoSimple.play();
+        System.out.println("----------------------------------------");
+        videoWithProxy.play();
     }
 }
 
