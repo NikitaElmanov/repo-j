@@ -9,7 +9,7 @@ import patterns.behavioral.strategy.core.Sleeping;
 public class Main {
 
     public static void main(String[] args) {
-        Rabbit rabbit = new Rabbit();
+        var rabbit = new Rabbit();
 
         rabbit.setAction(new Sitting());
         rabbit.doSomething();

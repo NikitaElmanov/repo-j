@@ -7,7 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        GameCharacter<String> character = new GameCharacter<>(
+        var character = new GameCharacter<>(
                 "Player 1",
                 List.of("Jump", "Walk", "Kick", "Run", "Take", "Protect")
         );
@@ -15,7 +15,7 @@ public class Main {
         System.out.println(character.getName());
         final var iterator = character.getIterator();
 
-        while(iterator.hasNext()) {
+        while (iterator.hasNext()) {
             System.out.println(iterator.next());
         }
 

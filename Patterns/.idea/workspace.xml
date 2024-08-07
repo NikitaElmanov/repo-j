@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b0945b4b-1221-4d09-b787-f009e246f7a1" name="Default Changelist" comment="added iterator pattern">
-      <change afterPath="$PROJECT_DIR$/../Themleaf-Gen-PDF/src/main/resources/logback.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/patterns/structure/facade/FacadeMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/patterns/structure/facade/FacadeMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Themleaf-Gen-PDF/Docker/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/../Themleaf-Gen-PDF/Docker/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Themleaf-Gen-PDF/Docker/app.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../Themleaf-Gen-PDF/Docker/app.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Themleaf-Gen-PDF/src/main/java/ru/themleaf/pdf/ThemleafGenPdfApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Themleaf-Gen-PDF/src/main/java/ru/themleaf/pdf/ThemleafGenPdfApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Themleaf-Gen-PDF/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../Themleaf-Gen-PDF/src/main/resources/application.yaml" afterDir="false" />
+    <list default="true" id="b0945b4b-1221-4d09-b787-f009e246f7a1" name="Default Changelist" comment="fixed proxy pattern">
+      <change beforePath="$PROJECT_DIR$/src/main/java/patterns/behavioral/chain/of/responsibility/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/chain/of/responsibility/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/patterns/behavioral/command/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/command/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/patterns/behavioral/iterator/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/iterator/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/patterns/behavioral/observer/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/observer/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/patterns/behavioral/strategy/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/strategy/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/patterns/behavioral/visitor/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/visitor/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/patterns/behavioral/visitor/core/visited/VehicleInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/visitor/core/visited/VehicleInfo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -358,7 +358,7 @@
       <workItem from="1721280899814" duration="594000" />
       <workItem from="1721295615830" duration="592000" />
       <workItem from="1721367694763" duration="588000" />
-      <workItem from="1723028446792" duration="717000" />
+      <workItem from="1723028446792" duration="2195000" />
     </task>
     <task id="LOCAL-00001" summary="Add another example of builder pattern (House)">
       <created>1555947956544</created>
@@ -465,7 +465,21 @@
       <option name="project" value="LOCAL" />
       <updated>1714813295550</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="added iterator pattern">
+      <created>1723029192001</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1723029192001</updated>
+    </task>
+    <task id="LOCAL-00017" summary="fixed proxy pattern">
+      <created>1723029310410</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1723029310410</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -530,12 +544,12 @@
     <MESSAGE value="added bridge pattern" />
     <MESSAGE value="added decorator pattern" />
     <MESSAGE value="added facade pattern" />
-    <MESSAGE value="fixed proxy pattern" />
     <MESSAGE value="fixed command pattern" />
     <MESSAGE value="added strategy pattern" />
     <MESSAGE value="added observer pattern" />
     <MESSAGE value="added iterator pattern" />
-    <option name="LAST_COMMIT_MESSAGE" value="added iterator pattern" />
+    <MESSAGE value="fixed proxy pattern" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed proxy pattern" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

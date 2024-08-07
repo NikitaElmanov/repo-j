@@ -1,2 +1,8 @@
 server:
   port: 8199
+
+management:
+  endpoints:
+    jmx:
+      exposure:
+        include: '*'

@@ -9,11 +9,11 @@ import static lombok.AccessLevel.PRIVATE;
 public class Main {
 
     public static void main(String[] args) {
-        OrderAttendant orderFinalizer = new OrderFinalizer(null);
-        OrderAttendant orderDelivery = new OrderDelivery(orderFinalizer);
-        OrderAttendant orderMaker = new OrderMaker(orderDelivery);
+        var orderFinalizer = new OrderFinalizer(null);
+        var orderDelivery = new OrderDelivery(orderFinalizer);
+        var orderMaker = new OrderMaker(orderDelivery);
 
-        Order order = new Order(1L, "Crasburger 2 pcs", "default description");
+        var order = new Order(1L, "Crasburger 2 pcs", "default description");
 
         orderMaker.launchServing(order);
     }
@@ -73,25 +73,6 @@ class OrderFinalizer extends OrderAttendant {
     @Override
     protected void serve(Order order) {
         System.out.println("Order was finished. How do you like it?), title: " + order.title());
-    }
-
-    public static int maxProfit(int[] prices) {
-        int sold = Integer.MIN_VALUE, held = Integer.MIN_VALUE, reset = 0;
-
-        for (int price : prices) {
-            int preSold = sold;
-
-            sold = held + price;
-            held = Math.max(held, reset - price);
-            reset = Math.max(reset, preSold);
-        }
-
-        return Math.max(sold, reset);
-    }
-
-    public static void main(String[] args) {
-        System.out.println(maxProfit(new int[] {1, 2, 3, 0, 2}));
-        System.out.println(maxProfit(new int[] {1}));
     }
 
 }

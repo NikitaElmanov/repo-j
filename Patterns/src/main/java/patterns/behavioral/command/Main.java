@@ -8,7 +8,7 @@ import patterns.behavioral.command.core.GoRight;
 public class Main {
 
     public static void main(String[] args) {
-        Character character = new Character(
+        var character = new Character(
                 new GoForward(),
                 new GoBack(),
                 new GoRight(),

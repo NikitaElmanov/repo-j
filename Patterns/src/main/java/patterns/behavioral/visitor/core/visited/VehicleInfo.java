@@ -7,7 +7,7 @@ public abstract class VehicleInfo {
 
     private String title;
 
-    public VehicleInfo(final String title) {
+    protected VehicleInfo(final String title) {
         this.title = title;
     }
 
