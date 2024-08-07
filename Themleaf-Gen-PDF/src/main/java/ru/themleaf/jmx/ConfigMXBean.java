@@ -12,7 +12,7 @@ import ru.themleaf.pdf.service.ConfigService;
 @Component
 @RequiredArgsConstructor
 @ManagedResource(description = "Application config bean")
-public class ConfigMBean {
+public class ConfigMXBean {
 
     private final ConfigService configService;
 

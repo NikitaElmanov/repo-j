@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class ConfigService {
 
-    private Map<String, String> config = new HashMap<>();
+    private Map<String, String> config = new HashMap<>() {{
+        put("one", "one_value");
+    }};
 
     public void setConfig(String key, String value) {
         config.put(key, value);
@@ -19,7 +21,7 @@ public class ConfigService {
     }
 
     public Collection<String> getConfigs() {
-        return config.keySet();
+        return config.keySet().stream().toList();
     }
 
 }
