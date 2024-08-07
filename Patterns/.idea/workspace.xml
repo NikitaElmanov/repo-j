@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b0945b4b-1221-4d09-b787-f009e246f7a1" name="Default Changelist" comment="added iterator pattern">
+      <change afterPath="$PROJECT_DIR$/../Themleaf-Gen-PDF/src/main/resources/logback.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/patterns/behavioral/chain/of/responsibility/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/chain/of/responsibility/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/patterns/structure/facade/FacadeMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/patterns/structure/facade/FacadeMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Themleaf-Gen-PDF/Docker/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/../Themleaf-Gen-PDF/Docker/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Themleaf-Gen-PDF/Docker/app.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../Themleaf-Gen-PDF/Docker/app.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Themleaf-Gen-PDF/src/main/java/ru/themleaf/pdf/ThemleafGenPdfApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Themleaf-Gen-PDF/src/main/java/ru/themleaf/pdf/ThemleafGenPdfApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Themleaf-Gen-PDF/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../Themleaf-Gen-PDF/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,7 +177,33 @@
       <recent name="patterns.behavioral.observer.core" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.OrderFinalizer">
+  <component name="RunManager" selected="Application.DecoratorMain">
+    <configuration name="BridgeMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="patterns.structure.bridge.BridgeMain" />
+      <module name="Patterns" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="patterns.structure.bridge.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DecoratorMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="patterns.structure.decorator.DecoratorMain" />
+      <module name="Patterns" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="patterns.structure.decorator.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="patterns.behavioral.chain.of.responsibility.Main" />
       <module name="Patterns" />
@@ -212,46 +243,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="patterns.behavioral.observer.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="patterns.behavioral.observer.Main" />
-      <module name="Patterns" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="patterns.behavioral.observer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="patterns.behavioral.visitor.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="patterns.behavioral.visitor.Main" />
-      <module name="Patterns" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="patterns.behavioral.visitor.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
+      <item itemvalue="Application.BridgeMain" />
+      <item itemvalue="Application.DecoratorMain" />
       <item itemvalue="Application.OrderFinalizer" />
       <item itemvalue="Application.patterns.behavioral.iterator.Main" />
-      <item itemvalue="Application.patterns.behavioral.observer.Main" />
-      <item itemvalue="Application.patterns.behavioral.visitor.Main" />
       <item itemvalue="Application.Main" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.DecoratorMain" />
+        <item itemvalue="Application.BridgeMain" />
         <item itemvalue="Application.OrderFinalizer" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.patterns.behavioral.iterator.Main" />
-        <item itemvalue="Application.patterns.behavioral.visitor.Main" />
-        <item itemvalue="Application.patterns.behavioral.observer.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -353,6 +358,7 @@
       <workItem from="1721280899814" duration="594000" />
       <workItem from="1721295615830" duration="592000" />
       <workItem from="1721367694763" duration="588000" />
+      <workItem from="1723028446792" duration="717000" />
     </task>
     <task id="LOCAL-00001" summary="Add another example of builder pattern (House)">
       <created>1555947956544</created>

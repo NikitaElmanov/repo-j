@@ -7,7 +7,7 @@ public class FacadeMain {
     }
 
     private void test() {
-        DinnerMaker dinnerMaker = new DinnerMaker();
+        var dinnerMaker = new DinnerMaker();
         dinnerMaker.makeDish();
     }
 
