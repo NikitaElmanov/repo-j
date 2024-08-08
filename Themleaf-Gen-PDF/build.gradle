@@ -18,14 +18,21 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
+//    implementation 'log4j:log4j:1.2.17'
+    implementation 'org.apache.logging.log4j:log4j-core:2.17.1'
+
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'com.itextpdf:html2pdf:5.0.2'
+
+    implementation 'org.springframework.boot:spring-boot-devtools:3.3.2'
+    implementation 'commons-io:commons-io:2.16.1'
 
     compileOnly 'org.projectlombok:lombok:1.18.30'
     annotationProcessor 'org.projectlombok:lombok:1.18.30'
 
     implementation 'org.bouncycastle:bcmail-jdk15:1.46'
+
 //    implementation 'org.apache.xml:serializer:2.7.1'
 //    implementation 'xerces:xercesImpl:2.9.0'
 }

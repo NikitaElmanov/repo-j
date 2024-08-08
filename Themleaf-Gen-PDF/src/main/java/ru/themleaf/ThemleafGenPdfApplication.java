@@ -18,7 +18,7 @@ public class ThemleafGenPdfApplication {
         SpringApplication.run(ThemleafGenPdfApplication.class, args);
     }
 
-    @Scheduled(fixedDelay = 5, timeUnit = TimeUnit.SECONDS)
+    @Scheduled(fixedDelay = 10, timeUnit = TimeUnit.SECONDS)
     public void schedule() {
         log.error("error message test!!!");
     }
