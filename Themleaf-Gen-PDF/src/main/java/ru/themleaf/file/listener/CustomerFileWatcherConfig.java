@@ -25,8 +25,9 @@ public class CustomerFileWatcherConfig {
                 Duration.ofSeconds(5),
                 Duration.ofSeconds(1)
         );
-        fileSystemWatcher.addSourceDirectory(
-                Path.of("\\Users\\Nikita.Elmanov\\IdeaProjects\\repo-j\\Themleaf-Gen-PDF\\log").toFile());
+
+        fileSystemWatcher.addSourceDirectory(Path.of("log").toFile());
+//        fileSystemWatcher.addSourceDirectory(Path.of("C:\\Users\\Nikita.Elmanov\\IdeaProjects\\repo-j\\Themleaf-Gen-PDF\\log").toFile());
         fileSystemWatcher.addListener(customerAddFileChangeListener);
 
         var postfix = getPostfix();
