@@ -25,12 +25,12 @@ public class CustomerAddFileChangeListener implements FileChangeListener {
         for (var files : changeSet) {
             for (var file : files.getFiles()) {
                 if (file.getType().equals(Type.MODIFY)) {
-                    try {
-                        logFileMBean.process(FileUtils.readLines(file.getFile(), UTF_8));
-                    } catch (IOException ex) {
-                        log.error(ex.getMessage(), ex);
-                        throw new RuntimeException(ex);
-                    }
+//                    try {
+//                        logFileMBean.process(FileUtils.readLines(file.getFile(), UTF_8));
+//                    } catch (IOException ex) {
+//                        log.error(ex.getMessage(), ex);
+//                        throw new RuntimeException(ex);
+//                    }
                 }
             }
         }

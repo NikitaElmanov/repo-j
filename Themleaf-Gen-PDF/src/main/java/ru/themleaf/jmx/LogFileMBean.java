@@ -22,24 +22,30 @@ public class LogFileMBean {
 
     private List<String> externalErrors = new ArrayList<>();
 
+    private String internalError;
+
+    private String businessError;
+
+    private String externalError;
+
     private List<String> allErrors = new ArrayList<>();
 
     private int totalErrorsCountLast5Mim;
     private int totalErrorsCountAccumulator;
 
     @ManagedAttribute(description = "Get errors message attribute")
-    public List<String> getInternalErrors() {
-        return internalErrors;
+    public String getInternalErrors() {
+        return internalError;
     }
 
     @ManagedAttribute(description = "Get errors message attribute")
-    public List<String> getBusinessErrors() {
-        return businessErrors;
+    public String getBusinessErrors() {
+        return businessError;
     }
 
     @ManagedAttribute(description = "Get errors message attribute")
-    public List<String> getExternalErrors() {
-        return externalErrors;
+    public String getExternalErrors() {
+        return externalError;
     }
 
     @ManagedAttribute(description = "Get internal errors count attribute")
@@ -62,19 +68,31 @@ public class LogFileMBean {
         return this.totalErrorsCountLast5Mim;
     }
 
-    public void process(List<String> contentLines) {
-        this.allErrors = contentLines.stream()
-                .filter(line -> line.contains(ERROR_LOG_LEVEL))
-                .toList();
-        this.internalErrors = this.allErrors.stream()
-                .filter(line -> line.contains("[INTERNAL]"))
-                .toList();
-        this.businessErrors = this.allErrors.stream()
-                .filter(line -> line.contains("[BUSINESS]"))
-                .toList();
-        this.externalErrors = this.allErrors.stream()
-                .filter(line -> line.contains("[EXTERNAL]"))
-                .toList();
+//    public void process(List<String> contentLines) {
+//        this.allErrors = contentLines.stream()
+//                .filter(line -> line.contains(ERROR_LOG_LEVEL))
+//                .toList();
+//        fillErrorsOutByType();
+//    }
+
+    public void addError(String error) {
+        this.allErrors.add(error);
+        fillErrorsOutByType(error);
+    }
+
+    private void fillErrorsOutByType(String error) {
+
+        if (error.contains("[BUSINESS]")) {
+            this.businessErrors.add(error);
+            this.businessError = error;
+        } else if (error.contains("[EXTERNAL]")) {
+            this.externalErrors.add(error);
+            this.externalError = error;
+        } else {
+            this.internalErrors.add(error);
+            this.internalError = error;
+        }
+
     }
 
     @Scheduled(fixedRate = 5, timeUnit = TimeUnit.MINUTES)

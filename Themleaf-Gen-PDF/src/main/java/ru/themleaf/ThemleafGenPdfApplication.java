@@ -1,31 +1,34 @@
 package ru.themleaf;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import lombok.extern.slf4j.Slf4j;
+import org.aspectj.bridge.AbortException;
+import org.aspectj.weaver.BCException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.EnableMBeanExport;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
+import ru.themleaf.aop.ExceptionsHandled;
 
 @Slf4j
 @EnableScheduling
 @EnableMBeanExport
 @SpringBootApplication
+@EnableAspectJAutoProxy
 public class ThemleafGenPdfApplication {
 
-    private List<String> statuses = List.of(
+    private static List<String> STATUSES = List.of(
             "INTERNAL",
             "BUSINESS",
             "EXTERNAL"
     );
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         SpringApplication.run(ThemleafGenPdfApplication.class, args);
-
 //        // Create a WatchService
 //        var watchService = FileSystems.getDefault().newWatchService();
 //
@@ -58,9 +61,18 @@ public class ThemleafGenPdfApplication {
 //        }
     }
 
+    @ExceptionsHandled
     @Scheduled(fixedDelay = 10, timeUnit = TimeUnit.SECONDS)
     public void schedule() {
-        log.error("[%s] error message test!!!".formatted(statuses.get(new Random().nextInt(3))));
+        final var randomNumber = new Random().nextInt(3);
+        var errorMessage = "[%s] error message test!!!".formatted(STATUSES.get(randomNumber));
+
+        switch (randomNumber) {
+            case 0 -> throw new RuntimeException(errorMessage);
+            case 1 -> throw new AbortException(errorMessage);
+            case 2 -> throw new BCException(errorMessage);
+        }
+//        log.error("[{}] error message test!!!", statuses.get(new Random().nextInt(3)));
     }
 
 }

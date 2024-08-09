@@ -18,27 +18,27 @@ public class CustomerFileWatcherConfig {
 
     private final CustomerAddFileChangeListener customerAddFileChangeListener;
 
-    @Bean
-    public FileSystemWatcher fileSystemWatcher() {
-        var fileSystemWatcher = new FileSystemWatcher(
-                true,
-                Duration.ofSeconds(5),
-                Duration.ofSeconds(1)
-        );
-
-        fileSystemWatcher.addSourceDirectory(Path.of("log").toFile());
-//        fileSystemWatcher.addSourceDirectory(Path.of("C:\\Users\\Nikita.Elmanov\\IdeaProjects\\repo-j\\Themleaf-Gen-PDF\\log").toFile());
-        fileSystemWatcher.addListener(customerAddFileChangeListener);
-
-        var postfix = getPostfix();
-
-//        fileSystemWatcher.setTriggerFilter(f -> f.getAbsolutePath().contains(postfix));
-        fileSystemWatcher.start();
-
-        log.info(String.format("FileSystemWatcher initialized. Monitoring directory %s", "Themleaf-Gen-PDF/log"));
-
-        return fileSystemWatcher;
-    }
+//    @Bean
+//    public FileSystemWatcher fileSystemWatcher() {
+//        var fileSystemWatcher = new FileSystemWatcher(
+//                true,
+//                Duration.ofSeconds(5),
+//                Duration.ofSeconds(1)
+//        );
+//
+//        fileSystemWatcher.addSourceDirectory(Path.of("log").toFile());
+////        fileSystemWatcher.addSourceDirectory(Path.of("C:\\Users\\Nikita.Elmanov\\IdeaProjects\\repo-j\\Themleaf-Gen-PDF\\log").toFile());
+//        fileSystemWatcher.addListener(customerAddFileChangeListener);
+//
+//        var postfix = getPostfix();
+//
+////        fileSystemWatcher.setTriggerFilter(f -> f.getAbsolutePath().contains(postfix));
+//        fileSystemWatcher.start();
+//
+//        log.info(String.format("FileSystemWatcher initialized. Monitoring directory %s", "Themleaf-Gen-PDF/log"));
+//
+//        return fileSystemWatcher;
+//    }
 
     private String getPostfix() {
         var date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
