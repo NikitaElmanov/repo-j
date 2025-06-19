@@ -1,0 +1,226 @@
+public enum Direction {
+    NONE,
+    TOP,
+    DOWN,
+    LEFT,
+    RIGHT
+}
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+public class Robot {
+
+    private volatile Position position;
+    private volatile Direction direction;
+}
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
+@AllArgsConstructor
+public class Position {
+    private int x;
+    private int y;
+}
+
+import java.util.Scanner;
+import lombok.AllArgsConstructor;
+import lombok.SneakyThrows;
+
+import static ru.x5.msvk.core.dto.validation.validators.robot.GameEngine.RUNNING;
+
+@AllArgsConstructor
+public class MovementProcessor implements Runnable {
+
+    private final Robot robot;
+
+    @SneakyThrows
+    @Override
+    public void run() {
+        Scanner scanner = new Scanner(System.in);
+        while (RUNNING) {
+            if (System.in.available() > 0) {
+                String input = scanner.nextLine();
+                // check quit condition
+                checkQuit(input);
+                // check robot direction
+                checkDirection(input);
+            }
+            try {
+                Thread.sleep(100); // Reduce CPU usage
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+    }
+
+    private void checkDirection(final String input) {
+        if (input.equalsIgnoreCase("w")) { // TOP
+            robot.setDirection(Direction.TOP);
+        }
+        if (input.equalsIgnoreCase("s")) { // DOWN
+            robot.setDirection(Direction.DOWN);
+        }
+        if (input.equalsIgnoreCase("a")) { // LEFT
+            robot.setDirection(Direction.LEFT);
+        }
+        if (input.equalsIgnoreCase("d")) { // RIGHT
+            robot.setDirection(Direction.RIGHT);
+        }
+    }
+
+    private void checkQuit(final String input) {
+        if (input.equalsIgnoreCase("q")) {
+            RUNNING = false;
+        }
+    }
+}
+
+import java.util.ArrayList;
+import java.util.List;
+import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
+
+@RequiredArgsConstructor
+public class GameEngine implements Runnable {
+
+    public static boolean RUNNING = true;
+    public static final int[][] MAP = {
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 1, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 1, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 1, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 1, 1, 1, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+    };
+    private List<Position> rockPositions = new ArrayList<>();
+
+    {
+        for (int i = 0; i < MAP.length; i++) {
+            for (int j = 0; j < MAP[i].length; j++) {
+                if (MAP[i][j] == 1) {
+                    rockPositions.add(new Position(i, j));
+                }
+            }
+        }
+    }
+
+    private final MovementProcessor movementProcessor;
+    private final Robot robot;
+
+    @SneakyThrows
+    @Override
+    public void run() {
+        // run quit listener
+        Thread listenerThread = new Thread(movementProcessor);
+        listenerThread.setDaemon(true);
+        listenerThread.start();
+
+        // Main game loop
+        while (RUNNING) {
+            try {
+                Thread.sleep(3000);
+
+                final var position = robot.getPosition();
+                final var direction = robot.getDirection();
+
+                if (direction != null) {
+                    if (direction.equals(Direction.TOP)) {
+                        final int y = position.getY();
+
+                        if (y > 0) {
+                            final int newY = y - 1;
+                            checkRockCollapsing(position.getX(), newY, position);
+                        }
+                    }
+                    if (direction.equals(Direction.DOWN)) {
+                        final int y = position.getY();
+
+                        if (y < MAP.length) {
+                            final int newY = y + 1;
+                            checkRockCollapsing(position.getX(), newY, position);
+                        }
+                    }
+                    if (direction.equals(Direction.LEFT)) {
+                        final int x = position.getX();
+
+                        if (x > 0) {
+                            final int newX = x - 1;
+                            checkRockCollapsing(newX, position.getY(), position);
+                        }
+                    }
+                    if (direction.equals(Direction.RIGHT)) {
+                        final int x = position.getX();
+
+                        if (x < MAP[0].length) {
+                            final int newX = x + 1;
+                            checkRockCollapsing(newX, position.getY(), position);
+                        }
+                    }
+                    robot.setDirection(Direction.NONE);
+                }
+
+                printMap();
+                System.out.println("Robot " + position);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+
+        System.out.println("Game the end");
+    }
+
+    private void printMap() {
+        final Position position = robot.getPosition();
+
+        for (int i = 0; i < MAP.length; i++) {
+            for (int j = 0; j < MAP[i].length; j++) {
+                if (i == position.getX() && j == position.getY()) {
+                    System.out.print("R ");
+                } else {
+                    System.out.print(MAP[i][j] + " ");
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    private void checkRockCollapsing(final int x, final int y, final Position position) {
+        boolean collapse = false;
+        for (int i = 0; i < rockPositions.size(); i++) {
+            if (rockPositions.get(i).getX() == x && rockPositions.get(i).getY() == y) {
+                collapse = true;
+                System.out.println("rock collapsing: x=" + x + ", y=" + y);
+                break;
+            }
+        }
+
+        if (!collapse) {
+            position.setY(y);
+            position.setX(x);
+        }
+    }
+}
+
+public static void main(String[] args) throws InterruptedException {
+        final var robot = new Robot(new Position(4, 4), Direction.NONE);
+        final var movementProcessor = new MovementProcessor(robot);
+        final var thread = new Thread(new GameEngine(movementProcessor, robot));
+        thread.start();
+        thread.join();
+    }
