@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b0945b4b-1221-4d09-b787-f009e246f7a1" name="Default Changelist" comment="fixed proxy pattern">
-      <change beforePath="$PROJECT_DIR$/src/main/java/patterns/behavioral/chain/of/responsibility/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/chain/of/responsibility/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/patterns/behavioral/command/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/command/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/patterns/behavioral/iterator/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/iterator/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/patterns/behavioral/observer/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/observer/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/patterns/behavioral/strategy/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/strategy/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/patterns/behavioral/visitor/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/visitor/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/patterns/behavioral/visitor/core/visited/VehicleInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/patterns/behavioral/visitor/core/visited/VehicleInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/patterns/generative/prototype2/Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/patterns/generative/prototype2/Page.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/patterns/generative/prototype2/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/patterns/generative/prototype2/Runner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Themleaf-Gen-PDF/src/main/java/ru/themleaf/ThemleafGenPdfApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Themleaf-Gen-PDF/src/main/java/ru/themleaf/ThemleafGenPdfApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Themleaf-Gen-PDF/src/main/java/ru/themleaf/aop/JmxAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Themleaf-Gen-PDF/src/main/java/ru/themleaf/aop/JmxAspect.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -359,6 +357,52 @@
       <workItem from="1721295615830" duration="592000" />
       <workItem from="1721367694763" duration="588000" />
       <workItem from="1723028446792" duration="2195000" />
+      <workItem from="1723371948056" duration="1721000" />
+      <workItem from="1723960111365" duration="373000" />
+      <workItem from="1724045341958" duration="2544000" />
+      <workItem from="1724132201185" duration="594000" />
+      <workItem from="1724218530058" duration="592000" />
+      <workItem from="1724304926886" duration="1948000" />
+      <workItem from="1724650460638" duration="594000" />
+      <workItem from="1724749518555" duration="593000" />
+      <workItem from="1724823161250" duration="593000" />
+      <workItem from="1724835489399" duration="594000" />
+      <workItem from="1724909367803" duration="594000" />
+      <workItem from="1724996168327" duration="593000" />
+      <workItem from="1725255363764" duration="592000" />
+      <workItem from="1725428196305" duration="592000" />
+      <workItem from="1725515024522" duration="593000" />
+      <workItem from="1725519415231" duration="594000" />
+      <workItem from="1725602334913" duration="591000" />
+      <workItem from="1727069724417" duration="576000" />
+      <workItem from="1727156091184" duration="594000" />
+      <workItem from="1727242603957" duration="594000" />
+      <workItem from="1727328801352" duration="594000" />
+      <workItem from="1727415447282" duration="594000" />
+      <workItem from="1727419363636" duration="594000" />
+      <workItem from="1727674237929" duration="594000" />
+      <workItem from="1727759294523" duration="594000" />
+      <workItem from="1727846805939" duration="594000" />
+      <workItem from="1727933325733" duration="592000" />
+      <workItem from="1728019868221" duration="592000" />
+      <workItem from="1728279223424" duration="594000" />
+      <workItem from="1728365573297" duration="2241000" />
+      <workItem from="1728451544041" duration="594000" />
+      <workItem from="1728539978813" duration="595000" />
+      <workItem from="1728624657616" duration="594000" />
+      <workItem from="1728883824131" duration="594000" />
+      <workItem from="1728970272585" duration="593000" />
+      <workItem from="1729057441589" duration="594000" />
+      <workItem from="1729143304971" duration="594000" />
+      <workItem from="1729230001457" duration="594000" />
+      <workItem from="1729489042843" duration="594000" />
+      <workItem from="1729575340938" duration="594000" />
+      <workItem from="1729662153555" duration="594000" />
+      <workItem from="1729748430889" duration="594000" />
+      <workItem from="1729835630672" duration="592000" />
+      <workItem from="1730096193048" duration="593000" />
+      <workItem from="1730180114739" duration="593000" />
+      <workItem from="1730266767795" duration="600000" />
     </task>
     <task id="LOCAL-00001" summary="Add another example of builder pattern (House)">
       <created>1555947956544</created>

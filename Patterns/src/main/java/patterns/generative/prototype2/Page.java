@@ -14,7 +14,7 @@ public class Page implements CopyInteface {
 
     @Override
     public Object copy() {
-        Page page = new Page(number, width, text);
+        var page = new Page(number, width, text);
         return page;
     }
 
