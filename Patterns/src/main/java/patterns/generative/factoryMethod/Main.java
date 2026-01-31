@@ -17,6 +17,9 @@ public class Main {
         list.add(developerC);
         list.add(developerWell);
 
+        developerC.writeCode();
+        developerJ.writeCode();
+
         System.out.println(list);
     }
 }

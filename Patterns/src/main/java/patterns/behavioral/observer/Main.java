@@ -20,6 +20,8 @@ public class Main {
 
         videoHostingSite.addVideo("video 3");
 
+        videoHostingSite.removeObserver(subscriber2);
+
         videoHostingSite.removeVideo(video2);
     }
 

@@ -2,19 +2,7 @@ package patterns.behavioral.command;
 
 import patterns.behavioral.command.core.Command;
 
-public class Character {
-
-    private Command goAhead;
-    private Command goBack;
-    private Command goRight;
-    private Command goLeft;
-
-    public Character(final Command goAhead, final Command goBack, final Command goRight, final Command goLeft) {
-        this.goAhead = goAhead;
-        this.goBack = goBack;
-        this.goRight = goRight;
-        this.goLeft = goLeft;
-    }
+public record Character(Command goAhead, Command goBack, Command goRight, Command goLeft) {
 
     public void ahead() {
         goAhead.execute();
@@ -31,5 +19,4 @@ public class Character {
     public void left() {
         goLeft.execute();
     }
-
 }

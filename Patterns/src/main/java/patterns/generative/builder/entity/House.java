@@ -1,5 +1,7 @@
 package patterns.generative.builder.entity;
 
+import lombok.Getter;
+
 public class House {
 
     private Integer number;
@@ -12,12 +14,13 @@ public class House {
         this.amountOfFloors = houseBuilder.getAmountOfFloors();
     }
 
-    public static class HouseBuilder{
+    @Getter
+    public static class HouseBuilder {
 
         private Integer number;
         private String street;
 
-        //unimportant;
+        // unimportant;
         private Integer amountOfFloors;
 
         public HouseBuilder(Integer number, String street) {
@@ -30,19 +33,7 @@ public class House {
             return this;
         }
 
-        public Integer getNumber() {
-            return number;
-        }
-
-        public String getStreet() {
-            return street;
-        }
-
-        public Integer getAmountOfFloors() {
-            return amountOfFloors;
-        }
-
-        public House build(){
+        public House build() {
             return new House(this);
         }
     }

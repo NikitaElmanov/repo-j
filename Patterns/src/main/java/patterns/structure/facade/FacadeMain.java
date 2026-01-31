@@ -1,5 +1,7 @@
 package patterns.structure.facade;
 
+import lombok.AllArgsConstructor;
+
 public class FacadeMain {
 
     public static void main(String[] args) {
@@ -12,17 +14,13 @@ public class FacadeMain {
     }
 
     interface Step {
-
         void execute();
     }
 
+    @AllArgsConstructor
     class CatchAnimal implements Step {
 
         private String target;
-
-        private CatchAnimal(final String target) {
-            this.target = target;
-        }
 
         @Override
         public void execute() {
@@ -38,13 +36,10 @@ public class FacadeMain {
         }
     }
 
+    @AllArgsConstructor
     class CookMile implements Step {
 
         private String recipe;
-
-        private CookMile(final String recipe) {
-            this.recipe = recipe;
-        }
 
         @Override
         public void execute() {
@@ -58,7 +53,7 @@ public class FacadeMain {
         private KillAnimal killAnimal;
         private CookMile cookMile;
 
-        private DinnerMaker() {
+        public DinnerMaker() {
             this.catchAnimal = new CatchAnimal("cow");
             this.killAnimal = new KillAnimal();
             this.cookMile = new CookMile("chop");

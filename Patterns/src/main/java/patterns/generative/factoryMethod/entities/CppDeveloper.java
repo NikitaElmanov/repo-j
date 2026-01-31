@@ -1,18 +1,14 @@
 package patterns.generative.factoryMethod.entities;
 
+import lombok.AllArgsConstructor;
 import patterns.generative.factoryMethod.entities.interfaces.Developer;
 
+@AllArgsConstructor
 public class CppDeveloper implements Developer {
 
     private int id;
     private String name;
     private int experience;
-
-    public CppDeveloper(int id, String name, int experience) {
-        this.id = id;
-        this.name = name;
-        this.experience = experience;
-    }
 
     public void writeCode() {
         System.out.println("C++ developer wrote c++ code");

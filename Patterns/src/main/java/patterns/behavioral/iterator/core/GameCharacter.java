@@ -1,6 +1,7 @@
 package patterns.behavioral.iterator.core;
 
 import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -29,7 +30,6 @@ public class GameCharacter<R> implements Collection<R> {
         public R next() {
             return capabilities.get(index++);
         }
-
     }
 
 }

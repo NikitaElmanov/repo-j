@@ -15,7 +15,6 @@ public class AdapterMain {
 
 
     interface BadGuy {
-
         void beSentToPrison();
     }
 
@@ -29,7 +28,6 @@ public class AdapterMain {
     }
 
     interface GoodGuy {
-
         void beSentToPrisonByMistake();
     }
 
@@ -43,7 +41,6 @@ public class AdapterMain {
     }
 
     class Judge {
-
         public void sendToPrison(BadGuy badGuy) {
             badGuy.beSentToPrison();
         }

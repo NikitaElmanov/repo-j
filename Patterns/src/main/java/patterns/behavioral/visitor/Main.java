@@ -15,7 +15,5 @@ public class Main {
 
         workshop.bеRepaired(beginner);
         workshop.bеRepaired(skilled);
-
     }
-
 }

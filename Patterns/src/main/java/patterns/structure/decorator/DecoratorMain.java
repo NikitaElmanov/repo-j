@@ -12,7 +12,6 @@ public class DecoratorMain {
     }
 
     interface Person {
-
         void doSomething();
     }
 
@@ -28,7 +27,7 @@ public class DecoratorMain {
 
         private Person person;
 
-        private PersonDecorator(final Person person) {
+        public PersonDecorator(final Person person) {
             this.person = person;
         }
 
@@ -40,7 +39,7 @@ public class DecoratorMain {
 
     class Average extends PersonDecorator {
 
-        private Average(final Person person) {
+        public Average(final Person person) {
             super(person);
         }
 
@@ -57,7 +56,7 @@ public class DecoratorMain {
 
     class Strongman extends PersonDecorator {
 
-        private Strongman(final Person person) {
+        public Strongman(final Person person) {
             super(person);
         }
 
@@ -71,5 +70,4 @@ public class DecoratorMain {
             this.makeSomeMove();
         }
     }
-
 }
